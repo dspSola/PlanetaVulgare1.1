@@ -15,7 +15,8 @@ public class StateMachineAttack : MonoBehaviour
     [SerializeField] private GetInputBrute _getBruteInput;
     [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
-    [SerializeField] private bool _isAnim, _canSlice;
+    [SerializeField] private GameObject _weaponMesh, _weaponCollider;
+    [SerializeField] private bool _isArmed, _isAnim, _canSlice;
     public PlayerAttackState CurrentState
     {
         get
@@ -25,6 +26,11 @@ public class StateMachineAttack : MonoBehaviour
     }
 
     #region Unity Lifecycle
+
+    private void Awake()
+    {
+        SetActiveWeapon(false);
+    }
 
     private void Update()
     {
@@ -144,12 +150,12 @@ public class StateMachineAttack : MonoBehaviour
     }
     private void DoIdleUpdate()
     {
-        if (_getBruteInput.Attack01Input.IsActive)
+        if (_getBruteInput.Attack01Input.IsActive || _getBruteInput.TriggerRight == 1)
         {
             TransitionToState(PlayerAttackState.ATTACK01);
             return;
         }
-        if (_getBruteInput.Attack02Input.IsActive)
+        if (_getBruteInput.Attack02Input.IsActive || _getBruteInput.TriggerLeft == 1)
         {
             TransitionToState(PlayerAttackState.ATTACK02);
             return;
@@ -242,10 +248,27 @@ public class StateMachineAttack : MonoBehaviour
                 GUILayout.Button($"IsAnim: {_isAnim}", _style, GUILayout.ExpandHeight(true));
             }
         }
+        using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.5f, Screen.width * 0.2f, Screen.height * 0.1f)))
+        {
+            using (new GUILayout.VerticalScope())
+            {
+                GUILayout.Button($"_isArmed: {_isArmed}", _style, GUILayout.ExpandHeight(true));
+            }
+        }
+    }
+
+    public void SetActiveWeapon(bool value)
+    {
+        if (_weaponMesh.activeSelf != value && _weaponCollider.activeSelf != value)
+        {
+            _weaponMesh.SetActive(value);
+            _weaponCollider.SetActive(value);
+        }
     }
 
     public bool IsAnim { get => _isAnim; set => _isAnim = value; }
     public bool CanSlice { get => _canSlice; set => _canSlice = value; }
+    public bool IsArmed { get => _isArmed; set => _isArmed = value; }
 
     private GUIStyle _style;
 
