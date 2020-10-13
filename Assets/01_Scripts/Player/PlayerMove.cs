@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField] private PlayerData _playerData;
     [SerializeField] private GetInputBrute _getBruteInput;
     [SerializeField] private StateMachineVertical _stateMachineVertical;
     [SerializeField] private StateMachineHorizontal _stateMachineHorizontal;
@@ -38,6 +39,7 @@ public class PlayerMove : MonoBehaviour
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        _playerData.Position = Vector3.zero;
     }
 
     private void Update()
@@ -83,6 +85,8 @@ public class PlayerMove : MonoBehaviour
             // Si on n'est pas au sol, applique la gravité
             _verticalVelocity += Physics.gravity * _gravityFallMultiplier * Time.fixedDeltaTime;
         }
+
+        _playerData.Position = _transformPlayer.position;
     }
 
     private void FixedUpdate()

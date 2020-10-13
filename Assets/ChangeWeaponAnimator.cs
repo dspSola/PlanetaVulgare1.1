@@ -1,39 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class AttackStateMachineAnimator : StateMachineBehaviour
+public class ChangeWeaponAnimator : StateMachineBehaviour
 {
     [SerializeField] private StateMachineAttack _stateMachineAttack;
-    [SerializeField] private bool _canSlice;
+    [SerializeField] private bool _activeGo;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _stateMachineAttack = animator.transform.parent.GetComponentInChildren<StateMachineAttack>();
-        _stateMachineAttack.IsAnim = true;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(animator.GetFloat("Slice") == 1)
+        if(animator.GetFloat("CanChangeWeapon") == 1)
         {
-            if (_canSlice)
-            {
-                _stateMachineAttack.CanSlice = true;
-            }
-        }
-        else
-        {
-            _stateMachineAttack.CanSlice = false;
+            _stateMachineAttack.SetActiveWeapon(_activeGo);
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _stateMachineAttack.IsAnim = false;
+        animator.SetBool("IsArmed", _activeGo);
+        _stateMachineAttack.IsArmed = _activeGo;
+        animator.SetBool("ChangeWeapon", false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
