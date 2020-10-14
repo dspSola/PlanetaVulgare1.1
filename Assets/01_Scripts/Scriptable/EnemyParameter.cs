@@ -3,7 +3,7 @@
 [CreateAssetMenu]
 public class EnemyParameter : ScriptableObject
 {
-    public int life;
+    public int currentLife;
+    public int maxLife;
     public int damage;
-
 }

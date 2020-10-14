@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Sliceable
   layers:
   - Default
   - TransparentFX
@@ -13,6 +14,7 @@ TagManager:
   - UI
   - 
   - 
+  - Player
   - 
   - 
   - 
@@ -34,9 +36,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Sliceable
+  - CollisionSurface
   m_SortingLayers:
   - name: Default
     uniqueID: 0
