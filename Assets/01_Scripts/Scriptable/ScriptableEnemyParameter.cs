@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu]
-public class EnemyParameter : ScriptableObject
+public class ScriptableEnemyParameter : ScriptableObject
 {
     public int currentLife;
     public int maxLife;
