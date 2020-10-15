@@ -19,7 +19,6 @@ public class PortalScript : MonoBehaviour
         {
             _destination = GameObject.Find("Quad_Portal_A").transform.position;
         }
-
         other.transform.position = _destination - Vector3.forward * m_deplacement;
         other.transform.Rotate(Vector3.up * 180);
     }

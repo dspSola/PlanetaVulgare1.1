@@ -14,6 +14,7 @@ TagManager:
   - UI
   - 
   - 
+  - Player
   - 
   - 
   - 
@@ -35,9 +36,14 @@ TagManager:
   - 
   - 
   - 
+<<<<<<< HEAD
   - 
   - Sliceable
   - Collision Surface
+=======
+  - Sliceable
+  - CollisionSurface
+>>>>>>> DepotEnemy
   m_SortingLayers:
   - name: Default
     uniqueID: 0
