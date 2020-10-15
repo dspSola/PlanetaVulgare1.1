@@ -1,18 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class NavEnnemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Transform[] _wayPoint;
+    [SerializeField] Transform _player; //à remplacer par la futur dat du transform player
+
+    [SerializeField] NavMeshAgent _agent;
+
+    private void Awake()
+    {
+        _patrol = transform;
+    }
+
+    private void Update()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    int i;
+    Transform _patrol;
 }
