@@ -1480,7 +1480,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh118910
+  m_Name: pb_Mesh130616
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1679,10 +1679,11 @@ GameObject:
   - component: {fileID: 983195639}
   - component: {fileID: 983195640}
   - component: {fileID: 983195641}
-  - component: {fileID: 983195643}
-  - component: {fileID: 983195642}
-  - component: {fileID: 983195644}
   - component: {fileID: 983195645}
+  - component: {fileID: 983195643}
+  - component: {fileID: 983195646}
+  - component: {fileID: 983195644}
+  - component: {fileID: 983195642}
   m_Layer: 0
   m_Name: MushroomMutant
   m_TagString: Untagged
@@ -1790,10 +1791,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 983195638}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 431a8b8fd27cc624d8c47b715e3c98cd, type: 3}
+  m_Script: {fileID: 11500000, guid: b7a962e87ef0e20469c3c55bcfdd2510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyParameter: {fileID: 11400000, guid: daff806f20cb5a9438873c1969507cdb, type: 2}
+  _head: {fileID: 983195639}
+  _lookAtTargetPosition: {x: 0, y: 0, z: 0}
+  _lookAtCoolTime: 0.2
+  _lookAtHeatTime: 0.2
+  _looking: 1
 --- !u!95 &983195645
 Animator:
   serializedVersion: 3
@@ -1813,6 +1818,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &983195646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983195638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1b5d6c5013cf542809a31a7284fd8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &985680832
 GameObject:
   m_ObjectHideFlags: 0
