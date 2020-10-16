@@ -3,5 +3,5 @@
 [CreateAssetMenu]
 public class ScriptableTransform : ScriptableObject
 {
-    Transform value;
+    public Transform value;
 }
