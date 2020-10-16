@@ -39,17 +39,12 @@ public class GetInputBrute : MonoBehaviour
         // Move
         _horizontalInput = GetButtonInput("Horizontal");
         _verticalInput = GetButtonInput("Vertical");
-
         _movementInput = new Vector3()
         {
             x = Input.GetAxis("Horizontal"),
             y = 0,
             z = Input.GetAxis("Vertical")
         };
-
-        _triggerLeft = Input.GetAxis("Attack02");
-        _triggerRight = Input.GetAxis("Attack01");
-
         _sneakInput = GetButtonInput("Sneak");
         _runInput = GetButtonInput("Run");
         _jumpInput = GetButtonInput("Jump");
@@ -57,7 +52,13 @@ public class GetInputBrute : MonoBehaviour
         // Attack
         _attack01Input = GetButtonInput("Attack01");
         _attack02Input = GetButtonInput("Attack02");
+        _triggerLeft = Input.GetAxis("Attack02");
+        _triggerRight = Input.GetAxis("Attack01");
         _protectionInput = GetButtonInput("Protection");
+        _dodgeInput = GetButtonInput("Dodge");
+
+        // Other
+        _useInput = GetButtonInput("Use");
     }
 
     private ButtonInput GetButtonInput(string buttonName)
@@ -123,6 +124,15 @@ public class GetInputBrute : MonoBehaviour
     {
         get => _protectionInput;
     }
+    public ButtonInput DodgeInput
+    {
+        get => _dodgeInput;
+    }
+
+    public ButtonInput UseInput
+    {
+        get => _useInput;
+    }
     public float TriggerLeft { get => _triggerLeft; set => _triggerLeft = value; }
     public float TriggerRight { get => _triggerRight; set => _triggerRight = value; }
 
@@ -137,6 +147,10 @@ public class GetInputBrute : MonoBehaviour
     [SerializeField] private ButtonInput _attack01Input;
     [SerializeField] private ButtonInput _attack02Input;
     [SerializeField] private ButtonInput _protectionInput;
+    [SerializeField] private ButtonInput _dodgeInput;
+
+    // Other
+    [SerializeField] private ButtonInput _useInput;
 
     // Dico
     private Dictionary<string, float> _doubleTapTimes = new Dictionary<string, float>();
