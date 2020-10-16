@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private PlayerData _playerData;
+    [SerializeField] private ScriptableTransform _scriptableTransform;
     [SerializeField] private GetInputBrute _getBruteInput;
     [SerializeField] private StateMachineVertical _stateMachineVertical;
     [SerializeField] private StateMachineHorizontal _stateMachineHorizontal;
@@ -101,6 +102,8 @@ public class PlayerMove : MonoBehaviour
         }
 
         _playerData.Position = _transformPlayer.position;
+        _scriptableTransform.value = transform;
+        _scriptableTransform.value.position = transform.position;
     }
 
     private void FixedUpdate()
@@ -115,7 +118,7 @@ public class PlayerMove : MonoBehaviour
 
         if (_stateMachineAttack.CurrentState == PlayerAttackState.IDLE)
         {
-            if (_getBruteInput.Movement.z > 0.5f)
+            if (_getBruteInput.Movement.z > 0.5f || _getBruteInput.Movement.z < -0.5f)
             {
                 RotateTowardsCameraForward();
             }
@@ -133,7 +136,6 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-
             // Calcule le vecteur velocity à partir des velocity verticale et horizontale
             _velocity = _verticalVelocity + _horizontalVelocity;
 

@@ -357,6 +357,13 @@ public class StateMachineAttack : MonoBehaviour
                 GUILayout.Button($"_isArmed: {_isArmed}", _style, GUILayout.ExpandHeight(true));
             }
         }
+        using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.6f, Screen.width * 0.2f, Screen.height * 0.1f)))
+        {
+            using (new GUILayout.VerticalScope())
+            {
+                GUILayout.Button($"_canSlice: {_canSlice}", _style, GUILayout.ExpandHeight(true));
+            }
+        }
     }
 
     public void SetActiveWeapon(bool value)
