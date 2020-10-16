@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e519dee651fa0d4e8decd0880b9538c, type: 3}
   m_Name: MushroomMutant
   m_EditorClassIdentifier: 
-  life: 0
-  damage: 0
+  currentLife: 0
+  maxLife: 10
+  damage: 20

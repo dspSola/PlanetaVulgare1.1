@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Sliceable
+  - PlayerColl
+  - WeaponColl
+  - WeaponSliceableColl
   layers:
   - Default
   - TransparentFX
@@ -35,8 +38,12 @@ TagManager:
   - 
   - 
   - 
+<<<<<<< HEAD
   - 
   - 
+=======
+  - Sliceable
+>>>>>>> 44f798a21e65fda41100fd3e922ae19e387d7a04
   - Collision Surface
   m_SortingLayers:
   - name: Default

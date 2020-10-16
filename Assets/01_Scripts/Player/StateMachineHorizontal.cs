@@ -16,6 +16,8 @@ public class StateMachineHorizontal : MonoBehaviour
     [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
 
+    [SerializeField] private bool _isSneaking;
+
     public PlayerHorizontalState CurrentState
     {
         get
@@ -147,7 +149,11 @@ public class StateMachineHorizontal : MonoBehaviour
 
     private void DoIdleUpdate()
     {
-        if (_getBruteInput.SneakInput.IsActive)
+        if (_getBruteInput.SneakInput.IsUp)
+        {
+            _isSneaking = true;
+        }
+        if(_isSneaking)
         {
             TransitionToState(PlayerHorizontalState.SNEAKING);
             return;
@@ -155,7 +161,7 @@ public class StateMachineHorizontal : MonoBehaviour
 
         if (_getBruteInput.Movement.sqrMagnitude > 0.01f)
         {
-            if (_getBruteInput.RunInput.IsActive && _getBruteInput.Movement.z > 0.01f)
+            if (_getBruteInput.RunInput.IsUp && _getBruteInput.Movement.z > 0.01f)
             {
                 TransitionToState(PlayerHorizontalState.RUNNING);
                 return;
@@ -186,6 +192,10 @@ public class StateMachineHorizontal : MonoBehaviour
     {
         if (_getBruteInput.SneakInput.IsUp)
         {
+            _isSneaking = false;
+        }
+        if(!_isSneaking)
+        { 
             if (_getBruteInput.Movement.sqrMagnitude > 0.01f)
             {
                 if (_getBruteInput.RunInput.IsActive)
@@ -225,7 +235,11 @@ public class StateMachineHorizontal : MonoBehaviour
     {
         if (_getBruteInput.Movement.sqrMagnitude > 0.01f)
         {
-            if (_getBruteInput.SneakInput.IsActive)
+            if (_getBruteInput.SneakInput.IsUp)
+            {
+                _isSneaking = true;
+            }
+            if (_isSneaking)
             {
                 TransitionToState(PlayerHorizontalState.SNEAKING);
                 return;
@@ -264,7 +278,11 @@ public class StateMachineHorizontal : MonoBehaviour
     {
         if (_getBruteInput.Movement.sqrMagnitude > 0.01f)
         {
-            if (_getBruteInput.SneakInput.IsActive)
+            if (_getBruteInput.SneakInput.IsUp)
+            {
+                _isSneaking = true;
+            }
+            if (_isSneaking)
             {
                 TransitionToState(PlayerHorizontalState.SNEAKING);
                 return;

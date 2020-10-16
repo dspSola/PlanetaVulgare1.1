@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/06_Scenes/Scene Enemy Dems.meta
 guid: 555f02d8bdf13d04fb38073f6892ac6f
+=======
+guid: 7dfbb2f1a866eb44892f8b32835567f0
+>>>>>>> 44f798a21e65fda41100fd3e922ae19e387d7a04:Assets/01_Scripts/Entity.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
