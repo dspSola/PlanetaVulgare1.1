@@ -19,6 +19,10 @@ public class StateMachineAttack : MonoBehaviour
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
     [SerializeField] private GameObject _weaponMesh, _weaponAxeCollider, _weaponAllCollider, _weaponBackMesh;
     [SerializeField] private bool _isArmed, _isAnim, _canSlice;
+
+    [SerializeField] private bool _isInCombo;
+    [SerializeField] private int _cptCombo;
+    [SerializeField] private float _timeCombo, _timeComboMax;
     public PlayerAttackState CurrentState
     {
         get
@@ -37,6 +41,7 @@ public class StateMachineAttack : MonoBehaviour
     private void Update()
     {
         DoUpdate();
+        GestionTimeCombo();
     }
 
     public void DoUpdate()
@@ -176,7 +181,7 @@ public class StateMachineAttack : MonoBehaviour
     {
         if (_getBruteInput.Attack01Input.IsActive || _getBruteInput.TriggerRight == 1)
         {
-            if (_isArmed || _getBruteInput.Movement == Vector3.zero)
+            if (_isArmed)
             {
                 TransitionToState(PlayerAttackState.ATTACK01);
                 return;
@@ -189,16 +194,8 @@ public class StateMachineAttack : MonoBehaviour
         }
         if (_getBruteInput.Attack02Input.IsActive || _getBruteInput.TriggerLeft == 1)
         {
-            if (_isArmed || _getBruteInput.Movement == Vector3.zero)
-            {
-                TransitionToState(PlayerAttackState.ATTACK02);
-                return;
-            }
-            else
-            {
-                TransitionToState(PlayerAttackState.CHANGEWEAPON);
-                return;
-            }
+            TransitionToState(PlayerAttackState.ATTACK02);
+            return;
         }
         if (_getBruteInput.ProtectionInput.IsActive)
         {
@@ -312,16 +309,52 @@ public class StateMachineAttack : MonoBehaviour
     }
     private void DoDODGEUpdate()
     {
-        if (_getBruteInput.Attack01Input.IsActive || _getBruteInput.TriggerRight == 1)
-        {
-            TransitionToState(PlayerAttackState.ATTACK01);
-            return;
-        }
-
         if (!_isAnim)
         {
             TransitionToState(PlayerAttackState.IDLE);
             return;
+        }
+    }
+
+    //public void ComboEnterAnim()
+    //{
+    //    if (!_isInCombo)
+    //    {
+    //        _isInCombo = true;
+    //        _cptCombo = 1;
+    //        _timeCombo = 0;
+    //    }
+    //    else
+    //    {
+    //        if (_cptCombo < 3)
+    //        {
+    //            _cptCombo++;
+    //            _timeCombo = 0;
+    //        }
+    //        else
+    //        {
+    //            _cptCombo = 1;
+    //            _timeCombo = 0;
+    //        }
+    //    }
+    //    _bruteAnimatorController.SetCptCombo(_cptCombo);
+    //}
+
+    public void GestionTimeCombo()
+    {
+        if(_cptCombo != 0 && !_isAnim)
+        {
+            if(_timeCombo < _timeComboMax)
+            {
+                _timeCombo += Time.deltaTime;
+            }
+            else
+            {
+                _cptCombo = 0;
+                _timeCombo = 0;
+                _isInCombo = false;
+                _bruteAnimatorController.SetCptCombo(_cptCombo);
+            }
         }
     }
 
@@ -357,6 +390,13 @@ public class StateMachineAttack : MonoBehaviour
                 GUILayout.Button($"_isArmed: {_isArmed}", _style, GUILayout.ExpandHeight(true));
             }
         }
+        using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.6f, Screen.width * 0.2f, Screen.height * 0.1f)))
+        {
+            using (new GUILayout.VerticalScope())
+            {
+                GUILayout.Button($"_canSlice: {_canSlice}", _style, GUILayout.ExpandHeight(true));
+            }
+        }
     }
 
     public void SetActiveWeapon(bool value)
@@ -379,9 +419,15 @@ public class StateMachineAttack : MonoBehaviour
         _playerMove.AddForce(valueXZ, valueY);
     }
 
+    public void SetTransition(PlayerAttackState pas)
+    {
+        TransitionToState(pas);
+    }
+
     public bool IsAnim { get => _isAnim; set => _isAnim = value; }
     public bool CanSlice { get => _canSlice; set => _canSlice = value; }
     public bool IsArmed { get => _isArmed; set => _isArmed = value; }
+    public int CptCombo { get => _cptCombo; set => _cptCombo = value; }
 
     private GUIStyle _style;
 
