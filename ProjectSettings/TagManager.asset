@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Sliceable
+  - PlayerColl
+  - WeaponColl
+  - WeaponSliceableColl
   layers:
   - Default
   - TransparentFX
@@ -13,6 +17,8 @@ TagManager:
   - UI
   - 
   - 
+  - Player
+  - Ennemy
   - 
   - 
   - 
@@ -33,10 +39,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Sliceable
+  - Collision Surface
   m_SortingLayers:
   - name: Default
     uniqueID: 0
