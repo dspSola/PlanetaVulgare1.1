@@ -17,6 +17,7 @@ public class StateMachineAttack : MonoBehaviour
     [SerializeField] private GetInputBrute _getBruteInput;
     [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
+    [SerializeField] private Collider _colliderIdle, _colliderDodge;
     [SerializeField] private GameObject _weaponMesh, _weaponAxeCollider, _weaponAllCollider, _weaponBackMesh;
     [SerializeField] private bool _isArmed, _isAnim, _canSlice;
 
@@ -36,6 +37,11 @@ public class StateMachineAttack : MonoBehaviour
     private void Awake()
     {
         SetActiveWeapon(false);
+    }
+
+    private void Start()
+    {
+        TransitionToState(_currentState, PlayerAttackState.IDLE);
     }
 
     private void Update()
@@ -171,11 +177,13 @@ public class StateMachineAttack : MonoBehaviour
     // IDLE
     private void DoIdleEnter()
     {
-
+        _weaponAllCollider.GetComponent<WeaponColliderManager>().enabled = false;
+        _weaponAllCollider.GetComponent<MeshCollider>().enabled = false;
     }
     private void DoIdleExit()
     {
-
+        _weaponAllCollider.GetComponent<WeaponColliderManager>().enabled = true;
+        _weaponAllCollider.GetComponent<MeshCollider>().enabled = true;
     }
     private void DoIdleUpdate()
     {
@@ -302,10 +310,20 @@ public class StateMachineAttack : MonoBehaviour
     private void DoDODGEEnter()
     {
         _bruteAnimatorController.SetDodge(true);
+        if(_getBruteInput.Movement.z > 0)
+        {
+            _colliderIdle.enabled = false;
+            _colliderDodge.enabled = true;
+        }
     }
     private void DoDODGEExit()
     {
         _bruteAnimatorController.SetDodge(false);
+        if(_colliderDodge.enabled)
+        {
+            _colliderDodge.enabled = false;
+            _colliderIdle.enabled = true;
+        }
     }
     private void DoDODGEUpdate()
     {
@@ -315,30 +333,6 @@ public class StateMachineAttack : MonoBehaviour
             return;
         }
     }
-
-    //public void ComboEnterAnim()
-    //{
-    //    if (!_isInCombo)
-    //    {
-    //        _isInCombo = true;
-    //        _cptCombo = 1;
-    //        _timeCombo = 0;
-    //    }
-    //    else
-    //    {
-    //        if (_cptCombo < 3)
-    //        {
-    //            _cptCombo++;
-    //            _timeCombo = 0;
-    //        }
-    //        else
-    //        {
-    //            _cptCombo = 1;
-    //            _timeCombo = 0;
-    //        }
-    //    }
-    //    _bruteAnimatorController.SetCptCombo(_cptCombo);
-    //}
 
     public void GestionTimeCombo()
     {
