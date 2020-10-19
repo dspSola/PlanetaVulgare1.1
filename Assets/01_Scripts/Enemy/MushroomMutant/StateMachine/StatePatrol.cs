@@ -10,14 +10,16 @@ public class StatePatrol : StateMachineBehaviour
     [SerializeField] float _waitpointDistance = 0.2f;
 
     [Header("Parameter")]
-    [SerializeField] ScriptableNavMeshAgent m_Agent;
-    [SerializeField] ScriptableFloat _speed;
+    [SerializeField] NavMeshAgent m_Agent;
+    [SerializeField] EnemyEntity _enemyEntity; 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //m_Agent = FindObjectOfType<NavMeshAgent>;
         Debug.Log("Entering state: Patrol");
+        m_Agent = animator.GetComponent<NavMeshAgent>();
+        m_Agent.speed = _enemyEntity.SpeedWalk;
         DoPatrol();
     }
 
@@ -25,6 +27,7 @@ public class StatePatrol : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Staying in state: Patrol");
+        
         //si je detecte
         //si je suis alerté
     }
@@ -49,13 +52,16 @@ public class StatePatrol : StateMachineBehaviour
 
     private void DoPatrol()
     {
-        if (_waitPoint.Length == 0)
+        if (!m_Agent.pathPending && m_Agent.remainingDistance < _waitpointDistance)
         {
-            return;
-        }
+            if (_waitPoint.Length == 0)
+            {
+                return;
+            }
 
-        //m_Agent.destination = _waitPoint[i].position;
-        i = (i + 1) % _waitPoint.Length;
+            m_Agent.destination = _waitPoint[i].position;
+            i = (i + 1) % _waitPoint.Length;
+        }
     }
 
     int i;
