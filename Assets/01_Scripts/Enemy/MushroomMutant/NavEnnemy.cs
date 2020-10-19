@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.PlayerLoop;
 
 public class NavEnnemy : MonoBehaviour
 {
@@ -16,18 +18,22 @@ public class NavEnnemy : MonoBehaviour
 
     private void Awake()
     {
-        _patrol = transform;
         m_Agent = GetComponent<NavMeshAgent>();
+        //_rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-        //MoveWhithMouse();
         if(!m_Agent.pathPending && m_Agent.remainingDistance < _waitpointDistance)
         {
             Patrol();
         }
-        
+    }
+
+    private void FixedUpdate()
+    {
+        //_speed = _rb. ;
+        //Debug.Log("la vitesse" + _speed);
     }
 
     private void Patrol()
@@ -37,26 +43,23 @@ public class NavEnnemy : MonoBehaviour
             return;
         }
 
+        StartCoroutine(DelayNextParol());
+    }
+
+    IEnumerator DelayNextParol()
+    {
         m_Agent.destination = _waitPoint[i].position;
         i = (i + 1) % _waitPoint.Length;
 
-        Debug.Log("mush et au"+ _waitPoint[i] +"point");
-    }
-
-    private void MoveWhithMouse()
-    {
-        if (Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.LeftShift))
-        {
-            var ray = _cam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray.origin, ray.direction, out m_HitInfo))
-            {
-                m_Agent.destination = m_HitInfo.point;
-            }
-        }
+        yield return new WaitForSeconds(2);
     }
 
     int i;
-    Transform _patrol;
     NavMeshAgent m_Agent;
     RaycastHit m_HitInfo = new RaycastHit();
+    //Rigidbody _rb;
+
+
+    float _speed;
+    public float Speed { get => _speed; set => _speed = value; }
 }

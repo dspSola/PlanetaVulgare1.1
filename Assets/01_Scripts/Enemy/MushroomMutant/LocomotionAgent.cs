@@ -29,12 +29,13 @@ public class LocomotionAgent : MonoBehaviour
             _velocity = _smoothDeltaPosition / Time.deltaTime;
 
         bool shouldMove = _velocity.magnitude > 0.5f && _agent.remainingDistance > _agent.radius;
-
+        _speed = _agent.acceleration;
+        Debug.Log("la vitesse" + _speed);
         // Update animation parameters
         //_anim.SetBool("move", shouldMove);
-        _anim.SetFloat(_turnId, _velocity.x);
+        //_anim.SetFloat(_turnId, _velocity.x);
         _anim.SetFloat(_forwardId, _velocity.y);
-        //_anim.SetFloat(_speedId, _velocity.z);
+        _anim.SetFloat(_speedId, _speed);
 
         //GetComponent<LookAt>().lookAtTargetPosition = agent.steeringTarget + transform.forward;
     }
@@ -49,6 +50,7 @@ public class LocomotionAgent : MonoBehaviour
     NavMeshAgent _agent;
     Vector2 _smoothDeltaPosition = Vector2.zero;
     Vector2 _velocity = Vector2.zero;
+    float _speed;
 
     private int _turnId = Animator.StringToHash("Turn");
     private int _forwardId = Animator.StringToHash("Forward");
