@@ -19,7 +19,7 @@ public class DetectionPlayer : MonoBehaviour
             Physics.Raycast(ray, out hit);
 
             Debug.DrawLine(_transform.position, _playerHeadTarget.position, Color.red);
-            Debug.Log("le player est destecté !!!");
+            //Debug.Log("le player est destecté !!!");
             _isPatrolling = false;
         }
         else
