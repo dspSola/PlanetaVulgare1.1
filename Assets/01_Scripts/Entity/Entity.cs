@@ -19,7 +19,7 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void InitializeEntity()
+    public virtual void InitializeEntity()
     {
         _name = _entityData.Name;
         _lifeMax = _entityData.LifeMax;
@@ -27,7 +27,7 @@ public class Entity : MonoBehaviour
         _damage = _entityData.Damage;
     }
 
-    public void AddLife(int value)
+    public virtual void AddLife(int value)
     {
         if (_life + value > _lifeMax)
         {
@@ -39,7 +39,7 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void LessLife(int value)
+    public virtual void LessLife(int value)
     {
         if (_life - value < 0)
         {
