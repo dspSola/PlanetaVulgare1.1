@@ -5,7 +5,7 @@ using UnityEngine.PlayerLoop;
 
 public class NavEnnemy : MonoBehaviour
 {
-    [Header("Waypoint Info")]
+    [Header("Waypoint Info")]//à retirer
     [SerializeField] Transform[] _waitPoint;
     [SerializeField] float _waitpointDistance = 0.2f;
 
@@ -36,26 +36,19 @@ public class NavEnnemy : MonoBehaviour
         //Debug.Log("la vitesse" + _speed);
     }
 
-    private void Patrol()
+    private void Patrol()//à retirer
     {
         if(_waitPoint.Length == 0)
         {
             return;
         }
 
-        StartCoroutine(DelayNextParol());
-    }
-
-    IEnumerator DelayNextParol()
-    {
         m_Agent.destination = _waitPoint[i].position;
         i = (i + 1) % _waitPoint.Length;
-
-        yield return new WaitForSeconds(2);
     }
 
-    int i;
-    NavMeshAgent m_Agent;
+    int i;//à retirer
+    NavMeshAgent m_Agent;//à retirer
     RaycastHit m_HitInfo = new RaycastHit();
     //Rigidbody _rb;
 
