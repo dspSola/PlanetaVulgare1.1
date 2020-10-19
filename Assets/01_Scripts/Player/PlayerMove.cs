@@ -102,7 +102,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         _playerData.Position = _transformPlayer.position;
-        _scriptableTransform.value = transform;
+        _scriptableTransform.value = _transformPlayer.GetComponent<Transform>();
         _scriptableTransform.value.position = transform.position;
     }
 

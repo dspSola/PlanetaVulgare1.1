@@ -5,6 +5,7 @@ using UnityEngine;
 public class BruteAnimatorController : MonoBehaviour
 {
     [SerializeField] private GetInputBrute _getInputBrute;
+    [SerializeField] private StateMachineAttack _stateMachineAttack;
     [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private Animator _animator;
 
@@ -14,6 +15,7 @@ public class BruteAnimatorController : MonoBehaviour
         SetSpeed(_playerMove.MovementSpeed);
         SetVelocityY(_playerMove.VelocityRb.y);
         SetPressJump(_getInputBrute.JumpInput.IsActive);
+        SetAttack01Value(_getInputBrute.TriggerRight);
     }
 
     // Move
@@ -77,6 +79,10 @@ public class BruteAnimatorController : MonoBehaviour
     {
         _animator.SetBool("IsAttackingAxe", value);
     }
+    public void SetAttack01Value(float value)
+    {
+        _animator.SetFloat("IsAttackingAxeValue", value);
+    }
     public void SetAttack02(bool value)
     {
         _animator.SetBool("IsAttackingKick", value);
@@ -93,5 +99,10 @@ public class BruteAnimatorController : MonoBehaviour
     public void SetChangeWeapon(bool value)
     {
         _animator.SetBool("ChangeWeapon", value);
+    }
+
+    public void SetCptCombo(int value)
+    {
+        _animator.SetInteger("CptCombo", value);
     }
 }
