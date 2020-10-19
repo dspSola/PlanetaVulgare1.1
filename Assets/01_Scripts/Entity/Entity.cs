@@ -55,4 +55,5 @@ public class Entity : MonoBehaviour
     public int LifeMax { get => _lifeMax; set => _lifeMax = value; }
     public int Life { get => _life; set => _life = value; }
     public int Damage { get => _damage; set => _damage = value; }
+    public EntityData EntityData { get => _entityData; set => _entityData = value; }
 }

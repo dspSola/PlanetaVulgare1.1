@@ -44,6 +44,10 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
             _activeInAnimOnExit = true;
             _canDodgeToAttack01 = false;
         }
+        if(_doJumpExit && _canJumpExit)
+        {
+            _canJumpExit = false;
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
