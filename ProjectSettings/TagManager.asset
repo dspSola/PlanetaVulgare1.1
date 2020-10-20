@@ -8,6 +8,7 @@ TagManager:
   - PlayerColl
   - WeaponColl
   - WeaponSliceableColl
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -41,8 +41,8 @@ ModelImporter:
       name: Neck Bite
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 0
-      lastFrame: 502
+      firstFrame: 121
+      lastFrame: 367
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
