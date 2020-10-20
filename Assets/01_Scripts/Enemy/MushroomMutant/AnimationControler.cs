@@ -1,18 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class AnimationControler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] NavMeshAgent m_Agent;
+    [SerializeField] Animator _animator;
+    private void Awake()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        _speed = m_Agent.speed;
+
+        _animator.SetFloat(_speedId, _speed);
     }
+
+    private float _speed;
+
+    private int _speedId = Animator.StringToHash("Speed");
+    
 }
