@@ -5,6 +5,7 @@ using UnityEngine;
 public class BruteAnimatorController : MonoBehaviour
 {
     [SerializeField] private GetInputBrute _getInputBrute;
+    [SerializeField] private StateMachineAttack _stateMachineAttack;
     [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private Animator _animator;
 
@@ -13,6 +14,8 @@ public class BruteAnimatorController : MonoBehaviour
         SetInputMove(_getInputBrute.Movement);
         SetSpeed(_playerMove.MovementSpeed);
         SetVelocityY(_playerMove.VelocityRb.y);
+        SetPressJump(_getInputBrute.JumpInput.IsActive);
+        SetAttack01Value(_getInputBrute.TriggerRight);
     }
 
     // Move
@@ -67,10 +70,18 @@ public class BruteAnimatorController : MonoBehaviour
     {
         _animator.SetBool("IsJumping", value);
     }
+    public void SetPressJump(bool value)
+    {
+        _animator.SetBool("PressJump", value);
+    }
     // Attack
     public void SetAttack01(bool value)
     {
         _animator.SetBool("IsAttackingAxe", value);
+    }
+    public void SetAttack01Value(float value)
+    {
+        _animator.SetFloat("IsAttackingAxeValue", value);
     }
     public void SetAttack02(bool value)
     {
@@ -79,5 +90,19 @@ public class BruteAnimatorController : MonoBehaviour
     public void SetProtection(bool value)
     {
         _animator.SetBool("IsProtected", value);
+    }
+    public void SetDodge(bool value)
+    {
+        _animator.SetBool("IsDodged", value);
+    }
+
+    public void SetChangeWeapon(bool value)
+    {
+        _animator.SetBool("ChangeWeapon", value);
+    }
+
+    public void SetCptCombo(int value)
+    {
+        _animator.SetInteger("CptCombo", value);
     }
 }

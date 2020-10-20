@@ -15,6 +15,10 @@ public class StateMachineHorizontal : MonoBehaviour
     [SerializeField] private GetInputBrute _getBruteInput;
     [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
+    [SerializeField] private Collider _colliderIdle, _colliderSneak;
+    [SerializeField] private CollisionOverlapBoxTester _sneackFloorCheck;
+
+    [SerializeField] private bool _isSneaking;
 
     public PlayerHorizontalState CurrentState
     {
@@ -147,7 +151,11 @@ public class StateMachineHorizontal : MonoBehaviour
 
     private void DoIdleUpdate()
     {
-        if (_getBruteInput.SneakInput.IsActive)
+        if (_getBruteInput.SneakInput.IsUp)
+        {
+            _isSneaking = true;
+        }
+        if(_isSneaking)
         {
             TransitionToState(PlayerHorizontalState.SNEAKING);
             return;
@@ -155,7 +163,7 @@ public class StateMachineHorizontal : MonoBehaviour
 
         if (_getBruteInput.Movement.sqrMagnitude > 0.01f)
         {
-            if (_getBruteInput.RunInput.IsActive && _getBruteInput.Movement.z > 0.01f)
+            if (_getBruteInput.RunInput.IsUp && _getBruteInput.Movement.z > 0.01f)
             {
                 TransitionToState(PlayerHorizontalState.RUNNING);
                 return;
@@ -175,17 +183,25 @@ public class StateMachineHorizontal : MonoBehaviour
     {
         _playerMove.DoSneak();
         _bruteAnimatorController.SetSneacking(true);
+        _colliderIdle.enabled = false;
+        _colliderSneak.enabled = true;
     }
 
     private void DoSneakingExit()
     {
         _bruteAnimatorController.SetSneacking(false);
+        _colliderSneak.enabled = false;
+        _colliderIdle.enabled = true;
     }
 
     private void DoSneakingUpdate()
     {
-        if (_getBruteInput.SneakInput.IsUp)
+        if (_getBruteInput.SneakInput.IsUp && !_sneackFloorCheck.TestCollision())
         {
+            _isSneaking = false;
+        }
+        if(!_isSneaking)
+        { 
             if (_getBruteInput.Movement.sqrMagnitude > 0.01f)
             {
                 if (_getBruteInput.RunInput.IsActive)
@@ -225,7 +241,11 @@ public class StateMachineHorizontal : MonoBehaviour
     {
         if (_getBruteInput.Movement.sqrMagnitude > 0.01f)
         {
-            if (_getBruteInput.SneakInput.IsActive)
+            if (_getBruteInput.SneakInput.IsUp)
+            {
+                _isSneaking = true;
+            }
+            if (_isSneaking)
             {
                 TransitionToState(PlayerHorizontalState.SNEAKING);
                 return;
@@ -264,7 +284,11 @@ public class StateMachineHorizontal : MonoBehaviour
     {
         if (_getBruteInput.Movement.sqrMagnitude > 0.01f)
         {
-            if (_getBruteInput.SneakInput.IsActive)
+            if (_getBruteInput.SneakInput.IsUp)
+            {
+                _isSneaking = true;
+            }
+            if (_isSneaking)
             {
                 TransitionToState(PlayerHorizontalState.SNEAKING);
                 return;

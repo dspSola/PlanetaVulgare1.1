@@ -5,9 +5,11 @@ using UnityEngine;
 public enum PlayerAttackState
 {
     IDLE,
+    CHANGEWEAPON,
     ATTACK01,
     ATTACK02,
-    PROTECTION
+    PROTECTION,
+    DODGE
 }
 
 public class StateMachineAttack : MonoBehaviour
@@ -15,8 +17,13 @@ public class StateMachineAttack : MonoBehaviour
     [SerializeField] private GetInputBrute _getBruteInput;
     [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
-    [SerializeField] private GameObject _weaponMesh, _weaponCollider;
+    [SerializeField] private Collider _colliderIdle, _colliderDodge;
+    [SerializeField] private GameObject _weaponMesh, _weaponAxeCollider, _weaponAllCollider, _weaponBackMesh;
     [SerializeField] private bool _isArmed, _isAnim, _canSlice;
+
+    [SerializeField] private bool _isInCombo;
+    [SerializeField] private int _cptCombo;
+    [SerializeField] private float _timeCombo, _timeComboMax;
     public PlayerAttackState CurrentState
     {
         get
@@ -32,9 +39,15 @@ public class StateMachineAttack : MonoBehaviour
         SetActiveWeapon(false);
     }
 
+    private void Start()
+    {
+        TransitionToState(_currentState, PlayerAttackState.IDLE);
+    }
+
     private void Update()
     {
         DoUpdate();
+        GestionTimeCombo();
     }
 
     public void DoUpdate()
@@ -54,6 +67,10 @@ public class StateMachineAttack : MonoBehaviour
                 DoIdleEnter();
                 break;
 
+            case PlayerAttackState.CHANGEWEAPON:
+                DoChangeWeaponEnter();
+                break;
+
             case PlayerAttackState.ATTACK01:
                 DoATTACK01Enter();
                 break;
@@ -64,6 +81,9 @@ public class StateMachineAttack : MonoBehaviour
 
             case PlayerAttackState.PROTECTION:
                 DoPROTECTIONEnter();
+                break;
+            case PlayerAttackState.DODGE:
+                DoDODGEEnter();
                 break;
 
             default:
@@ -80,6 +100,10 @@ public class StateMachineAttack : MonoBehaviour
                 DoIdleExit();
                 break;
 
+            case PlayerAttackState.CHANGEWEAPON:
+                DoChangeWeaponExit();
+                break;
+
             case PlayerAttackState.ATTACK01:
                 DoATTACK01Exit();
                 break;
@@ -90,6 +114,9 @@ public class StateMachineAttack : MonoBehaviour
 
             case PlayerAttackState.PROTECTION:
                 DoPROTECTIONExit();
+                break;
+            case PlayerAttackState.DODGE:
+                DoDODGEExit();
                 break;
 
             default:
@@ -106,6 +133,10 @@ public class StateMachineAttack : MonoBehaviour
                 DoIdleUpdate();
                 break;
 
+            case PlayerAttackState.CHANGEWEAPON:
+                DoChangeWeaponUpdate();
+                break;
+
             case PlayerAttackState.ATTACK01:
                 DoATTACK01Update();
                 break;
@@ -116,6 +147,10 @@ public class StateMachineAttack : MonoBehaviour
 
             case PlayerAttackState.PROTECTION:
                 DoPROTECTIONUpdate();
+                break;
+
+            case PlayerAttackState.DODGE:
+                DoDODGEUpdate();
                 break;
 
             default:
@@ -142,18 +177,28 @@ public class StateMachineAttack : MonoBehaviour
     // IDLE
     private void DoIdleEnter()
     {
-
+        _weaponAllCollider.GetComponent<WeaponColliderManager>().enabled = false;
+        _weaponAllCollider.GetComponent<MeshCollider>().enabled = false;
     }
     private void DoIdleExit()
     {
-
+        _weaponAllCollider.GetComponent<WeaponColliderManager>().enabled = true;
+        _weaponAllCollider.GetComponent<MeshCollider>().enabled = true;
     }
     private void DoIdleUpdate()
     {
         if (_getBruteInput.Attack01Input.IsActive || _getBruteInput.TriggerRight == 1)
         {
-            TransitionToState(PlayerAttackState.ATTACK01);
-            return;
+            if (_isArmed)
+            {
+                TransitionToState(PlayerAttackState.ATTACK01);
+                return;
+            }
+            else
+            {
+                TransitionToState(PlayerAttackState.CHANGEWEAPON);
+                return;
+            }
         }
         if (_getBruteInput.Attack02Input.IsActive || _getBruteInput.TriggerLeft == 1)
         {
@@ -162,7 +207,47 @@ public class StateMachineAttack : MonoBehaviour
         }
         if (_getBruteInput.ProtectionInput.IsActive)
         {
-            TransitionToState(PlayerAttackState.PROTECTION);
+            if (_isArmed)
+            {
+                TransitionToState(PlayerAttackState.PROTECTION);
+                return;
+            }
+            else
+            {
+                TransitionToState(PlayerAttackState.CHANGEWEAPON);
+                return;
+            }
+        }
+        if (_getBruteInput.DodgeInput.IsActive)
+        {
+            TransitionToState(PlayerAttackState.DODGE);
+            return;
+        }
+
+        if (_getBruteInput.UseInput.IsActive)
+        {
+            if (_isArmed)
+            {
+                TransitionToState(PlayerAttackState.CHANGEWEAPON);
+                return;
+            }
+        }
+    }
+
+    // CHANGEWEAPON
+    private void DoChangeWeaponEnter()
+    {
+        _bruteAnimatorController.SetChangeWeapon(true);
+    }
+    private void DoChangeWeaponExit()
+    {
+
+    }
+    private void DoChangeWeaponUpdate()
+    {
+        if (!_isAnim)
+        {
+            TransitionToState(PlayerAttackState.IDLE);
             return;
         }
     }
@@ -208,18 +293,62 @@ public class StateMachineAttack : MonoBehaviour
     {
         _bruteAnimatorController.SetProtection(true);
     }
-
     private void DoPROTECTIONExit()
     {
         _bruteAnimatorController.SetProtection(false);
     }
-
     private void DoPROTECTIONUpdate()
     {
         if(_getBruteInput.ProtectionInput.IsUp)
         {
             TransitionToState(PlayerAttackState.IDLE);
             return;
+        }
+    }
+
+    // DODGE
+    private void DoDODGEEnter()
+    {
+        _bruteAnimatorController.SetDodge(true);
+        if(_getBruteInput.Movement.z > 0)
+        {
+            _colliderIdle.enabled = false;
+            _colliderDodge.enabled = true;
+        }
+    }
+    private void DoDODGEExit()
+    {
+        _bruteAnimatorController.SetDodge(false);
+        if(_colliderDodge.enabled)
+        {
+            _colliderDodge.enabled = false;
+            _colliderIdle.enabled = true;
+        }
+    }
+    private void DoDODGEUpdate()
+    {
+        if (!_isAnim)
+        {
+            TransitionToState(PlayerAttackState.IDLE);
+            return;
+        }
+    }
+
+    public void GestionTimeCombo()
+    {
+        if(_cptCombo != 0 && !_isAnim)
+        {
+            if(_timeCombo < _timeComboMax)
+            {
+                _timeCombo += Time.deltaTime;
+            }
+            else
+            {
+                _cptCombo = 0;
+                _timeCombo = 0;
+                _isInCombo = false;
+                _bruteAnimatorController.SetCptCombo(_cptCombo);
+            }
         }
     }
 
@@ -255,20 +384,44 @@ public class StateMachineAttack : MonoBehaviour
                 GUILayout.Button($"_isArmed: {_isArmed}", _style, GUILayout.ExpandHeight(true));
             }
         }
+        using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.6f, Screen.width * 0.2f, Screen.height * 0.1f)))
+        {
+            using (new GUILayout.VerticalScope())
+            {
+                GUILayout.Button($"_canSlice: {_canSlice}", _style, GUILayout.ExpandHeight(true));
+            }
+        }
     }
 
     public void SetActiveWeapon(bool value)
     {
-        if (_weaponMesh.activeSelf != value && _weaponCollider.activeSelf != value)
+        if (_weaponMesh.activeSelf != value && _weaponAxeCollider.activeSelf != value && _weaponAllCollider.activeSelf != value)
         {
             _weaponMesh.SetActive(value);
-            _weaponCollider.SetActive(value);
+            _weaponAxeCollider.SetActive(value);
+            _weaponAllCollider.SetActive(value);
+            _weaponBackMesh.SetActive(!value);
         }
+    }
+
+    public void AddForce(Vector3 valueForce)
+    {
+        _playerMove.AddForce(valueForce);
+    }
+    public void AddForce(float valueXZ, float valueY)
+    {
+        _playerMove.AddForce(valueXZ, valueY);
+    }
+
+    public void SetTransition(PlayerAttackState pas)
+    {
+        TransitionToState(pas);
     }
 
     public bool IsAnim { get => _isAnim; set => _isAnim = value; }
     public bool CanSlice { get => _canSlice; set => _canSlice = value; }
     public bool IsArmed { get => _isArmed; set => _isArmed = value; }
+    public int CptCombo { get => _cptCombo; set => _cptCombo = value; }
 
     private GUIStyle _style;
 
