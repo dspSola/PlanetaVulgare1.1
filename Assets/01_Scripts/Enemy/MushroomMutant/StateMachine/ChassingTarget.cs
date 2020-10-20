@@ -7,7 +7,7 @@ public class ChassingTarget : StateMachineBehaviour
     [SerializeField] private NavMeshAgent m_Agent;
     [SerializeField] private EnemyEntityData _enemyEntity;
     [SerializeField] private ScriptableTransform _playerTransform;
-    [SerializeField] private 
+    [SerializeField] private Vector3 _distance;
 
     [Header("Waypoint Info")]
     [SerializeField] private float _waitpointDistance = 0.2f;
@@ -40,4 +40,6 @@ public class ChassingTarget : StateMachineBehaviour
             m_Agent.destination = _playerTransform.value.position;
         }
     }
+
+    //private int 
 }
