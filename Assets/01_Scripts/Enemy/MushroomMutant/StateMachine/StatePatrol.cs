@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class StatePatrol : StateMachineBehaviour
@@ -13,13 +11,17 @@ public class StatePatrol : StateMachineBehaviour
     [SerializeField] private NavMeshAgent m_Agent;
     [SerializeField] private EnemyEntityData _enemyEntity;
     [SerializeField] private DetectionPlayer _detectionPlayer;
+    [SerializeField] private AlertCircle _alertCircle;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Entering state: Patrol");
+
         _detectionPlayer = animator.GetComponentInChildren<DetectionPlayer>();
+        _alertCircle = animator.GetComponentInChildren<AlertCircle>();
         m_Agent = animator.GetComponent<NavMeshAgent>();
+
         m_Agent.speed = _enemyEntity.SpeedWalk;
 
         //DoPatrol();
@@ -36,10 +38,10 @@ public class StatePatrol : StateMachineBehaviour
             animator.SetTrigger(_detectId);
         }
         //ou si je suis alerté
-        //if ()
-        //{
-
-        //}
+        if (_alertCircle.IsAlerted)
+        {
+            animator.SetTrigger(_alertId);
+        }
 
     }
 
@@ -48,18 +50,6 @@ public class StatePatrol : StateMachineBehaviour
     {
         Debug.Log("Exiting state: Patrol");
     }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 
     private void DoPatrol()
     {
