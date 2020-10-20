@@ -38,8 +38,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - MainCam
+  - CamPortail
   - Sliceable
   - Collision Surface
   m_SortingLayers:

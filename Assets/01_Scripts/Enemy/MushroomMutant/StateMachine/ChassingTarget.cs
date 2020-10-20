@@ -47,7 +47,6 @@ public class ChassingTarget : StateMachineBehaviour
             m_Agent.destination = _playerTransform.value.position;
         }
     }
-
     Transform _transform;
     private int _modeCombatId = Animator.StringToHash("ModeCombat");
 }
