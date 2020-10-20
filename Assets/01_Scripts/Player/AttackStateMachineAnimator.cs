@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AttackStateMachineAnimator : StateMachineBehaviour
 {
+    [SerializeField] private GetInputBrute _getInputBrute;
     [SerializeField] private StateMachineAttack _stateMachineAttack;
     [SerializeField] private StateMachineVertical _stateMachineVertical;
     [SerializeField] private StateMachineHorizontal _stateMachineHorizontal;
@@ -14,11 +15,16 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
 
     [SerializeField] private bool _applyForceEnter, _applyForceExit, _applyForceValueEnter, _applyForceValueUpdate, _applyForceValueExit;
 
-    [SerializeField] private bool _doJump;
+    [SerializeField] private bool _doJump, _doJumpExit, _canJumpExit;
+
+    [SerializeField] private bool _dodgeToAttack01, _canDodgeToAttack01;
+
+    [SerializeField] private bool _endCombo;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        _getInputBrute = animator.transform.parent.GetComponentInChildren<GetInputBrute>();
         _stateMachineAttack = animator.transform.parent.GetComponentInChildren<StateMachineAttack>();
         _stateMachineVertical = animator.transform.parent.GetComponentInChildren<StateMachineVertical>();
         _stateMachineHorizontal = animator.transform.parent.GetComponentInChildren<StateMachineHorizontal>();
@@ -31,6 +37,16 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
         if(_applyForceEnter)
         {
             _playerMove.CanApplyForceAnimation = true;
+        }
+        
+        if(_canDodgeToAttack01)
+        {
+            _activeInAnimOnExit = true;
+            _canDodgeToAttack01 = false;
+        }
+        if(_doJumpExit && _canJumpExit)
+        {
+            _canJumpExit = false;
         }
     }
 
@@ -61,11 +77,24 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
         {
             _playerMove.ApplyForceAnimation = false;
         }
+        if(_doJumpExit && _getInputBrute.JumpInput.IsActive)
+        {
+            _canJumpExit = true;
+        }
+        if (_dodgeToAttack01 && _getInputBrute.TriggerRight > 0)
+        {
+            _canDodgeToAttack01 = true;
+            _stateMachineAttack.SetTransition(PlayerAttackState.ATTACK01);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (_dodgeToAttack01 && _canDodgeToAttack01)
+        {
+            _activeInAnimOnExit = false;
+        }
         if (_activeInAnimOnExit)
         {
             _stateMachineAttack.IsAnim = false;
@@ -73,6 +102,21 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
         if (_applyForceExit)
         {
             _playerMove.CanApplyForceAnimation = false;
+        }
+        if (_doJumpExit && _canJumpExit)
+        {
+            _stateMachineVertical.SetTransitionToJumping();
+        }
+        //_stateMachineAttack.CptCombo++;
+        if (!_endCombo)
+        {
+            animator.SetInteger("CptCombo", animator.GetInteger("CptCombo") + 1);
+            _stateMachineAttack.CptCombo = animator.GetInteger("CptCombo");
+        }
+        else
+        {
+            animator.SetInteger("CptCombo", 0);
+            _stateMachineAttack.CptCombo = animator.GetInteger("CptCombo");
         }
     }
 
