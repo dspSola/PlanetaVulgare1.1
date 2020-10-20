@@ -271,10 +271,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6af5a5ad30ae945a775c7680e8b509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waitPoint: []
+  _waitPoints: {fileID: 11400000, guid: b6f23a82b69138d4fae7965fb859a512, type: 2}
   _waitpointDistance: 0.2
   m_Agent: {fileID: 0}
-  _enemyEntity: {fileID: 0}
+  _enemyEntity: {fileID: 11400000, guid: 3d7b0d55a94bae849acf8b2beaad7fa7, type: 2}
 --- !u!1101 &-207841071109990263
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -466,6 +466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eeac86732942724b8ccbd2e7158d3ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Agent: {fileID: 0}
+  _enemyEntity: {fileID: 11400000, guid: 3d7b0d55a94bae849acf8b2beaad7fa7, type: 2}
 --- !u!114 &1882141840013546986
 MonoBehaviour:
   m_ObjectHideFlags: 1

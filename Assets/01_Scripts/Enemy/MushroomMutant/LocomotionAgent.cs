@@ -30,7 +30,7 @@ public class LocomotionAgent : MonoBehaviour
 
         bool shouldMove = _velocity.magnitude > 0.5f && _agent.remainingDistance > _agent.radius;
         _speed = _agent.acceleration;
-        Debug.Log("la vitesse" + _speed);
+        //Debug.Log("la vitesse" + _speed);
         // Update animation parameters
         //_anim.SetBool("move", shouldMove);
         //_anim.SetFloat(_turnId, _velocity.x);

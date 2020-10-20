@@ -1,19 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class WaitPoints00 : MonoBehaviour
 {
-    [SerializeField] Transform[] _transforms;
+    [SerializeField] private TransformArrayData _transformWaypoints;
+    [SerializeField] private List<Transform> _transforms = new List<Transform>();
 
-    private void Awake()
+    private void Start()
     {
-        for (int i = 0; i < _transforms.Length; i++)
-        {
-            _transform.position = _transforms[i].position;
-            Debug.Log($"la position de waypoint {i} est:  {_transform.position}");
-        }
+        //if (_transformWaypoints.Value.Count > 0)
+        //{
+            foreach (Transform t in _transforms)
+            {
+                _transformWaypoints.Value.Add(t);
+            }
+        //}
+        //else if(_transformWaypoints.Value.Count >= 4)
+        //{
+        //    _transformWaypoints.Value.Clear();
+        //    Debug.Log("aucun element dans le array du ScriptableObject");
+        //}
     }
-
-    Transform _transform;
 }

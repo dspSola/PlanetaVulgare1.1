@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [CreateAssetMenu]
 public class TransformArrayData : ScriptableObject
 {
-    public Transform[] value;
+    public List<Transform> Value = new List<Transform>();
 }
