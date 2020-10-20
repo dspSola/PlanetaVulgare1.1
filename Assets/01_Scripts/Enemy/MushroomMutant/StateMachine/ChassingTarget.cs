@@ -7,7 +7,7 @@ public class ChassingTarget : StateMachineBehaviour
     [SerializeField] private NavMeshAgent m_Agent;
     [SerializeField] private EnemyEntityData _enemyEntity;
     [SerializeField] private ScriptableTransform _playerTransform;
-    [SerializeField] private 
+    [SerializeField] private float distance = 1f;
 
     [Header("Waypoint Info")]
     [SerializeField] private float _waitpointDistance = 0.2f;
@@ -25,7 +25,14 @@ public class ChassingTarget : StateMachineBehaviour
     {
         Debug.Log("Staying in state: Chassing");
         DoChassing();
-        
+
+        Vector3 _averageDistance;
+        _averageDistance = Vector3.Lerp(Vector3.forward, _playerTransform.value.position, distance);
+        Debug.Log("moyen X: " + _averageDistance);
+        //if(Mathf.Approximately(_distanceMax, distance))
+        //{
+        //    animator.SetTrigger(_modeCombatId);
+        //}
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -40,4 +47,7 @@ public class ChassingTarget : StateMachineBehaviour
             m_Agent.destination = _playerTransform.value.position;
         }
     }
+
+    Transform _transform;
+    private int _modeCombatId = Animator.StringToHash("ModeCombat");
 }
