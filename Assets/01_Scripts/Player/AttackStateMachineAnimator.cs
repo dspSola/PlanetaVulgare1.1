@@ -13,7 +13,7 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
 
     [SerializeField] private bool _canSlice, _activeInAnimOnStart, _activeInAnimOnExit;
 
-    [SerializeField] private bool _applyForceEnter, _applyForceExit, _applyForceValueEnter, _applyForceValueUpdate, _applyForceValueExit;
+    [SerializeField] private bool _applyForceEnter, _applyForceExit, _applyForceValueEnter, _applyForceValueUpdate, _applyForceValueExit, _canRotatePlayer;
 
     [SerializeField] private bool _doJump, _doJumpExit, _canJumpExit;
 
@@ -47,6 +47,11 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
         if(_doJumpExit && _canJumpExit)
         {
             _canJumpExit = false;
+        }
+
+        if(_canRotatePlayer)
+        {
+            _playerMove.CanRotatePlayer();
         }
     }
 
@@ -97,6 +102,8 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
         }
         if (_activeInAnimOnExit)
         {
+            animator.SetBool("IsAttackingAxe", false);
+            animator.SetBool("IsAttackingKick", false);
             _stateMachineAttack.IsAnim = false;
         }
         if (_applyForceExit)

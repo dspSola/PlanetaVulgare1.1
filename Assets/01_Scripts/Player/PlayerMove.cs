@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Rigidbody _rigidbody;
 
     [SerializeField] private Vector3 _transformedInput, _velocity, _horizontalVelocity, _verticalVelocity;
-    [SerializeField] private float _movementQty, _currentSpeed;
+    [SerializeField] private float _movementQty, _currentSpeed, _coefDodgeSpeedWalk, _coefDodgeSpeedRun;
     [SerializeField] private bool _doJump, _canApplyForceAnimation, _applyForceAnimation;
 
     [Header("Parameters")]
@@ -91,7 +91,16 @@ public class PlayerMove : MonoBehaviour
         {
             if (_applyForceAnimation)
             {
-                _velocity = (_transformedInput * _currentSpeed * _movementQty) + _verticalVelocity;
+                Vector3 newSpeedDodge = Vector3.zero;
+                if(_stateMachineHorizontal.CurrentState != PlayerHorizontalState.RUNNING)
+                {
+                    newSpeedDodge = _transformedInput * _currentSpeed * _movementQty * _coefDodgeSpeedWalk;
+                }
+                else
+                {
+                    newSpeedDodge = _transformedInput * _currentSpeed * _movementQty * _coefDodgeSpeedRun;
+                }
+                _velocity = newSpeedDodge + _verticalVelocity;
             }
             else
             {
@@ -122,6 +131,10 @@ public class PlayerMove : MonoBehaviour
             {
                 RotateTowardsCameraForward();
             }
+        }
+        else if (_stateMachineAttack.CurrentState == PlayerAttackState.PROTECTION)
+        {
+            RotateTowardsCameraForward();
         }
 
         // Si on est au sol, on colle au sol
@@ -231,6 +244,11 @@ public class PlayerMove : MonoBehaviour
     public void DoJump()
     {
         _doJump = true;
+    }
+
+    public void CanRotatePlayer()
+    {
+
     }
 
     public void AddForce(Vector3 valueForce)
