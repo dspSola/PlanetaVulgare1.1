@@ -13,8 +13,13 @@ public enum PlayerHorizontalState
 public class StateMachineHorizontal : MonoBehaviour
 {
     [SerializeField] private GetInputBrute _getBruteInput;
+    [SerializeField] private StateMachineAttack _stateMachineAttack;
     [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
+    [SerializeField] private Collider _colliderIdle, _colliderSneak;
+    [SerializeField] private CollisionOverlapBoxTester _sneackFloorCheck;
+
+    [SerializeField] private bool _isSneaking;
 
     public PlayerHorizontalState CurrentState
     {
@@ -147,7 +152,11 @@ public class StateMachineHorizontal : MonoBehaviour
 
     private void DoIdleUpdate()
     {
-        if (_getBruteInput.SneakInput.IsActive)
+        if (_getBruteInput.SneakInput.IsUp)
+        {
+            _isSneaking = true;
+        }
+        if (_isSneaking)
         {
             TransitionToState(PlayerHorizontalState.SNEAKING);
             return;
@@ -155,7 +164,7 @@ public class StateMachineHorizontal : MonoBehaviour
 
         if (_getBruteInput.Movement.sqrMagnitude > 0.01f)
         {
-            if (_getBruteInput.RunInput.IsActive && _getBruteInput.Movement.z > 0.01f)
+            if (_getBruteInput.RunInput.IsUp && _getBruteInput.Movement.z > 0.01f)
             {
                 TransitionToState(PlayerHorizontalState.RUNNING);
                 return;
@@ -175,34 +184,52 @@ public class StateMachineHorizontal : MonoBehaviour
     {
         _playerMove.DoSneak();
         _bruteAnimatorController.SetSneacking(true);
+        _colliderIdle.enabled = false;
+        _colliderSneak.enabled = true;
     }
 
     private void DoSneakingExit()
     {
         _bruteAnimatorController.SetSneacking(false);
+        _colliderSneak.enabled = false;
+        _colliderIdle.enabled = true;
     }
 
     private void DoSneakingUpdate()
     {
-        if (_getBruteInput.SneakInput.IsUp)
+        if (_stateMachineAttack.CurrentState == PlayerAttackState.IDLE)
         {
-            if (_getBruteInput.Movement.sqrMagnitude > 0.01f)
+            if ((_getBruteInput.SneakInput.IsUp || _getBruteInput.RunInput.IsActive) && (!_sneackFloorCheck.TestCollision()))
             {
-                if (_getBruteInput.RunInput.IsActive)
+                _isSneaking = false;
+            }
+            if (!_isSneaking)
+            {
+                if (_getBruteInput.Movement.sqrMagnitude > 0.01f)
                 {
-                    TransitionToState(PlayerHorizontalState.RUNNING);
+                    if (_getBruteInput.RunInput.IsActive)
+                    {
+                        TransitionToState(PlayerHorizontalState.RUNNING);
+                        return;
+                    }
+
+                    TransitionToState(PlayerHorizontalState.JOGGING);
                     return;
                 }
-
-                TransitionToState(PlayerHorizontalState.JOGGING);
-                return;
-            }
-            else
-            {
-                TransitionToState(PlayerHorizontalState.IDLE);
-                return;
+                else
+                {
+                    TransitionToState(PlayerHorizontalState.IDLE);
+                    return;
+                }
             }
         }
+        //else if(_stateMachineAttack.CurrentState == PlayerAttackState.DODGE)
+        //{
+        //    if ((_getBruteInput.SneakInput.IsUp || _getBruteInput.RunInput.IsActive) && (!_sneackFloorCheck.TestCollision()))
+        //    {
+        //        _isSneaking = false;
+        //    }
+        //}
     }
 
     #endregion
@@ -223,24 +250,31 @@ public class StateMachineHorizontal : MonoBehaviour
 
     private void DoJoggingUpdate()
     {
-        if (_getBruteInput.Movement.sqrMagnitude > 0.01f)
+        if (_stateMachineAttack.CurrentState == PlayerAttackState.IDLE)
         {
-            if (_getBruteInput.SneakInput.IsActive)
+            if (_getBruteInput.Movement.sqrMagnitude > 0.01f)
             {
-                TransitionToState(PlayerHorizontalState.SNEAKING);
-                return;
-            }
+                if (_getBruteInput.SneakInput.IsUp)
+                {
+                    _isSneaking = true;
+                }
+                if (_isSneaking)
+                {
+                    TransitionToState(PlayerHorizontalState.SNEAKING);
+                    return;
+                }
 
-            if (_getBruteInput.RunInput.IsActive && _getBruteInput.Movement.z > 0.01f)
+                if (_getBruteInput.RunInput.IsActive && _getBruteInput.Movement.z > 0.01f)
+                {
+                    TransitionToState(PlayerHorizontalState.RUNNING);
+                    return;
+                }
+            }
+            else
             {
-                TransitionToState(PlayerHorizontalState.RUNNING);
+                TransitionToState(PlayerHorizontalState.IDLE);
                 return;
             }
-        }
-        else
-        {
-            TransitionToState(PlayerHorizontalState.IDLE);
-            return;
         }
     }
 
@@ -262,30 +296,37 @@ public class StateMachineHorizontal : MonoBehaviour
 
     private void DoRunningUpdate()
     {
-        if (_getBruteInput.Movement.sqrMagnitude > 0.01f)
+        if (_stateMachineAttack.CurrentState == PlayerAttackState.IDLE)
         {
-            if (_getBruteInput.SneakInput.IsActive)
+            if (_getBruteInput.Movement.sqrMagnitude > 0.01f)
             {
-                TransitionToState(PlayerHorizontalState.SNEAKING);
-                return;
-            }
+                if (_getBruteInput.SneakInput.IsUp)
+                {
+                    _isSneaking = true;
+                }
+                if (_isSneaking)
+                {
+                    TransitionToState(PlayerHorizontalState.SNEAKING);
+                    return;
+                }
 
-            if (_getBruteInput.RunInput.IsUp)
-            {
-                TransitionToState(PlayerHorizontalState.JOGGING);
-                return;
-            }
+                if (_getBruteInput.RunInput.IsUp)
+                {
+                    TransitionToState(PlayerHorizontalState.JOGGING);
+                    return;
+                }
 
-            if (_getBruteInput.Movement.z < 0.01f)
+                if (_getBruteInput.Movement.z < 0.01f)
+                {
+                    TransitionToState(PlayerHorizontalState.JOGGING);
+                    return;
+                }
+            }
+            else
             {
-                TransitionToState(PlayerHorizontalState.JOGGING);
+                TransitionToState(PlayerHorizontalState.IDLE);
                 return;
             }
-        }
-        else
-        {
-            TransitionToState(PlayerHorizontalState.IDLE);
-            return;
         }
     }
 

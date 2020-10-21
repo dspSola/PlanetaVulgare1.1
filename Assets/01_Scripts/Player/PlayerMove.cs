@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField] private PlayerData _playerData;
+    [SerializeField] private ScriptableTransform _scriptableTransform;
     [SerializeField] private GetInputBrute _getBruteInput;
     [SerializeField] private StateMachineVertical _stateMachineVertical;
     [SerializeField] private StateMachineHorizontal _stateMachineHorizontal;
@@ -12,8 +14,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Rigidbody _rigidbody;
 
     [SerializeField] private Vector3 _transformedInput, _velocity, _horizontalVelocity, _verticalVelocity;
-    [SerializeField] private float _movementQty, _currentSpeed;
-    [SerializeField] private bool _doJump;
+    [SerializeField] private float _movementQty, _currentSpeed, _coefDodgeSpeedWalk, _coefDodgeSpeedRun;
+    [SerializeField] private bool _doJump, _canApplyForceAnimation, _applyForceAnimation;
 
     [Header("Parameters")]
 
@@ -38,6 +40,7 @@ public class PlayerMove : MonoBehaviour
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        _playerData.Transform = _transformPlayer;
     }
 
     private void Update()
@@ -83,11 +86,51 @@ public class PlayerMove : MonoBehaviour
             // Si on n'est pas au sol, applique la gravité
             _verticalVelocity += Physics.gravity * _gravityFallMultiplier * Time.fixedDeltaTime;
         }
+
+        if (_canApplyForceAnimation)
+        {
+            if (_applyForceAnimation)
+            {
+                Vector3 newSpeedDodge = Vector3.zero;
+                if(_stateMachineHorizontal.CurrentState != PlayerHorizontalState.RUNNING)
+                {
+                    newSpeedDodge = _transformedInput * _currentSpeed * _movementQty * _coefDodgeSpeedWalk;
+                }
+                else
+                {
+                    newSpeedDodge = _transformedInput * _currentSpeed * _movementQty * _coefDodgeSpeedRun;
+                }
+                _velocity = newSpeedDodge + _verticalVelocity;
+            }
+            else
+            {
+                _velocity.x = 0;
+                _velocity.z = 0;
+            }
+            _rigidbody.velocity = _velocity;
+        }
+        _scriptableTransform.value = _transformPlayer.GetComponent<Transform>();
+        _scriptableTransform.value.position = transform.position;
     }
 
     private void FixedUpdate()
     {
-        if (_stateMachineHorizontal.CurrentState != PlayerHorizontalState.IDLE)
+        //if (_stateMachineHorizontal.CurrentState != PlayerHorizontalState.IDLE)
+        //{
+        //    if (_getBruteInput.Movement.z > 0.25f)
+        //    {
+        //        RotateTowardsCameraForward();
+        //    }
+        //}
+
+        if (_stateMachineAttack.CurrentState == PlayerAttackState.IDLE)
+        {
+            if (_getBruteInput.Movement.z > 0.5f || _getBruteInput.Movement.z < -0.5f)
+            {
+                RotateTowardsCameraForward();
+            }
+        }
+        else if (_stateMachineAttack.CurrentState == PlayerAttackState.PROTECTION)
         {
             RotateTowardsCameraForward();
         }
@@ -98,16 +141,23 @@ public class PlayerMove : MonoBehaviour
             StickToGround();
         }
 
-        // Calcule le vecteur velocity à partir des velocity verticale et horizontale
-        _velocity = _verticalVelocity + _horizontalVelocity;
+        if (_canApplyForceAnimation)
+        {
 
-        // Clamp les différentes vitesses
-        _velocity.x = Mathf.Clamp(_velocity.x, -_maxHorizontalSpeed, _maxHorizontalSpeed);
-        _velocity.y = Mathf.Clamp(_velocity.y, -_maxVerticalSpeed, _maxVerticalSpeed);
-        _velocity.z = Mathf.Clamp(_velocity.z, -_maxHorizontalSpeed, _maxHorizontalSpeed);
+        }
+        else
+        {
+            // Calcule le vecteur velocity à partir des velocity verticale et horizontale
+            _velocity = _verticalVelocity + _horizontalVelocity;
 
-        // Applique le vecteur velocity au rigidbody
-        _rigidbody.velocity = _velocity;
+            // Clamp les différentes vitesses
+            _velocity.x = Mathf.Clamp(_velocity.x, -_maxHorizontalSpeed, _maxHorizontalSpeed);
+            _velocity.y = Mathf.Clamp(_velocity.y, -_maxVerticalSpeed, _maxVerticalSpeed);
+            _velocity.z = Mathf.Clamp(_velocity.z, -_maxHorizontalSpeed, _maxHorizontalSpeed);
+
+            // Applique le vecteur velocity au rigidbody
+            _rigidbody.velocity = _velocity;
+        }
     }
 
     private void RotateTowardsCameraForward()
@@ -194,6 +244,21 @@ public class PlayerMove : MonoBehaviour
         _doJump = true;
     }
 
+    public void CanRotatePlayer()
+    {
+
+    }
+
+    public void AddForce(Vector3 valueForce)
+    {
+        _rigidbody.velocity = new Vector3(valueForce.x, valueForce.y, valueForce.z);
+    }
+    public void AddForce(float valueXZ, float valueY)
+    {
+        Vector3 forward = _transformPlayer.forward * valueXZ;
+        _rigidbody.velocity = new Vector3(forward.x, valueY, forward.z);
+    }
+
     public Vector3 VelocityRb
     {
         get => _rigidbody.velocity;
@@ -203,6 +268,8 @@ public class PlayerMove : MonoBehaviour
     {
         get => _currentSpeed;
     }
+    public bool ApplyForceAnimation { get => _applyForceAnimation; set => _applyForceAnimation = value; }
+    public bool CanApplyForceAnimation { get => _canApplyForceAnimation; set => _canApplyForceAnimation = value; }
 
     private Vector3 _rigidbodyOnFloorPosition;
     private Coroutine _changeSpeedCoroutine;
