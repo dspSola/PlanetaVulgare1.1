@@ -5,6 +5,7 @@ using UnityEngine;
 public class Totem : MonoBehaviour
 {
     [SerializeField] private string _totemName;
+    [SerializeField] private Sprite _spriteTotem;
 
     private void OnTriggerStay(Collider other)
     {
@@ -14,23 +15,26 @@ public class Totem : MonoBehaviour
             {
                 if(_totemName == "Fire")
                 {
-                    other.gameObject.GetComponentInChildren<PlayerEntity>().AddTotemFire();
+                    other.gameObject.GetComponentInChildren<PlayerEntity>().AddTotemFire(this);
                 }
                 if (_totemName == "Earth")
                 {
-                    other.gameObject.GetComponentInChildren<PlayerEntity>().AddTotemEarth();
+                    other.gameObject.GetComponentInChildren<PlayerEntity>().AddTotemEarth(this);
                 }
                 if (_totemName == "Wind")
                 {
-                    other.gameObject.GetComponentInChildren<PlayerEntity>().AddTotemWind();
+                    other.gameObject.GetComponentInChildren<PlayerEntity>().AddTotemWind(this);
                 }
                 if (_totemName == "Water")
                 {
-                    other.gameObject.GetComponentInChildren<PlayerEntity>().AddTotemWater();
+                    other.gameObject.GetComponentInChildren<PlayerEntity>().AddTotemWater(this);
                 }
 
                 Destroy(gameObject);
             }
         }
     }
+
+    public string TotemName { get => _totemName; set => _totemName = value; }
+    public Sprite SpriteTotem { get => _spriteTotem; set => _spriteTotem = value; }
 }

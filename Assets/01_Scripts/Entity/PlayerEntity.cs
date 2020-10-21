@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerEntity : Entity
 {
+    [SerializeField] private HUDLifePlayer _hUDLifePlayer;
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private PlayerEventStory _playerEventStory;
     [SerializeField] private Transform _playerTransform;
@@ -17,10 +18,12 @@ public class PlayerEntity : Entity
         base.InitializeEntity();
         _coefLife = base.Life / base.LifeMax;
         _playerData.LifeCoef = _coefLife;
+        _hUDLifePlayer.SetLife(_coefLife);
     }
 
     private void Start()
     {
+        _hUDLifePlayer = GameObject.Find("HUDLifePlayer").GetComponent<HUDLifePlayer>();
         if (base.InitializeOnStart)
         {
             InitializeEntity();
@@ -51,6 +54,7 @@ public class PlayerEntity : Entity
         base.AddLife(value);
         _coefLife = base.Life / base.LifeMax;
         _playerData.LifeCoef = _coefLife;
+        _hUDLifePlayer.SetLife(_coefLife);
     }
 
     public override void LessLife(float value)
@@ -58,6 +62,7 @@ public class PlayerEntity : Entity
         base.LessLife(value);
         _coefLife = base.Life / base.LifeMax;
         _playerData.LifeCoef = _coefLife;
+        _hUDLifePlayer.SetLife(_coefLife);
         if (base.Life <= 0)
         {
             _canvasDie.SetActive(true);
@@ -73,26 +78,31 @@ public class PlayerEntity : Entity
         base.Life = base.LifeMax;
         _coefLife = base.Life / base.LifeMax;
         _playerData.LifeCoef = _coefLife;
+        _hUDLifePlayer.SetLife(_coefLife);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void AddTotemFire()
+    public void AddTotemFire(Totem totem)
     {
+        _hUDLifePlayer.AddTotem(totem.SpriteTotem);
         _playerEventStory.AddTotemFire();
         UpgradeLife(50);
     }
-    public void AddTotemWind()
+    public void AddTotemWind(Totem totem)
     {
+        _hUDLifePlayer.AddTotem(totem.SpriteTotem);
         _playerEventStory.AddTotemWind();
         UpgradeLife(50);
     }
-    public void AddTotemWater()
+    public void AddTotemWater(Totem totem)
     {
+        _hUDLifePlayer.AddTotem(totem.SpriteTotem);
         _playerEventStory.AddTotemWater();
         UpgradeLife(50);
     }
-    public void AddTotemEarth()
+    public void AddTotemEarth(Totem totem)
     {
+        _hUDLifePlayer.AddTotem(totem.SpriteTotem);
         _playerEventStory.AddTotemEarth();
         UpgradeLife(50);
     }

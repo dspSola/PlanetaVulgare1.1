@@ -12,9 +12,20 @@ public class HUDLifePlayer : MonoBehaviour
     [SerializeField] private Color _middleColor;
     [SerializeField] private Color _badColor;
 
+    [SerializeField] private List<Image> _imageTotems;
+    [SerializeField] private int _nbTotem;
+
+    private void Start()
+    {
+        for(int i = 0; i < _imageTotems.Count; i++)
+        {
+            _imageTotems[i].transform.parent.gameObject.SetActive(false);
+        }
+    }
+
     private void Update()
     {
-        SetLife(_playerData.LifeCoef);
+        //SetLife(_playerData.LifeCoef);
     }
 
     public void SetLife(float value)
@@ -37,5 +48,12 @@ public class HUDLifePlayer : MonoBehaviour
         {
             barLife_Blood.color = _badColor;
         }
+    }
+
+    public void AddTotem(Sprite totemSprite)
+    {
+        _imageTotems[_nbTotem].transform.parent.gameObject.SetActive(true);
+        _imageTotems[_nbTotem].sprite = totemSprite;
+        _nbTotem++;
     }
 }
