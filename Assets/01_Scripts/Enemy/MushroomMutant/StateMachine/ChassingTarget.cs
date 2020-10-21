@@ -6,8 +6,9 @@ public class ChassingTarget : StateMachineBehaviour
     [Header("Parameter")]
     [SerializeField] private NavMeshAgent m_Agent;
     [SerializeField] private EnemyEntityData _enemyEntity;
+    [SerializeField] private AverageAttack _averageAttack;
     [SerializeField] private ScriptableTransform _playerTransform;
-    [SerializeField] private Vector3 _distance;
+    [SerializeField] private float distance = 1f;
 
     [Header("Waypoint Info")]
     [SerializeField] private float _waitpointDistance = 0.2f;
@@ -17,6 +18,7 @@ public class ChassingTarget : StateMachineBehaviour
     {
         Debug.Log("Entering state: Chassing");
         m_Agent = animator.GetComponent<NavMeshAgent>();
+        _averageAttack = animator.GetComponent<AverageAttack>();
         m_Agent.speed = _enemyEntity.SpeedRun;
     }
 
@@ -25,7 +27,11 @@ public class ChassingTarget : StateMachineBehaviour
     {
         Debug.Log("Staying in state: Chassing");
         DoChassing();
-        
+
+        if (_averageAttack.IsWithinRange)
+        {
+            animator.SetTrigger(_modeCombatId);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -40,6 +46,6 @@ public class ChassingTarget : StateMachineBehaviour
             m_Agent.destination = _playerTransform.value.position;
         }
     }
-
-    //private int 
+    
+    private int _modeCombatId = Animator.StringToHash("ModeCombat");
 }

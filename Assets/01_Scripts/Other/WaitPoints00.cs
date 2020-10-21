@@ -6,6 +6,15 @@ public class WaitPoints00 : MonoBehaviour
     [SerializeField] private TransformArrayData _transformWaypoints;
     [SerializeField] private List<Transform> _transforms = new List<Transform>();
 
+    private void Awake()
+    {
+        if (_transformWaypoints.Value.Count >= 4)
+        {
+            _transformWaypoints.Value.Clear();
+        }
+
+    }
+
     private void Start()
     {
         //if (_transformWaypoints.Value.Count > 0)
@@ -15,10 +24,10 @@ public class WaitPoints00 : MonoBehaviour
                 _transformWaypoints.Value.Add(t);
             }
         //}
-        //else if(_transformWaypoints.Value.Count >= 4)
+        //else
         //{
-        //    _transformWaypoints.Value.Clear();
         //    Debug.Log("aucun element dans le array du ScriptableObject");
         //}
+        Debug.Log("le nombre d'éléments dans le array est de " + _transformWaypoints.Value.Count);
     }
 }

@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f596c2668b059488d94c93f93122ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _headTarget: {fileID: 0}
+  _headTarget: {fileID: 11400000, guid: b092278fd072aa44d9b43ede54abc8fb, type: 2}
 --- !u!1 &438689340
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +391,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15308
+  m_Name: pb_Mesh-61590
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -898,6 +898,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73ff1864e02d4274f9a84f58cde29051, type: 3}
+--- !u!114 &1719997032 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6862351456061456730, guid: cb11d1c3fce64384fb4c3bd63b6fd7eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 4154759669398550982}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a61392e27067de4b9eea071801685aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1761101557
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,6 +1818,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 797935994}
+    - target: {fileID: 4154759670046205201, guid: cb11d1c3fce64384fb4c3bd63b6fd7eb,
+        type: 3}
+      propertyPath: _averageAttack
+      value: 
+      objectReference: {fileID: 1719997032}
     - target: {fileID: 4154759670093112880, guid: cb11d1c3fce64384fb4c3bd63b6fd7eb,
         type: 3}
       propertyPath: m_Name
@@ -1865,6 +1882,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6862351456061456730, guid: cb11d1c3fce64384fb4c3bd63b6fd7eb,
+        type: 3}
+      propertyPath: _playerTransform
+      value: 
+      objectReference: {fileID: 11400000, guid: b092278fd072aa44d9b43ede54abc8fb,
+        type: 2}
+    - target: {fileID: 6862351456061456730, guid: cb11d1c3fce64384fb4c3bd63b6fd7eb,
+        type: 3}
+      propertyPath: _attackDistance
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb11d1c3fce64384fb4c3bd63b6fd7eb, type: 3}

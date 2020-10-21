@@ -965,6 +965,20 @@ Transform:
   m_Father: {fileID: 7086412424000054376}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4154759670919191125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3848820909416483328}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2154b08b125d94e970ebbcd2ac8777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _head: {fileID: 4690445431801382321}
+  _offset: {x: 0, y: 0, z: 0}
 --- !u!1 &3848820910250150246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,6 +1162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 087cb6e1260822d4ea7b1e9a4831f92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAlerted: 0
 --- !u!1 &4154759669568546000
 GameObject:
   m_ObjectHideFlags: 0
@@ -2237,6 +2252,7 @@ GameObject:
   - component: {fileID: 4154759670093112889}
   - component: {fileID: 4154759670093112888}
   - component: {fileID: 4154759670093112890}
+  - component: {fileID: 6862351456061456730}
   m_Layer: 9
   m_Name: MushroomMutant
   m_TagString: Enemy
@@ -2371,7 +2387,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4154759670093112880}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7a962e87ef0e20469c3c55bcfdd2510, type: 3}
   m_Name: 
@@ -2381,20 +2397,18 @@ MonoBehaviour:
   _lookAtCoolTime: 0.2
   _lookAtHeatTime: 0.2
   _looking: 1
---- !u!114 &4154759670919191125
+--- !u!114 &6862351456061456730
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3848820909416483328}
-  m_Enabled: 0
+  m_GameObject: {fileID: 4154759670093112880}
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c2154b08b125d94e970ebbcd2ac8777, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a61392e27067de4b9eea071801685aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _head: {fileID: 4690445431801382321}
-  _offset: {x: 0, y: 0, z: 0}
 --- !u!1 &4303059235896964721
 GameObject:
   m_ObjectHideFlags: 0
