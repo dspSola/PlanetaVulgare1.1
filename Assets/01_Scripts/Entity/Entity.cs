@@ -8,8 +8,7 @@ public class Entity : MonoBehaviour
 
     [SerializeField] private bool _initializeOnStart;
     [SerializeField] private string _name;
-    [SerializeField] private int _lifeMax, _life;
-    [SerializeField] private int _damage;
+    [SerializeField] private float _lifeMax, _life, _damage;
 
     private void Start()
     {
@@ -27,7 +26,7 @@ public class Entity : MonoBehaviour
         _damage = _entityData.Damage;
     }
 
-    public virtual void AddLife(int value)
+    public virtual void AddLife(float value)
     {
         if (_life + value > _lifeMax)
         {
@@ -39,7 +38,7 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public virtual void LessLife(int value)
+    public virtual void LessLife(float value)
     {
         if (_life - value < 0)
         {
@@ -51,9 +50,16 @@ public class Entity : MonoBehaviour
         }
     }
 
+    public virtual void UpgradeLife(float value)
+    {
+        _life += value;
+        _lifeMax += value;
+    }
+
     public string Name { get => _name; set => _name = value; }
-    public int LifeMax { get => _lifeMax; set => _lifeMax = value; }
-    public int Life { get => _life; set => _life = value; }
-    public int Damage { get => _damage; set => _damage = value; }
+    public float LifeMax { get => _lifeMax; set => _lifeMax = value; }
+    public float Life { get => _life; set => _life = value; }
+    public float Damage { get => _damage; set => _damage = value; }
     public EntityData EntityData { get => _entityData; set => _entityData = value; }
+    public bool InitializeOnStart { get => _initializeOnStart; set => _initializeOnStart = value; }
 }

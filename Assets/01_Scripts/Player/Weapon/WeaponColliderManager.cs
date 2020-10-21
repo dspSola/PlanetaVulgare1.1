@@ -10,12 +10,10 @@ public class WeaponColliderManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("private void OnTriggerEnter(Collider " + other.name + ") + Layer : " + other.gameObject.layer);
         if (_stateMachineAttack.IsAnim)
         {
             if (other.gameObject.layer == 9)
             {
-                Debug.Log(other.gameObject.layer + " == 9");
                 other.gameObject.GetComponentInChildren<Entity>().LessLife(_playerEntity.Damage);
             }
         }

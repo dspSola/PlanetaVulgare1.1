@@ -17,7 +17,7 @@ public class StateMachineAttack : MonoBehaviour
     [SerializeField] private GetInputBrute _getBruteInput;
     [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
-    [SerializeField] private Collider _colliderIdle, _colliderDodge;
+    [SerializeField] private Collider _colliderIdle, _colliderDodge, _colliderProtection;
     [SerializeField] private GameObject _weaponMesh, _weaponAxeCollider, _weaponAllCollider, _weaponBackMesh;
     [SerializeField] private bool _isArmed, _isAnim, _canSlice;
 
@@ -291,10 +291,14 @@ public class StateMachineAttack : MonoBehaviour
     // PROTECTION
     private void DoPROTECTIONEnter()
     {
+        _colliderIdle.enabled = false;
+        _colliderProtection.enabled = true;
         _bruteAnimatorController.SetProtection(true);
     }
     private void DoPROTECTIONExit()
     {
+        _colliderProtection.enabled = false;
+        _colliderIdle.enabled = true;
         _bruteAnimatorController.SetProtection(false);
     }
     private void DoPROTECTIONUpdate()
@@ -327,6 +331,12 @@ public class StateMachineAttack : MonoBehaviour
     }
     private void DoDODGEUpdate()
     {
+        if(_getBruteInput.DodgeInput.IsDown)
+        {
+            TransitionToState(PlayerAttackState.IDLE);
+            return;
+        }
+
         if (!_isAnim)
         {
             TransitionToState(PlayerAttackState.IDLE);
@@ -338,7 +348,7 @@ public class StateMachineAttack : MonoBehaviour
     {
         if(_cptCombo != 0 && !_isAnim)
         {
-            if(_timeCombo < _timeComboMax)
+            if (_timeCombo < _timeComboMax)
             {
                 _timeCombo += Time.deltaTime;
             }
