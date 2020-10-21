@@ -391,7 +391,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-34256
+  m_Name: pb_Mesh-44368
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1865,6 +1865,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6862351456061456730, guid: cb11d1c3fce64384fb4c3bd63b6fd7eb,
+        type: 3}
+      propertyPath: _playerTransform
+      value: 
+      objectReference: {fileID: 11400000, guid: b092278fd072aa44d9b43ede54abc8fb,
+        type: 2}
+    - target: {fileID: 6862351456061456730, guid: cb11d1c3fce64384fb4c3bd63b6fd7eb,
+        type: 3}
+      propertyPath: _attackDistance
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb11d1c3fce64384fb4c3bd63b6fd7eb, type: 3}
