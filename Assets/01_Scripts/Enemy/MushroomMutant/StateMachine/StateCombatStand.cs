@@ -12,6 +12,7 @@ public class StateCombatStand : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Entering state: CombatSand");
+        m_Agent = animator.GetComponent<NavMeshAgent>();
         m_Agent.speed = 0;
     }
 

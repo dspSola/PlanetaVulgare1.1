@@ -9,10 +9,14 @@ public class StateAttacking : StateMachineBehaviour
     [SerializeField] private EnemyEntityData _enemyEntity;
     [SerializeField] private AverageAttack _averageAttack;
     [SerializeField] private ScriptableTransform _playerTransform;
-    [SerializeField] private float _timeDelay;
 
     [Header("Waypoint Info")]
     [SerializeField] private float _waitpointDistance = 0.2f;
+
+    [Header("Timer")]
+    [SerializeField] private float _timeDelay;
+    [SerializeField] private float _minTime = 0.5f;
+    [SerializeField] private float _maxTime = 2f;
 
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -21,7 +25,9 @@ public class StateAttacking : StateMachineBehaviour
         m_Agent = animator.GetComponent<NavMeshAgent>();
         _averageAttack = animator.GetComponent<AverageAttack>();
         m_Agent.speed = _enemyEntity.SpeedRun;
-        _isAttacking = true;
+        _averageAttack.IsAttacking = true;
+        _isDelayed = false;
+        _currentTime = 0;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -29,7 +35,10 @@ public class StateAttacking : StateMachineBehaviour
     {
         Debug.Log("Staying in state: StateAttacking");
         //DoChassing();
-        if(_isDelayed)
+        Timer();
+        Debug.Log(_currentTime + " second");
+
+        if (_isDelayed)
         {
             animator.SetTrigger(_modeCombat);
         }
@@ -39,15 +48,7 @@ public class StateAttacking : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Exiting state: StateAttacking");
-    }
-
-    //IEnumerator DelayAttack()
-    //{
-    //    _isDelayed = false;
-    //    yield return new WaitForSeconds(_timeDelay);
-    //    _isDelayed = true;
-    //}
-        
+    }   
 
     //private void DoChassing()
     //{
@@ -57,9 +58,26 @@ public class StateAttacking : StateMachineBehaviour
     //    }
     //}
 
-    private int _modeCombat = Animator.StringToHash("ModeCombat");
-    private bool _isAttacking;
-    private bool _isDelayed;
+    private void Timer()
+    {
+        _delayTime = Random.Range(_minTime, _maxTime);
 
-    public bool IsAttacking { get => _isAttacking;}
+        if (_currentTime >= 0)
+        {
+            _currentTime += Time.deltaTime;
+        }
+
+        if (_currentTime > _delayTime)
+        {
+            _isDelayed = true;
+        }
+    }
+
+    
+
+    private bool _isDelayed;
+    private float _currentTime;
+    float _delayTime;
+
+    private int _modeCombat = Animator.StringToHash("ModeCombat");
 }
