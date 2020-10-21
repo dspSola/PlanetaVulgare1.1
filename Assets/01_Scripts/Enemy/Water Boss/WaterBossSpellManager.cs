@@ -21,7 +21,7 @@ public class WaterBossSpellManager : MonoBehaviour
 
     private void Update()
     {
-        if(_waterBossAgentController.DistancePlayer > 5f && !_isInSpell)
+        if(!_isInSpell)
         {
             if (_timeSpellRate >= _timeSpellRateMax)
             {

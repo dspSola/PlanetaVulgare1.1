@@ -8,6 +8,9 @@ public class WaterBossEvent : MonoBehaviour
     [SerializeField] private WaterBossEntity _waterBossEntity;
     [SerializeField] private WaterBossAgentController _waterBossAgentController;
 
+    [SerializeField] private WaterBossEvent _waterBossEvent;
+    [SerializeField] private Transform _posSpawnBoss;
+
     private void Awake()
     {
         _waterBoss = GameObject.Find("Water Boss");
@@ -22,7 +25,11 @@ public class WaterBossEvent : MonoBehaviour
 
     public void ActiveWaterBoss(GameObject playerGo)
     {
+        if(_waterBoss.transform.position != _posSpawnBoss.position)
+        {
+            _waterBoss.transform.position = _posSpawnBoss.position;
+        }
         _waterBoss.SetActive(true);
-        _waterBossAgentController.SetPlayerTransform(playerGo.transform);
+        //_waterBossAgentController.SetPlayerTransform(playerGo.transform);
     }
 }

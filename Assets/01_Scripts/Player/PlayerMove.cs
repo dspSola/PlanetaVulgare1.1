@@ -40,7 +40,7 @@ public class PlayerMove : MonoBehaviour
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        _playerData.Position = Vector3.zero;
+        _playerData.Transform = _transformPlayer;
     }
 
     private void Update()
@@ -109,8 +109,6 @@ public class PlayerMove : MonoBehaviour
             }
             _rigidbody.velocity = _velocity;
         }
-
-        _playerData.Position = _transformPlayer.position;
         _scriptableTransform.value = _transformPlayer.GetComponent<Transform>();
         _scriptableTransform.value.position = transform.position;
     }

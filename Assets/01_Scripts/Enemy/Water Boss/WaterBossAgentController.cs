@@ -16,10 +16,11 @@ public class WaterBossAgentController : MonoBehaviour
 
     [SerializeField] private bool _makePauseDistance, _makePauseDestinationAttack, _makeRotationPauseAttack, _canMakeRotationPauseAttack, _canAttack, _isInPath, _path, _hasPath;
 
-    public void Initialize()
+    public void Initialize(Transform playerTr)
     {
         _speedMaxCurrent = _waterBossEntity.SpeedWalk;
         _navMeshAgent.speed = 0;
+        _playerTransform = playerTr;
     }
 
     private void Update()

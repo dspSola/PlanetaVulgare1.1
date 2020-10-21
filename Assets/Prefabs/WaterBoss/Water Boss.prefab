@@ -190,6 +190,7 @@ MonoBehaviour:
   _damage: 0
   _speedWalk: 0
   _speedRun: 0
+  _playerData: {fileID: 11400000, guid: 1b27801392868f5449fb8f3660c2844c, type: 2}
   _waterBossAgentController: {fileID: 7729039073853654725}
 --- !u!136 &185414840748213956
 CapsuleCollider:
