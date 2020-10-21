@@ -4,6 +4,8 @@ using UnityEngine.AI;
 
 public class StateAttacking : StateMachineBehaviour
 {
+    [SerializeField] IntVariable _mushroomCurrentLife;
+
     [Header("Parameter")]
     [SerializeField] private NavMeshAgent m_Agent;
     [SerializeField] private EnemyEntityData _enemyEntity;
@@ -42,6 +44,12 @@ public class StateAttacking : StateMachineBehaviour
         {
             animator.SetTrigger(_modeCombat);
         }
+
+        //si la vie est à 0 on meurt
+        if (_mushroomCurrentLife.value <= 0)
+        {
+            animator.SetTrigger(_dieId);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -73,11 +81,10 @@ public class StateAttacking : StateMachineBehaviour
         }
     }
 
-    
-
     private bool _isDelayed;
     private float _currentTime;
     float _delayTime;
 
     private int _modeCombat = Animator.StringToHash("ModeCombat");
+    private int _dieId = Animator.StringToHash("Die");
 }

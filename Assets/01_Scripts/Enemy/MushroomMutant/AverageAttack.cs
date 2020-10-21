@@ -26,6 +26,7 @@ public class AverageAttack : MonoBehaviour
         {
             _isWithinRange = false;
         }
+
     }
 
     private Transform _transform;

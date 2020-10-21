@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class StateDie : StateMachineBehaviour
 {
-    [SerializeField] IntVariable _mushroomCurrentLife;
-
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -16,11 +14,6 @@ public class StateDie : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Staying in state: StateDie");
-
-        if (_mushroomCurrentLife.value <= 0)
-        {
-            animator.SetTrigger(_dieId);
-        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -28,6 +21,4 @@ public class StateDie : StateMachineBehaviour
     {
         Debug.Log("Exiting state: StateDie");
     }
-
-    private int _dieId = Animator.StringToHash("Die");
 }

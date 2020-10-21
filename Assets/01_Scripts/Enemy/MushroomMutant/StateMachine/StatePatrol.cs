@@ -3,6 +3,8 @@ using UnityEngine.AI;
 
 public class StatePatrol : StateMachineBehaviour
 {
+    [SerializeField] IntVariable _mushroomCurrentLife;
+
     [Header("Waypoint Info")]
     [SerializeField] private TransformArrayData _waitPoints;
     [SerializeField] private float _waitpointDistance = 0.2f;
@@ -43,6 +45,11 @@ public class StatePatrol : StateMachineBehaviour
             animator.SetTrigger(_alertId);
         }
 
+        //si la vie est à 0 on meurt
+        if (_mushroomCurrentLife.value <= 0)
+        {
+            animator.SetTrigger(_dieId);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -69,4 +76,5 @@ public class StatePatrol : StateMachineBehaviour
 
     private int _detectId = Animator.StringToHash("Detect");
     private int _alertId = Animator.StringToHash("Alert");
+    private int _dieId = Animator.StringToHash("Die");
 }

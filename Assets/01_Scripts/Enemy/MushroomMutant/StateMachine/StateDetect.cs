@@ -3,6 +3,8 @@ using UnityEngine.AI;
 
 public class StateDetect : StateMachineBehaviour
 {
+    [SerializeField] IntVariable _mushroomCurrentLife;
+
     [Header("Parameter")]
     [SerializeField] private NavMeshAgent m_Agent;
     [SerializeField] private EnemyEntityData _enemyEntity;
@@ -24,7 +26,13 @@ public class StateDetect : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Staying in state: Detect");
-        animator.SetTrigger(_ChassingTargetId);
+        animator.SetTrigger(_chassingTargetId);
+
+        //si la vie est à 0 on meurt
+        if (_mushroomCurrentLife.value <= 0)
+        {
+            animator.SetTrigger(_dieId);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -33,5 +41,6 @@ public class StateDetect : StateMachineBehaviour
         Debug.Log("Exiting state: Detect");
     }
 
-    private int _ChassingTargetId = Animator.StringToHash("Chassing");
+    private int _chassingTargetId = Animator.StringToHash("Chassing");
+    private int _dieId = Animator.StringToHash("Die");
 }

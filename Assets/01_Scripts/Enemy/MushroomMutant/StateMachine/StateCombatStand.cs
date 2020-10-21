@@ -3,6 +3,8 @@ using UnityEngine.AI;
 
 public class StateCombatStand : StateMachineBehaviour
 {
+    [SerializeField] IntVariable _mushroomCurrentLife;
+
     [Header("Parameter")]
     [SerializeField] private NavMeshAgent m_Agent;
     [SerializeField] ScriptableTransform _playerTransform;
@@ -21,6 +23,12 @@ public class StateCombatStand : StateMachineBehaviour
     {
         Debug.Log("Staying in state: CombatSand");
         animator.SetTrigger(_attackingId);
+
+        //si la vie est à 0 on meurt
+        if (_mushroomCurrentLife.value <= 0)
+        {
+            animator.SetTrigger(_dieId);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -30,4 +38,5 @@ public class StateCombatStand : StateMachineBehaviour
     }
 
     private int _attackingId = Animator.StringToHash("Attacking");
+    private int _dieId = Animator.StringToHash("Die");
 }
