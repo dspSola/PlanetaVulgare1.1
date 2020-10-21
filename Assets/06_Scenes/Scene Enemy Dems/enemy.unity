@@ -252,18 +252,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 939d88dfaaa7d2649be8072cddb593ca, type: 2}
+      objectReference: {fileID: 9100000, guid: bfb27c2f003b49142beca0fdd47c801d, type: 2}
     - target: {fileID: 5866666021909216657, guid: c1f0906a3106b3b47ba5a06d6506c078,
         type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'Hips'\n\tTransform 'Spine1'\n\tTransform
-        'LeftHandMiddle2'\n\tTransform 'Neck'\n\tTransform 'LeftHandThumb1'\n\tTransform
-        'LeftHandRing2'\n\tTransform 'RightHandIndex3'\n\tTransform 'LeftHandRing3'\n\tTransform
-        'RightHandMiddle1'\n\tTransform 'LeftUpLeg'\n\tand more ...\n\tFrom animation
-        clip 'Enemy_Idle'\n\tFrom animation clip 'Enemy_Mutant_Walking'\n\tFrom animation
-        clip 'Enemy_Mutant_Run'"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: c1f0906a3106b3b47ba5a06d6506c078,
         type: 3}
@@ -272,6 +265,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1f0906a3106b3b47ba5a06d6506c078, type: 3}
+--- !u!1 &330004480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c1f0906a3106b3b47ba5a06d6506c078,
+    type: 3}
+  m_PrefabInstance: {fileID: 310170549}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &330004481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330004480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a71a012b35f50343bbc3e0fd6c901b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _anim: {fileID: 305790498}
+  _enemyController: {fileID: 0}
+  _acceleration: 0.1
+  _deceleration: 0.5
 --- !u!1 &345630798
 GameObject:
   m_ObjectHideFlags: 0

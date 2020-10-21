@@ -48,7 +48,7 @@ public class EnemyTest : MonoBehaviour
             //anim.SetFloat("velx", velocity.x);
             //anim.SetFloat("vely", velocity.y);
 
-            GetComponent<LookAt>().lookAtTargetPosition = agent.steeringTarget + transform.forward;
+            //GetComponent<LookAt>().lookAtTargetPosition = agent.steeringTarget + transform.forward;
         }
 
         void OnAnimatorMove()
