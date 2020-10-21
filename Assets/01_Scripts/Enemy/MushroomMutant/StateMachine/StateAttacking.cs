@@ -41,12 +41,12 @@ public class StateAttacking : StateMachineBehaviour
         Debug.Log("Exiting state: StateAttacking");
     }
 
-    IEnumerator DelayAttack()
-    {
-        _isDelayed = false;
-        yield return new WaitForSeconds(_timeDelay);
-        _isDelayed = true;
-    }
+    //IEnumerator DelayAttack()
+    //{
+    //    _isDelayed = false;
+    //    yield return new WaitForSeconds(_timeDelay);
+    //    _isDelayed = true;
+    //}
         
 
     //private void DoChassing()
