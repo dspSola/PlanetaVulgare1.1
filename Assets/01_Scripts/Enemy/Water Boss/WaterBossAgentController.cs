@@ -30,7 +30,7 @@ public class WaterBossAgentController : MonoBehaviour
             if (_playerTransform != null)
             {
                 _distancePlayer = Vector3.Distance(_playerTransform.position, _navMeshAgent.transform.position);
-                if (_distancePlayer > _maxDistanceToAttack && !_makePauseDestinationAttack)
+                if (_distancePlayer >= _maxDistanceToAttack && !_makePauseDestinationAttack)
                 {
                     if (_makePauseDistance)
                     {

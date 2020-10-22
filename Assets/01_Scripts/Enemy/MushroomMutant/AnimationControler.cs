@@ -1,18 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class AnimationControler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] NavMeshAgent m_Agent;
+    [SerializeField] Animator _animator;
+    [SerializeField] AverageAttack _averageAttack;
+    [SerializeField] MushroomManager _mushroomManager;
+
+    private void Update()
     {
-        
+        _speed = m_Agent.speed;
+
+        _animator.SetFloat(_speedId, _speed);
+        _animator.SetBool(_isAttacking1Id, _averageAttack.IsAttacking);
+        _animator.SetBool(_isDeadId, _mushroomManager.IsDead);
+    }
+    private void EventDie()
+    {
+        //_mushroomManager.IsDead = false;
+        _animator.GetComponent<Animator>().enabled = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private float _speed;
+
+    private int _speedId = Animator.StringToHash("Speed");
+    private int _isAttacking1Id = Animator.StringToHash("IsAttacking1");
+    private int _isDeadId = Animator.StringToHash("IsDead");
 }

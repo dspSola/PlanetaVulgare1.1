@@ -8,6 +8,7 @@ TagManager:
   - PlayerColl
   - WeaponColl
   - WeaponSliceableColl
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -37,8 +38,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - MainCam
+  - CamPortail
   - Sliceable
   - Collision Surface
   m_SortingLayers:
