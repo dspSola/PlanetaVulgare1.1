@@ -4,6 +4,8 @@ using UnityEngine.AI;
 
 public class StateAttacking : StateMachineBehaviour
 {
+    [SerializeField] IntVariable _mushroomCurrentLife;
+
     [Header("Parameter")]
     [SerializeField] private NavMeshAgent m_Agent;
     [SerializeField] private EnemyEntityData _enemyEntity;
@@ -26,21 +28,33 @@ public class StateAttacking : StateMachineBehaviour
         _averageAttack = animator.GetComponent<AverageAttack>();
         m_Agent.speed = _enemyEntity.SpeedRun;
         _averageAttack.IsAttacking = true;
+
         _isDelayed = false;
         _currentTime = 0;
+        _delayTime = Random.Range(_minTime, _maxTime);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Staying in state: StateAttacking");
-        //DoChassing();
+
         Timer();
-        Debug.Log(_currentTime + " second");
+        //Debug.Log(_currentTime + " second");
+
+        DoChassing();
+
+        /*Transitons*/
 
         if (_isDelayed)
         {
             animator.SetTrigger(_modeCombat);
+        }
+
+        //si la vie est à 0 on meurt
+        if (_mushroomCurrentLife.value <= 0)
+        {
+            animator.SetTrigger(_dieId);
         }
     }
 
@@ -48,20 +62,19 @@ public class StateAttacking : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Exiting state: StateAttacking");
-    }   
+    }
 
-    //private void DoChassing()
-    //{
-    //    if (!m_Agent.pathPending && m_Agent.remainingDistance < _waitpointDistance)
-    //    {
-    //        m_Agent.destination = _playerTransform.value.position;
-    //    }
-    //}
+    private void DoChassing()
+    {
+        Vector3 safeDistance = new Vector3(0, 0, _averageAttack.AttackDistance);
+        if (!m_Agent.pathPending && m_Agent.remainingDistance < _waitpointDistance)
+        {
+            m_Agent.destination = _playerTransform.value.position - safeDistance;//marche dans un sens :(
+        }
+    }
 
     private void Timer()
     {
-        _delayTime = Random.Range(_minTime, _maxTime);
-
         if (_currentTime >= 0)
         {
             _currentTime += Time.deltaTime;
@@ -73,11 +86,10 @@ public class StateAttacking : StateMachineBehaviour
         }
     }
 
-    
-
     private bool _isDelayed;
     private float _currentTime;
     float _delayTime;
 
     private int _modeCombat = Animator.StringToHash("ModeCombat");
+    private int _dieId = Animator.StringToHash("Die");
 }
