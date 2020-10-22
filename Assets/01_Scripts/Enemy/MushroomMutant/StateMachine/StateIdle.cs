@@ -3,8 +3,6 @@ using UnityEngine.AI;
 
 public class StateIdle : StateMachineBehaviour
 {
-    [SerializeField] IntVariable _mushroomCurrentLife;
-
     [Header("Parameter")]
     [SerializeField] NavMeshAgent m_Agent;
     [SerializeField] EnemyEntityData _enemyEntity;
@@ -42,12 +40,12 @@ public class StateIdle : StateMachineBehaviour
         //    _isDelayed = false;
 
         //si la vie est à 0 on meurt
-        if (_mushroomCurrentLife.value <= 0)
+        if (_enemyEntity.CurrentLife <= 0)
         {
             animator.SetTrigger(_dieId);
         }
 
-        Debug.Log($"en Idle le random est à : {_delayTime} le temps est de {_currentTime} le bool est : {_isDelayed}");
+        //Debug.Log($"en Idle le random est à : {_delayTime} le temps est de {_currentTime} le bool est : {_isDelayed}");
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
