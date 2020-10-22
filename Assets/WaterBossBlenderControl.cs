@@ -16,6 +16,7 @@ public class WaterBossBlenderControl : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Set Script
         if (_waterBossAgentController == null)
         {
             _waterBossAgentController = animator.GetComponentInChildren<WaterBossAgentController>();
@@ -24,6 +25,7 @@ public class WaterBossBlenderControl : StateMachineBehaviour
         {
             _waterBossAnimatorMono = animator.GetComponentInChildren<WaterBossAnimatorMono>();
         }
+        // Set Modification 
         if (_waterBossSpellManager == null)
         {
             _waterBossSpellManager = animator.GetComponentInChildren<WaterBossSpellManager>();

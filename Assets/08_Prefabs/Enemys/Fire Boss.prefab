@@ -1,46 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!95 &7045282581433047334
-Animator:
-  serializedVersion: 3
+--- !u!136 &7045282581642042943
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7855604859399350677}
+  m_GameObject: {fileID: 2685975721720561199}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4874f90a87068a641a5c86bc483da541, type: 3}
-  m_Controller: {fileID: 9100000, guid: 6cdbcc2f4830d85438b262e17589ced0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7045282581433047335
+  m_Radius: 0.12
+  m_Height: 0.73
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7045282581642042940
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7855604859399350677}
+  m_GameObject: {fileID: 2685975721720561199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 997179adc496127449b77534a1f2e454, type: 3}
+  m_Script: {fileID: 11500000, guid: 05ca3d30ef8e7364eb69523c1665b955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireBossAnimatorMono: {fileID: 7045282581762946186}
-  _fireBossAgentController: {fileID: 7045282581762946191}
-  _timeSpellRate: 5
-  _timeSpellRateMax: 10
-  _isInSpell: 0
-  _firepointLeft: {fileID: 2685975721720561199}
-  _firePointRight: {fileID: 7045282582876369576}
-  _vfxs:
-  - {fileID: 1789005739015704, guid: 1381b64ff1936ac4e80c3a00687081f3, type: 3}
-  - {fileID: 132746, guid: b86c5b2aa8096224886b7d41a74230ac, type: 3}
+  _waterBossEntity: {fileID: 7045282581762946190}
+  _touchWeaponBeforePlayer: 0
 --- !u!1 &7045282581597262988
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,34 +72,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fireBossAnimatorMono: {fileID: 7045282581762946186}
---- !u!136 &7045282581642042943
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2685975721720561199}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.12
-  m_Height: 0.73
-  m_Direction: 0
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7045282581642042940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2685975721720561199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05ca3d30ef8e7364eb69523c1665b955, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _waterBossEntity: {fileID: 0}
-  _touchWeaponBeforePlayer: 0
 --- !u!1 &7045282581762946178
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +161,7 @@ MonoBehaviour:
   _name: 
   _lifeMax: 0
   _life: 0
+  _coefLife: 0
   _damage: 0
   _speedWalk: 0
   _speedRun: 0
@@ -356,6 +316,47 @@ Transform:
   m_Father: {fileID: 6239593128457705376}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7045282581433047334
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855604859399350677}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 4874f90a87068a641a5c86bc483da541, type: 3}
+  m_Controller: {fileID: 9100000, guid: 78d6deda8dd04af44b6c5187547953d6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7045282581433047335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855604859399350677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 997179adc496127449b77534a1f2e454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fireBossAnimatorMono: {fileID: 7045282581762946186}
+  _fireBossAgentController: {fileID: 7045282581762946191}
+  _timeSpellRate: 5
+  _timeSpellRateMax: 10
+  _isInSpell: 0
+  _firepointLeft: {fileID: 2685975721720561199}
+  _firePointRight: {fileID: 7045282582876369576}
+  _vfxs:
+  - {fileID: 1789005739015704, guid: 1381b64ff1936ac4e80c3a00687081f3, type: 3}
+  - {fileID: 132746, guid: b86c5b2aa8096224886b7d41a74230ac, type: 3}
 --- !u!1001 &7045282582100546756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -797,6 +798,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -30.706158
+      objectReference: {fileID: 0}
+    - target: {fileID: 4936894750619052779, guid: 4874f90a87068a641a5c86bc483da541,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5553877221135116816, guid: 4874f90a87068a641a5c86bc483da541,
         type: 3}
