@@ -5,11 +5,11 @@ public class LoadScenes : MonoBehaviour
 {
     private void Awake()
     {
-            SceneManager.LoadScene("Camera", LoadSceneMode.Additive);
-            SceneManager.LoadScene("Audio", LoadSceneMode.Additive);
-            SceneManager.LoadScene("UI", LoadSceneMode.Additive);
-            SceneManager.LoadScene("Level", LoadSceneMode.Additive);
-            SceneManager.LoadScene("Enemys", LoadSceneMode.Additive);
-            SceneManager.LoadScene("Player", LoadSceneMode.Additive);
+            SceneManager.LoadScene("Lights", LoadSceneMode.Additive);
+            SceneManager.LoadScene("Level01Bis", LoadSceneMode.Additive);
+            SceneManager.LoadScene("BabouchePlayer", LoadSceneMode.Additive);
+            SceneManager.LoadScene("WaterBossScene", LoadSceneMode.Additive);
+            SceneManager.LoadScene("EnemyMushroomMutant", LoadSceneMode.Additive);
+            //SceneManager.LoadScene("Player", LoadSceneMode.Additive);
     }
 }

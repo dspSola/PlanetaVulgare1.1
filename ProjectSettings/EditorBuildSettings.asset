@@ -4,5 +4,23 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/06_Scenes/Main.unity
+    guid: b3f03622e229d5f40ae52e20f94c649e
+  - enabled: 1
+    path: Assets/06_Scenes/BabouchePlayer.unity
+    guid: 2eed8800bfa0a054abc070828fd0c80b
+  - enabled: 1
+    path: Assets/06_Scenes/Lights.unity
+    guid: 6692b8c04be36bb46ad90c5586a55cb0
+  - enabled: 1
+    path: Assets/06_Scenes/Level01Bis.unity
+    guid: 4a34ded6eb6d5e4448d19d1c76a9ec38
+  - enabled: 1
+    path: Assets/06_Scenes/EnemyMushroomMutant.unity
+    guid: cd1a66cd9206b5b439eacaaefde8f99b
+  - enabled: 1
+    path: Assets/06_Scenes/WaterBossScene.unity
+    guid: 98f3f57300452574c997321cbae434a2
   m_configObjects: {}
