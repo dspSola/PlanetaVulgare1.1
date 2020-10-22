@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brute Player
       objectReference: {fileID: 0}
+    - target: {fileID: 341602960720592896, guid: 1ed5540319a942540a0b2a4c34209eee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 341602960720592899, guid: 1ed5540319a942540a0b2a4c34209eee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -198,21 +203,6 @@ PrefabInstance:
       propertyPath: _canvasDie
       value: 
       objectReference: {fileID: 901683932}
-    - target: {fileID: 8111667355269429578, guid: 1ed5540319a942540a0b2a4c34209eee,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8111667355269429578, guid: 1ed5540319a942540a0b2a4c34209eee,
-        type: 3}
-      propertyPath: m_Height
-      value: 1.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 8111667355269429578, guid: 1ed5540319a942540a0b2a4c34209eee,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 1.05
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ed5540319a942540a0b2a4c34209eee, type: 3}
 --- !u!4 &117901961 stripped
@@ -302,6 +292,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Camera Brute
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635822802573051229, guid: 0f6dcd5ce00049e4c95bc84d20b145b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2635822802573051234, guid: 0f6dcd5ce00049e4c95bc84d20b145b2,
         type: 3}

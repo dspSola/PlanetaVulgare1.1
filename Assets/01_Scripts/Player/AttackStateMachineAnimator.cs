@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AttackStateMachineAnimator : StateMachineBehaviour
 {
+    [SerializeField] private PlayerEntity _playerEntity;
     [SerializeField] private GetInputBrute _getInputBrute;
     [SerializeField] private StateMachineAttack _stateMachineAttack;
     [SerializeField] private StateMachineVertical _stateMachineVertical;
@@ -24,6 +25,7 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        _playerEntity = animator.transform.parent.GetComponentInChildren<PlayerEntity>();
         _getInputBrute = animator.transform.parent.GetComponentInChildren<GetInputBrute>();
         _stateMachineAttack = animator.transform.parent.GetComponentInChildren<StateMachineAttack>();
         _stateMachineVertical = animator.transform.parent.GetComponentInChildren<StateMachineVertical>();
@@ -90,6 +92,16 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
         {
             _canDodgeToAttack01 = true;
             _stateMachineAttack.SetTransition(PlayerAttackState.ATTACK01);
+        }
+
+        if(animator.GetFloat("ModifieDegat") > 0 && animator.GetFloat("ModifieDegat") != _playerEntity.Damage)
+        {
+            _playerEntity.Damage = animator.GetFloat("ModifieDegat");
+        }
+
+        if(animator.GetFloat("ModifieDegat") == 0 && animator.GetFloat("ModifieDegat") != _playerEntity.EntityData.Damage)
+        {
+            _playerEntity.Damage = _playerEntity.EntityData.Damage;
         }
     }
 

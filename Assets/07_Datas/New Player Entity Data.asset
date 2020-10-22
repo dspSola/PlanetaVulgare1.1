@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9966911cf5c9f1441b0d0da859e010a9, type: 3}
-  m_Name: New Player Event Story
+  m_Script: {fileID: 11500000, guid: 2840624108992ad4282416551db0e393, type: 3}
+  m_Name: New Player Entity Data
   m_EditorClassIdentifier: 
-  _bossFire: 0
-  _bossWind: 0
-  _bossWater: 0
-  _bossEarth: 0
-  _totemFire: 0
-  _totemWind: 0
-  _totemWater: 0
-  _totemEarth: 0
-  _posCheckPointDie: {x: -14, y: 0.5, z: -17}
+  _name: Player
+  _lifeMax: 100
+  _damage: 20
+  _playerTransform: {fileID: 0}
+  _speedWalk: 3
+  _speedRun: 6
+  _speedTurn: 180
+  _jumpHeight: 10
