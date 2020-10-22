@@ -105,4 +105,10 @@ public class BruteAnimatorController : MonoBehaviour
     {
         _animator.SetInteger("CptCombo", value);
     }
+
+    // Death
+    public void SetDeath(bool value)
+    {
+        _animator.SetBool("Death", value);
+    }
 }

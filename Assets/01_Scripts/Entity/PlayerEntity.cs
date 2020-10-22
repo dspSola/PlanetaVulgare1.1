@@ -8,17 +8,16 @@ public class PlayerEntity : Entity
     [SerializeField] private HUDLifePlayer _hUDLifePlayer;
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private PlayerEventStory _playerEventStory;
+    [SerializeField] private BruteAnimatorController _bruteAnimatorController;
     [SerializeField] private Transform _playerTransform;
-    [SerializeField] private float _coefLife;
 
     [SerializeField] private GameObject _canvasDie;
 
     public override void InitializeEntity()
     {
         base.InitializeEntity();
-        _coefLife = base.Life / base.LifeMax;
-        _playerData.LifeCoef = _coefLife;
-        _hUDLifePlayer.SetLife(_coefLife);
+        _playerData.LifeCoef = base.CoefLife;
+        _hUDLifePlayer.SetLife(base.CoefLife);
     }
 
     private void Start()
@@ -52,19 +51,18 @@ public class PlayerEntity : Entity
     public override void AddLife(float value)
     {
         base.AddLife(value);
-        _coefLife = base.Life / base.LifeMax;
-        _playerData.LifeCoef = _coefLife;
-        _hUDLifePlayer.SetLife(_coefLife);
+        _playerData.LifeCoef = base.CoefLife;
+        _hUDLifePlayer.SetLife(base.CoefLife);
     }
 
     public override void LessLife(float value)
     {
         base.LessLife(value);
-        _coefLife = base.Life / base.LifeMax;
-        _playerData.LifeCoef = _coefLife;
-        _hUDLifePlayer.SetLife(_coefLife);
+        _playerData.LifeCoef = base.CoefLife;
+        _hUDLifePlayer.SetLife(base.CoefLife);
         if (base.Life <= 0)
         {
+            _bruteAnimatorController.SetDeath(true);
             _canvasDie.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
         }
@@ -76,9 +74,9 @@ public class PlayerEntity : Entity
         _playerTransform.position = _playerEventStory.PosCheckPointDie;
         Cursor.lockState = CursorLockMode.Locked;
         base.Life = base.LifeMax;
-        _coefLife = base.Life / base.LifeMax;
-        _playerData.LifeCoef = _coefLife;
-        _hUDLifePlayer.SetLife(_coefLife);
+        _playerData.LifeCoef = base.CoefLife;
+        _hUDLifePlayer.SetLife(base.CoefLife);
+        _bruteAnimatorController.SetDeath(false);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -108,6 +106,4 @@ public class PlayerEntity : Entity
     }
 
     private GUIStyle _style;
-
-    public float CoefLife { get => _coefLife; set => _coefLife = value; }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WaterBossData
   m_EditorClassIdentifier: 
   _name: Water Boss
-  _lifeMax: 1000
+  _lifeMax: 500
   _damage: 5
   _speedWalk: 5
   _speedRun: 9

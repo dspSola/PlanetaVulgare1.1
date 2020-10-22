@@ -4824,7 +4824,7 @@ GameObject:
   - component: {fileID: 5346271730773323527}
   - component: {fileID: 235428667220664501}
   - component: {fileID: 5285638024654744007}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Vfx_Water_Slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}

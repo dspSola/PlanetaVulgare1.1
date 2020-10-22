@@ -271,6 +271,6 @@ public class PlayerMove : MonoBehaviour
     public bool ApplyForceAnimation { get => _applyForceAnimation; set => _applyForceAnimation = value; }
     public bool CanApplyForceAnimation { get => _canApplyForceAnimation; set => _canApplyForceAnimation = value; }
 
-    private Vector3 _rigidbodyOnFloorPosition;
+    [SerializeField] private Vector3 _rigidbodyOnFloorPosition;
     private Coroutine _changeSpeedCoroutine;
 }
