@@ -8,10 +8,6 @@ public class AnimationControler : MonoBehaviour
     [SerializeField] AverageAttack _averageAttack;
     [SerializeField] MushroomManager _mushroomManager;
 
-    private void Awake()
-    {
-    }
-
     private void Update()
     {
         _speed = m_Agent.speed;
@@ -19,6 +15,11 @@ public class AnimationControler : MonoBehaviour
         _animator.SetFloat(_speedId, _speed);
         _animator.SetBool(_isAttacking1Id, _averageAttack.IsAttacking);
         _animator.SetBool(_isDeadId, _mushroomManager.IsDead);
+    }
+    private void EventDie()
+    {
+        //_mushroomManager.IsDead = false;
+        _animator.GetComponent<Animator>().enabled = true;
     }
 
     private float _speed;

@@ -16,6 +16,8 @@ public class MushroomManager : MonoBehaviour
 
     private void Update()
     {
+        _MushroomCurrentLife.value = Mathf.Clamp(_MushroomCurrentLife.value, _playerParameter.Damage, _enemyParameter.LifeMax);
+
         if(_isTakedDamage.value)
         {
             _MushroomCurrentLife.value -= _playerParameter.Damage;
@@ -25,10 +27,10 @@ public class MushroomManager : MonoBehaviour
             _isTakedDamage.value = false;
         }
 
-        if(_MushroomCurrentLife.value <= 0)
-        {
-            _isDead = true;
-        }
+        //if(_MushroomCurrentLife.value <= 0)
+        //{
+        //    _isDead = true;
+        //}
     }
 
     private bool _isDead;

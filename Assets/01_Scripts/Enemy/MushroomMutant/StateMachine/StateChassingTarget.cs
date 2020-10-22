@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class ChassingTarget : StateMachineBehaviour
+public class StateChassingTarget : StateMachineBehaviour
 {
     [SerializeField] IntVariable _mushroomCurrentLife;
 
@@ -30,6 +30,9 @@ public class ChassingTarget : StateMachineBehaviour
         Debug.Log("Staying in state: Chassing");
         DoChassing();
 
+        /*Transitons*/
+
+        //si la distance est averageAttack on passe en combat
         if (_averageAttack.IsWithinRange)
         {
             animator.SetTrigger(_modeCombatId);

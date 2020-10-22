@@ -36,4 +36,5 @@ public class AverageAttack : MonoBehaviour
 
     public bool IsWithinRange { get => _isWithinRange; set => _isWithinRange = value; }
     public bool IsAttacking { get => _isAttacking; set => _isAttacking = value; }
+    public float AttackDistance { get => _attackDistance; set => _attackDistance = value; }
 }

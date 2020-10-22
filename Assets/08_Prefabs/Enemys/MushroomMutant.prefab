@@ -2090,7 +2090,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4154759669568546000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2237,6 +2237,7 @@ MonoBehaviour:
   m_Agent: {fileID: 4154759670093112893}
   _animator: {fileID: 4154759670046205200}
   _averageAttack: {fileID: 6862351456061456730}
+  _mushroomManager: {fileID: 9104200892294269522}
 --- !u!1 &4154759670093112880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2308,7 +2309,7 @@ CapsuleCollider:
   m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.16, z: 0}
 --- !u!95 &4154759670093112891
 Animator:
   serializedVersion: 3

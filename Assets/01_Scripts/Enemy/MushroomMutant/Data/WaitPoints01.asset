@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7315ed9b9f2b2444d89ffb8caa2c34a8, type: 3}
-  m_Name: MushroomCurrentLife
+  m_Script: {fileID: 11500000, guid: 1908db2c47ebdb4448c388dcf60a51b6, type: 3}
+  m_Name: WaitPoints01
   m_EditorClassIdentifier: 
-  value: 20
+  Value:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
