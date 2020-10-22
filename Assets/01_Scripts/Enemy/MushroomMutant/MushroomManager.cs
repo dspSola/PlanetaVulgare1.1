@@ -2,21 +2,21 @@
 
 public class MushroomManager : MonoBehaviour
 {
-    [SerializeField] EnemyEntityData _enemyParameter;
+    [SerializeField] EnemyEntityData _MushroomEntity;
     [SerializeField] IntVariable _MushroomCurrentLife;
     [SerializeField] int _damage;
     [SerializeField] EntityData _playerParameter;
 
     private void Start()
     {
-        _MushroomCurrentLife.value = _enemyParameter.LifeMax;
+        _MushroomEntity.CurrentLife = _MushroomEntity.LifeMax;
         //_damage.value = false;
         _isDead = false;
     }
 
     private void Update()
     {
-        _MushroomCurrentLife.value = Mathf.Clamp(_MushroomCurrentLife.value, _playerParameter.Damage, _enemyParameter.LifeMax);
+        _MushroomCurrentLife.value = Mathf.Clamp(_MushroomCurrentLife.value, _playerParameter.Damage, _MushroomEntity.LifeMax);
 
         //if(_damage.value)
         //{
@@ -37,9 +37,9 @@ public class MushroomManager : MonoBehaviour
     {
         //si la hache player entre en collision
         //il perd des points de vie
-        if (other.gameObject.layer == 8 && other.gameObject.tag == "PlayerColl")
+        if (other.gameObject.layer == 30 && other.gameObject.tag == "WeaponSliceableColl")
         {
-            other.GetComponentInChildren<PlayerEntity>().LessLife(_damage);
+            other.GetComponent<MushroomEntity>().LessLife(_damage);
         }
     }
 
