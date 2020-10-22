@@ -12,7 +12,7 @@ public class WeaponColliderManager : MonoBehaviour
     {
         if (_stateMachineAttack.IsAnim)
         {
-            if (other.gameObject.layer == 9)
+            if (other.gameObject.layer == 9 && other.gameObject.GetComponentInChildren<Entity>() != null)
             {
                 other.gameObject.GetComponentInChildren<Entity>().LessLife(_playerEntity.Damage);
             }

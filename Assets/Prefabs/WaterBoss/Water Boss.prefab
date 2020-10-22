@@ -192,6 +192,7 @@ MonoBehaviour:
   _speedRun: 0
   _playerData: {fileID: 11400000, guid: 1b27801392868f5449fb8f3660c2844c, type: 2}
   _waterBossAgentController: {fileID: 7729039073853654725}
+  _waterBossAnimatorMono: {fileID: 185414840748213958}
 --- !u!136 &185414840748213956
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -638,6 +639,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tridant Go
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 6653d8985f5236548b91c94919d86c4a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6653d8985f5236548b91c94919d86c4a, type: 3}

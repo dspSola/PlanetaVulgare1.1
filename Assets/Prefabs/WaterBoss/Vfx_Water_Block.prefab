@@ -4824,7 +4824,7 @@ GameObject:
   - component: {fileID: 4054361349089535710}
   - component: {fileID: 808078479835313362}
   - component: {fileID: 4695264294970785184}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Vfx_Water_Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}

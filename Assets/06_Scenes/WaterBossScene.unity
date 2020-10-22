@@ -218,6 +218,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 185414840748213561, guid: 9af20aaf6f407d547a95514b6eceb51a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 185414840748213562, guid: 9af20aaf6f407d547a95514b6eceb51a,
         type: 3}
       propertyPath: m_AutoBraking
@@ -258,7 +263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1548069710
 Transform:
   m_ObjectHideFlags: 0

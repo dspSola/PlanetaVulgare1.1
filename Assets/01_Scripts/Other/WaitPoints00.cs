@@ -12,22 +12,14 @@ public class WaitPoints00 : MonoBehaviour
         {
             _transformWaypoints.Value.Clear();
         }
-
     }
 
     private void Start()
     {
-        //if (_transformWaypoints.Value.Count > 0)
-        //{
-            foreach (Transform t in _transforms)
-            {
-                _transformWaypoints.Value.Add(t);
-            }
-        //}
-        //else
-        //{
-        //    Debug.Log("aucun element dans le array du ScriptableObject");
-        //}
-        Debug.Log("le nombre d'éléments dans le array est de " + _transformWaypoints.Value.Count);
+        foreach (Transform t in _transforms)
+        {
+            _transformWaypoints.Value.Add(t);
+        }
+        //Debug.Log("le nombre d'éléments dans le array est de " + _transformWaypoints.Value.Count);
     }
 }

@@ -2090,7 +2090,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4154759669568546000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2237,6 +2237,7 @@ MonoBehaviour:
   m_Agent: {fileID: 4154759670093112893}
   _animator: {fileID: 4154759670046205200}
   _averageAttack: {fileID: 6862351456061456730}
+  _mushroomManager: {fileID: 9104200892294269522}
 --- !u!1 &4154759670093112880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,8 +2251,7 @@ GameObject:
   - component: {fileID: 4154759670093112895}
   - component: {fileID: 4154759670093112891}
   - component: {fileID: 4154759670093112893}
-  - component: {fileID: 4154759670093112889}
-  - component: {fileID: 4154759670093112888}
+  - component: {fileID: 3965351731029881926}
   - component: {fileID: 4154759670093112890}
   - component: {fileID: 6862351456061456730}
   - component: {fileID: 9104200892294269522}
@@ -2308,7 +2308,7 @@ CapsuleCollider:
   m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.16, z: 0}
 --- !u!95 &4154759670093112891
 Animator:
   serializedVersion: 3
@@ -2350,7 +2350,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4154759670093112889
+--- !u!114 &3965351731029881926
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2359,7 +2359,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4154759670093112880}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac1b8d431c57a9b4fb708dc7837aead4, type: 3}
+  m_Script: {fileID: 11500000, guid: a10463e869414ed41aaab7282a8752a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _entityData: {fileID: 11400000, guid: 3d7b0d55a94bae849acf8b2beaad7fa7, type: 2}
@@ -2370,18 +2370,7 @@ MonoBehaviour:
   _damage: 0
   _speedWalk: 0
   _speedRun: 0
---- !u!114 &4154759670093112888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4154759670093112880}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f1b5d6c5013cf542809a31a7284fd8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _playerData: {fileID: 11400000, guid: 1b27801392868f5449fb8f3660c2844c, type: 2}
 --- !u!114 &4154759670093112890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2428,7 +2417,7 @@ MonoBehaviour:
   _enemyParameter: {fileID: 11400000, guid: 3d7b0d55a94bae849acf8b2beaad7fa7, type: 2}
   _MushroomCurrentLife: {fileID: 11400000, guid: 755551d59bcfb454db3d9ee96b6a8f11,
     type: 2}
-  _isTakedDamage: {fileID: 11400000, guid: e966632068522b44b9397cf1f0f4a833, type: 2}
+  _damage: 0
   _playerParameter: {fileID: 11400000, guid: 4cecbe889aa6d384b97a104a7f90dca7, type: 2}
 --- !u!1 &4303059235896964721
 GameObject:
@@ -3610,15 +3599,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bde18b256296e8146b9c960e14a3c8d5, type: 3}
---- !u!1 &3848820909416483328 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bde18b256296e8146b9c960e14a3c8d5,
-    type: 3}
-  m_PrefabInstance: {fileID: 4154759670274242385}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4477161411783282874 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bde18b256296e8146b9c960e14a3c8d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 4154759670274242385}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3848820909416483328 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bde18b256296e8146b9c960e14a3c8d5,
     type: 3}
   m_PrefabInstance: {fileID: 4154759670274242385}
   m_PrefabAsset: {fileID: 0}

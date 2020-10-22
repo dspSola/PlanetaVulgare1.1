@@ -16,7 +16,7 @@ public class AverageAttack : MonoBehaviour
         float averageDistance;
         averageDistance = Vector3.Distance(_transform.position, _playerTransform.value.position);
 
-        //Debug.Log("moyen X: " + averageDistance);
+        //Debug.Log("moyenne X: " + averageDistance);
 
         if(averageDistance <= _attackDistance)
         {
@@ -26,6 +26,7 @@ public class AverageAttack : MonoBehaviour
         {
             _isWithinRange = false;
         }
+
     }
 
     private Transform _transform;
@@ -35,4 +36,5 @@ public class AverageAttack : MonoBehaviour
 
     public bool IsWithinRange { get => _isWithinRange; set => _isWithinRange = value; }
     public bool IsAttacking { get => _isAttacking; set => _isAttacking = value; }
+    public float AttackDistance { get => _attackDistance; set => _attackDistance = value; }
 }

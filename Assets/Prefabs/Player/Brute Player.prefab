@@ -130,8 +130,10 @@ MonoBehaviour:
   _lifeMax: 0
   _life: 0
   _damage: 0
+  _hUDLifePlayer: {fileID: 0}
   _playerData: {fileID: 11400000, guid: 1b27801392868f5449fb8f3660c2844c, type: 2}
   _playerEventStory: {fileID: 11400000, guid: 5fbdca7d45ecc07498629fce48994009, type: 2}
+  _bruteAnimatorController: {fileID: 341602959798940000}
   _playerTransform: {fileID: 341602960720592899}
   _coefLife: 0
   _canvasDie: {fileID: 0}
@@ -291,7 +293,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 341602960619380598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 341602960823763332}
@@ -317,7 +319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &341602960720592899
 Transform:
   m_ObjectHideFlags: 0
@@ -404,9 +406,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   m_Radius: 0.15
-  m_Height: 1.25
+  m_Height: 1.35
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: -0.3}
+  m_Center: {x: 0, y: 1.05, z: -0.3}
 --- !u!1 &341602960823763333
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,6 +531,8 @@ MonoBehaviour:
   _playerMove: {fileID: 341602960945845379}
   _bruteAnimatorController: {fileID: 341602959798940000}
   _groundCheck: {fileID: 341602960823763335}
+  _timeToJump: 0
+  _timeToJumpMax: 0.75
 --- !u!114 &341602960945845379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,6 +577,7 @@ MonoBehaviour:
   _cameraTransform: {fileID: 0}
   _floorFinder: {fileID: 2505257492178569915}
   _floorOffsetY: 0
+  _rigidbodyOnFloorPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &341602960977955961
 GameObject:
   m_ObjectHideFlags: 0
