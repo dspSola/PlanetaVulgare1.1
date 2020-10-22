@@ -16,7 +16,7 @@ public class AverageAttack : MonoBehaviour
         float averageDistance;
         averageDistance = Vector3.Distance(_transform.position, _playerTransform.value.position);
 
-        //Debug.Log("moyen X: " + averageDistance);
+        //Debug.Log("moyenne X: " + averageDistance);
 
         if(averageDistance <= _attackDistance)
         {

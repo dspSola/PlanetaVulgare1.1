@@ -10,7 +10,7 @@ public class StateChassingTarget : StateMachineBehaviour
     [SerializeField] private EnemyEntityData _enemyEntity;
     [SerializeField] private AverageAttack _averageAttack;
     [SerializeField] private ScriptableTransform _playerTransform;
-    [SerializeField] private float distance = 1f;
+    [SerializeField] private float _distance = 1f;
 
     [Header("Waypoint Info")]
     [SerializeField] private float _waitpointDistance = 0.2f;
@@ -55,6 +55,7 @@ public class StateChassingTarget : StateMachineBehaviour
         if (!m_Agent.pathPending && m_Agent.remainingDistance < _waitpointDistance)
         {
             m_Agent.destination = _playerTransform.value.position;
+            m_Agent.stoppingDistance = _distance;
         }
     }
     
