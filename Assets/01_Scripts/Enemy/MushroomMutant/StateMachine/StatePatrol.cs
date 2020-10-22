@@ -3,8 +3,6 @@ using UnityEngine.AI;
 
 public class StatePatrol : StateMachineBehaviour
 {
-    [SerializeField] IntVariable _mushroomCurrentLife;
-
     [Header("Waypoint Info")]
     [SerializeField] private TransformArrayData _waitPoints;
     [SerializeField] private float _waitpointDistance = 0.2f;
@@ -65,11 +63,11 @@ public class StatePatrol : StateMachineBehaviour
         //}
 
         //si la vie est à 0 on meurt
-        if (_mushroomCurrentLife.value <= 0)
+        if (_enemyEntity.CurrentLife <= 0)
         {
             animator.SetTrigger(_dieId);
         }
-        Debug.Log($"en Patrol le random est à : {_delayTime} le temps est de {_currentTime} le bool est : {_isDelayed}");
+        //Debug.Log($"en Patrol le random est à : {_delayTime} le temps est de {_currentTime} le bool est : {_isDelayed}");
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

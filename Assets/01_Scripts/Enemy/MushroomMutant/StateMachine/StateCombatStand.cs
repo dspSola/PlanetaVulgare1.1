@@ -3,8 +3,6 @@ using UnityEngine.AI;
 
 public class StateCombatStand : StateMachineBehaviour
 {
-    [SerializeField] IntVariable _mushroomCurrentLife;
-
     [Header("Parameter")]
     [SerializeField] private NavMeshAgent m_Agent;
     [SerializeField] ScriptableTransform _playerTransform;
@@ -12,8 +10,8 @@ public class StateCombatStand : StateMachineBehaviour
 
     [Header("Timer")]
     [SerializeField] private float _timeDelay;
-    [SerializeField] private float _minTime = 1f;
-    [SerializeField] private float _maxTime = 2f;
+    [SerializeField] private float _minTime = 3f;
+    [SerializeField] private float _maxTime = 5f;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -43,7 +41,7 @@ public class StateCombatStand : StateMachineBehaviour
         }
 
         //si la vie est à 0 on meurt
-        if (_mushroomCurrentLife.value <= 0)
+        if (_enemyEntity.CurrentLife <= 0)
         {
             animator.SetTrigger(_dieId);
         }
@@ -65,6 +63,10 @@ public class StateCombatStand : StateMachineBehaviour
         if (_currentTime > _delayTime)
         {
             _isDelayed = true;
+        }
+        else
+        {
+            _isDelayed = false;
         }
     }
 

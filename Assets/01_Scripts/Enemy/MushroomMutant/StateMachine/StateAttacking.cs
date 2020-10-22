@@ -4,12 +4,9 @@ using UnityEngine.AI;
 
 public class StateAttacking : StateMachineBehaviour
 {
-    [SerializeField] IntVariable _mushroomCurrentLife;
-
     [Header("Parameter")]
     [SerializeField] private NavMeshAgent m_Agent;
     [SerializeField] private EnemyEntityData _enemyEntity;
-    [SerializeField] private AverageAttack _averageAttack;
     [SerializeField] private ScriptableTransform _playerTransform;
 
     [Header("Waypoint Info")]
@@ -17,17 +14,15 @@ public class StateAttacking : StateMachineBehaviour
 
     [Header("Timer")]
     [SerializeField] private float _timeDelay;
-    [SerializeField] private float _minTime = 0.5f;
-    [SerializeField] private float _maxTime = 2f;
+    [SerializeField] private float _minTime = 3f;
+    [SerializeField] private float _maxTime = 5f;
 
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Entering state: StateAttacking");
         m_Agent = animator.GetComponent<NavMeshAgent>();
-        _averageAttack = animator.GetComponent<AverageAttack>();
         m_Agent.speed = _enemyEntity.SpeedRun;
-        _averageAttack.IsAttacking = true;
 
         _isDelayed = false;
         _currentTime = 0;
@@ -52,7 +47,7 @@ public class StateAttacking : StateMachineBehaviour
         }
 
         //si la vie est à 0 on meurt
-        if (_mushroomCurrentLife.value <= 0)
+        if (_enemyEntity.CurrentLife <= 0)
         {
             animator.SetTrigger(_dieId);
         }
@@ -66,10 +61,10 @@ public class StateAttacking : StateMachineBehaviour
 
     private void DoChassing()
     {
-        Vector3 safeDistance = new Vector3(0, 0, _averageAttack.AttackDistance);
+        
         if (!m_Agent.pathPending && m_Agent.remainingDistance < _waitpointDistance)
         {
-            m_Agent.destination = _playerTransform.value.position - safeDistance;//marche dans un sens :(
+            m_Agent.destination = _playerTransform.value.position ;
         }
     }
 
@@ -83,6 +78,10 @@ public class StateAttacking : StateMachineBehaviour
         if (_currentTime > _delayTime)
         {
             _isDelayed = true;
+        }
+        else
+        {
+            _isDelayed = false;
         }
     }
 
