@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class AverageAttack : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class AverageAttack : MonoBehaviour
     {
         _transform = transform;
         _isWithinRange = false;
+        _navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
@@ -17,8 +19,8 @@ public class AverageAttack : MonoBehaviour
         averageDistance = Vector3.Distance(_transform.position, _playerTransform.value.position);
 
         //Debug.Log("moyenne X: " + averageDistance);
-
-        if(averageDistance <= _attackDistance)
+        _navMeshAgent.stoppingDistance = _attackDistance;
+        if (_navMeshAgent.stoppingDistance <= averageDistance)
         {
             _isWithinRange = true;
         }
@@ -30,6 +32,7 @@ public class AverageAttack : MonoBehaviour
     }
 
     private Transform _transform;
+    private NavMeshAgent _navMeshAgent;
 
     private bool _isWithinRange;
     private bool _isAttacking;

@@ -3,10 +3,9 @@ using UnityEngine.AI;
 
 public class StateAlert : StateMachineBehaviour
 {
-    [SerializeField] IntVariable _mushroomCurrentLife;
-
     [Header("Parameter")]
     [SerializeField] private NavMeshAgent m_Agent;
+    [SerializeField] private EnemyEntityData _enemyEntity;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -26,7 +25,7 @@ public class StateAlert : StateMachineBehaviour
         animator.SetTrigger(_alertId);
 
         //si la vie est à 0 on meurt
-        if (_mushroomCurrentLife.value <= 0)
+        if (_enemyEntity.CurrentLife <= 0)
         {
             animator.SetTrigger(_dieId);
         }
