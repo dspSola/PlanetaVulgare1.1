@@ -70,13 +70,6 @@ public class PlayerMove : MonoBehaviour
             _horizontalVelocity = Vector3.zero;
         }
 
-        // Vertical velocity
-        if (_doJump)
-        {
-            _verticalVelocity = Vector3.up * _jumpPower;
-            _doJump = false;
-        }
-
         if (_stateMachineVertical.CurrentState == PlayerVerticalState.GROUNDED)
         {
             _verticalVelocity = Vector3.zero;
@@ -115,13 +108,12 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (_stateMachineHorizontal.CurrentState != PlayerHorizontalState.IDLE)
-        //{
-        //    if (_getBruteInput.Movement.z > 0.25f)
-        //    {
-        //        RotateTowardsCameraForward();
-        //    }
-        //}
+        // Vertical velocity
+        if (_doJump)
+        {
+            _verticalVelocity = Vector3.up * _jumpPower;
+            _doJump = false;
+        }
 
         if (_stateMachineAttack.CurrentState == PlayerAttackState.IDLE)
         {
