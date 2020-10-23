@@ -31,10 +31,10 @@ public class StateDetect : StateMachineBehaviour
         animator.SetTrigger(_chassingTargetId);
 
         //si la vie est à 0 on meurt
-        if (_enemyEntity.CurrentLife <= 0)
-        {
-            animator.SetTrigger(_dieId);
-        }
+        //if (_enemyEntity.CurrentLife <= 0)
+        //{
+        //    animator.SetTrigger(_dieId);
+        //}
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

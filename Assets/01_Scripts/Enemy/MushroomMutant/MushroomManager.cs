@@ -8,8 +8,7 @@ public class MushroomManager : MonoBehaviour
 
     private void Start()
     {
-        _MushroomEntity.CurrentLife = _MushroomEntity.LifeMax;
-        _damage = false;
+        //_damage.value = false;
         _isDead = false;
     }
 
@@ -38,11 +37,11 @@ public class MushroomManager : MonoBehaviour
     {
         //si la hache player entre en collision
         //il perd des points de vie
-        //if (other.gameObject.CompareTag("WeaponSliceableColl"))
-        //{
-        //    other.GetComponent<MushroomEntity>().LessLife(_MushroomEntity.CurrentLife);
-        //    _damage = true;
-        //}
+        if (other.gameObject.CompareTag("WeaponSliceableColl"))
+        {
+            //other.GetComponent<MushroomEntity>().LessLife(_MushroomEntity.CurrentLife);
+            _damage = true;
+        }
     }
 
     public bool _isDead;

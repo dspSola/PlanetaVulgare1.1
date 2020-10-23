@@ -111,4 +111,9 @@ public class BruteAnimatorController : MonoBehaviour
     {
         _animator.SetBool("Death", value);
     }
+
+    public void SetHurt(bool value)
+    {
+        _animator.SetBool("IsHurt", value);
+    }
 }

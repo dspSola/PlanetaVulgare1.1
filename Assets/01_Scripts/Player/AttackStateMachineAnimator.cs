@@ -10,6 +10,7 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
     [SerializeField] private StateMachineAttack _stateMachineAttack;
     [SerializeField] private StateMachineVertical _stateMachineVertical;
     [SerializeField] private StateMachineHorizontal _stateMachineHorizontal;
+    [SerializeField] private WeaponColliderManager _weaponColliderManager;
     [SerializeField] private PlayerMove _playerMove;
 
     [SerializeField] private bool _canSlice, _activeInAnimOnStart, _activeInAnimOnExit;
@@ -20,7 +21,9 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
 
     [SerializeField] private bool _dodgeToAttack01, _canDodgeToAttack01;
 
-    [SerializeField] private bool _endCombo;
+    [SerializeField] private bool _endCombo, _playSond;
+    [SerializeField] private int _intSond;
+    [SerializeField] private float _timeSoundMax;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -31,6 +34,7 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
         _stateMachineVertical = animator.transform.parent.GetComponentInChildren<StateMachineVertical>();
         _stateMachineHorizontal = animator.transform.parent.GetComponentInChildren<StateMachineHorizontal>();
         _playerMove = animator.transform.parent.GetComponentInChildren<PlayerMove>();
+        _weaponColliderManager = animator.transform.parent.GetComponentInChildren<WeaponColliderManager>();
 
         if (_activeInAnimOnStart)
         {
@@ -55,6 +59,11 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
         {
             _playerMove.CanRotatePlayer();
         }
+
+        //if (_playSond)
+        //{
+        //    _weaponColliderManager.PlaySon(_intSond);
+        //}
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -102,6 +111,14 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
         if(animator.GetFloat("ModifieDegat") == 0 && animator.GetFloat("ModifieDegat") != _playerEntity.EntityData.Damage)
         {
             _playerEntity.Damage = _playerEntity.EntityData.Damage;
+        }
+
+        if (_playSond)
+        {
+            if (animator.GetFloat("Slice") > 0)
+            {
+                _weaponColliderManager.PlaySon(_intSond, _timeSoundMax);
+            }
         }
     }
 

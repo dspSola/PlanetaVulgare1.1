@@ -8,6 +8,8 @@ public class StateAttacking : StateMachineBehaviour
     [SerializeField] private NavMeshAgent m_Agent;
     [SerializeField] private EnemyEntityData _enemyEntity;
     [SerializeField] private ScriptableTransform _playerTransform;
+    [SerializeField] private AnimationControler _animatorControler;
+    [SerializeField] private float _attackDistance = 2f;
 
     [Header("Waypoint Info")]
     [SerializeField] private float _waitpointDistance = 0.2f;
@@ -21,10 +23,14 @@ public class StateAttacking : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Entering state: StateAttacking");
+
+        _transform = animator.GetComponent<Transform>();
         m_Agent = animator.GetComponent<NavMeshAgent>();
+        _animatorControler = animator.GetComponentInChildren<AnimationControler>();
         m_Agent.speed = _enemyEntity.SpeedRun;
 
         _isDelayed = false;
+        _animatorControler.IsFigthing = false;
         _currentTime = 0;
         _delayTime = Random.Range(_minTime, _maxTime);
     }
@@ -34,8 +40,16 @@ public class StateAttacking : StateMachineBehaviour
     {
         Debug.Log("Staying in state: StateAttacking");
 
+        _distanceRange = Vector3.Distance(_transform.position, _playerTransform.value.position);
+
+        if (_distanceRange < _attackDistance)
+        {
+            m_Agent.stoppingDistance = _attackDistance;
+            _animatorControler.IsFigthing = true;
+        }
+
         Timer();
-        //Debug.Log(_currentTime + " second");
+        Debug.Log(_currentTime + " second attack");
 
         DoChassing();
 
@@ -61,11 +75,11 @@ public class StateAttacking : StateMachineBehaviour
 
     private void DoChassing()
     {
-        
-        if (!m_Agent.pathPending && m_Agent.remainingDistance < _waitpointDistance)
-        {
-            m_Agent.destination = _playerTransform.value.position ;
-        }
+        m_Agent.destination = _playerTransform.value.position;
+        //if (!m_Agent.pathPending && m_Agent.remainingDistance < _waitpointDistance)
+        //{
+            
+        //}
     }
 
     private void Timer()
@@ -85,9 +99,13 @@ public class StateAttacking : StateMachineBehaviour
         }
     }
 
+    private Transform _transform;
+
     private bool _isDelayed;
     private float _currentTime;
     float _delayTime;
+
+    private float _distanceRange;
 
     private int _modeCombat = Animator.StringToHash("ModeCombat");
     private int _dieId = Animator.StringToHash("Die");

@@ -17,6 +17,7 @@ public class StateMachineAttack : MonoBehaviour
     [SerializeField] private GetInputBrute _getBruteInput;
     [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
+    [SerializeField] private WeaponColliderManager _weaponColliderManager;
     [SerializeField] private Collider _colliderIdle, _colliderDodge, _colliderProtection;
     [SerializeField] private GameObject _weaponMesh, _weaponAxeCollider, _weaponAllCollider, _weaponBackMesh;
     [SerializeField] private bool _isArmed, _isAnim, _canSlice;
@@ -24,6 +25,7 @@ public class StateMachineAttack : MonoBehaviour
     [SerializeField] private bool _isInCombo;
     [SerializeField] private int _cptCombo;
     [SerializeField] private float _timeCombo, _timeComboMax;
+
     public PlayerAttackState CurrentState
     {
         get
@@ -238,6 +240,7 @@ public class StateMachineAttack : MonoBehaviour
     private void DoChangeWeaponEnter()
     {
         _bruteAnimatorController.SetChangeWeapon(true);
+        _weaponColliderManager.SetSonChangeWeapon();
     }
     private void DoChangeWeaponExit()
     {
