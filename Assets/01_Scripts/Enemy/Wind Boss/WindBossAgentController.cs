@@ -74,7 +74,7 @@ public class WindBossAgentController : MonoBehaviour
                     }
                     else
                     {
-                        int random = Random.Range(0, 2);
+                        int random = Random.Range(1, 4);
                         _windBossAnimatorMono.SetSpell(true, random);
                         _randomTimeSpell = 0;
                     }
@@ -95,7 +95,7 @@ public class WindBossAgentController : MonoBehaviour
                     }
                     else
                     {
-                        int random = Random.Range(1, 4);
+                        int random = Random.Range(1, 3);
                         _windBossAnimatorMono.SetAttack(true, random);
                     }
                 }
