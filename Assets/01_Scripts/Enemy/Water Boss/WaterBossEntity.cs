@@ -18,11 +18,11 @@ public class WaterBossEntity : EnemyEntity
     public override void LessLife(float value)
     {
         base.LessLife(value);
-        if(base.Life <= 0)
+        if (base.Life <= 0)
         {
             _waterBossAnimatorMono.SetDeath(true);
             _waterBossAgentController.IsDeath = true;
+            Destroy(gameObject, 3);
         }
-        Destroy(gameObject, 3);
     }
 }

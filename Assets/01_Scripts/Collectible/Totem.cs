@@ -11,7 +11,7 @@ public class Totem : MonoBehaviour
     {
         if (other.gameObject.layer == 8 && other.gameObject.tag == "PlayerColl")
         {
-            if(other.gameObject.GetComponentInChildren<GetInputBrute>().UseInput.IsDown)
+            if(other.gameObject.GetComponentInChildren<GetInputBrute>().UseInput.IsDown && other.gameObject.GetComponentInChildren<StateMachineAttack>().IsArmed == false)
             {
                 if(_totemName == "Fire")
                 {

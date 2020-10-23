@@ -15,5 +15,6 @@ MonoBehaviour:
   _name: Fire Boss
   _lifeMax: 1500
   _damage: 5
-  _speedWalk: 5
-  _speedRun: 8
+  _speedWalk: 3
+  _speedRun: 5
+  _currentLife: 0
