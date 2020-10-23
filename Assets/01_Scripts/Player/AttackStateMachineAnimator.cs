@@ -17,7 +17,7 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
 
     [SerializeField] private bool _applyForceEnter, _applyForceExit, _applyForceValueEnter, _applyForceValueUpdate, _applyForceValueExit, _canRotatePlayer;
 
-    [SerializeField] private bool _doJump, _doJumpExit, _canJumpExit;
+    [SerializeField] private bool _doJump, _doJumpExit, _canJumpExit, _doJumpExit2;
 
     [SerializeField] private bool _dodgeToAttack01, _canDodgeToAttack01;
 
@@ -28,14 +28,37 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _playerEntity = animator.transform.parent.GetComponentInChildren<PlayerEntity>();
-        _getInputBrute = animator.transform.parent.GetComponentInChildren<GetInputBrute>();
-        _stateMachineAttack = animator.transform.parent.GetComponentInChildren<StateMachineAttack>();
-        _stateMachineVertical = animator.transform.parent.GetComponentInChildren<StateMachineVertical>();
-        _stateMachineHorizontal = animator.transform.parent.GetComponentInChildren<StateMachineHorizontal>();
-        _playerMove = animator.transform.parent.GetComponentInChildren<PlayerMove>();
-        _weaponColliderManager = animator.transform.parent.GetComponentInChildren<WeaponColliderManager>();
+        // Attache Script
+        if (_playerEntity == null)
+        {
+            _playerEntity = animator.transform.parent.GetComponentInChildren<PlayerEntity>();
+        }
+        if (_getInputBrute == null)
+        {
+            _getInputBrute = animator.transform.parent.GetComponentInChildren<GetInputBrute>();
+        }
+        if (_stateMachineAttack == null)
+        {
+            _stateMachineAttack = animator.transform.parent.GetComponentInChildren<StateMachineAttack>();
+        }
+        if (_stateMachineVertical == null)
+        {
+            _stateMachineVertical = animator.transform.parent.GetComponentInChildren<StateMachineVertical>();
+        }
+        if (_stateMachineHorizontal == null)
+        {
+            _stateMachineHorizontal = animator.transform.parent.GetComponentInChildren<StateMachineHorizontal>();
+        }
+        if (_playerMove == null)
+        {
+            _playerMove = animator.transform.parent.GetComponentInChildren<PlayerMove>();
+        }
+        if (_weaponColliderManager == null)
+        {
+            _weaponColliderManager = animator.transform.parent.GetComponentInChildren<WeaponColliderManager>();
+        }
 
+        // Parametre
         if (_activeInAnimOnStart)
         {
             _stateMachineAttack.IsAnim = true;
@@ -59,11 +82,6 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
         {
             _playerMove.CanRotatePlayer();
         }
-
-        //if (_playSond)
-        //{
-        //    _weaponColliderManager.PlaySon(_intSond);
-        //}
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -143,7 +161,12 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
         {
             _stateMachineVertical.SetTransitionToJumping();
         }
-        //_stateMachineAttack.CptCombo++;
+        if (_doJumpExit2)
+        {
+            _stateMachineVertical.SetTransitionToJumping();
+            _playerMove.DoJump();
+        }
+
         if (!_endCombo)
         {
             animator.SetInteger("CptCombo", animator.GetInteger("CptCombo") + 1);
