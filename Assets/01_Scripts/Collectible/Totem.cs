@@ -6,12 +6,13 @@ public class Totem : MonoBehaviour
 {
     [SerializeField] private string _totemName;
     [SerializeField] private Sprite _spriteTotem;
+    [SerializeField] GameObject _boss;
 
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == 8 && other.gameObject.tag == "PlayerColl")
         {
-            if(other.gameObject.GetComponentInChildren<GetInputBrute>().UseInput.IsDown)
+            if(other.gameObject.GetComponentInChildren<GetInputBrute>().UseInput.IsDown && other.gameObject.GetComponentInChildren<StateMachineAttack>().IsArmed == false)
             {
                 if(_totemName == "Fire")
                 {
@@ -29,6 +30,8 @@ public class Totem : MonoBehaviour
                 {
                     other.gameObject.GetComponentInChildren<PlayerEntity>().AddTotemWater(this);
                 }
+
+                _boss.SetActive(true);
 
                 Destroy(gameObject);
             }

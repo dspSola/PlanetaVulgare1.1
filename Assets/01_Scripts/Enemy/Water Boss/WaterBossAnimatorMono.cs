@@ -28,4 +28,9 @@ public class WaterBossAnimatorMono : MonoBehaviour
         _animator.SetBool("Spell", valueBool);
         _animator.SetInteger("CptSpell", valueInt);
     }
+
+    public void SetDeath()
+    {
+        _animator.SetBool("Death", true);
+    }
 }

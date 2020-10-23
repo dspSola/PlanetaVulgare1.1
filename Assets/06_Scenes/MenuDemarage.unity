@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: effc802a037688e408b0f0d3b7533222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_destinationScene: 
+  m_destinationScene: Transition
 --- !u!1 &137728832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 142687449}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -3258,7 +3258,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 142687449}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:

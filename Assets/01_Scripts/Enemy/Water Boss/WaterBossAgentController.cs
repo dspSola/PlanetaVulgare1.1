@@ -14,7 +14,7 @@ public class WaterBossAgentController : MonoBehaviour
 
     [SerializeField] private float _speedCurrent, _speedMaxCurrent, _coefAcceleration, _coefDecceleration, _maxDistanceToAttack, _distancePlayer;
 
-    [SerializeField] private bool _makePauseDistance, _makePauseDestinationAttack, _makeRotationPauseAttack, _canMakeRotationPauseAttack, _canAttack, _isInPath, _path, _hasPath;
+    [SerializeField] private bool _makePauseDistance, _makePauseDestinationAttack, _makeRotationPauseAttack, _canMakeRotationPauseAttack, _canAttack, _isInPath, _path, _hasPath, _isDeath;
 
     public void Initialize(Transform playerTr)
     {
@@ -25,76 +25,67 @@ public class WaterBossAgentController : MonoBehaviour
 
     private void Update()
     {
-        if (_playerTransform != null)
+        if (!_isDeath)
         {
-            _distancePlayer = Vector3.Distance(_playerTransform.position, _navMeshAgent.transform.position);
-            if (_distancePlayer > _maxDistanceToAttack && !_makePauseDestinationAttack)
+            if (_playerTransform != null)
             {
-                if (_makePauseDistance)
+                _distancePlayer = Vector3.Distance(_playerTransform.position, _navMeshAgent.transform.position);
+                if (_distancePlayer >= _maxDistanceToAttack && !_makePauseDestinationAttack)
                 {
-                    _makePauseDistance = false;
+                    if (_makePauseDistance)
+                    {
+                        _makePauseDistance = false;
+                    }
+                    if (_navMeshAgent.isStopped)
+                    {
+                        _navMeshAgent.isStopped = false;
+                    }
+                    if (_playerTransform.position != _navMeshAgent.destination)
+                    {
+                        _navMeshAgent.SetDestination(_playerTransform.position);
+                    }
+                    //_navMeshAgent.SetDestination(_playerTransform.position);
+                    if (_navMeshAgent.speed != _speedMaxCurrent)
+                    {
+                        _navMeshAgent.speed = _speedMaxCurrent;
+                    }
+                    Walk();
                 }
-                if (_navMeshAgent.isStopped)
+                else if (_distancePlayer < _maxDistanceToAttack)
                 {
-                    _navMeshAgent.isStopped = false;
+                    if (!_makeRotationPauseAttack)
+                    {
+                        Rotate();
+                    }
+                    _makePauseDistance = true;
+                    _navMeshAgent.speed = 0;
+                    _canAttack = true;
                 }
-                if (_playerTransform.position != _navMeshAgent.destination)
-                {
-                    _navMeshAgent.SetDestination(_playerTransform.position);
-                }
-                //_navMeshAgent.SetDestination(_playerTransform.position);
-                if (_navMeshAgent.speed != _speedMaxCurrent)
-                {
-                    _navMeshAgent.speed = _speedMaxCurrent;
-                }
-                Walk();
-            }
-            else if(_distancePlayer < _maxDistanceToAttack)
-            {
-                if (!_makeRotationPauseAttack)
+
+                if (_canMakeRotationPauseAttack)
                 {
                     Rotate();
                 }
-                _makePauseDistance = true;
-                _navMeshAgent.speed = 0;
-                _canAttack = true;
-                //if (_distancePlayer < _maxDistanceMove)
-                //{
-                //    _navMeshAgent.speed = 0;
-                //    Vector3 relativePos = _playerTransform.position - _waterBossTransform.position;
-                //    Debug.Log(relativePos);
-                //    if (relativePos.x == 0)
-                //    {
-                //        _canAttack = true;
-                //    }
-                //    _canAttack = true;
-                //}
-            }
 
-            if (_canMakeRotationPauseAttack)
-            {
-                Rotate();
-            }
-
-            if (_makePauseDistance || _makePauseDestinationAttack || !_navMeshAgent.hasPath)
-            {
-                _navMeshAgent.isStopped = true;
-                StopWalk();
-                //_navMeshAgent.speed = 0;
-                if (_canAttack)
+                if (_makePauseDistance || _makePauseDestinationAttack || !_navMeshAgent.hasPath)
                 {
-                    _waterBossAttackManager.SetAttack(true, 1);
-                    _canAttack = false;
+                    _navMeshAgent.isStopped = true;
+                    StopWalk();
+                    if (_canAttack)
+                    {
+                        _waterBossAttackManager.SetAttack(true, 1);
+                        _canAttack = false;
+                    }
                 }
-            }
 
-            _isInPath = _navMeshAgent.isPathStale;
-            _path = _navMeshAgent.pathPending;
-            _hasPath = _navMeshAgent.hasPath;
-        }
-        else
-        {
-            _distancePlayer = 0;
+                _isInPath = _navMeshAgent.isPathStale;
+                _path = _navMeshAgent.pathPending;
+                _hasPath = _navMeshAgent.hasPath;
+            }
+            else
+            {
+                _distancePlayer = 0;
+            }
         }
     }
     private void FixedUpdate()
@@ -155,4 +146,5 @@ public class WaterBossAgentController : MonoBehaviour
     public Transform WaterBossTransform { get => _waterBossTransform; set => _waterBossTransform = value; }
     public Transform PlayerTransform { get => _playerTransform; set => _playerTransform = value; }
     public bool CanMakeRotationPauseAttack { get => _canMakeRotationPauseAttack; set => _canMakeRotationPauseAttack = value; }
+    public bool IsDeath { get => _isDeath; set => _isDeath = value; }
 }

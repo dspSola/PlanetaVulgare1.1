@@ -2,36 +2,50 @@
 
 public class MushroomManager : MonoBehaviour
 {
-    [SerializeField] EnemyEntityData _enemyParameter;
-    [SerializeField] IntVariable _MushroomCurrentLife;
-    [SerializeField] BoolVariable _isTakedDamage;
+    [SerializeField] EnemyEntityData _MushroomEntity;
     [SerializeField] EntityData _playerParameter;
+    [SerializeField] Collider _collider;
 
     private void Start()
     {
-        _MushroomCurrentLife.value = _enemyParameter.LifeMax;
-        _isTakedDamage.value = false;
+        //_damage.value = false;
         _isDead = false;
     }
 
     private void Update()
     {
-        if(_isTakedDamage.value)
+        _MushroomEntity.CurrentLife = Mathf.Clamp(_MushroomEntity.CurrentLife, _playerParameter.Damage, _MushroomEntity.LifeMax);
+
+        if (_damage)
         {
-            _MushroomCurrentLife.value -= _playerParameter.Damage;
+            _MushroomEntity.CurrentLife -= _playerParameter.Damage;
         }
         else
         {
-            _isTakedDamage.value = false;
+            _damage = false;
         }
 
-        if(_MushroomCurrentLife.value <= 0)
+        //if (_MushroomEntity.CurrentLife <= 0)
+        //{
+        //    _isDead = true;
+        //}
+
+        Debug.Log("life =" + _MushroomEntity.CurrentLife);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //si la hache player entre en collision
+        //il perd des points de vie
+        if (other.gameObject.CompareTag("WeaponSliceableColl"))
         {
-            _isDead = true;
+            //other.GetComponent<MushroomEntity>().LessLife(_MushroomEntity.CurrentLife);
+            _damage = true;
         }
     }
 
-    private bool _isDead;
+    public bool _isDead;
+    public bool _damage;
 
     public bool IsDead { get => _isDead; set => _isDead = value; }
 }

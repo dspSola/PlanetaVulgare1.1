@@ -37,6 +37,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private CollisionRaycastTester _floorFinder;
     [SerializeField] private float _floorOffsetY;
 
+    [SerializeField] private float _timeToApllyGravity, _timeToApllyGravityMax;
+
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -70,23 +72,6 @@ public class PlayerMove : MonoBehaviour
             _horizontalVelocity = Vector3.zero;
         }
 
-        // Vertical velocity
-        if (_doJump)
-        {
-            _verticalVelocity = Vector3.up * _jumpPower;
-            _doJump = false;
-        }
-
-        if (_stateMachineVertical.CurrentState == PlayerVerticalState.GROUNDED)
-        {
-            _verticalVelocity = Vector3.zero;
-        }
-        else
-        {
-            // Si on n'est pas au sol, applique la gravité
-            _verticalVelocity += Physics.gravity * _gravityFallMultiplier * Time.fixedDeltaTime;
-        }
-
         if (_canApplyForceAnimation)
         {
             if (_applyForceAnimation)
@@ -115,13 +100,12 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (_stateMachineHorizontal.CurrentState != PlayerHorizontalState.IDLE)
-        //{
-        //    if (_getBruteInput.Movement.z > 0.25f)
-        //    {
-        //        RotateTowardsCameraForward();
-        //    }
-        //}
+        // Vertical velocity
+        if (_doJump)
+        {
+            _verticalVelocity = Vector3.up * _jumpPower;
+            _doJump = false;
+        }
 
         if (_stateMachineAttack.CurrentState == PlayerAttackState.IDLE)
         {
@@ -139,6 +123,24 @@ public class PlayerMove : MonoBehaviour
         if (_stateMachineVertical.CurrentState == PlayerVerticalState.GROUNDED)
         {
             StickToGround();
+        }
+
+        if (_stateMachineVertical.CurrentState == PlayerVerticalState.GROUNDED)
+        {
+            _verticalVelocity = Vector3.zero;
+            _timeToApllyGravity = 0;
+        }
+        else
+        {
+            // Si on n'est pas au sol, applique la gravité
+            if (_timeToApllyGravity < _timeToApllyGravityMax)
+            {
+                _timeToApllyGravity += Time.deltaTime;
+            }
+            else
+            {
+                _verticalVelocity += Physics.gravity * _gravityFallMultiplier * Time.fixedDeltaTime;
+            }
         }
 
         if (_canApplyForceAnimation)
@@ -271,6 +273,6 @@ public class PlayerMove : MonoBehaviour
     public bool ApplyForceAnimation { get => _applyForceAnimation; set => _applyForceAnimation = value; }
     public bool CanApplyForceAnimation { get => _canApplyForceAnimation; set => _canApplyForceAnimation = value; }
 
-    private Vector3 _rigidbodyOnFloorPosition;
+    [SerializeField] private Vector3 _rigidbodyOnFloorPosition;
     private Coroutine _changeSpeedCoroutine;
 }

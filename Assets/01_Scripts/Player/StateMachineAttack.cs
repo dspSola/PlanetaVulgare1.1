@@ -17,6 +17,7 @@ public class StateMachineAttack : MonoBehaviour
     [SerializeField] private GetInputBrute _getBruteInput;
     [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
+    [SerializeField] private WeaponColliderManager _weaponColliderManager;
     [SerializeField] private Collider _colliderIdle, _colliderDodge, _colliderProtection;
     [SerializeField] private GameObject _weaponMesh, _weaponAxeCollider, _weaponAllCollider, _weaponBackMesh;
     [SerializeField] private bool _isArmed, _isAnim, _canSlice;
@@ -24,6 +25,7 @@ public class StateMachineAttack : MonoBehaviour
     [SerializeField] private bool _isInCombo;
     [SerializeField] private int _cptCombo;
     [SerializeField] private float _timeCombo, _timeComboMax;
+
     public PlayerAttackState CurrentState
     {
         get
@@ -238,6 +240,7 @@ public class StateMachineAttack : MonoBehaviour
     private void DoChangeWeaponEnter()
     {
         _bruteAnimatorController.SetChangeWeapon(true);
+        _weaponColliderManager.SetSonChangeWeapon();
     }
     private void DoChangeWeaponExit()
     {
@@ -314,7 +317,7 @@ public class StateMachineAttack : MonoBehaviour
     private void DoDODGEEnter()
     {
         _bruteAnimatorController.SetDodge(true);
-        if(_getBruteInput.Movement.z > 0)
+        if(_getBruteInput.Movement.z >= 0)
         {
             _colliderIdle.enabled = false;
             _colliderDodge.enabled = true;
@@ -366,41 +369,41 @@ public class StateMachineAttack : MonoBehaviour
 
     private void OnGUI()
     {
-        if (_style == null)
-        {
-            _style = new GUIStyle("button");
-            _style.fontSize = 24;
-            _style.alignment = TextAnchor.MiddleLeft;
-            _style.padding = new RectOffset(15, 15, 0, 0);
-        }
-        using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.3f, Screen.width * 0.2f, Screen.height * 0.1f)))
-        {
-            using (new GUILayout.VerticalScope())
-            {
-                GUILayout.Button($"HState: {_currentState}", _style, GUILayout.ExpandHeight(true));
-            }
-        }
-        using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.4f, Screen.width * 0.2f, Screen.height * 0.1f)))
-        {
-            using (new GUILayout.VerticalScope())
-            {
-                GUILayout.Button($"IsAnim: {_isAnim}", _style, GUILayout.ExpandHeight(true));
-            }
-        }
-        using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.5f, Screen.width * 0.2f, Screen.height * 0.1f)))
-        {
-            using (new GUILayout.VerticalScope())
-            {
-                GUILayout.Button($"_isArmed: {_isArmed}", _style, GUILayout.ExpandHeight(true));
-            }
-        }
-        using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.6f, Screen.width * 0.2f, Screen.height * 0.1f)))
-        {
-            using (new GUILayout.VerticalScope())
-            {
-                GUILayout.Button($"_canSlice: {_canSlice}", _style, GUILayout.ExpandHeight(true));
-            }
-        }
+        //if (_style == null)
+        //{
+        //    _style = new GUIStyle("button");
+        //    _style.fontSize = 24;
+        //    _style.alignment = TextAnchor.MiddleLeft;
+        //    _style.padding = new RectOffset(15, 15, 0, 0);
+        //}
+        //using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.3f, Screen.width * 0.2f, Screen.height * 0.1f)))
+        //{
+        //    using (new GUILayout.VerticalScope())
+        //    {
+        //        GUILayout.Button($"HState: {_currentState}", _style, GUILayout.ExpandHeight(true));
+        //    }
+        //}
+        //using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.4f, Screen.width * 0.2f, Screen.height * 0.1f)))
+        //{
+        //    using (new GUILayout.VerticalScope())
+        //    {
+        //        GUILayout.Button($"IsAnim: {_isAnim}", _style, GUILayout.ExpandHeight(true));
+        //    }
+        //}
+        //using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.5f, Screen.width * 0.2f, Screen.height * 0.1f)))
+        //{
+        //    using (new GUILayout.VerticalScope())
+        //    {
+        //        GUILayout.Button($"_isArmed: {_isArmed}", _style, GUILayout.ExpandHeight(true));
+        //    }
+        //}
+        //using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.6f, Screen.width * 0.2f, Screen.height * 0.1f)))
+        //{
+        //    using (new GUILayout.VerticalScope())
+        //    {
+        //        GUILayout.Button($"_canSlice: {_canSlice}", _style, GUILayout.ExpandHeight(true));
+        //    }
+        //}
     }
 
     public void SetActiveWeapon(bool value)

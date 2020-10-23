@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 0
   _activeInAnimOnStart: 1
@@ -29,9 +31,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 0
+  _intSond: 0
+  _timeSoundMax: 0
 --- !u!1102 &-9157223547468630770
 AnimatorState:
   serializedVersion: 5
@@ -145,7 +151,7 @@ AnimatorStateTransition:
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
+  m_CanTransitionToSelf: 0
 --- !u!206 &-8939443705886198161
 BlendTree:
   m_ObjectHideFlags: 1
@@ -367,10 +373,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 1
   _activeInAnimOnStart: 1
@@ -384,9 +392,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 1
+  _intSond: 0
+  _timeSoundMax: 1
 --- !u!1101 &-7479405472476448132
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -421,10 +433,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 1
   _activeInAnimOnStart: 1
@@ -438,9 +452,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 0
+  _intSond: 0
+  _timeSoundMax: 0
 --- !u!1101 &-7402206831469470635
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -475,10 +493,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 0
   _activeInAnimOnStart: 1
@@ -492,9 +512,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 0
+  _intSond: 0
+  _timeSoundMax: 0
 --- !u!1101 &-7268304349949027234
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -539,8 +563,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _value: 0
-  _enter: 1
-  _exit: 0
+  _enter: 0
+  _exit: 1
 --- !u!206 &-7208011483457764463
 BlendTree:
   m_ObjectHideFlags: 1
@@ -1104,6 +1128,34 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-5698326074528516366
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Falling Back Death
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: 1314116024975136976}
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -203655887218126122, guid: 79655477703ce5c43b43f7bfe287f389,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &-5691601730763737946
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1128,7 +1180,7 @@ AnimatorStateTransition:
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
+  m_CanTransitionToSelf: 0
 --- !u!1101 &-5597856042943210618
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1321,10 +1373,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 0
   _activeInAnimOnStart: 1
@@ -1338,9 +1392,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 1
+  _playSond: 0
+  _intSond: 0
+  _timeSoundMax: 0
 --- !u!1101 &-5065767954685935524
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1617,10 +1675,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 0
   _activeInAnimOnStart: 1
@@ -1634,9 +1694,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 0
+  _intSond: 0
+  _timeSoundMax: 0
 --- !u!1101 &-4089948959685005823
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1683,10 +1747,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 0
   _activeInAnimOnStart: 1
@@ -1700,9 +1766,13 @@ MonoBehaviour:
   _doJump: 1
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 0
+  _intSond: 0
+  _timeSoundMax: 0
 --- !u!114 &-3910321816756006229
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1715,10 +1785,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 1
   _activeInAnimOnStart: 1
@@ -1732,9 +1804,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 1
+  _intSond: 0
+  _timeSoundMax: 1
 --- !u!114 &-3856377222367700380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1747,10 +1823,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 1
   _activeInAnimOnStart: 1
@@ -1764,9 +1842,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 0
+  _intSond: 0
+  _timeSoundMax: 0
 --- !u!1102 &-3852829062366254446
 AnimatorState:
   serializedVersion: 5
@@ -1865,10 +1947,10 @@ AnimatorStateMachine:
     m_Position: {x: 500, y: 650, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3141340212078893712}
-    m_Position: {x: 440, y: 540, z: 0}
+    m_Position: {x: 670, y: 740, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7029154630969500400}
-    m_Position: {x: 520, y: 400, z: 0}
+    m_Position: {x: 490, y: 390, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5742899977505149914}
     m_Position: {x: 640, y: 490, z: 0}
@@ -1887,6 +1969,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 2599409637682315096}
     m_Position: {x: 220, y: 1090, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -5698326074528516366}
+    m_Position: {x: 250, y: -180, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 3717638826538484746}
@@ -1901,6 +1986,7 @@ AnimatorStateMachine:
   - {fileID: -5691601730763737946}
   - {fileID: -1932702460784344432}
   - {fileID: -8994567807189100154}
+  - {fileID: 3218808025164133021}
   m_EntryTransitions: []
   m_StateMachineTransitions:
   - first: {fileID: 3717638826538484746}
@@ -2112,8 +2198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _value: 0
-  _enter: 1
-  _exit: 0
+  _enter: 0
+  _exit: 1
 --- !u!1109 &-3024790959780566385
 AnimatorTransition:
   m_ObjectHideFlags: 1
@@ -2246,10 +2332,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 1
   _activeInAnimOnStart: 1
@@ -2263,9 +2351,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 1
+  _playSond: 1
+  _intSond: 2
+  _timeSoundMax: 0.65
 --- !u!1102 &-2484503432256636663
 AnimatorState:
   serializedVersion: 5
@@ -2335,10 +2427,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 0
   _activeInAnimOnStart: 1
@@ -2352,9 +2446,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 0
+  _intSond: 0
+  _timeSoundMax: 0
 --- !u!1102 &-2197557315779881891
 AnimatorState:
   serializedVersion: 5
@@ -2508,7 +2606,7 @@ AnimatorStateTransition:
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
+  m_CanTransitionToSelf: 0
 --- !u!1101 &-1859040845566209230
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -2636,10 +2734,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 0
   _activeInAnimOnStart: 1
@@ -2653,9 +2753,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 1
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 1
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 0
+  _intSond: 0
+  _timeSoundMax: 0
 --- !u!1101 &-833577476689872953
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
@@ -2826,10 +2930,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 1
   _activeInAnimOnStart: 1
@@ -2843,9 +2949,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 0
+  _intSond: 0
+  _timeSoundMax: 0
 --- !u!206 &-277172146898895464
 BlendTree:
   m_ObjectHideFlags: 1
@@ -2873,10 +2983,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 1
   _activeInAnimOnStart: 1
@@ -2890,9 +3002,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 1
+  _intSond: 1
+  _timeSoundMax: 0.6
 --- !u!1101 &-253508594044137899
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -3178,6 +3294,18 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: Death
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: ModifieDegat
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -3194,7 +3322,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: InjuredUpperBody
     m_StateMachine: {fileID: -4626691912099002815}
-    m_Mask: {fileID: 31900000, guid: 7e10f377c54ed6049abbab3e37cfe322, type: 2}
+    m_Mask: {fileID: 0}
     m_Motions:
     - serializedVersion: 2
       m_State: {fileID: -4270762721299022945}
@@ -3220,7 +3348,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: UpperBody
     m_StateMachine: {fileID: -6379269043883580091}
-    m_Mask: {fileID: 31900000, guid: 7e10f377c54ed6049abbab3e37cfe322, type: 2}
+    m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
@@ -3292,10 +3420,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 1
   _activeInAnimOnStart: 1
@@ -3309,9 +3439,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 1
+  _intSond: 1
+  _timeSoundMax: 0.5
 --- !u!206 &242134819593512722
 BlendTree:
   m_ObjectHideFlags: 1
@@ -3636,6 +3770,31 @@ BlendTree:
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
+--- !u!1101 &1314116024975136976
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: Death
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -4270762721299022945}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.90384614
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &1319222407138967334
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
@@ -3916,26 +4075,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 1
   _activeInAnimOnStart: 0
   _activeInAnimOnExit: 1
   _applyForceEnter: 0
-  _applyForceExit: 1
+  _applyForceExit: 0
   _applyForceValueEnter: 0
-  _applyForceValueUpdate: 1
-  _applyForceValueExit: 1
+  _applyForceValueUpdate: 0
+  _applyForceValueExit: 0
   _canRotatePlayer: 0
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 1
+  _intSond: 2
+  _timeSoundMax: 1
 --- !u!1109 &2369854182451503543
 AnimatorTransition:
   m_ObjectHideFlags: 1
@@ -3962,10 +4127,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 0
   _activeInAnimOnStart: 1
@@ -3979,9 +4146,13 @@ MonoBehaviour:
   _doJump: 1
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 0
+  _intSond: 0
+  _timeSoundMax: 0
 --- !u!1102 &2599409637682315096
 AnimatorState:
   serializedVersion: 5
@@ -4202,16 +4373,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 0
   _activeInAnimOnStart: 1
   _activeInAnimOnExit: 0
   _applyForceEnter: 1
-  _applyForceExit: 0
+  _applyForceExit: 1
   _applyForceValueEnter: 0
   _applyForceValueUpdate: 1
   _applyForceValueExit: 0
@@ -4219,9 +4392,38 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 0
+  _intSond: 0
+  _timeSoundMax: 0
+--- !u!1101 &3218808025164133021
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Death
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -5698326074528516366}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 0
 --- !u!1107 &3236543708138501660
 AnimatorStateMachine:
   serializedVersion: 5
@@ -4301,10 +4503,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 0
   _activeInAnimOnStart: 1
@@ -4318,9 +4522,13 @@ MonoBehaviour:
   _doJump: 1
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 0
+  _intSond: 0
+  _timeSoundMax: 0
 --- !u!1101 &3616992126149708518
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -4652,10 +4860,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 1
   _activeInAnimOnStart: 1
@@ -4669,9 +4879,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 1
+  _intSond: 0
+  _timeSoundMax: 1
 --- !u!206 &4457028330434155817
 BlendTree:
   m_ObjectHideFlags: 1
@@ -4917,10 +5131,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 1
   _activeInAnimOnStart: 1
@@ -4934,9 +5150,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 1
+  _intSond: 0
+  _timeSoundMax: 1
 --- !u!1102 &5411420080842042836
 AnimatorState:
   serializedVersion: 5
@@ -5139,10 +5359,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 1
   _activeInAnimOnStart: 1
@@ -5156,9 +5378,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 0
+  _intSond: 0
+  _timeSoundMax: 0
 --- !u!1102 &5742899977505149914
 AnimatorState:
   serializedVersion: 5
@@ -5249,10 +5475,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 1
   _activeInAnimOnStart: 1
@@ -5266,9 +5494,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 1
+  _intSond: 0
+  _timeSoundMax: 1
 --- !u!1102 &5982858393458447702
 AnimatorState:
   serializedVersion: 5
@@ -5626,10 +5858,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 0
   _activeInAnimOnStart: 1
@@ -5643,9 +5877,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 1
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 0
+  _intSond: 0
+  _timeSoundMax: 0
 --- !u!1101 &7248468880535812021
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -5699,8 +5937,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _value: 0
-  _enter: 1
-  _exit: 0
+  _enter: 0
+  _exit: 1
 --- !u!1101 &7728308633146537492
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -5924,10 +6162,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4a3660454bb3478a9f21ef34d24d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEntity: {fileID: 0}
   _getInputBrute: {fileID: 0}
   _stateMachineAttack: {fileID: 0}
   _stateMachineVertical: {fileID: 0}
   _stateMachineHorizontal: {fileID: 0}
+  _weaponColliderManager: {fileID: 0}
   _playerMove: {fileID: 0}
   _canSlice: 1
   _activeInAnimOnStart: 1
@@ -5941,9 +6181,13 @@ MonoBehaviour:
   _doJump: 0
   _doJumpExit: 0
   _canJumpExit: 0
+  _doJumpExit2: 0
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
+  _playSond: 0
+  _intSond: 0
+  _timeSoundMax: 0
 --- !u!1102 &8930894440001406866
 AnimatorState:
   serializedVersion: 5
