@@ -6,6 +6,7 @@ public class ClawCollider : MonoBehaviour
 {
     [SerializeField] private FireBossEntity _waterBossEntity;
     [SerializeField] private bool _touchWeaponBeforePlayer;
+    [SerializeField] private bool _canDamageAnim;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,7 +14,7 @@ public class ClawCollider : MonoBehaviour
         {
             if (other.gameObject.tag == "PlayerColl")
             {
-                if (other.GetComponentInChildren<StateMachineAttack>().CurrentState != PlayerAttackState.PROTECTION)
+                if (other.GetComponentInChildren<StateMachineAttack>().CurrentState != PlayerAttackState.PROTECTION && _canDamageAnim)
                 {
                     other.GetComponentInChildren<PlayerEntity>().LessLife(_waterBossEntity.Damage);
                 }
@@ -28,4 +29,6 @@ public class ClawCollider : MonoBehaviour
             _touchWeaponBeforePlayer = false;
         }
     }
+
+    public bool CanDamageAnim { get => _canDamageAnim; set => _canDamageAnim = value; }
 }

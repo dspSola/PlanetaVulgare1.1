@@ -8,22 +8,31 @@ public class WaterBossEvent : MonoBehaviour
     [SerializeField] private WaterBossEntity _waterBossEntity;
     [SerializeField] private WaterBossAgentController _waterBossAgentController;
 
-    [SerializeField] private WaterBossEvent _waterBossEvent;
     [SerializeField] private Transform _posSpawnBoss;
 
     private void Awake()
     {
         _waterBoss = GameObject.Find("Water Boss");
-        _waterBossEntity = _waterBoss.GetComponent<WaterBossEntity>();
-        _waterBossAgentController = _waterBoss.GetComponentInChildren<WaterBossAgentController>();
+
+        if(_waterBoss != null)
+        {
+            Debug.Log("Boss Not Null");
+        }
+        else
+        {
+            Debug.Log("Boss Null");
+        }
     }
 
     private void Start()
     {
+        _waterBoss = GameObject.Find("Water Boss");
+        _waterBossEntity = _waterBoss.GetComponent<WaterBossEntity>();
+        _waterBossAgentController = _waterBoss.GetComponentInChildren<WaterBossAgentController>();
         _waterBoss.SetActive(false);
     }
 
-    public void ActiveWaterBoss(GameObject playerGo)
+    public void ActiveWaterBoss()
     {
         if(_waterBoss.transform.position != _posSpawnBoss.position)
         {

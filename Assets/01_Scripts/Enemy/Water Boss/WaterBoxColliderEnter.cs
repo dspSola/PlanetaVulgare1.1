@@ -16,7 +16,7 @@ public class WaterBoxColliderEnter : MonoBehaviour
             _playerEventStory.FightBossWater = true;
             _waterBlocks.SetActive(true);
             _playerIn = true;
-            _waterBossEvent.ActiveWaterBoss(other.gameObject);
+            _waterBossEvent.ActiveWaterBoss();
             gameObject.SetActive(false);
         }
     }

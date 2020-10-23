@@ -63,7 +63,7 @@ public class ProjectileBlockWB : MonoBehaviour
                     Destroy(hitVFX, psChild.main.duration);
                 }
             }
-            Destroy(gameObject, 3);
+            Destroy(gameObject);
         }
     }
 }
