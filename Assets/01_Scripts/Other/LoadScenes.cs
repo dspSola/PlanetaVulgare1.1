@@ -12,6 +12,7 @@ public class LoadScenes : MonoBehaviour
             SceneManager.LoadScene("EnemyMushroomMutant", LoadSceneMode.Additive);
             SceneManager.LoadScene("UiScene", LoadSceneMode.Additive);
             SceneManager.LoadScene("DemsPortal", LoadSceneMode.Additive);
-        
+            SceneManager.LoadScene("MenuPause", LoadSceneMode.Additive);
+
     }
 }

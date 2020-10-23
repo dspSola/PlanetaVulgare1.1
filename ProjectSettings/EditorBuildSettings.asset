@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/06_Scenes/DemsPortal.unity
     guid: 1efba3dd6cb82004284702864315ff9d
+  - enabled: 1
+    path: Assets/06_Scenes/MenuDemarage.unity
+    guid: a4080b5f394fecb47a25be0c3fcf4ef2
+  - enabled: 1
+    path: Assets/06_Scenes/MenuPause.unity
+    guid: e30ffeee6d2b7bf4987b684437da69cc
   m_configObjects: {}
