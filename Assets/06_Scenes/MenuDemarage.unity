@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: effc802a037688e408b0f0d3b7533222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_destinationScene: Main
+  m_destinationScene: Transition
 --- !u!1 &137728832
 GameObject:
   m_ObjectHideFlags: 0
