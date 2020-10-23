@@ -24,7 +24,7 @@ public class Transition : MonoBehaviour
 
     IEnumerator MyCouroutine()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         buton.SetActive(true);
     }
 

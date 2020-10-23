@@ -177,22 +177,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Did you know that there are different versions of Earth? Jhorm and his
+  m_text: Did you know that there are different versions of Earth? Jhorm and his
     Homade tribe discovered it at their expense. The inhabitants of a plant-dominated
-    Earth stole the elemental totems that the Homad protected in order to strengthen
-    the elements of their own planet Earthat the expense of yours. The portal they
-    crossed to come and steal from you is still open, go after them and collect the
-    totems in order to restore the balance of the elements in your Earth.
-
-    [05:20]
-
-    Did
-    you know that there are different versions of Earth? Jhorm and his Homade tribe
-    discovered it at their expense. The inhabitants of a plant-dominated Earth stole
-    the elemental totems that the Homades protected in order to strengthen the elements
-    of their planet Earth at the expense of yours. The portal they crossed to come
-    and steal from you is still open, go after them, kill the generals who hold the
-    4 totems in order to restore the balance of the elements in your Earth.'
+    Earth stole the elemental totems that the Homades protected in order to strengthen
+    the elements of their planet Earth at the expense of yours. The portal they crossed
+    to come and steal from you is still open, go after them, kill the generals who
+    hold the 4 totems in order to restore the balance of the elements in your Earth.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 843b154c3a39afc41873cea7ee249811, type: 2}
   m_sharedMaterial: {fileID: -5625865199320976001, guid: 843b154c3a39afc41873cea7ee249811,
@@ -227,8 +217,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
