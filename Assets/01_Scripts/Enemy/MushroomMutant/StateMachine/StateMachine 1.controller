@@ -133,8 +133,7 @@ MonoBehaviour:
   _enemyEntity: {fileID: 11400000, guid: 3d7b0d55a94bae849acf8b2beaad7fa7, type: 2}
   _playerTransform: {fileID: 11400000, guid: b092278fd072aa44d9b43ede54abc8fb, type: 2}
   _attackDistance: 1
-  _coneDetection: {fileID: 3592913621259369559, guid: cf2742063868757439f178a26443ab20,
-    type: 3}
+  _isDesactivedCone: {fileID: 11400000, guid: 021ab9bfc2d756347a287b93b48714cf, type: 2}
   _waitpointDistance: 0.2
 --- !u!1101 &-6425986274644572652
 AnimatorStateTransition:
@@ -307,6 +306,7 @@ MonoBehaviour:
   _enemyEntity: {fileID: 11400000, guid: 3d7b0d55a94bae849acf8b2beaad7fa7, type: 2}
   _detectionPlayer: {fileID: 0}
   _alertCircle: {fileID: 0}
+  _isDesactivedCone: {fileID: 11400000, guid: 021ab9bfc2d756347a287b93b48714cf, type: 2}
   _minTime: 2
   _maxTime: 10
 --- !u!1101 &-207841071109990263

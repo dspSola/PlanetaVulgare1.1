@@ -12,6 +12,7 @@ public class StatePatrol : StateMachineBehaviour
     [SerializeField] private EnemyEntityData _enemyEntity;
     [SerializeField] private DetectionPlayer _detectionPlayer;
     [SerializeField] private AlertCircle _alertCircle;
+    [SerializeField] private BoolVariable _isDesactivedCone;
 
     [Header("Timer")]
     [SerializeField] private float _minTime = 2000f;
@@ -21,7 +22,7 @@ public class StatePatrol : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Entering state: Patrol");
-
+        _isDesactivedCone.value = false;
         _detectionPlayer = animator.GetComponentInChildren<DetectionPlayer>();
         _alertCircle = animator.GetComponentInChildren<AlertCircle>();
         m_Agent = animator.GetComponent<NavMeshAgent>();
