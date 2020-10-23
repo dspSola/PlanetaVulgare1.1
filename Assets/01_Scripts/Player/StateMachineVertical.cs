@@ -12,9 +12,12 @@ public enum PlayerVerticalState
 public class StateMachineVertical : MonoBehaviour
 {
     [SerializeField] private GetInputBrute _getBruteInput;
+    [SerializeField] private StateMachineAttack _stateMachineAttack;
     [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
     [SerializeField] private CollisionOverlapBoxTester _groundCheck;
+
+    [SerializeField] private float _timeToJump, _timeToJumpMax;
 
     #region Public properties
 
@@ -137,6 +140,7 @@ public class StateMachineVertical : MonoBehaviour
     private void DoGroundedEnter()
     {
         _bruteAnimatorController.SetGrounded(true);
+        _timeToJump = 0;
     }
 
     private void DoGroundedExit()
@@ -152,7 +156,11 @@ public class StateMachineVertical : MonoBehaviour
             return;
         }
 
-        if (_getBruteInput.JumpInput.IsActive)
+        if(_timeToJump < _timeToJumpMax)
+        {
+            _timeToJump += Time.deltaTime;
+        }
+        else if (_getBruteInput.JumpInput.IsActive && !_stateMachineAttack.IsAnim && !_getBruteInput.Attack01Input.IsActive)
         {
             TransitionToState(PlayerVerticalState.JUMPING);
             return;
@@ -228,6 +236,15 @@ public class StateMachineVertical : MonoBehaviour
             {
                 GUILayout.Button($"VState: {_currentState}", _style, GUILayout.ExpandHeight(true));
             }
+        }
+    }
+
+    public void SetTransitionToJumping()
+    {
+        if (_currentState == PlayerVerticalState.GROUNDED)
+        {
+            TransitionToState(PlayerVerticalState.JUMPING);
+            return;
         }
     }
 
