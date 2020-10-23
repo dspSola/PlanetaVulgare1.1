@@ -108,5 +108,13 @@ public class PlayerEntity : Entity
         UpgradeLife(50);
     }
 
+    public void LifeToLifeMax()
+    {
+        base.Life = base.LifeMax;
+        base.CoefLife = base.Life / base.LifeMax;
+        _playerData.LifeCoef = base.CoefLife;
+        _hUDLifePlayer.SetLife(base.CoefLife);
+    }
+
     private GUIStyle _style;
 }

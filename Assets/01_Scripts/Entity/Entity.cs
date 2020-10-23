@@ -53,6 +53,19 @@ public class Entity : MonoBehaviour
         _coefLife = _life / _lifeMax;
     }
 
+    public virtual void LessLife(float value, PlayerEntity pe)
+    {
+        if (_life - value < 0)
+        {
+            _life = 0;
+        }
+        else
+        {
+            _life -= value;
+        }
+        _coefLife = _life / _lifeMax;
+    }
+
     public virtual void UpgradeLife(float value)
     {
         _life += value;

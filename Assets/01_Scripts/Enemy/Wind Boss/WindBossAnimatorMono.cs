@@ -41,9 +41,9 @@ public class WindBossAnimatorMono : MonoBehaviour
         _animator.SetInteger("CptSpell", valueInt);
     }
 
-    public void SetDeath(bool value)
+    public void SetDeath()
     {
-        _animator.SetBool("Death", value);
+        _animator.SetBool("Death", true);
     }
 
     public bool GetAttack()

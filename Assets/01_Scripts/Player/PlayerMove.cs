@@ -37,6 +37,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private CollisionRaycastTester _floorFinder;
     [SerializeField] private float _floorOffsetY;
 
+    [SerializeField] private float _timeToApllyGravity, _timeToApllyGravityMax;
+
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -68,16 +70,6 @@ public class PlayerMove : MonoBehaviour
         {
             //_horizontalVelocity = _transformedInput * _currentSpeed;
             _horizontalVelocity = Vector3.zero;
-        }
-
-        if (_stateMachineVertical.CurrentState == PlayerVerticalState.GROUNDED)
-        {
-            _verticalVelocity = Vector3.zero;
-        }
-        else
-        {
-            // Si on n'est pas au sol, applique la gravité
-            _verticalVelocity += Physics.gravity * _gravityFallMultiplier * Time.fixedDeltaTime;
         }
 
         if (_canApplyForceAnimation)
@@ -131,6 +123,24 @@ public class PlayerMove : MonoBehaviour
         if (_stateMachineVertical.CurrentState == PlayerVerticalState.GROUNDED)
         {
             StickToGround();
+        }
+
+        if (_stateMachineVertical.CurrentState == PlayerVerticalState.GROUNDED)
+        {
+            _verticalVelocity = Vector3.zero;
+            _timeToApllyGravity = 0;
+        }
+        else
+        {
+            // Si on n'est pas au sol, applique la gravité
+            if (_timeToApllyGravity < _timeToApllyGravityMax)
+            {
+                _timeToApllyGravity += Time.deltaTime;
+            }
+            else
+            {
+                _verticalVelocity += Physics.gravity * _gravityFallMultiplier * Time.fixedDeltaTime;
+            }
         }
 
         if (_canApplyForceAnimation)

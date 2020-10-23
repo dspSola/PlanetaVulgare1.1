@@ -20,4 +20,9 @@ public class EnemyEntity : Entity
             _speedRun = enemyEntityData.SpeedRun;
         }
     }
+
+    public override void LessLife(float value, PlayerEntity pe)
+    {
+        base.LessLife(value);
+    }
 }

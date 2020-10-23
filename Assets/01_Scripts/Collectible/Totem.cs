@@ -6,6 +6,7 @@ public class Totem : MonoBehaviour
 {
     [SerializeField] private string _totemName;
     [SerializeField] private Sprite _spriteTotem;
+    [SerializeField] GameObject _boss;
 
     private void OnTriggerStay(Collider other)
     {
@@ -29,6 +30,8 @@ public class Totem : MonoBehaviour
                 {
                     other.gameObject.GetComponentInChildren<PlayerEntity>().AddTotemWater(this);
                 }
+
+                _boss.SetActive(true);
 
                 Destroy(gameObject);
             }
