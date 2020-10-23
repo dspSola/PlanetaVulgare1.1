@@ -5,8 +5,13 @@ public class StateCombatStand : StateMachineBehaviour
 {
     [Header("Parameter")]
     [SerializeField] private NavMeshAgent m_Agent;
-    [SerializeField] ScriptableTransform _playerTransform;
     [SerializeField] private EnemyEntityData _enemyEntity;
+    [SerializeField] private AnimationControler _animatorControler;
+    [SerializeField] ScriptableTransform _playerTransform;
+    [SerializeField] private float _attackDistance = 1f;
+
+    [Header("Waypoint Info")]
+    [SerializeField] private float _waitpointDistance = 0.2f;
 
     [Header("Timer")]
     [SerializeField] private float _timeDelay;
@@ -17,8 +22,12 @@ public class StateCombatStand : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Entering state: CombatSand");
+
+        _transform = animator.GetComponent<Transform>();
         m_Agent = animator.GetComponent<NavMeshAgent>();
-        m_Agent.speed = 0;
+        _animatorControler = animator.GetComponentInChildren<AnimationControler>();
+
+        m_Agent.speed = _enemyEntity.SpeedRun;
 
         _isDelayed = false;
         _currentTime = 0;
@@ -31,14 +40,30 @@ public class StateCombatStand : StateMachineBehaviour
         Debug.Log("Staying in state: CombatSand");
 
         Timer();
+        Debug.Log(_currentTime + " second av combat");
+
+        _distanceRange = Vector3.Distance(_transform.position, _playerTransform.value.position);
 
         /*Transitons*/
 
-        //si le temps du delay est dépassé alors il attaque
-        if (_isDelayed)
+        //si la distance est inférieur a la distance attack il attaque sinon il chasse
+        if (_distanceRange > _attackDistance)
         {
-            animator.SetTrigger(_attackingId);
+            DoChassing();
+            _animatorControler.IsFigthing = false;
         }
+        else
+        {
+            //m_Agent.stoppingDistance = _attackDistance;
+            animator.SetTrigger(_attackingId);
+            _animatorControler.IsFigthing = false;
+        }
+
+        //si le temps du delay est dépassé alors il attaque
+        //if (_isDelayed)
+        //{
+        //    animator.SetTrigger(_attackingId);
+        //}
 
         //si la vie est à 0 on meurt
         if (_enemyEntity.CurrentLife <= 0)
@@ -70,10 +95,23 @@ public class StateCombatStand : StateMachineBehaviour
         }
     }
 
+    private void DoChassing()
+    {
+        m_Agent.destination = _playerTransform.value.position;
+        //if (!m_Agent.pathPending && m_Agent.remainingDistance < _waitpointDistance)
+        //{
+            
+        //}
+    }
+
+    //private bool _isReadyForAttack;
+
     private bool _isDelayed;
     private float _currentTime;
-    float _delayTime;
+    private float _delayTime;
 
+    private float _distanceRange;
     private int _attackingId = Animator.StringToHash("Attacking");
     private int _dieId = Animator.StringToHash("Die");
+    private Transform _transform;
 }

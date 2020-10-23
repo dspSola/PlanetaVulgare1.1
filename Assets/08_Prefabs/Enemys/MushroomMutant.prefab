@@ -632,7 +632,7 @@ GameObject:
   - component: {fileID: 366479980257403963}
   m_Layer: 9
   m_Name: HitBox
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -649,7 +649,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4154759670093112881}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &366479980257403963
 CapsuleCollider:
@@ -1167,7 +1167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4154759669174750082
 Transform:
   m_ObjectHideFlags: 0
@@ -1191,7 +1191,7 @@ SphereCollider:
   m_GameObject: {fileID: 4154759669174750085}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 10
   m_Center: {x: 0, y: 1, z: 0}
@@ -1225,7 +1225,7 @@ GameObject:
   - component: {fileID: 4154759669568546011}
   m_Layer: 9
   m_Name: ConeDetection
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1242,7 +1242,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4154759670093112881}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &4154759669568546013
 MonoBehaviour:
@@ -2282,7 +2282,7 @@ MonoBehaviour:
   m_Agent: {fileID: 4154759670093112893}
   _animator: {fileID: 4154759670046205200}
   _mushroomManager: {fileID: 9104200892294269522}
-  _switchStates: {fileID: 0}
+  _switchStates: {fileID: 11400000, guid: e966632068522b44b9397cf1f0f4a833, type: 2}
 --- !u!1 &4154759670093112880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2317,8 +2317,8 @@ Transform:
   m_LocalPosition: {x: 390.3, y: 0, z: 323.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8855341200829445675}
   - {fileID: 4154759669568546010}
+  - {fileID: 8855341200829445675}
   - {fileID: 4154759669174750082}
   - {fileID: 4154759670046205203}
   m_Father: {fileID: 0}

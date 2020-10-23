@@ -18,7 +18,7 @@ public class AnimationControler : MonoBehaviour
         _speed = m_Agent.speed;
 
         _animator.SetFloat(_speedId, _speed);
-        _animator.SetBool(_isAttacking1Id, !_switchStates.value);
+        _animator.SetBool(_isAttacking1Id, _isFigthing);
         _animator.SetBool(_isDeadId, _mushroomManager.IsDead);
     }
     private void EventDie()
@@ -28,9 +28,12 @@ public class AnimationControler : MonoBehaviour
     }
 
     private float _speed;
+    private bool _isFigthing;
 
     private StateChassingTarget _stateChassingTarget;
     private int _speedId = Animator.StringToHash("Speed");
     private int _isAttacking1Id = Animator.StringToHash("IsAttacking1");
     private int _isDeadId = Animator.StringToHash("IsDead");
+
+    public bool IsFigthing { get => _isFigthing; set => _isFigthing = value; }
 }

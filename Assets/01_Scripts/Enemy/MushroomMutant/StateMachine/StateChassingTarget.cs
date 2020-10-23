@@ -7,7 +7,6 @@ public class StateChassingTarget : StateMachineBehaviour
     [SerializeField] private NavMeshAgent m_Agent;
     [SerializeField] private EnemyEntityData _enemyEntity;
     [SerializeField] private ScriptableTransform _playerTransform;
-    [SerializeField] private BoolVariable _switchStates;
     [SerializeField] private float _attackDistance = 1f;
 
     [Header("Waypoint Info")]
@@ -21,7 +20,7 @@ public class StateChassingTarget : StateMachineBehaviour
         _transform = animator.GetComponent<Transform>();
         m_Agent = animator.GetComponent<NavMeshAgent>();
         m_Agent.speed = _enemyEntity.SpeedRun;
-        _switchStates.value = true;
+        _isReadyForAttack = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -34,21 +33,21 @@ public class StateChassingTarget : StateMachineBehaviour
         //Debug.Log("moyenne X: " + _distanceRange);
 
         //si la distance est inférieur a la distance attack il attaque sinon il chasse
-        if(_distanceRange < _attackDistance)
+        if (_distanceRange < _attackDistance)
         {
-            AverageAttack(_attackDistance);
-            _switchStates.value = false;
+            m_Agent.stoppingDistance = _attackDistance;
+            _isReadyForAttack = true;
         }
         else
         {
             DoChassing();
-            _switchStates.value = true;
+            _isReadyForAttack = false;
         }
-        
+
         /*Transitons*/
 
         //si la distance est averageAttack on passe en combat
-        if (_switchStates.value)
+        if (_isReadyForAttack)
         {
             animator.SetTrigger(_modeCombatId);
         }
@@ -67,18 +66,14 @@ public class StateChassingTarget : StateMachineBehaviour
     }
     private void DoChassing()
     {
-        if (!m_Agent.pathPending && m_Agent.remainingDistance < _waitpointDistance)
-        {
-            m_Agent.destination = _playerTransform.value.position;
-        }
+        m_Agent.destination = _playerTransform.value.position;
+        //if (!m_Agent.pathPending && m_Agent.remainingDistance < _waitpointDistance)
+        //{
+            
+        //}
     }
 
-    private void AverageAttack(float distance)
-    {
-        m_Agent.stoppingDistance = distance;
-    }
-
-    
+    private bool _isReadyForAttack;
     private float _distanceRange;
     private int _modeCombatId = Animator.StringToHash("ModeCombat");
     private int _dieId = Animator.StringToHash("Die");
