@@ -9,7 +9,7 @@ public class StatePatrol : StateMachineBehaviour
 
     [Header("Parameter")]
     [SerializeField] private NavMeshAgent m_Agent;
-    [SerializeField] private EnemyEntityData _enemyEntity;
+    [SerializeField] MushroomEntity _mushroomEntity;
     [SerializeField] private DetectionPlayer _detectionPlayer;
     [SerializeField] private AlertCircle _alertCircle;
     [SerializeField] private BoolVariable _isDesactivedCone;
@@ -22,12 +22,18 @@ public class StatePatrol : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Entering state: Patrol");
+
+        if (_mushroomEntity = null)
+        {
+            _mushroomEntity = animator.GetComponent<MushroomEntity>();
+        }
+
         _isDesactivedCone.value = false;
         _detectionPlayer = animator.GetComponentInChildren<DetectionPlayer>();
         _alertCircle = animator.GetComponentInChildren<AlertCircle>();
         m_Agent = animator.GetComponent<NavMeshAgent>();
 
-        m_Agent.speed = _enemyEntity.SpeedWalk;
+        m_Agent.speed = _mushroomEntity.SpeedWalk;
 
         _isDelayed = false;
         _currentTime = 0;

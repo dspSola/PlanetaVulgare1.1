@@ -2,8 +2,9 @@
 
 public class MushroomManager : MonoBehaviour
 {
-    [SerializeField] EnemyEntityData _MushroomEntity;
-    [SerializeField] EntityData _playerParameter;
+    //[SerializeField] EnemyEntityData _MushroomEntity;
+    //[SerializeField] EntityData _playerParameter;
+    [SerializeField] private MushroomEntity _mushroomEntity;
     [SerializeField] Collider _collider;
 
     private void Start()
@@ -14,11 +15,11 @@ public class MushroomManager : MonoBehaviour
 
     private void Update()
     {
-        _MushroomEntity.CurrentLife = Mathf.Clamp(_MushroomEntity.CurrentLife, _playerParameter.Damage, _MushroomEntity.LifeMax);
+        //_MushroomEntity.CurrentLife = Mathf.Clamp(_MushroomEntity.CurrentLife, _playerParameter.Damage, _MushroomEntity.LifeMax);
 
         if (_damage)
         {
-            _MushroomEntity.CurrentLife -= _playerParameter.Damage;
+            //_MushroomEntity.CurrentLife -= _playerParameter.Damage;
         }
         else
         {
@@ -30,7 +31,7 @@ public class MushroomManager : MonoBehaviour
         //    _isDead = true;
         //}
 
-        Debug.Log("life =" + _MushroomEntity.CurrentLife);
+        //Debug.Log("life =" + _MushroomEntity.CurrentLife);
     }
 
     private void OnTriggerEnter(Collider other)

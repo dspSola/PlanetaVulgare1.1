@@ -5,7 +5,7 @@ public class StateChassingTarget : StateMachineBehaviour
 {
     [Header("Parameter")]
     [SerializeField] private NavMeshAgent m_Agent;
-    [SerializeField] private EnemyEntityData _enemyEntity;
+    [SerializeField] private MushroomEntity _mushroomEntity;
     [SerializeField] private ScriptableTransform _playerTransform;
     [SerializeField] private float _attackDistance = 1f;
     [SerializeField] private BoolVariable _isDesactivedCone;
@@ -17,10 +17,16 @@ public class StateChassingTarget : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Entering state: Chassing");
+
+        if (_mushroomEntity = null)
+        {
+            _mushroomEntity = animator.GetComponent<MushroomEntity>();
+        }
+
         _isDesactivedCone.value = true;
         _transform = animator.GetComponent<Transform>();
         m_Agent = animator.GetComponent<NavMeshAgent>();
-        m_Agent.speed = _enemyEntity.SpeedRun;
+        m_Agent.speed = _mushroomEntity.SpeedRun;
         _isReadyForAttack = false;
     }
 
@@ -54,7 +60,7 @@ public class StateChassingTarget : StateMachineBehaviour
         }
 
         //si la vie est à 0 on meurt
-        if (_enemyEntity.CurrentLife <= 0)
+        if (_mushroomEntity.Life <= 0)
         {
             animator.SetTrigger(_dieId);
         }

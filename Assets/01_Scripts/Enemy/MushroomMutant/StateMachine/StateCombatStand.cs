@@ -5,7 +5,8 @@ public class StateCombatStand : StateMachineBehaviour
 {
     [Header("Parameter")]
     [SerializeField] private NavMeshAgent m_Agent;
-    [SerializeField] private EnemyEntityData _enemyEntity;
+    [SerializeField] private MushroomEntity _mushroomEntity;
+
     [SerializeField] private AnimationControler _animatorControler;
     [SerializeField] ScriptableTransform _playerTransform;
     [SerializeField] private float _attackDistance = 1f;
@@ -23,11 +24,16 @@ public class StateCombatStand : StateMachineBehaviour
     {
         Debug.Log("Entering state: CombatSand");
 
+        if (_mushroomEntity = null)
+        {
+            _mushroomEntity = animator.GetComponent<MushroomEntity>();
+        }
+
         _transform = animator.GetComponent<Transform>();
         m_Agent = animator.GetComponent<NavMeshAgent>();
         _animatorControler = animator.GetComponentInChildren<AnimationControler>();
 
-        m_Agent.speed = _enemyEntity.SpeedRun;
+        m_Agent.speed = _mushroomEntity.SpeedRun;
 
         _isDelayed = false;
         _currentTime = 0;
@@ -66,7 +72,7 @@ public class StateCombatStand : StateMachineBehaviour
         //}
 
         //si la vie est à 0 on meurt
-        if (_enemyEntity.CurrentLife <= 0)
+        if (_mushroomEntity.Life <= 0)
         {
             animator.SetTrigger(_dieId);
         }
