@@ -692,7 +692,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exit
+  m_text: Exits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf3885f78af84da459f05c8a270e2a54, type: 2}
   m_sharedMaterial: {fileID: -264852323847688289, guid: cf3885f78af84da459f05c8a270e2a54,
@@ -2930,7 +2930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 583111215}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1278414926
