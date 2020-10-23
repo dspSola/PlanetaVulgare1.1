@@ -454,7 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 341602960619380601}
-  _halfExtents: {x: 0.25, y: 0.25, z: 0.25}
+  _halfExtents: {x: 0.25, y: 0.3, z: 0.25}
   _layerMask:
     serializedVersion: 2
     m_Bits: 2147483648
@@ -577,6 +577,8 @@ MonoBehaviour:
   _cameraTransform: {fileID: 0}
   _floorFinder: {fileID: 2505257492178569915}
   _floorOffsetY: 0
+  _timeToApllyGravity: 0
+  _timeToApllyGravityMax: 0.25
   _rigidbodyOnFloorPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &341602960977955961
 GameObject:

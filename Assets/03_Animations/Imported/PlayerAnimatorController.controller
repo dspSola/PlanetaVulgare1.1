@@ -1950,7 +1950,7 @@ AnimatorStateMachine:
     m_Position: {x: 670, y: 740, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7029154630969500400}
-    m_Position: {x: 520, y: 400, z: 0}
+    m_Position: {x: 490, y: 390, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5742899977505149914}
     m_Position: {x: 640, y: 490, z: 0}
@@ -4086,10 +4086,10 @@ MonoBehaviour:
   _activeInAnimOnStart: 0
   _activeInAnimOnExit: 1
   _applyForceEnter: 0
-  _applyForceExit: 1
+  _applyForceExit: 0
   _applyForceValueEnter: 0
-  _applyForceValueUpdate: 1
-  _applyForceValueExit: 1
+  _applyForceValueUpdate: 0
+  _applyForceValueExit: 0
   _canRotatePlayer: 0
   _doJump: 0
   _doJumpExit: 0
@@ -4384,7 +4384,7 @@ MonoBehaviour:
   _activeInAnimOnStart: 1
   _activeInAnimOnExit: 0
   _applyForceEnter: 1
-  _applyForceExit: 0
+  _applyForceExit: 1
   _applyForceValueEnter: 0
   _applyForceValueUpdate: 1
   _applyForceValueExit: 0

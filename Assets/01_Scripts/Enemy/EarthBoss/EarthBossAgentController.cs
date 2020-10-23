@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class WindBossAgentController : MonoBehaviour
+public class EarthBossAgentController : MonoBehaviour
 {
-    [SerializeField] private WindBossEntity _windBossEntity;
-    [SerializeField] private WindBossAnimatorMono _windBossAnimatorMono;
-    [SerializeField] private WindBossAttackManager _windBossAttackManager;
-    [SerializeField] private WindBossSpellManager _windBossSpellManager;
+    [SerializeField] private EarthBossEntity _windBossEntity;
+    [SerializeField] private EarthBossAnimatorMono _earthBossAnimatorMono;
+    [SerializeField] private EarthBossAttackManager _earthBossAttackManager;
+    [SerializeField] private EarthBossSpellManager _earthBossSpellManager;
     [SerializeField] private NavMeshAgent _navMeshAgent;
     [SerializeField] private Transform _windBossTransform, _windBossTransformMesh, _playerTransform;
 
     [SerializeField] private float _speedCurrent, _speedMaxCurrent, _coefAcceleration, _coefDecceleration, _maxDistanceToAttackGround, _maxDistanceToAttackHigh, _distancePlayer;
 
-    [SerializeField] private bool _makePauseDistance, _makePauseDestinationAttack, _makeRotationPauseAttack, _canMakeRotationPauseAttack, _canAttack, _isInPath, _path, _hasPath, _isStopped, _isDeath, _isFly;
+    [SerializeField] private bool _makePauseDistance, _makePauseDestinationAttack, _makeRotationPauseAttack, _canMakeRotationPauseAttack, _canAttack, _isInPath, _path, _hasPath, _isStopped, _isDeath, _isInHearth;
     [SerializeField] private float _timeToFly, _timeToFlyMax, _highMax, _speedCoefHighUpDown, _randomTimeSpell, _randomTimeSpellMax;
 
     public void Initialize(Transform playerTr)
@@ -32,71 +32,11 @@ public class WindBossAgentController : MonoBehaviour
             {
                 _distancePlayer = Vector3.Distance(_playerTransform.position, _navMeshAgent.transform.position);
 
-                if(_timeToFly < _timeToFlyMax)
+                if (_distancePlayer > _maxDistanceToAttackHigh)
                 {
-                    _timeToFly += Time.deltaTime;
-                }
-                else
-                {
-                    _isFly = !_isFly;
-                    _windBossAnimatorMono.SetFly(_isFly);
-                    _timeToFly = 0;
-                }
-
-                if(_isFly)
-                {
-                    if (_windBossTransformMesh.position.y < _windBossTransform.position.y + _highMax)
+                    if (_playerTransform.position != _navMeshAgent.destination)
                     {
-                        _windBossTransformMesh.position += Vector3.up * Time.deltaTime * _speedCoefHighUpDown;
-                    }
-
-                    if (_distancePlayer > _maxDistanceToAttackHigh)
-                    {
-                        if (_playerTransform.position != _navMeshAgent.destination)
-                        {
-                            _navMeshAgent.SetDestination(_playerTransform.position);
-                        }
-                    }
-                    else
-                    {
-                        Vector3 dir = (_windBossTransform.position - _playerTransform.transform.position).normalized;
-                        Vector3 dirDistance = dir * _distancePlayer;
-
-                        if (dirDistance != _navMeshAgent.destination)
-                        {
-                            _navMeshAgent.SetDestination(dirDistance);
-                        }
-                    }
-
-                    if(_randomTimeSpell < _randomTimeSpellMax)
-                    {
-                        _randomTimeSpell += Time.deltaTime;
-                    }
-                    else
-                    {
-                        int random = Random.Range(0, 2);
-                        _windBossAnimatorMono.SetSpell(true, random);
-                        _randomTimeSpell = 0;
-                    }
-                }
-                else
-                {
-                    if (_windBossTransformMesh.position.y > _windBossTransform.position.y)
-                    {
-                        _windBossTransformMesh.position -= Vector3.up * Time.deltaTime * _speedCoefHighUpDown;
-                    }
-
-                    if (_distancePlayer > _maxDistanceToAttackGround)
-                    {
-                        if (_playerTransform.position != _navMeshAgent.destination)
-                        {
-                            _navMeshAgent.SetDestination(_playerTransform.position);
-                        }
-                    }
-                    else
-                    {
-                        int random = Random.Range(1, 4);
-                        _windBossAnimatorMono.SetAttack(true, random);
+                        _navMeshAgent.SetDestination(_playerTransform.position);
                     }
                 }
 
