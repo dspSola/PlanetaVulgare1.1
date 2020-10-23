@@ -133,6 +133,8 @@ MonoBehaviour:
   _enemyEntity: {fileID: 11400000, guid: 3d7b0d55a94bae849acf8b2beaad7fa7, type: 2}
   _playerTransform: {fileID: 11400000, guid: b092278fd072aa44d9b43ede54abc8fb, type: 2}
   _attackDistance: 1
+  _coneDetection: {fileID: 3592913621259369559, guid: cf2742063868757439f178a26443ab20,
+    type: 3}
   _waitpointDistance: 0.2
 --- !u!1101 &-6425986274644572652
 AnimatorStateTransition:

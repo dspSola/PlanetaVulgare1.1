@@ -8,6 +8,7 @@ public class StateChassingTarget : StateMachineBehaviour
     [SerializeField] private EnemyEntityData _enemyEntity;
     [SerializeField] private ScriptableTransform _playerTransform;
     [SerializeField] private float _attackDistance = 1f;
+    [SerializeField] GameObject _coneDetection;
 
     [Header("Waypoint Info")]
     [SerializeField] private float _waitpointDistance = 0.2f;
@@ -16,7 +17,7 @@ public class StateChassingTarget : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Entering state: Chassing");
-
+        _coneDetection.SetActive(false);
         _transform = animator.GetComponent<Transform>();
         m_Agent = animator.GetComponent<NavMeshAgent>();
         m_Agent.speed = _enemyEntity.SpeedRun;
