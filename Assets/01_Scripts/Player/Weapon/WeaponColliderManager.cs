@@ -10,7 +10,7 @@ public class WeaponColliderManager : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private List<AudioClip> _audioClips;
     [SerializeField] private List<AudioClip> _audioClipsImpact;
-    [SerializeField] private AudioClip _audioChangeWeapon;
+    [SerializeField] private AudioClip _audioChangeWeapon, _audioImpact;
 
     [SerializeField] private float _timeSond, _timeSoundMax;
 
@@ -42,6 +42,11 @@ public class WeaponColliderManager : MonoBehaviour
                 }
                 int random = Random.Range(0, 3);
                 _audioSource.PlayOneShot(_audioClipsImpact[random]);
+            }
+
+            if(other.gameObject.layer == 31)
+            {
+                _audioSource.PlayOneShot(_audioImpact); 
             }
         }
     }
