@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88728465}
   m_LocalRotation: {x: 0, y: -0.86602545, z: 0, w: 0.49999994}
-  m_LocalPosition: {x: 452.849, y: 0, z: 491.145}
+  m_LocalPosition: {x: 452.702, y: 0, z: 491.06}
   m_LocalScale: {x: 1.9550683, y: 3.1415007, z: 1}
   m_Children: []
   m_Father: {fileID: 539153038}
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507ce289c66b553479c55fc2650a5d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_deplacement: 5
+  m_deplacement: 10
   _bloodSunSkybox: {fileID: 2100000, guid: b4f152e0498484391a9f0d5a1facf03b, type: 2}
   _sunnySunSkybox: {fileID: 2100000, guid: 7416536dbe0334cfd888dd1beb75a9fb, type: 2}
   _bloodSun: {fileID: 827361923}
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507ce289c66b553479c55fc2650a5d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_deplacement: 5
+  m_deplacement: 10
   _bloodSunSkybox: {fileID: 2100000, guid: b4f152e0498484391a9f0d5a1facf03b, type: 2}
   _sunnySunSkybox: {fileID: 2100000, guid: 7416536dbe0334cfd888dd1beb75a9fb, type: 2}
   _bloodSun: {fileID: 827361923}

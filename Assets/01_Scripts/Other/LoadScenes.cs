@@ -10,6 +10,8 @@ public class LoadScenes : MonoBehaviour
             SceneManager.LoadScene("BabouchePlayer", LoadSceneMode.Additive);
             SceneManager.LoadScene("WaterBossScene", LoadSceneMode.Additive);
             SceneManager.LoadScene("EnemyMushroomMutant", LoadSceneMode.Additive);
-            //SceneManager.LoadScene("Player", LoadSceneMode.Additive);
+            SceneManager.LoadScene("UiScene", LoadSceneMode.Additive);
+            SceneManager.LoadScene("DemsPortal", LoadSceneMode.Additive);
+        
     }
 }
