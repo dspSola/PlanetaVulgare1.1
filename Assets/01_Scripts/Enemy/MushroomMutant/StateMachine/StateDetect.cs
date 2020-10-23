@@ -3,11 +3,9 @@ using UnityEngine.AI;
 
 public class StateDetect : StateMachineBehaviour
 {
-    [SerializeField] IntVariable _mushroomCurrentLife;
-
     [Header("Parameter")]
     [SerializeField] private NavMeshAgent m_Agent;
-    //[SerializeField] private EnemyEntityData _enemyEntity;
+    [SerializeField] private EnemyEntityData _enemyEntity;
     //[SerializeField] private ScriptableTransform _playerTransform;
 
     //[Header("Waypoint Info")]
@@ -33,10 +31,10 @@ public class StateDetect : StateMachineBehaviour
         animator.SetTrigger(_chassingTargetId);
 
         //si la vie est à 0 on meurt
-        if (_mushroomCurrentLife.value <= 0)
-        {
-            animator.SetTrigger(_dieId);
-        }
+        //if (_enemyEntity.CurrentLife <= 0)
+        //{
+        //    animator.SetTrigger(_dieId);
+        //}
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

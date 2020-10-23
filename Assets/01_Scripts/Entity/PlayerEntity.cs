@@ -73,14 +73,14 @@ public class PlayerEntity : Entity
     public void ClickOnRetry()
     {
         _canvasDie.SetActive(false);
-        _playerTransform.position = _playerEventStory.PosCheckPointDie;
+        _playerTransform.position = _playerEventStory.PosCheckPointDie;        
         Cursor.lockState = CursorLockMode.Locked;
         base.Life = base.LifeMax;
         base.CoefLife = base.Life / base.LifeMax;
         _playerData.LifeCoef = base.CoefLife;
         _hUDLifePlayer.SetLife(base.CoefLife);
         _bruteAnimatorController.SetDeath(false);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Main");
     }
 
     public void AddTotemFire(Totem totem)

@@ -37,9 +37,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e129cc4f4e395543820a69abef2294e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mushroomCurrentLife: {fileID: 11400000, guid: 755551d59bcfb454db3d9ee96b6a8f11,
-    type: 2}
   m_Agent: {fileID: 0}
+  _enemyEntity: {fileID: 0}
 --- !u!1107 &-8496199457228195913
 AnimatorStateMachine:
   serializedVersion: 5
@@ -130,13 +129,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e320be590597ba4e8ce237f10b21265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mushroomCurrentLife: {fileID: 11400000, guid: 755551d59bcfb454db3d9ee96b6a8f11,
-    type: 2}
   m_Agent: {fileID: 0}
   _enemyEntity: {fileID: 11400000, guid: 3d7b0d55a94bae849acf8b2beaad7fa7, type: 2}
-  _averageAttack: {fileID: 0}
   _playerTransform: {fileID: 11400000, guid: b092278fd072aa44d9b43ede54abc8fb, type: 2}
-  distance: 1
+  _attackDistance: 1
+  _coneDetection: {fileID: 3592913621259369559, guid: cf2742063868757439f178a26443ab20,
+    type: 3}
   _waitpointDistance: 0.2
 --- !u!1101 &-6425986274644572652
 AnimatorStateTransition:
@@ -282,12 +280,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad59a88fb758fe44e9c15cacfd1b4524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mushroomCurrentLife: {fileID: 11400000, guid: 755551d59bcfb454db3d9ee96b6a8f11,
-    type: 2}
   m_Agent: {fileID: 0}
   _enemyEntity: {fileID: 11400000, guid: 3d7b0d55a94bae849acf8b2beaad7fa7, type: 2}
-  _averageAttack: {fileID: 0}
   _playerTransform: {fileID: 11400000, guid: b092278fd072aa44d9b43ede54abc8fb, type: 2}
+  _animatorControler: {fileID: 0}
+  _attackDistance: 1.5
   _waitpointDistance: 0.2
   _timeDelay: 0
   _minTime: 1
@@ -304,8 +301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6af5a5ad30ae945a775c7680e8b509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mushroomCurrentLife: {fileID: 11400000, guid: 755551d59bcfb454db3d9ee96b6a8f11,
-    type: 2}
   _waitPoints: {fileID: 11400000, guid: eb6cb4d406f8353438c95a26a758449e, type: 2}
   _waitpointDistance: 0.2
   m_Agent: {fileID: 0}
@@ -465,7 +460,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 800, y: 50, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -6283940923322128169}
+  m_DefaultState: {fileID: 838068669659051219}
 --- !u!1102 &838068669659051219
 AnimatorState:
   serializedVersion: 5
@@ -508,8 +503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eeac86732942724b8ccbd2e7158d3ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mushroomCurrentLife: {fileID: 11400000, guid: 755551d59bcfb454db3d9ee96b6a8f11,
-    type: 2}
   m_Agent: {fileID: 0}
   _enemyEntity: {fileID: 11400000, guid: 3d7b0d55a94bae849acf8b2beaad7fa7, type: 2}
   _minTime: 1
@@ -526,11 +519,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19536ae79b5793c4e9e8e5b9954a5a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mushroomCurrentLife: {fileID: 11400000, guid: 755551d59bcfb454db3d9ee96b6a8f11,
-    type: 2}
   m_Agent: {fileID: 0}
-  _playerTransform: {fileID: 11400000, guid: b092278fd072aa44d9b43ede54abc8fb, type: 2}
   _enemyEntity: {fileID: 0}
+  _animatorControler: {fileID: 0}
+  _playerTransform: {fileID: 11400000, guid: b092278fd072aa44d9b43ede54abc8fb, type: 2}
+  _attackDistance: 1.5
+  _waitpointDistance: 0.2
   _timeDelay: 0
   _minTime: 0.5
   _maxTime: 2
@@ -651,9 +645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccdfac028a660734ba3187e33a6c0eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mushroomCurrentLife: {fileID: 11400000, guid: 755551d59bcfb454db3d9ee96b6a8f11,
-    type: 2}
   m_Agent: {fileID: 0}
+  _enemyEntity: {fileID: 0}
 --- !u!1102 &6826254546006174324
 AnimatorState:
   serializedVersion: 5
