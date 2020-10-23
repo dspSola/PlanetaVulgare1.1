@@ -60,17 +60,6 @@ public class WaterBossAgentController : MonoBehaviour
                     _makePauseDistance = true;
                     _navMeshAgent.speed = 0;
                     _canAttack = true;
-                    //if (_distancePlayer < _maxDistanceMove)
-                    //{
-                    //    _navMeshAgent.speed = 0;
-                    //    Vector3 relativePos = _playerTransform.position - _waterBossTransform.position;
-                    //    Debug.Log(relativePos);
-                    //    if (relativePos.x == 0)
-                    //    {
-                    //        _canAttack = true;
-                    //    }
-                    //    _canAttack = true;
-                    //}
                 }
 
                 if (_canMakeRotationPauseAttack)
@@ -82,7 +71,6 @@ public class WaterBossAgentController : MonoBehaviour
                 {
                     _navMeshAgent.isStopped = true;
                     StopWalk();
-                    //_navMeshAgent.speed = 0;
                     if (_canAttack)
                     {
                         _waterBossAttackManager.SetAttack(true, 1);

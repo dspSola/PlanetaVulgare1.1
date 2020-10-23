@@ -60,6 +60,8 @@ public class PlayerEntity : Entity
         base.LessLife(value);
         _playerData.LifeCoef = base.CoefLife;
         _hUDLifePlayer.SetLife(base.CoefLife);
+        _bruteAnimatorController.SetHurt(true);
+
         if (base.Life <= 0)
         {
             _bruteAnimatorController.SetDeath(true);
@@ -74,6 +76,7 @@ public class PlayerEntity : Entity
         _playerTransform.position = _playerEventStory.PosCheckPointDie;
         Cursor.lockState = CursorLockMode.Locked;
         base.Life = base.LifeMax;
+        base.CoefLife = base.Life / base.LifeMax;
         _playerData.LifeCoef = base.CoefLife;
         _hUDLifePlayer.SetLife(base.CoefLife);
         _bruteAnimatorController.SetDeath(false);

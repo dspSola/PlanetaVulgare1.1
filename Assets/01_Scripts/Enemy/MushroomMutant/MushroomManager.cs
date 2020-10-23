@@ -9,7 +9,6 @@ public class MushroomManager : MonoBehaviour
 
     private void Start()
     {
-        _MushroomEntity.CurrentLife = _MushroomEntity.LifeMax;
         //_damage.value = false;
         _isDead = false;
     }

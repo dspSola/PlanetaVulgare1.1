@@ -228,6 +228,11 @@ PrefabInstance:
       propertyPath: m_AutoBraking
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 185414840748213956, guid: 9af20aaf6f407d547a95514b6eceb51a,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1773659883045345786, guid: 9af20aaf6f407d547a95514b6eceb51a,
         type: 3}
       propertyPath: vfx.Array.size
