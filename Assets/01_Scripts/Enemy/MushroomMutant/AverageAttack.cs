@@ -18,8 +18,8 @@ public class AverageAttack : MonoBehaviour
         float averageDistance;
         averageDistance = Vector3.Distance(_transform.position, _playerTransform.value.position);
 
-        //Debug.Log("moyenne X: " + averageDistance);
         _navMeshAgent.stoppingDistance = _attackDistance;
+
         if (_navMeshAgent.stoppingDistance <= averageDistance)
         {
             _isWithinRange = true;

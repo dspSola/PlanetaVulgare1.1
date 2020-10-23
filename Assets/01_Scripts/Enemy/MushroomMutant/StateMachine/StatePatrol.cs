@@ -63,10 +63,10 @@ public class StatePatrol : StateMachineBehaviour
         //}
 
         //si la vie est à 0 on meurt
-        if (_enemyEntity.CurrentLife <= 0)
-        {
-            animator.SetTrigger(_dieId);
-        }
+        //if (_enemyEntity.CurrentLife <= 0)
+        //{
+        //    animator.SetTrigger(_dieId);
+        //}
         //Debug.Log($"en Patrol le random est à : {_delayTime} le temps est de {_currentTime} le bool est : {_isDelayed}");
     }
 
