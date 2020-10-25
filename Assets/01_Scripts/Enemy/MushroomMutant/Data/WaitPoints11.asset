@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9225297a7a41454781fe88db24ff21a, type: 3}
-  m_Name: SwitchStates
+  m_Script: {fileID: 11500000, guid: 1908db2c47ebdb4448c388dcf60a51b6, type: 3}
+  m_Name: WaitPoints11
   m_EditorClassIdentifier: 
-  value: 1
+  Value:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

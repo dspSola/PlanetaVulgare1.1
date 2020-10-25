@@ -4,8 +4,8 @@ using UnityEngine.AI;
 public class StateIdle : StateMachineBehaviour
 {
     [Header("Parameter")]
-    [SerializeField] NavMeshAgent m_Agent;
-    [SerializeField] EnemyEntityData _enemyEntity;
+    [SerializeField] private NavMeshAgent m_Agent;
+    [SerializeField] private MushroomEntity _mushroomEntity;
     
     [Header("Timer")]
     [SerializeField] private float _minTime = 2000f;
@@ -15,6 +15,7 @@ public class StateIdle : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Entering state: Idle");
+
         m_Agent = animator.GetComponent<NavMeshAgent>();
         m_Agent.speed = 0;
 
@@ -40,9 +41,12 @@ public class StateIdle : StateMachineBehaviour
         //    _isDelayed = false;
 
         //si la vie est à 0 on meurt
-        if (_enemyEntity.CurrentLife <= 0)
+        if (animator.TryGetComponent(out MushroomManager mushroomManager))
         {
-            animator.SetTrigger(_dieId);
+            if (mushroomManager.IsDead)
+            {
+                animator.SetTrigger(_dieId);
+            }
         }
 
         //Debug.Log($"en Idle le random est à : {_delayTime} le temps est de {_currentTime} le bool est : {_isDelayed}");
