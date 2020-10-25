@@ -9,6 +9,7 @@ TagManager:
   - WeaponColl
   - WeaponSliceableColl
   - Enemy
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -37,7 +38,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - PostProscessing
   - MainCam
   - CamPortail
   - Sliceable
