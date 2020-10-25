@@ -8,4 +8,9 @@ public class MushroomEntity : EnemyEntity
     {
         base.InitializeEntity();
     }
+
+    public override void LessLife(float value)
+    {
+        base.LessLife(value);
+    }
 }
