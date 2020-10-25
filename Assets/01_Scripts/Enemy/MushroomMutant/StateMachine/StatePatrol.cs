@@ -9,10 +9,9 @@ public class StatePatrol : StateMachineBehaviour
 
     [Header("Parameter")]
     [SerializeField] private NavMeshAgent m_Agent;
-    [SerializeField] MushroomEntity _mushroomEntity;
-    [SerializeField] private DetectionPlayer _detectionPlayer;
-    [SerializeField] private AlertCircle _alertCircle;
-    [SerializeField] private BoolVariable _isDesactivedCone;
+    [SerializeField] private EnemyEntityData _mushroomEntityData;
+    //[SerializeField] private AlertCircle _alertCircle;
+    //[SerializeField] private BoolVariable _isDesactivedCone;
 
     [Header("Timer")]
     [SerializeField] private float _minTime = 2000f;
@@ -21,20 +20,17 @@ public class StatePatrol : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Entering state: Patrol");
+        //Debug.Log("Entering state: Patrol");
 
-        if (_mushroomEntity = null)
-        {
-            _mushroomEntity = animator.GetComponent<MushroomEntity>();
-        }
+        //_isDesactivedCone.value = false;
+        //_detectionPlayer = animator.GetComponentInChildren<DetectionPlayer>();
+        //_alertCircle = animator.GetComponentInChildren<AlertCircle>();
 
-        _isDesactivedCone.value = false;
-        _detectionPlayer = animator.GetComponentInChildren<DetectionPlayer>();
-        _alertCircle = animator.GetComponentInChildren<AlertCircle>();
+        //initialise le nav mesh agent et assigne au speed la valeur de mushroom data
         m_Agent = animator.GetComponent<NavMeshAgent>();
+        m_Agent.speed = _mushroomEntityData.SpeedWalk;
 
-        m_Agent.speed = _mushroomEntity.SpeedWalk;
-
+        //assigation des valeurs aux variables : timer
         _isDelayed = false;
         _currentTime = 0;
         _delayTime = Random.Range(_minTime, _maxTime);
@@ -43,12 +39,27 @@ public class StatePatrol : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Staying in state: Patrol");
+        //Debug.Log("Staying in state: Patrol");
 
         DoPatrol();
+
         Timer();
 
-        /*Transitons*/
+        if (animator.TryGetComponent(out MushroomManager mushroomManager))
+        {
+            /*Transitons*/
+            
+            //si je detecte 
+            if (mushroomManager.IsDetecting)
+            {
+                animator.SetTrigger(_detectId);
+            }
+            //si la vie est à 0 on meurt
+            if (mushroomManager.IsDead)
+            {
+                animator.SetTrigger(_dieId);
+            }
+        }
 
         //si le temps delay est vrais il part en idle
         //if (_isDelayed)
@@ -56,12 +67,7 @@ public class StatePatrol : StateMachineBehaviour
         //    animator.SetTrigger(_idleId);
         //}
         //    _isDelayed = false;
-        
-        //si je detecte 
-        if (_detectionPlayer.PlayerIsTrigger)
-        {
-            animator.SetTrigger(_detectId);
-        }
+
 
         //ou si je suis alerté
         //if (_alertCircle.IsAlerted)
@@ -69,36 +75,31 @@ public class StatePatrol : StateMachineBehaviour
         //    animator.SetTrigger(_alertId);
         //}
 
-        //si la vie est à 0 on meurt
-        //if (_enemyEntity.CurrentLife <= 0)
-        //{
-        //    animator.SetTrigger(_dieId);
-        //}
         //Debug.Log($"en Patrol le random est à : {_delayTime} le temps est de {_currentTime} le bool est : {_isDelayed}");
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Exiting state: Patrol");
+        //Debug.Log("Exiting state: Patrol");
         _isDelayed = false;
     }
 
     private void DoPatrol()
     {
-        if (!m_Agent.pathPending && m_Agent.remainingDistance < _waitpointDistance)
-        {
-            if (_waitPoints.Value.Count == 0)
+         if (!m_Agent.pathPending && m_Agent.remainingDistance<_waitpointDistance)
             {
-                return;
-            }
+                if (_waitPoints.Value.Count == 0)
+                {
+                    return;
+                }
 
-            m_Agent.destination = _waitPoints.Value[i].position;
-            i = (i + 1) % _waitPoints.Value.Count;
-        }
+                m_Agent.destination = _waitPoints.Value[i].position;
+                i = (i + 1) % _waitPoints.Value.Count;
+            }
     }
 
-    private void Timer()
+private void Timer()
     {
         if (_currentTime >= 0)
         {

@@ -5,14 +5,14 @@ public class StateCombatStand : StateMachineBehaviour
 {
     [Header("Parameter")]
     [SerializeField] private NavMeshAgent m_Agent;
-    [SerializeField] private MushroomEntity _mushroomEntity;
+    [SerializeField] private EnemyEntityData _mushroomEntityData;
 
     [SerializeField] private AnimationControler _animatorControler;
     [SerializeField] ScriptableTransform _playerTransform;
     [SerializeField] private float _attackDistance = 1f;
 
-    [Header("Waypoint Info")]
-    [SerializeField] private float _waitpointDistance = 0.2f;
+    //[Header("Waypoint Info")]
+    //[SerializeField] private float _waitpointDistance = 0.2f;
 
     [Header("Timer")]
     [SerializeField] private float _timeDelay;
@@ -22,19 +22,16 @@ public class StateCombatStand : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Entering state: CombatSand");
-
-        if (_mushroomEntity = null)
-        {
-            _mushroomEntity = animator.GetComponent<MushroomEntity>();
-        }
+        //Debug.Log("Entering state: CombatSand");
 
         _transform = animator.GetComponent<Transform>();
-        m_Agent = animator.GetComponent<NavMeshAgent>();
         _animatorControler = animator.GetComponentInChildren<AnimationControler>();
 
-        m_Agent.speed = _mushroomEntity.SpeedRun;
+        //initialise le nav mesh agent et assigne au speed la valeur de mushroom data
+        m_Agent = animator.GetComponent<NavMeshAgent>();
+        m_Agent.speed = _mushroomEntityData.SpeedRun;
 
+        //assigation des valeurs aux variables : timer
         _isDelayed = false;
         _currentTime = 0;
         _delayTime = Random.Range(_minTime, _maxTime);
@@ -43,24 +40,24 @@ public class StateCombatStand : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Staying in state: CombatSand");
+        //Debug.Log("Staying in state: CombatSand");
 
         Timer();
-        Debug.Log(_currentTime + " second av combat");
+        //Debug.Log(_currentTime + " second av combat");
 
         _distanceRange = Vector3.Distance(_transform.position, _playerTransform.value.position);
 
         /*Transitons*/
 
         //si la distance est inférieur a la distance attack il attaque sinon il chasse
-        if (_distanceRange > _attackDistance)
+        if (_distanceRange < _attackDistance)
         {
             DoChassing();
             _animatorControler.IsFigthing = false;
         }
         else
         {
-            //m_Agent.stoppingDistance = _attackDistance;
+            m_Agent.stoppingDistance = _attackDistance;
             animator.SetTrigger(_attackingId);
             _animatorControler.IsFigthing = false;
         }
@@ -71,17 +68,23 @@ public class StateCombatStand : StateMachineBehaviour
         //    animator.SetTrigger(_attackingId);
         //}
 
-        //si la vie est à 0 on meurt
-        if (_mushroomEntity.Life <= 0)
+        
+        if (animator.TryGetComponent(out MushroomManager mushroomManager))
         {
-            animator.SetTrigger(_dieId);
+            //Debug.Log("meurt bordel!");
+            //si la vie est à 0 on meurt
+            if (mushroomManager.IsDead)
+            {
+                //Debug.Log("meurt bordel! averto 2");
+                animator.SetTrigger(_dieId);
+            }
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Exiting state: CombatSand");
+        //Debug.Log("Exiting state: CombatSand");
     }
 
     private void Timer()
@@ -104,10 +107,6 @@ public class StateCombatStand : StateMachineBehaviour
     private void DoChassing()
     {
         m_Agent.destination = _playerTransform.value.position;
-        //if (!m_Agent.pathPending && m_Agent.remainingDistance < _waitpointDistance)
-        //{
-            
-        //}
     }
 
     //private bool _isReadyForAttack;

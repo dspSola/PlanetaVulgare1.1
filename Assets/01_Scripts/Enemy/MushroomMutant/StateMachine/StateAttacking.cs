@@ -6,7 +6,7 @@ public class StateAttacking : StateMachineBehaviour
 {
     [Header("Parameter")]
     [SerializeField] private NavMeshAgent m_Agent;
-    [SerializeField] private MushroomEntity _mushroomEntity;
+    [SerializeField] private EnemyEntityData _mushroomEntityData;
     [SerializeField] private ScriptableTransform _playerTransform;
     [SerializeField] private AnimationControler _animatorControler;
     [SerializeField] private float _attackDistance = 2f;
@@ -22,17 +22,12 @@ public class StateAttacking : StateMachineBehaviour
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Entering state: StateAttacking");
-
-        if (_mushroomEntity = null)
-        {
-            _mushroomEntity = animator.GetComponent<MushroomEntity>();
-        }
+        //Debug.Log("Entering state: StateAttacking");
 
         _transform = animator.GetComponent<Transform>();
         m_Agent = animator.GetComponent<NavMeshAgent>();
         _animatorControler = animator.GetComponentInChildren<AnimationControler>();
-        m_Agent.speed = _mushroomEntity.SpeedRun;
+        m_Agent.speed = _mushroomEntityData.SpeedRun;
 
         _isDelayed = false;
         _animatorControler.IsFigthing = false;
@@ -43,7 +38,7 @@ public class StateAttacking : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Staying in state: StateAttacking");
+        //Debug.Log("Staying in state: StateAttacking");
 
         _distanceRange = Vector3.Distance(_transform.position, _playerTransform.value.position);
 
@@ -54,7 +49,7 @@ public class StateAttacking : StateMachineBehaviour
         }
 
         Timer();
-        Debug.Log(_currentTime + " second attack");
+        //Debug.Log(_currentTime + " second attack");
 
         DoChassing();
 
@@ -66,16 +61,19 @@ public class StateAttacking : StateMachineBehaviour
         }
 
         //si la vie est à 0 on meurt
-        if (_mushroomEntity.Life <= 0)
+        if (animator.TryGetComponent(out MushroomManager mushroomManager))
         {
-            animator.SetTrigger(_dieId);
+            if (mushroomManager.IsDead)
+            {
+                animator.SetTrigger(_dieId);
+            }
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Exiting state: StateAttacking");
+        //Debug.Log("Exiting state: StateAttacking");
     }
 
     private void DoChassing()

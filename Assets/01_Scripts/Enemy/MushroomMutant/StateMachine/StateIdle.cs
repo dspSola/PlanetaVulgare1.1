@@ -16,11 +16,6 @@ public class StateIdle : StateMachineBehaviour
     {
         Debug.Log("Entering state: Idle");
 
-        if(_mushroomEntity = null)
-        {
-            _mushroomEntity = animator.GetComponent<MushroomEntity>();
-        }
-
         m_Agent = animator.GetComponent<NavMeshAgent>();
         m_Agent.speed = 0;
 
@@ -46,9 +41,12 @@ public class StateIdle : StateMachineBehaviour
         //    _isDelayed = false;
 
         //si la vie est à 0 on meurt
-        if (_mushroomEntity.Life <= 0)
+        if (animator.TryGetComponent(out MushroomManager mushroomManager))
         {
-            animator.SetTrigger(_dieId);
+            if (mushroomManager.IsDead)
+            {
+                animator.SetTrigger(_dieId);
+            }
         }
 
         //Debug.Log($"en Idle le random est à : {_delayTime} le temps est de {_currentTime} le bool est : {_isDelayed}");

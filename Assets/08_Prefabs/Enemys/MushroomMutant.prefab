@@ -630,6 +630,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8855341200829445675}
   - component: {fileID: 366479980257403963}
+  - component: {fileID: 3289036018741344602}
   m_Layer: 9
   m_Name: HitBox
   m_TagString: Enemy
@@ -665,6 +666,21 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 1.25, z: 0}
+--- !u!114 &3289036018741344602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746098301110048769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fe762ed916a324586f6b27d2f2f18b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mushroomEntity: {fileID: 3965351731029881926}
+  _mushroomManager: {fileID: 9104200892294269522}
+  _playerEntityData: {fileID: 11400000, guid: 4cecbe889aa6d384b97a104a7f90dca7, type: 2}
 --- !u!1 &1894650651896545225
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +745,7 @@ Transform:
   - {fileID: 5126465633717605179}
   - {fileID: 5517677947724325065}
   m_Father: {fileID: 1890373854373806495}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2139971258615702254
 GameObject:
@@ -886,6 +902,66 @@ Transform:
   m_Father: {fileID: 2314013628210646015}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2707960722413041494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7897959515687952480}
+  - component: {fileID: 7944825084703035163}
+  - component: {fileID: 1726790709841350914}
+  m_Layer: 9
+  m_Name: HurtPlayer
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7897959515687952480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707960722413041494}
+  m_LocalRotation: {x: -0.00016321342, y: 0.08914306, z: -0.0018253204, w: 0.9960172}
+  m_LocalPosition: {x: -0.001, y: 0.129, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1890373854373806495}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &7944825084703035163
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707960722413041494}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.06
+  m_Height: 0.25
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.23, z: 0}
+--- !u!114 &1726790709841350914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707960722413041494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b979892964e982c46ac76fdc5e7560e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mushroomEntityData: {fileID: 11400000, guid: 3d7b0d55a94bae849acf8b2beaad7fa7,
+    type: 2}
 --- !u!1 &2975853924030863619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2215,6 +2291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerHeadTarget: {fileID: 11400000, guid: b092278fd072aa44d9b43ede54abc8fb, type: 2}
+  _mushroomManager: {fileID: 9104200892294269522}
 --- !u!1 &4154759670046205202
 GameObject:
   m_ObjectHideFlags: 0
@@ -2413,6 +2490,7 @@ MonoBehaviour:
   _name: 
   _lifeMax: 0
   _life: 0
+  _coefLife: 0
   _damage: 0
   _speedWalk: 0
   _speedRun: 0
@@ -2446,11 +2524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431a8b8fd27cc624d8c47b715e3c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _MushroomEntity: {fileID: 11400000, guid: 3d7b0d55a94bae849acf8b2beaad7fa7, type: 2}
-  _playerParameter: {fileID: 11400000, guid: 4cecbe889aa6d384b97a104a7f90dca7, type: 2}
-  _collider: {fileID: 366479980257403963}
-  _isDead: 0
-  _damage: 0
+  _mushroomEntity: {fileID: 3965351731029881926}
+  _detectionPlayer: {fileID: 4154759669568546011}
 --- !u!1 &4303059235896964721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,6 +2781,7 @@ Transform:
   m_LocalPosition: {x: 4.4227993e-10, y: 0.23608248, z: -0.0000000012083191}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 7897959515687952480}
   - {fileID: 2314013628210646015}
   m_Father: {fileID: 7704833399150783282}
   m_RootOrder: 0
@@ -2912,7 +2988,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2733507810602829362
 Transform:
   m_ObjectHideFlags: 0
@@ -2934,7 +3010,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5519196903576083355}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3e1cf83f2401fd4b8e853741dbeaebb, type: 3}
   m_Name: 
