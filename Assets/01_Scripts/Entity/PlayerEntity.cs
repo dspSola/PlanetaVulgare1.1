@@ -11,7 +11,7 @@ public class PlayerEntity : Entity
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
     [SerializeField] private Transform _playerTransform;
 
-    [SerializeField] private float _rageMax, _rage, _coefRage, _coefTimeLessRage, _coefRageModfieAttack, _timeRage, _timeRageMax;
+    [SerializeField] private float _rageMax, _rage, _coefRage, _coefTimeLessRage, _timeRage, _timeRageMax, _valueRageAddAttack, _valueRageAddLessLife;
 
     [SerializeField] private GameObject _canvasDie;
 
@@ -83,7 +83,7 @@ public class PlayerEntity : Entity
         _hUDLifePlayer.SetLife(base.CoefLife);
         _bruteAnimatorController.SetHurt(true);
 
-        AddRage(5);
+        AddRage(_valueRageAddLessLife);
 
         if (base.Life <= 0)
         {
@@ -110,7 +110,6 @@ public class PlayerEntity : Entity
         }
         _coefRage = _rage / _rageMax;
         _hUDLifePlayer.SetRage(_coefRage);
-        //base.Damage = base.EntityData.Damage + _coefRage * 20;
     }
     public void LessRage(float value)
     {
@@ -124,7 +123,6 @@ public class PlayerEntity : Entity
         }
         _coefRage = _rage / _rageMax;
         _hUDLifePlayer.SetRage(_coefRage);
-        //base.Damage = base.EntityData.Damage + _coefRage * 20;
     }
 
     public void LessRageTime()
@@ -132,7 +130,6 @@ public class PlayerEntity : Entity
         _rage -= Time.deltaTime * _coefTimeLessRage;
         _coefRage = _rage / _rageMax;
         _hUDLifePlayer.SetRage(_coefRage);
-        //base.Damage = base.EntityData.Damage + _coefRage * 20;
     }
 
     public void ClickOnRetry()
@@ -185,4 +182,5 @@ public class PlayerEntity : Entity
 
     public float RageMax { get => _rageMax; set => _rageMax = value; }
     public float Rage { get => _rage; set => _rage = value; }
+    public float ValueRageAddAttack { get => _valueRageAddAttack; set => _valueRageAddAttack = value; }
 }

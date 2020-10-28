@@ -42,27 +42,27 @@ public class SpellRage01 : MonoBehaviour
             // Boss
             if (other.gameObject.GetComponentInChildren<BossEntity>() != null)
             {
-                other.gameObject.GetComponentInChildren<BossEntity>().LessLife(_playerEntity.Damage, _playerEntity);
+                other.gameObject.GetComponentInChildren<BossEntity>().LessLife(_damage, _playerEntity);
             }
             // Simple Enemy
             else if (other.gameObject.GetComponentInChildren<EnemyEntity>() != null)
             {
-                other.gameObject.GetComponentInChildren<EnemyEntity>().LessLife(_playerEntity.Damage);
+                other.gameObject.GetComponentInChildren<EnemyEntity>().LessLife(_damage);
             }
             // Boss
             if (other.gameObject.GetComponentInParent<BossEntity>() != null)
             {
-                other.gameObject.GetComponentInParent<BossEntity>().LessLife(_playerEntity.Damage, _playerEntity);
+                other.gameObject.GetComponentInParent<BossEntity>().LessLife(_damage, _playerEntity);
             }
             // Simple Enemy
             else if (other.gameObject.GetComponentInParent<EnemyEntity>() != null)
             {
-                other.gameObject.GetComponentInParent<EnemyEntity>().LessLife(_playerEntity.Damage);
+                other.gameObject.GetComponentInParent<EnemyEntity>().LessLife(_damage);
             }
 
             if (_hitPrefab != null)
             {
-                var hitVFX = Instantiate(_hitPrefab, transform.position, transform.rotation);
+                var hitVFX = Instantiate(_hitPrefab, other.transform.position + Vector3.up * 1.2f, transform.rotation);
 
                 var psHit = hitVFX.GetComponent<ParticleSystem>();
                 if (psHit != null)
@@ -76,5 +76,10 @@ public class SpellRage01 : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SetPlayerEntity(PlayerEntity playerEntity)
+    {
+        _playerEntity = playerEntity;
     }
 }

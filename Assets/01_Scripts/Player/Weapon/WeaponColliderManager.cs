@@ -53,7 +53,7 @@ public class WeaponColliderManager : MonoBehaviour
                     other.gameObject.GetComponentInParent<EnemyEntity>().LessLife(_playerEntity.Damage);
                 }
                 // Add Rage
-                _playerEntity.AddRage(10);
+                _playerEntity.AddRage(_playerEntity.ValueRageAddAttack);
 
                 // Son Impact Sur Enemy
                 int random = Random.Range(0, 3);

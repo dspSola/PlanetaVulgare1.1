@@ -222,7 +222,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 2
       minColor: {r: 0, g: 0.41506958, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.87342215, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.077257395, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9575,9 +9575,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4624392542341726617}
-  - component: {fileID: 1008340164215928980}
   - component: {fileID: 5155080928178281134}
   - component: {fileID: 4939310768002447142}
+  - component: {fileID: 2566808657160747657}
   m_Layer: 9
   m_Name: Vfx_Rage01_Base
   m_TagString: Untagged
@@ -9602,24 +9602,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1008340164215928980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4624392542341726616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bad11e01057ea774da6eddf5b640b946, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 20
-  _damage: 20
-  _muzzlePrefab: {fileID: 4795422849241375136, guid: ca6366c88cd053147a0503dc418cc204,
-    type: 3}
-  _hitPrefab: {fileID: 3561212618479951205, guid: 5f7639a6e23d8f14b871faf61a01a070,
-    type: 3}
 --- !u!135 &5155080928178281134
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9649,6 +9631,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2566808657160747657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4624392542341726616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701ff99439dfef8458a57b59b7b3253d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 50
+  _muzzlePrefab: {fileID: 12896294625032999, guid: a54e0c087711f364484d14df05a7e405,
+    type: 3}
+  _hitPrefab: {fileID: 4274845755285018254, guid: 7aeef5794e444a5498ce56a4ed5fe486,
+    type: 3}
+  _playerEntity: {fileID: 0}
 --- !u!1 &9173489637969893198
 GameObject:
   m_ObjectHideFlags: 0
@@ -9730,29 +9730,29 @@ TrailRenderer:
       - serializedVersion: 3
         time: 0
         value: 1
-        inSlope: 0
-        outSlope: 0
+        inSlope: -0.9579833
+        outSlope: -0.9579833
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.20263158
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -4.9021854
-        outSlope: -4.9021854
+        inSlope: -1.2310317
+        outSlope: -1.2310317
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.061971843
+        inWeight: 0.18157893
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.17437077, b: 1, a: 0.46666667}
+      key0: {r: 1, g: 0.5775657, b: 0, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 0}
-      key2: {r: 0, g: 0, b: 0, a: 1}
+      key2: {r: 1, g: 1, b: 1, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 1}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -9760,7 +9760,7 @@ TrailRenderer:
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
       ctime1: 65535
-      ctime2: 0
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
