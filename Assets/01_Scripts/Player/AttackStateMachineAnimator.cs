@@ -21,9 +21,9 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
 
     [SerializeField] private bool _dodgeToAttack01, _canDodgeToAttack01;
 
-    [SerializeField] private bool _endCombo, _playSond;
+    [SerializeField] private bool _endCombo, _modifieDegat, _playSond, _addModfieDamage, _lessModifieDamage;
     [SerializeField] private int _intSond;
-    [SerializeField] private float _timeSoundMax;
+    [SerializeField] private float _timeSoundMax, _damageModifie;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -82,12 +82,29 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
         {
             _playerMove.CanRotatePlayer();
         }
+
+        if(_modifieDegat)
+        {
+            if (_addModfieDamage)
+            {
+                _addModfieDamage = false;
+            }
+
+            if (_lessModifieDamage)
+            {
+                _lessModifieDamage = false;
+            }
+            if(_damageModifie != 0)
+            {
+                _damageModifie = 0;
+            }
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(animator.GetFloat("Slice") > 0)
+        if (animator.GetFloat("Slice") > 0)
         {
             if (_canSlice)
             {
@@ -103,7 +120,7 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
         {
             _stateMachineVertical.SetTransitionToJumping();
         }
-        if(_applyForceValueUpdate && animator.GetFloat("XYAnim") > 0)
+        if (_applyForceValueUpdate && animator.GetFloat("XYAnim") > 0)
         {
             _playerMove.ApplyForceAnimation = true;
         }
@@ -111,7 +128,7 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
         {
             _playerMove.ApplyForceAnimation = false;
         }
-        if(_doJumpExit && _getInputBrute.JumpInput.IsActive)
+        if (_doJumpExit && _getInputBrute.JumpInput.IsActive)
         {
             _canJumpExit = true;
         }
@@ -121,14 +138,50 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
             _stateMachineAttack.SetTransition(PlayerAttackState.ATTACK01);
         }
 
-        if(animator.GetFloat("ModifieDegat") > 0 && animator.GetFloat("ModifieDegat") != _playerEntity.Damage)
+        if (_modifieDegat)
         {
-            _playerEntity.Damage = animator.GetFloat("ModifieDegat");
-        }
+            //Debug.Log(animator.GetFloat("ModifieDegat"));
+            //Debug.Log(_playerEntity.Damage + animator.GetFloat("ModifieDegat"));
+            //if (animator.GetFloat("ModifieDegat") > 0)
+            //{
+            //    Debug.Log("iciAdd");
+            //    damage = animator.GetFloat("ModifieDegat");
 
-        if(animator.GetFloat("ModifieDegat") == 0 && animator.GetFloat("ModifieDegat") != _playerEntity.EntityData.Damage)
-        {
-            _playerEntity.Damage = _playerEntity.EntityData.Damage;
+            //    if (_playerEntity.Damage != _playerEntity.Damage + damage)
+            //    {
+            //        Debug.Log("iciAdd2");
+            //        _playerEntity.Damage = _playerEntity.Damage + animator.GetFloat("ModifieDegat");
+            //    }
+            //}
+            //Debug.Log(_playerEntity.Damage - damage);
+            //if (animator.GetFloat("ModifieDegat") == 0)
+            //{
+            //    Debug.Log("iciLess");
+            //    if (_playerEntity.Damage != _playerEntity.Damage - damage)
+            //    {
+            //        Debug.Log("iciLess2");
+            //        _playerEntity.Damage = _playerEntity.Damage - damage;
+            //    }
+            //}
+
+            if (animator.GetFloat("ModifieDegat") > 0)
+            {
+                if (!_addModfieDamage)
+                {
+                    _damageModifie = animator.GetFloat("ModifieDegat");
+                    _playerEntity.Damage += _damageModifie;
+                    _addModfieDamage = true;
+                }
+            }
+
+            if(animator.GetFloat("ModifieDegat") == 0)
+            {
+                if(_addModfieDamage && !_lessModifieDamage)
+                {
+                    _playerEntity.Damage -= _damageModifie;
+                    _lessModifieDamage = true;
+                }
+            }
         }
 
         if (_playSond)
