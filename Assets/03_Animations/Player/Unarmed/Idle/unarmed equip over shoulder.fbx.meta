@@ -38,8 +38,8 @@ ModelImporter:
       name: unarmed equip over shoulder
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 10
-      lastFrame: 50
+      firstFrame: 12
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
