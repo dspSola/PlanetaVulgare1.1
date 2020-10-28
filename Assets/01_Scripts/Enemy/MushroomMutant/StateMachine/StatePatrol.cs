@@ -59,6 +59,11 @@ public class StatePatrol : StateMachineBehaviour
             {
                 animator.SetTrigger(_dieId);
             }
+            //ou si je suis alerté
+            if (mushroomManager.IsAlerting)
+            {
+                animator.SetTrigger(_alertId);
+            }
         }
 
         //si le temps delay est vrais il part en idle
@@ -67,13 +72,6 @@ public class StatePatrol : StateMachineBehaviour
         //    animator.SetTrigger(_idleId);
         //}
         //    _isDelayed = false;
-
-
-        //ou si je suis alerté
-        //if (_alertCircle.IsAlerted)
-        //{
-        //    animator.SetTrigger(_alertId);
-        //}
 
         //Debug.Log($"en Patrol le random est à : {_delayTime} le temps est de {_currentTime} le bool est : {_isDelayed}");
     }

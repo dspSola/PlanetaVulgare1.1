@@ -4,6 +4,7 @@ public class DetectionPlayer : MonoBehaviour
 {
     [SerializeField] private ScriptableTransform _playerHeadTarget;
     [SerializeField] MushroomManager _mushroomManager;
+    [SerializeField] BoolVariable _boolAlertSysthem;
 
     private void Awake()
     {
@@ -22,9 +23,11 @@ public class DetectionPlayer : MonoBehaviour
             Debug.DrawLine(_transform.position, _playerHeadTarget.value.position, Color.red);
             //Debug.Log("le player est destecté !!!");
             _mushroomManager.IsDetecting = true;
+            _boolAlertSysthem.value = true;
         }
         else
         {
+            _boolAlertSysthem.value = false;
             Debug.DrawLine(_transform.position, _playerHeadTarget.value.position, Color.green);
         }
     }
