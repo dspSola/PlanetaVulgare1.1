@@ -1233,6 +1233,7 @@ AnimatorState:
   - {fileID: -8482160712711029874}
   m_StateMachineBehaviours:
   - {fileID: -5040060275052118938}
+  - {fileID: -2274696204868423464}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -2552,6 +2553,19 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-2274696204868423464
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0658e9c09f4f8af48806e0747307172b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cptSpell: 0
 --- !u!114 &-2214649044101822157
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3486,6 +3500,12 @@ AnimatorController:
     m_Controller: {fileID: 0}
   - m_Name: AttackSpecial
     m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: CanLunchSpell
+    m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0

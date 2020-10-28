@@ -230,6 +230,23 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
             animator.SetInteger("CptCombo", 0);
             _stateMachineAttack.CptCombo = animator.GetInteger("CptCombo");
         }
+
+        if (animator.GetBool("IsAttackingAxe"))
+        {
+            animator.SetBool("IsAttackingAxe", false);
+        }
+        if (animator.GetBool("IsAttackingKick"))
+        {
+            animator.SetBool("IsAttackingKick", false);
+        }
+        if (animator.GetBool("IsProtected"))
+        {
+            animator.SetBool("IsProtected", false);
+        }
+        if (animator.GetBool("IsDodged"))
+        {
+            animator.SetBool("IsDodged", false);
+        }
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
