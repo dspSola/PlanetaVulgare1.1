@@ -863,6 +863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _getBruteInput: {fileID: 1981276270500852905}
+  _playerEntity: {fileID: 4866532724348861173}
   _playerMove: {fileID: 341602960945845379}
   _bruteAnimatorController: {fileID: 341602959798940000}
   _weaponColliderManager: {fileID: 1161021094}

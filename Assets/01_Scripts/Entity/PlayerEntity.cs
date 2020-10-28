@@ -182,4 +182,7 @@ public class PlayerEntity : Entity
     }
 
     private GUIStyle _style;
+
+    public float RageMax { get => _rageMax; set => _rageMax = value; }
+    public float Rage { get => _rage; set => _rage = value; }
 }
