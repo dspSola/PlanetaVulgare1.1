@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9225297a7a41454781fe88db24ff21a, type: 3}
-  m_Name: DesactiveCone01
+  m_Name: BoolAlertSysthem
   m_EditorClassIdentifier: 
   value: 1
