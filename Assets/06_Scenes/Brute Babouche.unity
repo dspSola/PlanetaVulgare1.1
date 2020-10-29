@@ -96487,11 +96487,6 @@ PrefabInstance:
       propertyPath: _canvasDie
       value: 
       objectReference: {fileID: 1590445718}
-    - target: {fileID: 4866532724348861173, guid: 1ed5540319a942540a0b2a4c34209eee,
-        type: 3}
-      propertyPath: _valueRageAddAttack
-      value: 50
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ed5540319a942540a0b2a4c34209eee, type: 3}
 --- !u!4 &1826469098 stripped
