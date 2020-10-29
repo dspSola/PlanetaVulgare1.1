@@ -365,7 +365,12 @@ PrefabInstance:
     - target: {fileID: 8388710680023721680, guid: 712c694f39fa8164c83454851387150c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.9
+      value: -1.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388710680023721680, guid: 712c694f39fa8164c83454851387150c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 23.9
       objectReference: {fileID: 0}
     - target: {fileID: 8388710680023721685, guid: 712c694f39fa8164c83454851387150c,
         type: 3}
@@ -383,6 +388,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: e966632068522b44b9397cf1f0f4a833,
         type: 2}
+    - target: {fileID: 8388710680358636171, guid: 712c694f39fa8164c83454851387150c,
+        type: 3}
+      propertyPath: m_Radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388710680358636212, guid: 712c694f39fa8164c83454851387150c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388710680358636212, guid: 712c694f39fa8164c83454851387150c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8388710680703896692, guid: 712c694f39fa8164c83454851387150c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -489,6 +509,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1193622189}
+    - target: {fileID: 8388710681869469873, guid: 712c694f39fa8164c83454851387150c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8388710681869469876, guid: 712c694f39fa8164c83454851387150c,
         type: 3}
       propertyPath: m_Mesh
@@ -680,7 +705,7 @@ PrefabInstance:
     - target: {fileID: 7741501012546186692, guid: 939049c4a5ec4204bae2882c9f2b7603,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -763.78
+      value: -754.3
       objectReference: {fileID: 0}
     - target: {fileID: 7741501012546186692, guid: 939049c4a5ec4204bae2882c9f2b7603,
         type: 3}
@@ -690,7 +715,7 @@ PrefabInstance:
     - target: {fileID: 7741501012546186692, guid: 939049c4a5ec4204bae2882c9f2b7603,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 447.72
+      value: 474.8
       objectReference: {fileID: 0}
     - target: {fileID: 7741501012546186692, guid: 939049c4a5ec4204bae2882c9f2b7603,
         type: 3}
@@ -939,6 +964,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8388710680023721680, guid: 712c694f39fa8164c83454851387150c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388710680023721680, guid: 712c694f39fa8164c83454851387150c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8388710680358636170, guid: 712c694f39fa8164c83454851387150c,
         type: 3}
       propertyPath: _boolAlertSysthem
@@ -950,6 +985,21 @@ PrefabInstance:
       propertyPath: _mushroomManager
       value: 
       objectReference: {fileID: 565644878}
+    - target: {fileID: 8388710680358636171, guid: 712c694f39fa8164c83454851387150c,
+        type: 3}
+      propertyPath: m_Radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388710680358636212, guid: 712c694f39fa8164c83454851387150c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388710680358636212, guid: 712c694f39fa8164c83454851387150c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8388710680703896692, guid: 712c694f39fa8164c83454851387150c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1065,6 +1115,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 2079468547}
+    - target: {fileID: 8388710681869469873, guid: 712c694f39fa8164c83454851387150c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8388710681869469876, guid: 712c694f39fa8164c83454851387150c,
         type: 3}
       propertyPath: m_Mesh

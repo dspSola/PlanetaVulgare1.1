@@ -28,7 +28,7 @@ public class StateAlert : StateMachineBehaviour
 
         /*Transitons*/
 
-        animator.SetTrigger(_alertId);
+        animator.SetTrigger(_chassingTargetId);
 
         //si la vie est à 0 on meurt
         if (animator.TryGetComponent(out MushroomManager mushroomManager))
@@ -46,6 +46,6 @@ public class StateAlert : StateMachineBehaviour
         Debug.Log("Exiting state: Detect");
     }
 
-    private int _alertId = Animator.StringToHash("Alert");
+    private int _chassingTargetId = Animator.StringToHash("Chassing");
     private int _dieId = Animator.StringToHash("Die");
 }

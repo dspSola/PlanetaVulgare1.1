@@ -18,6 +18,7 @@ public class AlertCircle : MonoBehaviour
         if(other.CompareTag("Enemy") && _boolAlertSysthem.value)
         {
             _mushroomManager.IsAlerting = true;
+            Debug.Log("VU!!!!");
         }
     }
 

@@ -27,7 +27,7 @@ public class DetectionPlayer : MonoBehaviour
         }
         else
         {
-            _boolAlertSysthem.value = false;
+            //_boolAlertSysthem.value = false;
             Debug.DrawLine(_transform.position, _playerHeadTarget.value.position, Color.green);
         }
     }
