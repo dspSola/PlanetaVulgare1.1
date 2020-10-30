@@ -8,6 +8,7 @@ public enum PlayerAttackState
     CHANGEWEAPON,
     ATTACK01,
     ATTACK02,
+    ATTACKSPECIAL,
     PROTECTION,
     DODGE
 }
@@ -15,6 +16,7 @@ public enum PlayerAttackState
 public class StateMachineAttack : MonoBehaviour
 {
     [SerializeField] private GetInputBrute _getBruteInput;
+    [SerializeField] private PlayerEntity _playerEntity;
     [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
     [SerializeField] private WeaponColliderManager _weaponColliderManager;
@@ -81,6 +83,10 @@ public class StateMachineAttack : MonoBehaviour
                 DoATTACK02Enter();
                 break;
 
+            case PlayerAttackState.ATTACKSPECIAL:
+                DoATTACKSPECIALEnter();
+                break;
+
             case PlayerAttackState.PROTECTION:
                 DoPROTECTIONEnter();
                 break;
@@ -114,6 +120,10 @@ public class StateMachineAttack : MonoBehaviour
                 DoATTACK02Exit();
                 break;
 
+            case PlayerAttackState.ATTACKSPECIAL:
+                DoATTACKSPECIALExit();
+                break;
+
             case PlayerAttackState.PROTECTION:
                 DoPROTECTIONExit();
                 break;
@@ -145,6 +155,10 @@ public class StateMachineAttack : MonoBehaviour
 
             case PlayerAttackState.ATTACK02:
                 DoATTACK02Update();
+                break;
+
+            case PlayerAttackState.ATTACKSPECIAL:
+                DoATTACKSPECIALUpdate();
                 break;
 
             case PlayerAttackState.PROTECTION:
@@ -189,6 +203,7 @@ public class StateMachineAttack : MonoBehaviour
     }
     private void DoIdleUpdate()
     {
+        // TO ATTACK 01
         if (_getBruteInput.Attack01Input.IsActive || _getBruteInput.TriggerRight == 1)
         {
             if (_isArmed)
@@ -202,11 +217,19 @@ public class StateMachineAttack : MonoBehaviour
                 return;
             }
         }
+        // TO ATTACK 02
         if (_getBruteInput.Attack02Input.IsActive || _getBruteInput.TriggerLeft == 1)
         {
             TransitionToState(PlayerAttackState.ATTACK02);
             return;
         }
+        // TO ATTACK SPECIAL
+        if (_getBruteInput.AttackSpecialInput.IsActive && _playerEntity.Rage == _playerEntity.RageMax)
+        {
+            TransitionToState(PlayerAttackState.ATTACKSPECIAL);
+            return;
+        }
+        // TO PROTECTION
         if (_getBruteInput.ProtectionInput.IsActive)
         {
             if (_isArmed)
@@ -220,12 +243,13 @@ public class StateMachineAttack : MonoBehaviour
                 return;
             }
         }
+        // TO DODGE
         if (_getBruteInput.DodgeInput.IsActive)
         {
             TransitionToState(PlayerAttackState.DODGE);
             return;
         }
-
+        // TO CHANGE WEAPON
         if (_getBruteInput.UseInput.IsActive)
         {
             if (_isArmed)
@@ -283,6 +307,24 @@ public class StateMachineAttack : MonoBehaviour
         _bruteAnimatorController.SetAttack02(false);
     }
     private void DoATTACK02Update()
+    {
+        if (!_isAnim)
+        {
+            TransitionToState(PlayerAttackState.IDLE);
+            return;
+        }
+    }
+
+    // ATTACK SPECIAL
+    private void DoATTACKSPECIALEnter()
+    {
+        _bruteAnimatorController.SetAttackSpecial(true);
+    }
+    private void DoATTACKSPECIALExit()
+    {
+        _bruteAnimatorController.SetAttackSpecial(false);
+    }
+    private void DoATTACKSPECIALUpdate()
     {
         if (!_isAnim)
         {

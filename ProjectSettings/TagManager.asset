@@ -9,6 +9,8 @@ TagManager:
   - WeaponColl
   - WeaponSliceableColl
   - Enemy
+  - Fire
+  - Effect
   layers:
   - Default
   - TransparentFX

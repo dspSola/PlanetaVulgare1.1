@@ -30,7 +30,7 @@ public class WeaponColliderManager : MonoBehaviour
     {
         if (_stateMachineAttack.CanSlice)
         {
-            if (other.gameObject.layer == 9)
+            if (other.gameObject.layer == 9 && other.gameObject.tag == "Enemy")
             {
                 // Boss
                 if (other.gameObject.GetComponentInChildren<BossEntity>() != null)
@@ -52,6 +52,8 @@ public class WeaponColliderManager : MonoBehaviour
                 {
                     other.gameObject.GetComponentInParent<EnemyEntity>().LessLife(_playerEntity.Damage);
                 }
+                // Add Rage
+                _playerEntity.AddRage(_playerEntity.ValueRageAddAttack);
 
                 // Son Impact Sur Enemy
                 int random = Random.Range(0, 3);

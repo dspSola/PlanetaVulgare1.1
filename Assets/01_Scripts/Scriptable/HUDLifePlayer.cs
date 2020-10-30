@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HUDLifePlayer : MonoBehaviour
 {
     [SerializeField] private PlayerData _playerData;
-    [SerializeField] private Image barLife_Blood;
+    [SerializeField] private Image barLife_Blood, _barRage;
 
     [SerializeField] private Color _goodColor;
     [SerializeField] private Color _middleColor;
@@ -32,6 +32,11 @@ public class HUDLifePlayer : MonoBehaviour
     {
         barLife_Blood.fillAmount = value;
         SetColor(value);
+    }
+
+    public void SetRage(float value)
+    {
+        _barRage.fillAmount = value;
     }
 
     void SetColor(float value)
