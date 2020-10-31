@@ -1,36 +1,51 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class StateAlert : StateMachineBehaviour
 {
+    [Header("Parameter")]
+    [SerializeField] private NavMeshAgent m_Agent;
+    //[SerializeField] private MushroomEntity _mushroomEntity;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        Debug.Log("Entering state: Detect");
+
+        //if (_mushroomEntity = null)
+        //{
+        //    _mushroomEntity = animator.GetComponent<MushroomEntity>();
+        //}
+
+        m_Agent = animator.GetComponent<NavMeshAgent>();
+        m_Agent.speed = 0;
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        Debug.Log("Staying in state: Detect");
+
+        /*Transitons*/
+
+        animator.SetTrigger(_chassingTargetId);
+
+        //si la vie est à 0 on meurt
+        if (animator.TryGetComponent(out MushroomManager mushroomManager))
+        {
+            if (mushroomManager.IsDead)
+            {
+                animator.SetTrigger(_dieId);
+            }
+        }
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        Debug.Log("Exiting state: Detect");
+    }
 
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
+    private int _chassingTargetId = Animator.StringToHash("Chassing");
+    private int _dieId = Animator.StringToHash("Die");
 }

@@ -2,7 +2,9 @@
 
 public class DetectionPlayer : MonoBehaviour
 {
-    [SerializeField] Transform _playerHeadTarget;
+    [SerializeField] private ScriptableTransform _playerHeadTarget;
+    [SerializeField] MushroomManager _mushroomManager;
+    [SerializeField] BoolVariable _boolAlertSysthem;
 
     private void Awake()
     {
@@ -15,16 +17,18 @@ public class DetectionPlayer : MonoBehaviour
         if(_playerIsTrigger)
         {
             RaycastHit hit;
-            Ray ray = new Ray(_transform.position, _playerHeadTarget.position);
+            Ray ray = new Ray(_transform.position, _playerHeadTarget.value.position);
             Physics.Raycast(ray, out hit);
 
-            Debug.DrawLine(_transform.position, _playerHeadTarget.position, Color.red);
+            Debug.DrawLine(_transform.position, _playerHeadTarget.value.position, Color.red);
             //Debug.Log("le player est destecté !!!");
-            _isPatrolling = false;
+            _mushroomManager.IsDetecting = true;
+            _boolAlertSysthem.value = true;
         }
         else
         {
-            Debug.DrawLine(_transform.position, _playerHeadTarget.position, Color.green);
+            //_boolAlertSysthem.value = false;
+            Debug.DrawLine(_transform.position, _playerHeadTarget.value.position, Color.green);
         }
     }
 
@@ -41,7 +45,7 @@ public class DetectionPlayer : MonoBehaviour
         if (other.gameObject.layer == 8)
         {
             _playerIsTrigger = false;
-            _isPatrolling = true;
+            _mushroomManager.IsDetecting = false;
         }
     }
 
@@ -49,7 +53,8 @@ public class DetectionPlayer : MonoBehaviour
     private Collider _coneTrigger;
 
     private bool _playerIsTrigger;
-    private bool _isPatrolling;
+   
 
-    public bool PlayerIsTrigger { get => _playerIsTrigger; set => _playerIsTrigger = value; }
+    public bool PlayerIsTrigger { get => _playerIsTrigger;}
+    
 }

@@ -1,68 +1,123 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class StatePatrol : StateMachineBehaviour
 {
     [Header("Waypoint Info")]
-    [SerializeField] Transform[] _waitPoint;
-    [SerializeField] float _waitpointDistance = 0.2f;
+    [SerializeField] private TransformArrayData _waitPoints;
+    [SerializeField] private float _waitpointDistance = 0.2f;
 
     [Header("Parameter")]
-    [SerializeField] NavMeshAgent m_Agent;
-    [SerializeField] EnemyEntity _enemyEntity; 
+    [SerializeField] private NavMeshAgent m_Agent;
+    [SerializeField] private EnemyEntityData _mushroomEntityData;
+    //[SerializeField] private AlertCircle _alertCircle;
+    //[SerializeField] private BoolVariable _isDesactivedCone;
+
+    [Header("Timer")]
+    [SerializeField] private float _minTime = 2000f;
+    [SerializeField] private float _maxTime = 10000f;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //m_Agent = FindObjectOfType<NavMeshAgent>;
-        Debug.Log("Entering state: Patrol");
+        //Debug.Log("Entering state: Patrol");
+
+        //_isDesactivedCone.value = false;
+        //_detectionPlayer = animator.GetComponentInChildren<DetectionPlayer>();
+        //_alertCircle = animator.GetComponentInChildren<AlertCircle>();
+
+        //initialise le nav mesh agent et assigne au speed la valeur de mushroom data
         m_Agent = animator.GetComponent<NavMeshAgent>();
-        m_Agent.speed = _enemyEntity.SpeedWalk;
-        DoPatrol();
+        m_Agent.speed = _mushroomEntityData.SpeedWalk;
+
+        //assigation des valeurs aux variables : timer
+        _isDelayed = false;
+        _currentTime = 0;
+        _delayTime = Random.Range(_minTime, _maxTime);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Staying in state: Patrol");
-        
-        //si je detecte
-        //si je suis alerté
+        //Debug.Log("Staying in state: Patrol");
+
+        DoPatrol();
+
+        Timer();
+
+        if (animator.TryGetComponent(out MushroomManager mushroomManager))
+        {
+            /*Transitons*/
+            
+            //si je detecte 
+            if (mushroomManager.IsDetecting)
+            {
+                animator.SetTrigger(_detectId);
+            }
+            //si la vie est à 0 on meurt
+            if (mushroomManager.IsDead)
+            {
+                animator.SetTrigger(_dieId);
+            }
+            //ou si je suis alerté
+            if (mushroomManager.IsAlerting)
+            {
+                animator.SetTrigger(_alertId);
+            }
+        }
+
+        //si le temps delay est vrais il part en idle
+        //if (_isDelayed)
+        //{
+        //    animator.SetTrigger(_idleId);
+        //}
+        //    _isDelayed = false;
+
+        //Debug.Log($"en Patrol le random est à : {_delayTime} le temps est de {_currentTime} le bool est : {_isDelayed}");
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Exiting state: Patrol");
+        //Debug.Log("Exiting state: Patrol");
+        _isDelayed = false;
     }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 
     private void DoPatrol()
     {
-        if (!m_Agent.pathPending && m_Agent.remainingDistance < _waitpointDistance)
-        {
-            if (_waitPoint.Length == 0)
+         if (!m_Agent.pathPending && m_Agent.remainingDistance<_waitpointDistance)
             {
-                return;
-            }
+                if (_waitPoints.Value.Count == 0)
+                {
+                    return;
+                }
 
-            m_Agent.destination = _waitPoint[i].position;
-            i = (i + 1) % _waitPoint.Length;
+                m_Agent.destination = _waitPoints.Value[i].position;
+                i = (i + 1) % _waitPoints.Value.Count;
+            }
+    }
+
+private void Timer()
+    {
+        if (_currentTime >= 0)
+        {
+            _currentTime += Time.deltaTime;
+        }
+
+        if (_currentTime < _delayTime)
+        {
+            _isDelayed = true;
         }
     }
 
-    int i;
+    private int i;
+
+    private bool _isDelayed;
+    private float _currentTime;
+    float _delayTime;
+
+    private int _detectId = Animator.StringToHash("Detect");
+    private int _alertId = Animator.StringToHash("Alert");
+    private int _dieId = Animator.StringToHash("Die");
+    private int _idleId = Animator.StringToHash("Idle");
 }

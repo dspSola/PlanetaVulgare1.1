@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Player Data
   m_EditorClassIdentifier: 
   _transform: {fileID: 0}
+  _position: {x: 0, y: 0, z: 0}
+  _lifeCoef: 0.5

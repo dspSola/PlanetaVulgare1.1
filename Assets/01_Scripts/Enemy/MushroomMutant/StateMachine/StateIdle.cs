@@ -1,36 +1,81 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class StateIdle : StateMachineBehaviour
 {
+    [Header("Parameter")]
+    [SerializeField] private NavMeshAgent m_Agent;
+    [SerializeField] private MushroomEntity _mushroomEntity;
+    
+    [Header("Timer")]
+    [SerializeField] private float _minTime = 2000f;
+    [SerializeField] private float _maxTime = 10000f;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        Debug.Log("Entering state: Idle");
+
+        m_Agent = animator.GetComponent<NavMeshAgent>();
+        m_Agent.speed = 0;
+
+        _isDelayed = false;
+        _currentTime = 0;
+        _delayTime = Random.Range(_minTime, _maxTime);
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        Debug.Log("Staying in state: Idle");
+
+        Timer();
+
+        /*Transitons*/
+
+        //si le temps delay est vrais il part en patrouille
+        //if (_isDelayed)
+        //{
+        //    animator.SetTrigger(_patrolId);
+        //}
+        //    _isDelayed = false;
+
+        //si la vie est à 0 on meurt
+        if (animator.TryGetComponent(out MushroomManager mushroomManager))
+        {
+            if (mushroomManager.IsDead)
+            {
+                animator.SetTrigger(_dieId);
+            }
+        }
+
+        //Debug.Log($"en Idle le random est à : {_delayTime} le temps est de {_currentTime} le bool est : {_isDelayed}");
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        Debug.Log("Exiting state: Idle");
+        _isDelayed = false;
+    }
 
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
+    private void Timer()
+    {
+        if (_currentTime >= 0)
+        {
+            _currentTime += Time.deltaTime;
+        }
 
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
+        if (_currentTime < _delayTime)
+        {
+            _isDelayed = true;
+        }
+    }
+
+    private bool _isDelayed;
+    private float _currentTime;
+    float _delayTime;
+
+    private int _patrolId = Animator.StringToHash("ModePatrol");
+    private int _dieId = Animator.StringToHash("Die");
 }

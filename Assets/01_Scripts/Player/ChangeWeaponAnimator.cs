@@ -11,6 +11,7 @@ public class ChangeWeaponAnimator : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _stateMachineAttack = animator.transform.parent.GetComponentInChildren<StateMachineAttack>();
+
         if (_activeInAnimOnStart)
         {
             _stateMachineAttack.IsAnim = true;

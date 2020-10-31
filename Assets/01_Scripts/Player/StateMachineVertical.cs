@@ -17,6 +17,8 @@ public class StateMachineVertical : MonoBehaviour
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
     [SerializeField] private CollisionOverlapBoxTester _groundCheck;
 
+    [SerializeField] private float _timeToJump, _timeToJumpMax;
+
     #region Public properties
 
     public PlayerVerticalState CurrentState
@@ -138,6 +140,7 @@ public class StateMachineVertical : MonoBehaviour
     private void DoGroundedEnter()
     {
         _bruteAnimatorController.SetGrounded(true);
+        _timeToJump = 0;
     }
 
     private void DoGroundedExit()
@@ -153,7 +156,11 @@ public class StateMachineVertical : MonoBehaviour
             return;
         }
 
-        if (_getBruteInput.JumpInput.IsActive && !_stateMachineAttack.IsAnim && !_getBruteInput.Attack01Input.IsActive)
+        if(_timeToJump < _timeToJumpMax)
+        {
+            _timeToJump += Time.deltaTime;
+        }
+        else if (_getBruteInput.JumpInput.IsActive && !_stateMachineAttack.IsAnim && !_getBruteInput.Attack01Input.IsActive)
         {
             TransitionToState(PlayerVerticalState.JUMPING);
             return;
@@ -214,23 +221,23 @@ public class StateMachineVertical : MonoBehaviour
 
     #region Debug
 
-    private void OnGUI()
-    {
-        if (_style == null)
-        {
-            _style = new GUIStyle("button");
-            _style.fontSize = 24;
-            _style.alignment = TextAnchor.MiddleLeft;
-            _style.padding = new RectOffset(15, 15, 0, 0);
-        }
-        using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.2f, Screen.width * 0.2f, Screen.height * 0.1f)))
-        {
-            using (new GUILayout.VerticalScope())
-            {
-                GUILayout.Button($"VState: {_currentState}", _style, GUILayout.ExpandHeight(true));
-            }
-        }
-    }
+    //private void OnGUI()
+    //{
+    //    if (_style == null)
+    //    {
+    //        _style = new GUIStyle("button");
+    //        _style.fontSize = 24;
+    //        _style.alignment = TextAnchor.MiddleLeft;
+    //        _style.padding = new RectOffset(15, 15, 0, 0);
+    //    }
+    //    using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.2f, Screen.width * 0.2f, Screen.height * 0.1f)))
+    //    {
+    //        using (new GUILayout.VerticalScope())
+    //        {
+    //            GUILayout.Button($"VState: {_currentState}", _style, GUILayout.ExpandHeight(true));
+    //        }
+    //    }
+    //}
 
     public void SetTransitionToJumping()
     {

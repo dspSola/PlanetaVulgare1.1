@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Rigidbody _rigidbody;
 
     [SerializeField] private Vector3 _transformedInput, _velocity, _horizontalVelocity, _verticalVelocity;
-    [SerializeField] private float _movementQty, _currentSpeed;
+    [SerializeField] private float _movementQty, _currentSpeed, _coefDodgeSpeedWalk, _coefDodgeSpeedRun;
     [SerializeField] private bool _doJump, _canApplyForceAnimation, _applyForceAnimation;
 
     [Header("Parameters")]
@@ -40,7 +40,7 @@ public class PlayerMove : MonoBehaviour
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        _playerData.Position = Vector3.zero;
+        _playerData.Transform = _transformPlayer;
     }
 
     private void Update()
@@ -70,13 +70,6 @@ public class PlayerMove : MonoBehaviour
             _horizontalVelocity = Vector3.zero;
         }
 
-        // Vertical velocity
-        if (_doJump)
-        {
-            _verticalVelocity = Vector3.up * _jumpPower;
-            _doJump = false;
-        }
-
         if (_stateMachineVertical.CurrentState == PlayerVerticalState.GROUNDED)
         {
             _verticalVelocity = Vector3.zero;
@@ -91,7 +84,16 @@ public class PlayerMove : MonoBehaviour
         {
             if (_applyForceAnimation)
             {
-                _velocity = (_transformedInput * _currentSpeed * _movementQty) + _verticalVelocity;
+                Vector3 newSpeedDodge = Vector3.zero;
+                if(_stateMachineHorizontal.CurrentState != PlayerHorizontalState.RUNNING)
+                {
+                    newSpeedDodge = _transformedInput * _currentSpeed * _movementQty * _coefDodgeSpeedWalk;
+                }
+                else
+                {
+                    newSpeedDodge = _transformedInput * _currentSpeed * _movementQty * _coefDodgeSpeedRun;
+                }
+                _velocity = newSpeedDodge + _verticalVelocity;
             }
             else
             {
@@ -100,21 +102,18 @@ public class PlayerMove : MonoBehaviour
             }
             _rigidbody.velocity = _velocity;
         }
-
-        _playerData.Position = _transformPlayer.position;
         _scriptableTransform.value = _transformPlayer.GetComponent<Transform>();
         _scriptableTransform.value.position = transform.position;
     }
 
     private void FixedUpdate()
     {
-        //if (_stateMachineHorizontal.CurrentState != PlayerHorizontalState.IDLE)
-        //{
-        //    if (_getBruteInput.Movement.z > 0.25f)
-        //    {
-        //        RotateTowardsCameraForward();
-        //    }
-        //}
+        // Vertical velocity
+        if (_doJump)
+        {
+            _verticalVelocity = Vector3.up * _jumpPower;
+            _doJump = false;
+        }
 
         if (_stateMachineAttack.CurrentState == PlayerAttackState.IDLE)
         {
@@ -122,6 +121,10 @@ public class PlayerMove : MonoBehaviour
             {
                 RotateTowardsCameraForward();
             }
+        }
+        else if (_stateMachineAttack.CurrentState == PlayerAttackState.PROTECTION)
+        {
+            RotateTowardsCameraForward();
         }
 
         // Si on est au sol, on colle au sol
@@ -233,6 +236,11 @@ public class PlayerMove : MonoBehaviour
         _doJump = true;
     }
 
+    public void CanRotatePlayer()
+    {
+
+    }
+
     public void AddForce(Vector3 valueForce)
     {
         _rigidbody.velocity = new Vector3(valueForce.x, valueForce.y, valueForce.z);
@@ -255,6 +263,6 @@ public class PlayerMove : MonoBehaviour
     public bool ApplyForceAnimation { get => _applyForceAnimation; set => _applyForceAnimation = value; }
     public bool CanApplyForceAnimation { get => _canApplyForceAnimation; set => _canApplyForceAnimation = value; }
 
-    private Vector3 _rigidbodyOnFloorPosition;
+    [SerializeField] private Vector3 _rigidbodyOnFloorPosition;
     private Coroutine _changeSpeedCoroutine;
 }
