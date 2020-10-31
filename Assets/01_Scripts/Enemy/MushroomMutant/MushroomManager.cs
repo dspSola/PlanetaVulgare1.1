@@ -42,9 +42,11 @@ public class MushroomManager : MonoBehaviour
 
     //public bool _damage;
     private bool _isDetecting;
+    private bool _isAlerting;
     private bool _isHittingPlayer;
     private bool _isDead;
 
     public bool IsDetecting { get => _isDetecting; set => _isDetecting = value; }
     public bool IsDead { get => _isDead; set => _isDead = value; }
+    public bool IsAlerting { get => _isAlerting; set => _isAlerting = value; }
 }

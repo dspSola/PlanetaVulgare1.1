@@ -523,7 +523,7 @@ MonoBehaviour:
     type: 2}
   _animatorControler: {fileID: 0}
   _playerTransform: {fileID: 11400000, guid: b092278fd072aa44d9b43ede54abc8fb, type: 2}
-  _attackDistance: 1
+  _attackDistance: 2
   _timeDelay: 0
   _minTime: 3
   _maxTime: 6
