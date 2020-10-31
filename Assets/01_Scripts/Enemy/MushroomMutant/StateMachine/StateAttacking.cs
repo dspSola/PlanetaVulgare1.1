@@ -45,7 +45,12 @@ public class StateAttacking : StateMachineBehaviour
         if (_distanceRange < _attackDistance)
         {
             m_Agent.stoppingDistance = _attackDistance;
+            m_Agent.speed = 0;
             _animatorControler.IsFigthing = true;
+        }
+        else
+        {
+            m_Agent.speed = _mushroomEntityData.SpeedRun;
         }
 
         Timer();
