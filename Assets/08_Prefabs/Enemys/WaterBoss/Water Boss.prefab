@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 185414840748213958}
   m_Layer: 9
   m_Name: Water Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -408,6 +408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waterBossEntity: {fileID: 185414840748213957}
   _touchWeaponBeforePlayer: 0
+  _canDamageCac: 0
 --- !u!1 &8866241628524474388
 GameObject:
   m_ObjectHideFlags: 0

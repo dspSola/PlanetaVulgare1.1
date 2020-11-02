@@ -74,7 +74,7 @@ public class WindBossAgentController : MonoBehaviour
                     }
                     else
                     {
-                        int random = Random.Range(0, 2);
+                        int random = Random.Range(1, 4);
                         _windBossAnimatorMono.SetSpell(true, random);
                         _randomTimeSpell = 0;
                     }
@@ -125,53 +125,6 @@ public class WindBossAgentController : MonoBehaviour
                     }
                     Rotate();
                 }
-
-                //if (_distancePlayer >= _maxDistanceToAttack && !_makePauseDestinationAttack)
-                //{
-                //    if (_makePauseDistance)
-                //    {
-                //        _makePauseDistance = false;
-                //    }
-                //    if (_navMeshAgent.isStopped)
-                //    {
-                //        _navMeshAgent.isStopped = false;
-                //    }
-                //    if (_playerTransform.position != _navMeshAgent.destination)
-                //    {
-                //        _navMeshAgent.SetDestination(_playerTransform.position);
-                //    }
-                //    if (_navMeshAgent.speed != _speedMaxCurrent)
-                //    {
-                //        _navMeshAgent.speed = _speedMaxCurrent;
-                //    }
-                //    Walk();
-                //}
-                //else if (_distancePlayer < _maxDistanceToAttack)
-                //{
-                //    if (!_makeRotationPauseAttack)
-                //    {
-                //        Rotate();
-                //    }
-                //    _makePauseDistance = true;
-                //    _navMeshAgent.speed = 0;
-                //    _canAttack = true;
-                //}
-
-                //if (_canMakeRotationPauseAttack)
-                //{
-                //    Rotate();
-                //}
-
-                //if (_makePauseDistance || _makePauseDestinationAttack || !_navMeshAgent.hasPath)
-                //{
-                //    _navMeshAgent.isStopped = true;
-                //    StopWalk();
-                //    if (_canAttack)
-                //    {
-                //        _windBossAttackManager.SetAttack(true, 1);
-                //        _canAttack = false;
-                //    }
-                //}
 
                 _isInPath = _navMeshAgent.isPathStale;
                 _path = _navMeshAgent.pathPending;

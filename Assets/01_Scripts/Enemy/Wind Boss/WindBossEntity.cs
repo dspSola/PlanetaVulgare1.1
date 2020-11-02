@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WindBossEntity : EnemyEntity
+public class WindBossEntity : BossEntity
 {
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private WindBossAgentController _windBossAgentController;
@@ -15,13 +15,13 @@ public class WindBossEntity : EnemyEntity
         _windBossAgentController.Initialize(_playerData.Transform);
     }
 
-    public override void LessLife(float value)
+    public override void LessLife(float value, PlayerEntity pe)
     {
         base.LessLife(value);
         if (base.Life <= 0)
         {
-            _windBossAnimatorMono.SetDeath(true);
-            _windBossAgentController.IsDeath = true;
+            pe.LifeToLifeMax();
+            _windBossAnimatorMono.SetDeath();
             Destroy(gameObject, 3);
         }
     }

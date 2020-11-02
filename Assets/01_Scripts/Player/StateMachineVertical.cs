@@ -185,7 +185,7 @@ public class StateMachineVertical : MonoBehaviour
 
     private void DoJumpingUpdate()
     {
-        if (_playerMove.VelocityRb.y < -0.01f)
+        if (_playerMove.VelocityRb.y < -0.0000001f)
         {
             TransitionToState(PlayerVerticalState.FALLING);
             return;

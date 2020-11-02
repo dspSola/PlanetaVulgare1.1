@@ -87,6 +87,10 @@ public class BruteAnimatorController : MonoBehaviour
     {
         _animator.SetBool("IsAttackingKick", value);
     }
+    public void SetAttackSpecial(bool value)
+    {
+        _animator.SetBool("AttackSpecial", value);
+    }
     public void SetProtection(bool value)
     {
         _animator.SetBool("IsProtected", value);
