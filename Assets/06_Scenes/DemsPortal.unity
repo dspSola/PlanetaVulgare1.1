@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 88728468}
   - component: {fileID: 88728467}
   - component: {fileID: 88728470}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Quad_Portal_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 258085548}
   - component: {fileID: 258085547}
   - component: {fileID: 258085550}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Quad_Portal_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
