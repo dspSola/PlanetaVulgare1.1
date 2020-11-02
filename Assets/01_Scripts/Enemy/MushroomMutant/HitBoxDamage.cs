@@ -16,13 +16,13 @@ public class HitBoxDamage : MonoBehaviour
         //}
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //si la hache player entre en collision
-        //il perd des points de vie
-        if (other.gameObject.CompareTag("WeaponSliceableColl"))
-        {
-            _mushroomEntity.Life -= _playerEntityData.Damage;
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    //si la hache player entre en collision
+    //    //il perd des points de vie
+    //    if (other.gameObject.CompareTag("WeaponSliceableColl"))
+    //    {
+    //        _mushroomEntity.Life -= _playerEntityData.Damage;
+    //    }
+    //}
 }
