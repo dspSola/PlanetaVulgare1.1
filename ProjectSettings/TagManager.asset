@@ -24,6 +24,9 @@ TagManager:
   - Ennemy
   - Collectible
   - Event
+  - Suimono_Water
+  - Suimono_Depth
+  - Suimono_Screen
   - 
   - 
   - 
@@ -36,10 +39,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - PostProscessing
   - MainCam
   - CamPortail
   - Sliceable

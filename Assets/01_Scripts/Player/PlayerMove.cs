@@ -41,7 +41,6 @@ public class PlayerMove : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         _playerData.Transform = _transformPlayer;
     }
 

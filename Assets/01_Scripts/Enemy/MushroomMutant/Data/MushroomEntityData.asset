@@ -15,6 +15,5 @@ MonoBehaviour:
   _name: Mushroom
   _lifeMax: 20
   _damage: 5
-  _speedWalk: 3
+  _speedWalk: 1
   _speedRun: 6
-  _currentLife: 20

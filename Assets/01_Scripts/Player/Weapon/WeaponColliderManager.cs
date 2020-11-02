@@ -35,25 +35,43 @@ public class WeaponColliderManager : MonoBehaviour
                 // Boss
                 if (other.gameObject.GetComponentInChildren<BossEntity>() != null)
                 {
-                    other.gameObject.GetComponentInChildren<BossEntity>().LessLife(_playerEntity.Damage, _playerEntity);
+                    if (other.gameObject.GetComponentInChildren<BossEntity>().IfLifeNot0())
+                    {
+                        other.gameObject.GetComponentInChildren<BossEntity>().LessLife(_playerEntity.Damage, _playerEntity);
+                        // Add Rage
+                        _playerEntity.AddRage(_playerEntity.ValueRageAddAttack);
+                    }
                 }
                 // Simple Enemy
                 else if (other.gameObject.GetComponentInChildren<EnemyEntity>() != null)
-                {
-                    other.gameObject.GetComponentInChildren<EnemyEntity>().LessLife(_playerEntity.Damage);
+                {                 
+                    if (other.gameObject.GetComponentInChildren<EnemyEntity>().IfLifeNot0())
+                    {
+                        other.gameObject.GetComponentInChildren<EnemyEntity>().LessLife(_playerEntity.Damage);
+                        // Add Rage
+                        _playerEntity.AddRage(_playerEntity.ValueRageAddAttack);
+                    }
                 }
                 // Boss
                 if (other.gameObject.GetComponentInParent<BossEntity>() != null)
                 {
-                    other.gameObject.GetComponentInParent<BossEntity>().LessLife(_playerEntity.Damage, _playerEntity);
+                    if (other.gameObject.GetComponentInParent<BossEntity>().IfLifeNot0())
+                    {
+                        other.gameObject.GetComponentInParent<BossEntity>().LessLife(_playerEntity.Damage, _playerEntity);
+                        // Add Rage
+                        _playerEntity.AddRage(_playerEntity.ValueRageAddAttack);
+                    }
                 }
                 // Simple Enemy
                 else if (other.gameObject.GetComponentInParent<EnemyEntity>() != null)
                 {
-                    other.gameObject.GetComponentInParent<EnemyEntity>().LessLife(_playerEntity.Damage);
+                    if (other.gameObject.GetComponentInParent<EnemyEntity>().IfLifeNot0())
+                    {
+                        other.gameObject.GetComponentInParent<EnemyEntity>().LessLife(_playerEntity.Damage);
+                        // Add Rage
+                        _playerEntity.AddRage(_playerEntity.ValueRageAddAttack);
+                    }
                 }
-                // Add Rage
-                _playerEntity.AddRage(_playerEntity.ValueRageAddAttack);
 
                 // Son Impact Sur Enemy
                 int random = Random.Range(0, 3);

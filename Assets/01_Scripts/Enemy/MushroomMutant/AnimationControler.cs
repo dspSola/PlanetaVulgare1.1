@@ -21,6 +21,7 @@ public class AnimationControler : MonoBehaviour
         _animator.SetBool(_isAttacking1Id, _isFigthing);
         _animator.SetBool(_isDeadId, _mushroomManager.IsDead);
     }
+
     private void EventDie()
     {
         _animator.GetComponent<Animator>().enabled = true;
