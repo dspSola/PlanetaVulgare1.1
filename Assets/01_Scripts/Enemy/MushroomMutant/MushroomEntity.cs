@@ -12,5 +12,9 @@ public class MushroomEntity : EnemyEntity
     public override void LessLife(float value)
     {
         base.LessLife(value);
+        if(base.Life <= 0)
+        {
+            Destroy(gameObject.transform.parent.gameObject, 3);
+        }
     }
 }
