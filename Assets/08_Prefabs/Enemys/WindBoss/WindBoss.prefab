@@ -321,9 +321,9 @@ MonoBehaviour:
   _firepointLeft: {fileID: 8535136779596698697}
   _firePointRight: {fileID: 7118024738303648001}
   _vfxs:
-  - {fileID: 5113635536081894870, guid: 5831cc6b172f8924c8e44de0633a0f79, type: 3}
-  - {fileID: 568220313856448011, guid: 129077103b0e2c24ebcdc29e30ebff6e, type: 3}
-  - {fileID: 1121413237490451052, guid: e4290a5e14ccab640be97a7a496a4096, type: 3}
+  - {fileID: 2741819491717984905, guid: 7957656622510394bab4c4d850f3d5f0, type: 3}
+  - {fileID: 2741819491717984905, guid: 7957656622510394bab4c4d850f3d5f0, type: 3}
+  - {fileID: 2741819491717984905, guid: 7957656622510394bab4c4d850f3d5f0, type: 3}
 --- !u!135 &2985510743688871408
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -145,7 +145,7 @@ MonoBehaviour:
   _isAttack: 0
   _isSpell: 1
   _spellOnPlayer: 0
-  _spellHand: Two
+  _spellHand: Right
   _indexSpell: 0
   _cptNbSpell: 1
   _cptNbSpellSpawn: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   _isAttack: 0
   _isSpell: 1
   _spellOnPlayer: 0
-  _spellHand: 
+  _spellHand: Left
   _indexSpell: 1
   _cptNbSpell: 1
   _cptNbSpellSpawn: 0
@@ -869,7 +869,7 @@ MonoBehaviour:
   _isAttack: 0
   _isSpell: 1
   _spellOnPlayer: 0
-  _spellHand: 
+  _spellHand: Right
   _indexSpell: 2
   _cptNbSpell: 1
   _cptNbSpellSpawn: 0
