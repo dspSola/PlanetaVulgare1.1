@@ -42,15 +42,31 @@ public class Entity : MonoBehaviour
 
     public virtual void LessLife(float value)
     {
-        if (_life - value < 0)
+        if (_life <= 0)
         {
-            _life = 0;
+            return;
         }
         else
         {
-            _life -= value;
+            if (_life - value < 0)
+            {
+                _life = 0;
+            }
+            else
+            {
+                _life -= value;
+            }
+            _coefLife = _life / _lifeMax;
         }
-        _coefLife = _life / _lifeMax;
+    }
+    public virtual bool IfLifeNot0()
+    {
+        bool verif = false;
+        if (_life > 0)
+        {
+            verif = true;
+        }
+        return verif;
     }
 
     public virtual void LessLife(float value, PlayerEntity pe)

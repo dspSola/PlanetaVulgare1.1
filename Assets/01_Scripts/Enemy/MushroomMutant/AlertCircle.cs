@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class AlertCircle : MonoBehaviour
 {
+    [SerializeField] BoolVariable _boolAlertSysthem;
+    [SerializeField] MushroomManager _mushroomManager;
+
     private void Awake()
     {
         _sphereCollider = GetComponent<SphereCollider>();
+        _mushroomManager.IsAlerting = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Enemy"))
+        if(other.CompareTag("Enemy") && _boolAlertSysthem.value)
         {
-            _isAlerted = true;
+            _mushroomManager.IsAlerting = true;
+            Debug.Log("VU!!!!");
         }
     }
 
