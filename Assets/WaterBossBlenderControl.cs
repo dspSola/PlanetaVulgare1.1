@@ -49,7 +49,7 @@ public class WaterBossBlenderControl : StateMachineBehaviour
             {
                 _cptNbSpellSpawn = 0;
             }
-            if(_spellOnPlayer)
+            if (_spellOnPlayer)
             {
                 _posPlayerForSpell = _waterBossAgentController.PlayerTransform.position;
             }
@@ -81,6 +81,7 @@ public class WaterBossBlenderControl : StateMachineBehaviour
             {
                 if (_spellOnPlayer)
                 {
+                    //_posPlayerForSpell = _waterBossAgentController.PlayerTransform.position;
                     _waterBossSpellManager.SpawnSpell(_indexSpell, _posPlayerForSpell);
                 }
                 else
