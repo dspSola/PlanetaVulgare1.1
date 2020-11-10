@@ -115,6 +115,7 @@ MonoBehaviour:
   _damage: 0
   _speedWalk: 0
   _speedRun: 0
+  _playerEventStory: {fileID: 11400000, guid: 5fbdca7d45ecc07498629fce48994009, type: 2}
   _playerData: {fileID: 11400000, guid: 1b27801392868f5449fb8f3660c2844c, type: 2}
   _windBossAgentController: {fileID: 8244009195231949174}
   _windBossAnimatorMono: {fileID: 2940426450496296638}
@@ -267,7 +268,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _windBossEntity: {fileID: 1802465887}
   _windBossAnimatorMono: {fileID: 2940426450496296638}
-  _waterBossEntity: {fileID: 0}
   _canDamageCac: 0
 --- !u!1 &8059239265995029718
 GameObject:
@@ -351,7 +351,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _windBossEntity: {fileID: 1802465887}
   _windBossAnimatorMono: {fileID: 2940426450496296638}
-  _waterBossEntity: {fileID: 0}
   _canDamageCac: 0
 --- !u!136 &6989892073374479679
 CapsuleCollider:

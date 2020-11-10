@@ -22,6 +22,7 @@ public class EarthBossEntity : BossEntity
         {
             pe.LifeToLifeMax();
             _earthBossAnimatorMono.SetDeath();
+            PlayerEventStoryThis.WinBossEarth();
             Destroy(gameObject, 3);
         }
     }

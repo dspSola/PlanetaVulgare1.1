@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Suimono.Core;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -32,12 +33,23 @@ class Slicer
         positiveObject.layer = objectToCut.layer;
         positiveObject.tag = objectToCut.tag;
         positiveObject.transform.SetParent(_parentTransform);
+        if (sliceable.DestroyGo)
+        {
+            float randomDestroy = UnityEngine.Random.Range(2f, 3f);
+            GameObject.Destroy(positiveObject, randomDestroy);
+        }
 
         GameObject negativeObject = CreateMeshGameObject(objectToCut);
         negativeObject.name = string.Format("{0}_negative", objectToCut.name);
         negativeObject.layer = objectToCut.layer;
         negativeObject.tag = objectToCut.tag;
         negativeObject.transform.SetParent(_parentTransform);
+        if (sliceable.DestroyGo)
+        {
+            float randomDestroy = UnityEngine.Random.Range(2f,3f);
+            GameObject.Destroy(negativeObject, randomDestroy);
+            //GameObject.Destroy(negativeObject.transform.parent.gameObject, 4f);
+        }
 
         var positiveSideMeshData = slicesMeta.PositiveSideMesh;
         var negativeSideMeshData = slicesMeta.NegativeSideMesh;

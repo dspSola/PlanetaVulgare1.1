@@ -10,6 +10,11 @@ public class EarthBossHand : MonoBehaviour
 
     public bool CanDamageCac { get => _canDamageCac; set => _canDamageCac = value; }
 
+    private void Start()
+    {
+        SetActiveCollider(false);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Ici : " + other.name);
@@ -33,5 +38,10 @@ public class EarthBossHand : MonoBehaviour
     {
         _canDamageCac = true;
         _touchPlayer = false;
+    }
+
+    public void SetActiveCollider(bool value)
+    {
+        gameObject.GetComponent<Collider>().enabled = value;
     }
 }

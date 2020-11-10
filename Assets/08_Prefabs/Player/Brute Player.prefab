@@ -141,7 +141,7 @@ MonoBehaviour:
   _coefRage: 0
   _coefTimeLessRage: 10
   _timeRage: 0
-  _timeRageMax: 3
+  _timeRageMax: 5
   _valueRageAddAttack: 10
   _valueRageAddLessLife: 5
   _canvasDie: {fileID: 0}

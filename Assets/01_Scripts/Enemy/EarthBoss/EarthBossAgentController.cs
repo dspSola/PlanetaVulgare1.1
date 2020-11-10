@@ -31,10 +31,10 @@ public class EarthBossAgentController : MonoBehaviour
             if (_playerTransform != null)
             {
                 _distancePlayer = Vector3.Distance(_playerTransform.position, _navMeshAgent.transform.position);
-
                 if (_distancePlayer > _earthBossAttackManager.MaxDistanceToAttackGround)
                 {
                     _earthBossAttackManager.CanAttack = false;
+                    _earthBossSpellManager.CanSpell = true;
                     _makePauseDistance = false;
                     if (_playerTransform.position != _navMeshAgent.destination)
                     {
@@ -44,8 +44,9 @@ public class EarthBossAgentController : MonoBehaviour
                 }
                 else
                 {
-                    _makePauseDistance = true;
+                    _earthBossSpellManager.CanSpell = false;
                     StopWalk();
+                    _makePauseDistance = true;
                     if (!_makeRotationPauseAttack)
                     {
                         Rotate();
@@ -74,6 +75,11 @@ public class EarthBossAgentController : MonoBehaviour
                     {
                         _navMeshAgent.isStopped = false;
                     }
+                }
+
+                if (_canMakeRotationPauseAttack)
+                {
+                    Rotate();
                 }
 
                 _isInPath = _navMeshAgent.isPathStale;
@@ -120,18 +126,9 @@ public class EarthBossAgentController : MonoBehaviour
 
     public void StopWalk()
     {
-        if (_speedCurrent > 0)
-        {
-            _speedCurrent -= Time.deltaTime * _coefDecceleration;
-        }
-        else
-        {
-            _speedCurrent = 0;
-        }
-        if (_navMeshAgent.speed != _speedCurrent)
-        {
-            _navMeshAgent.speed = _speedCurrent;
-        }
+        _speedCurrent = 0;
+        _navMeshAgent.speed = _speedCurrent;
+        _navMeshAgent.velocity = Vector3.zero;
     }
 
     public void SetPlayerTransform(Transform value)

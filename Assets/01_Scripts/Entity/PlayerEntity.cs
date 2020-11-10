@@ -44,7 +44,7 @@ public class PlayerEntity : Entity
         }
         else
         {
-            if (_rage > 0)
+            if (_rage > 0 && _rage < _rageMax)
             {
                 LessRageTime();
             }
@@ -100,7 +100,7 @@ public class PlayerEntity : Entity
             _timeRage = _timeRageMax;
         }
 
-        if (_rage + value > _rageMax)
+        if (_rage + value >= _rageMax)
         {
             _rage = _rageMax;
         }

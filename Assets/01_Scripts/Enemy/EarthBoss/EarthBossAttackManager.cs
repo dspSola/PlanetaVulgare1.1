@@ -34,6 +34,40 @@ public class EarthBossAttackManager : MonoBehaviour
         }
     }
 
+    public void SetCanAttackToHand(int[] _index, bool value)
+    {
+        int i = 0;
+        foreach (EarthBossHand earthBossHand in _earthBossHands)
+        {
+            if (_index[i] == 1)
+            {
+                earthBossHand.CanDamageCac = value;
+            }
+            i++;
+        }
+    }
+
+    public void SetStartAttackToHand(int[] _index)
+    {
+        int i = 0;
+        foreach (EarthBossHand earthBossHand in _earthBossHands)
+        {
+            if (_index[i] == 1)
+            {
+                earthBossHand.SetActiveCollider(true);
+            }
+            i++;
+        }
+    }
+
+    public void SetEndCanAttackToHand()
+    {
+        foreach (EarthBossHand earthBossHand in _earthBossHands)
+        {
+            earthBossHand.SetActiveCollider(false);
+        }
+    }
+
     public bool CanAttack { get => _canAttack; set => _canAttack = value; }
     public float MaxDistanceToAttackGround { get => _maxDistanceToAttackGround; set => _maxDistanceToAttackGround = value; }
 }
