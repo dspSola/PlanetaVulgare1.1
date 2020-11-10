@@ -6,7 +6,6 @@ public class WindBossHand : MonoBehaviour
 {
     [SerializeField] private WindBossEntity _windBossEntity;
     [SerializeField] private WindBossAnimatorMono _windBossAnimatorMono;
-    [SerializeField] private WaterBossEntity _waterBossEntity;
     [SerializeField] private bool _canDamageCac;
 
     public bool CanDamageCac { get => _canDamageCac; set => _canDamageCac = value; }

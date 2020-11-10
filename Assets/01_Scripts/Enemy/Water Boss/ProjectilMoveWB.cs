@@ -8,7 +8,6 @@ public class ProjectilMoveWB : MonoBehaviour
     public int _damage;
     public GameObject _muzzlePrefab, _hitPrefab;
 
-
     private void Start()
     {
         if(_muzzlePrefab != null)
@@ -27,6 +26,7 @@ public class ProjectilMoveWB : MonoBehaviour
                 Destroy(muzzleVFX, psChild.main.duration);
             }
         }
+        Destroy(gameObject, 10);
     }
 
     private void Update()

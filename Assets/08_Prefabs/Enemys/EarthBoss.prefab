@@ -1,5 +1,34 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!135 &336682595
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826239234292815208}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6327411628997123778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826239234292815208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5e57ef13f689948b8cacf3d4c9858a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _earthBossEntity: {fileID: 4880132221608525221}
+  _earthBossAnimatorMono: {fileID: 3544760151961940746}
+  _canDamageCac: 0
+  _touchPlayer: 0
 --- !u!136 &1864542979007434098
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14,6 +43,35 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!135 &833357947
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692449260272206294}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3686525823281896951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692449260272206294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5e57ef13f689948b8cacf3d4c9858a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _earthBossEntity: {fileID: 4880132221608525221}
+  _earthBossAnimatorMono: {fileID: 3544760151961940746}
+  _canDamageCac: 0
+  _touchPlayer: 0
 --- !u!1 &1864542977560254909
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,6 +115,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fea75dcd658b914baf6d104baba70e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _earthBossAnimatorMono: {fileID: 3544760151961940746}
+  _maxDistanceToAttackGround: 1.25
+  _maxDistanceToAttackHunderGround: 1.25
+  _canAttack: 0
+  _earthBossHands:
+  - {fileID: 1039370188387204350}
+  - {fileID: 3686525823281896951}
+  - {fileID: 8112037615492076232}
+  - {fileID: 6327411628997123778}
 --- !u!1 &1864542977713956268
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +138,7 @@ GameObject:
   - component: {fileID: 1864542977713956267}
   - component: {fileID: 4880132221608525221}
   - component: {fileID: 3544760151961940746}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EarthBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,14 +344,11 @@ MonoBehaviour:
   _speedMaxCurrent: 0
   _coefAcceleration: 1.25
   _coefDecceleration: 7.5
-  _maxDistanceToAttackGround: 1.25
-  _maxDistanceToAttackHigh: 0
   _distancePlayer: 0
   _makePauseDistance: 0
   _makePauseDestinationAttack: 0
   _makeRotationPauseAttack: 0
   _canMakeRotationPauseAttack: 0
-  _canAttack: 0
   _isInPath: 0
   _path: 0
   _hasPath: 0
@@ -352,6 +416,64 @@ MonoBehaviour:
   - {fileID: 5113635536081894870, guid: 5831cc6b172f8924c8e44de0633a0f79, type: 3}
   - {fileID: 568220313856448011, guid: 129077103b0e2c24ebcdc29e30ebff6e, type: 3}
   - {fileID: 1121413237490451052, guid: e4290a5e14ccab640be97a7a496a4096, type: 3}
+--- !u!135 &463150707
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291712446411317280}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8112037615492076232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291712446411317280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5e57ef13f689948b8cacf3d4c9858a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _earthBossEntity: {fileID: 4880132221608525221}
+  _earthBossAnimatorMono: {fileID: 3544760151961940746}
+  _canDamageCac: 0
+  _touchPlayer: 0
+--- !u!135 &27078809
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494231221574268636}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1039370188387204350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494231221574268636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5e57ef13f689948b8cacf3d4c9858a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _earthBossEntity: {fileID: 4880132221608525221}
+  _earthBossAnimatorMono: {fileID: 3544760151961940746}
+  _canDamageCac: 0
+  _touchPlayer: 0
 --- !u!1001 &1864542979007434101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -359,6 +481,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1864542977713956264}
     m_Modifications:
+    - target: {fileID: -8778109796107686571, guid: 8e3b9bf53ff53074eabc01a51f6033fb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e3b9bf53ff53074eabc01a51f6033fb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -414,6 +541,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7883749328917080035, guid: 8e3b9bf53ff53074eabc01a51f6033fb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -4341457848597693527, guid: 8e3b9bf53ff53074eabc01a51f6033fb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8e3b9bf53ff53074eabc01a51f6033fb,
         type: 3}
       propertyPath: m_Name
@@ -429,18 +566,29 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1052969676160240803, guid: 8e3b9bf53ff53074eabc01a51f6033fb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: 8e3b9bf53ff53074eabc01a51f6033fb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8e3b9bf53ff53074eabc01a51f6033fb, type: 3}
---- !u!1 &1522575269597212708 stripped
+--- !u!1 &1692449260272206294 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e3b9bf53ff53074eabc01a51f6033fb,
+  m_CorrespondingSourceObject: {fileID: 1052969676160240803, guid: 8e3b9bf53ff53074eabc01a51f6033fb,
     type: 3}
   m_PrefabInstance: {fileID: 1864542979007434101}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2191729681987971742 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8e3b9bf53ff53074eabc01a51f6033fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1864542979007434101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1522575269597212708 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e3b9bf53ff53074eabc01a51f6033fb,
     type: 3}
   m_PrefabInstance: {fileID: 1864542979007434101}
   m_PrefabAsset: {fileID: 0}
@@ -453,6 +601,12 @@ GameObject:
 --- !u!1 &826239234292815208 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7883749328917080035, guid: 8e3b9bf53ff53074eabc01a51f6033fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1864542979007434101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6494231221574268636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4341457848597693527, guid: 8e3b9bf53ff53074eabc01a51f6033fb,
     type: 3}
   m_PrefabInstance: {fileID: 1864542979007434101}
   m_PrefabAsset: {fileID: 0}

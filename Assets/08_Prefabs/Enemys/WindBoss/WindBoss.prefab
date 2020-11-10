@@ -323,7 +323,7 @@ MonoBehaviour:
   _vfxs:
   - {fileID: 2741819491717984905, guid: 7957656622510394bab4c4d850f3d5f0, type: 3}
   - {fileID: 6584828845784359471, guid: 6b6525434c0bc6c42a1baaa7f9c72115, type: 3}
-  - {fileID: 6584828845784359471, guid: 6b6525434c0bc6c42a1baaa7f9c72115, type: 3}
+  - {fileID: 7079645398582265855, guid: 5b55db53a32cd5b4888fceff3c094f39, type: 3}
 --- !u!135 &2985510743688871408
 SphereCollider:
   m_ObjectHideFlags: 0

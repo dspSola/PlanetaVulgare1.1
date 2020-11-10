@@ -349,33 +349,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1102 &-626612518305729779
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Spell Area 02
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: f88cadd5d315cb14391c37c6ced7b98b,
-    type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!206 &-389216592786338489
 BlendTree:
   m_ObjectHideFlags: 3
@@ -767,9 +740,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 3624498958914231835}
     m_Position: {x: -361.89282, y: 7.4747314, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -626612518305729779}
-    m_Position: {x: 410, y: 740, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -273798024664859505}
     m_Position: {x: 170, y: 760, z: 0}
