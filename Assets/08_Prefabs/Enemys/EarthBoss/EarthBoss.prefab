@@ -411,6 +411,7 @@ MonoBehaviour:
   _posMidleSpell: {fileID: 9172922184494228248}
   _timeSpellRate: 0
   _timeSpellRateMax: 3
+  _rangeMaxForSPell: 5
   _canSpell: 0
   _isInSpell: 0
   _firepointLeft: {fileID: 2291712446411317280}

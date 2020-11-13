@@ -7,7 +7,7 @@ public class EarthBossSpellManager : MonoBehaviour
     [SerializeField] private EarthBossAnimatorMono _earthBossAnimatorMono;
     [SerializeField] private EarthBossAgentController _earthBossAgentController;
     [SerializeField] private Transform _windBossTransformMesh, _posMidleSpell;
-    [SerializeField] private float _timeSpellRate, _timeSpellRateMax;
+    [SerializeField] private float _timeSpellRate, _timeSpellRateMax, _rangeMaxForSPell;
     [SerializeField] private bool _canSpell, _isInSpell;
 
     public GameObject _firepointLeft, _firePointRight;
@@ -22,6 +22,14 @@ public class EarthBossSpellManager : MonoBehaviour
 
     private void Update()
     {
+        if(_earthBossAgentController.DistancePlayer > _rangeMaxForSPell)
+        {
+            _canSpell = true;
+        }
+        else
+        {
+            _canSpell = false;
+        }
         if (!_isInSpell)
         {
             if (_timeSpellRate > _timeSpellRateMax)
