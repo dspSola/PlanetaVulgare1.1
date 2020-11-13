@@ -9,7 +9,7 @@ public class PlayerEntity : Entity
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private PlayerEventStory _playerEventStory;
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
-    [SerializeField] private Transform _playerTransform;
+    [SerializeField] private Transform _playerTransform, _targetBottom, _targetMidle, _targetTop;
 
     [SerializeField] private float _rageMax, _rage, _coefRage, _coefTimeLessRage, _timeRage, _timeRageMax, _valueRageAddAttack, _valueRageAddLessLife;
 
@@ -183,4 +183,7 @@ public class PlayerEntity : Entity
     public float RageMax { get => _rageMax; set => _rageMax = value; }
     public float Rage { get => _rage; set => _rage = value; }
     public float ValueRageAddAttack { get => _valueRageAddAttack; set => _valueRageAddAttack = value; }
+    public Transform TargetBottom { get => _targetBottom; set => _targetBottom = value; }
+    public Transform TargetMidle { get => _targetMidle; set => _targetMidle = value; }
+    public Transform TargetTop { get => _targetTop; set => _targetTop = value; }
 }

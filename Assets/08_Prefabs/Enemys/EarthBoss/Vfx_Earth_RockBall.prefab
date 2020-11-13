@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3223987169817133278}
   - component: {fileID: 3223987169817133273}
   - component: {fileID: 665088467}
+  - component: {fileID: 7017999228047241249}
   m_Layer: 30
   m_Name: Vfx_Earth_RockBall
   m_TagString: Sliceable
@@ -90,7 +91,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3223987169817133275}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -125,11 +126,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4502d2b586f43943bf3e028f87a7bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
-  _damage: 50
+  _speed: 17.5
+  _damage: 25
   _coefTimeAddSize: 1
   _stopAddSize: 0
   _firePointLeft: {fileID: 0}
   _firePointRight: {fileID: 0}
+  _playerTarget: {fileID: 0}
   _timeSize: 0
   _timeSizeMax: 1.5
+--- !u!54 &7017999228047241249
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3223987169817133275}
+  serializedVersion: 2
+  m_Mass: 0.1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0

@@ -116,8 +116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _earthBossAnimatorMono: {fileID: 3544760151961940746}
-  _maxDistanceToAttackGround: 2
-  _maxDistanceToAttackHunderGround: 2
+  _maxDistanceToAttackGround: 1.75
+  _maxDistanceToAttackHunderGround: 1.75
   _canAttack: 0
   _earthBossHands:
   - {fileID: 1039370188387204350}
@@ -408,8 +408,9 @@ MonoBehaviour:
   _earthBossAnimatorMono: {fileID: 3544760151961940746}
   _earthBossAgentController: {fileID: 1864542979070780905}
   _windBossTransformMesh: {fileID: 2191729681987971742}
+  _posMidleSpell: {fileID: 9172922184494228248}
   _timeSpellRate: 0
-  _timeSpellRateMax: 1.5
+  _timeSpellRateMax: 3
   _canSpell: 0
   _isInSpell: 0
   _firepointLeft: {fileID: 2291712446411317280}
@@ -601,6 +602,12 @@ GameObject:
 --- !u!1 &826239234292815208 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7883749328917080035, guid: 8e3b9bf53ff53074eabc01a51f6033fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1864542979007434101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9172922184494228248 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1824824446595371411, guid: 8e3b9bf53ff53074eabc01a51f6033fb,
     type: 3}
   m_PrefabInstance: {fileID: 1864542979007434101}
   m_PrefabAsset: {fileID: 0}

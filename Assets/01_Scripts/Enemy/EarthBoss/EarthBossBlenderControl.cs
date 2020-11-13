@@ -52,6 +52,7 @@ public class EarthBossBlenderControl : StateMachineBehaviour
 
         if (_isSpell)
         {
+            _bossSpellManager.IsInSpell = true;
             if (_cptNbSpellSpawn != 0)
             {
                 _cptNbSpellSpawn = 0;

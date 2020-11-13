@@ -707,16 +707,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1951022898}
     m_Modifications:
-    - target: {fileID: 1864542977560254908, guid: 45f1dd4f741a5fa4a95ba609d1d7aebc,
-        type: 3}
-      propertyPath: _maxDistanceToAttackGround
-      value: 1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1864542977560254908, guid: 45f1dd4f741a5fa4a95ba609d1d7aebc,
-        type: 3}
-      propertyPath: _maxDistanceToAttackHunderGround
-      value: 1.75
-      objectReference: {fileID: 0}
     - target: {fileID: 1864542977713956264, guid: 45f1dd4f741a5fa4a95ba609d1d7aebc,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -18,7 +18,7 @@ MonoBehaviour:
   _bossSpellManager: {fileID: 0}
   _makePauseDestinationAttack: 1
   _makePoseRotationAttack: 0
-  _canMakeRotationPauseAttack: 0
+  _canMakeRotationPauseAttack: 1
   _isAttack: 0
   _isSpell: 1
   _spellOnPlayer: 0
