@@ -23,6 +23,7 @@ public class WaterBossEntity : BossEntity
         {
             pe.LifeToLifeMax();
             _waterBossAnimatorMono.SetDeath();
+            PlayerEventStoryThis.WinBossWater();
             Destroy(gameObject, 3);
         }
     }

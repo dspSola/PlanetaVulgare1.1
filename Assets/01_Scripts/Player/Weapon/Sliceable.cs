@@ -20,6 +20,9 @@ public class Sliceable : MonoBehaviour
     [SerializeField]
     private bool _smoothVertices = false;
 
+    [SerializeField]
+    private bool _destroyGo = false;
+
     public bool IsSolid
     {
         get
@@ -80,4 +83,5 @@ public class Sliceable : MonoBehaviour
         }
     }
 
+    public bool DestroyGo { get => _destroyGo; set => _destroyGo = value; }
 }

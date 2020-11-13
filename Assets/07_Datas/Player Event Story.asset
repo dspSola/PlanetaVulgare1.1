@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fightBossFire: 0
   _fightBossWind: 0
-  _fightBossWater: 1
+  _fightBossWater: 0
   _fightBossEarth: 0
   _bossFire: 0
   _bossWind: 0
@@ -24,4 +24,5 @@ MonoBehaviour:
   _totemWind: 0
   _totemWater: 0
   _totemEarth: 0
+  _cptBossWin: 0
   _posCheckPointDie: {x: -14, y: 0.5, z: -17}

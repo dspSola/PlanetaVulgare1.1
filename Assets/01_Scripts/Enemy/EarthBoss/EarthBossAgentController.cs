@@ -12,9 +12,9 @@ public class EarthBossAgentController : MonoBehaviour
     [SerializeField] private NavMeshAgent _navMeshAgent;
     [SerializeField] private Transform _windBossTransform, _windBossTransformMesh, _playerTransform;
 
-    [SerializeField] private float _speedCurrent, _speedMaxCurrent, _coefAcceleration, _coefDecceleration, _maxDistanceToAttackGround, _maxDistanceToAttackHigh, _distancePlayer;
+    [SerializeField] private float _speedCurrent, _speedMaxCurrent, _coefAcceleration, _coefDecceleration, _distancePlayer;
 
-    [SerializeField] private bool _makePauseDistance, _makePauseDestinationAttack, _makeRotationPauseAttack, _canMakeRotationPauseAttack, _canAttack, _isInPath, _path, _hasPath, _isStopped, _isDeath, _isInHearth;
+    [SerializeField] private bool _makePauseDistance, _makePauseDestinationAttack, _makeRotationPauseAttack, _canMakeRotationPauseAttack, _isInPath, _path, _hasPath, _isStopped, _isDeath, _isInHearth;
     [SerializeField] private float _timeToFly, _timeToFlyMax, _highMax, _speedCoefHighUpDown, _randomTimeSpell, _randomTimeSpellMax;
 
     public void Initialize(Transform playerTr)
@@ -31,26 +31,38 @@ public class EarthBossAgentController : MonoBehaviour
             if (_playerTransform != null)
             {
                 _distancePlayer = Vector3.Distance(_playerTransform.position, _navMeshAgent.transform.position);
-
-                if (_distancePlayer > _maxDistanceToAttackHigh)
+                if (_distancePlayer > _earthBossAttackManager.MaxDistanceToAttackGround)
                 {
+                    _earthBossAttackManager.CanAttack = false;
+                    _earthBossSpellManager.CanSpell = true;
+                    _makePauseDistance = false;
                     if (_playerTransform.position != _navMeshAgent.destination)
                     {
                         _navMeshAgent.SetDestination(_playerTransform.position);
                     }
+                    Walk();
+                }
+                else
+                {
+                    _earthBossSpellManager.CanSpell = false;
+                    StopWalk();
+                    _makePauseDistance = true;
+                    if (!_makeRotationPauseAttack)
+                    {
+                        Rotate();
+                    }
+                    _earthBossAttackManager.CanAttack = true;
                 }
 
                 if (_navMeshAgent.hasPath)
                 {
-
                     if (_navMeshAgent.speed != _speedMaxCurrent)
                     {
                         _navMeshAgent.speed = _speedMaxCurrent;
                     }
-                    Walk();
                 }
 
-                if (_makePauseDestinationAttack)
+                if (_makePauseDestinationAttack || _makePauseDistance)
                 {
                     if (!_navMeshAgent.isStopped)
                     {
@@ -63,6 +75,10 @@ public class EarthBossAgentController : MonoBehaviour
                     {
                         _navMeshAgent.isStopped = false;
                     }
+                }
+
+                if (_canMakeRotationPauseAttack)
+                {
                     Rotate();
                 }
 
@@ -110,18 +126,9 @@ public class EarthBossAgentController : MonoBehaviour
 
     public void StopWalk()
     {
-        if (_speedCurrent > 0)
-        {
-            _speedCurrent -= Time.deltaTime * _coefDecceleration;
-        }
-        else
-        {
-            _speedCurrent = 0;
-        }
-        if (_navMeshAgent.speed != _speedCurrent)
-        {
-            _navMeshAgent.speed = _speedCurrent;
-        }
+        _speedCurrent = 0;
+        _navMeshAgent.speed = _speedCurrent;
+        _navMeshAgent.velocity = Vector3.zero;
     }
 
     public void SetPlayerTransform(Transform value)

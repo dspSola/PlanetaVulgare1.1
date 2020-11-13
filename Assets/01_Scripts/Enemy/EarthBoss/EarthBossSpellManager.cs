@@ -6,9 +6,9 @@ public class EarthBossSpellManager : MonoBehaviour
 {
     [SerializeField] private EarthBossAnimatorMono _earthBossAnimatorMono;
     [SerializeField] private EarthBossAgentController _earthBossAgentController;
-    [SerializeField] private Transform _windBossTransformMesh;
+    [SerializeField] private Transform _windBossTransformMesh, _posMidleSpell;
     [SerializeField] private float _timeSpellRate, _timeSpellRateMax;
-    [SerializeField] private bool _isInSpell;
+    [SerializeField] private bool _canSpell, _isInSpell;
 
     public GameObject _firepointLeft, _firePointRight;
     public List<GameObject> _vfxs = new List<GameObject>();
@@ -22,25 +22,22 @@ public class EarthBossSpellManager : MonoBehaviour
 
     private void Update()
     {
-        //if (!_isInSpell)
-        //{
-        //    if (_timeSpellRate >= _timeSpellRateMax)
-        //    {
-        //        int randomChanceSpell = Random.Range(0, 100);
-        //        //Debug.Log(random);
-        //        if (randomChanceSpell < 75)
-        //        {
-        //            int randomIndexSpell = Random.Range(1, 4);
-        //            //SetSpell(true, randomIndexSpell);
-        //            SetSpell(true, randomIndexSpell);
-        //        }
-        //        _timeSpellRate = 0;
-        //    }
-        //    else
-        //    {
-        //        _timeSpellRate += Time.deltaTime;
-        //    }
-        //}
+        if (!_isInSpell)
+        {
+            if (_timeSpellRate > _timeSpellRateMax)
+            {
+                if (_canSpell)
+                {
+                    _earthBossAnimatorMono.SetSpell(true, 1);
+                }
+                _timeSpellRateMax = Random.Range(_timeSpellRateMax - (_timeSpellRateMax / 2), _timeSpellRateMax + (_timeSpellRateMax / 2));
+                _timeSpellRate = 0;
+            }
+            else
+            {
+                _timeSpellRate += Time.deltaTime;
+            }
+        }
     }
 
     public void SpawnSpell(int indexVFX, string value)
@@ -75,10 +72,11 @@ public class EarthBossSpellManager : MonoBehaviour
         GameObject vfx;
         if (_firepointLeft != null)
         {
-            Vector3 relativePos = _earthBossAgentController.PlayerTransform.position - _windBossTransformMesh.position;
+            Vector3 relativePos = _earthBossAgentController.PlayerTransform.position - _posMidleSpell.position;
             // the second argument, upwards, defaults to Vector3.up
             Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
             vfx = Instantiate(_vfxs[indexVFX], _firepointLeft.transform.position, rotation);
+            vfx.GetComponent<EarthSpellRockBall>().Init(_firepointLeft.transform, _firePointRight.transform, _earthBossAgentController.PlayerTransform.GetComponentInChildren<PlayerEntity>().TargetTop);
         }
         else
         {
@@ -89,12 +87,13 @@ public class EarthBossSpellManager : MonoBehaviour
     private void SpawnSpellRight(int indexVFX)
     {
         GameObject vfx;
-        if (_firepointLeft != null)
+        if (_firePointRight != null)
         {
-            Vector3 relativePos = _earthBossAgentController.PlayerTransform.position - _windBossTransformMesh.position;
+            Vector3 relativePos = _earthBossAgentController.PlayerTransform.position - _posMidleSpell.position;
             // the second argument, upwards, defaults to Vector3.up
             Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
             vfx = Instantiate(_vfxs[indexVFX], _firePointRight.transform.position, rotation);
+            vfx.GetComponent<EarthSpellRockBall>().Init(_firepointLeft.transform, _firePointRight.transform, _earthBossAgentController.PlayerTransform.GetComponentInChildren<PlayerEntity>().TargetTop);
         }
         else
         {
@@ -107,7 +106,7 @@ public class EarthBossSpellManager : MonoBehaviour
         GameObject vfx;
         if (_firepointLeft != null)
         {
-            Vector3 relativePos = _earthBossAgentController.PlayerTransform.position - _windBossTransformMesh.position;
+            Vector3 relativePos = _earthBossAgentController.PlayerTransform.position - _posMidleSpell.position;
             // the second argument, upwards, defaults to Vector3.up
             Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
             vfx = Instantiate(_vfxs[indexVFX], _earthBossAgentController.PlayerTransform.position, rotation);
@@ -141,4 +140,5 @@ public class EarthBossSpellManager : MonoBehaviour
     }
 
     public bool IsInSpell { get => _isInSpell; set => _isInSpell = value; }
+    public bool CanSpell { get => _canSpell; set => _canSpell = value; }
 }
