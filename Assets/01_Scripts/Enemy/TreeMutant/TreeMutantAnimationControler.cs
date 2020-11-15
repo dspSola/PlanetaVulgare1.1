@@ -3,6 +3,7 @@
 public class TreeMutantAnimationControler : MonoBehaviour
 {
     [SerializeField] Animator _animator;
+    [SerializeField] TreeMutantMovement _treeMutantMovement;
 
     private void Awake()
     {
@@ -11,10 +12,10 @@ public class TreeMutantAnimationControler : MonoBehaviour
 
     private void Update()
     {
-        _animator.SetFloat(_moveZId, _transform.position.z);
+        _animator.SetFloat(_speedId, _treeMutantMovement.SpeedAgent);
     }
 
-    int _moveZId = Animator.StringToHash("MoveZ");
+    int _speedId = Animator.StringToHash("Speed");
 
     Transform _transform;
 }
