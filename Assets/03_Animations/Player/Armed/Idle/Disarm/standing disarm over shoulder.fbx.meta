@@ -38,8 +38,8 @@ ModelImporter:
       name: standing disarm over shoulder
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 0
-      lastFrame: 50
+      firstFrame: 9
+      lastFrame: 37
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -9,7 +9,9 @@ public class PlayerEntity : Entity
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private PlayerEventStory _playerEventStory;
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
-    [SerializeField] private Transform _playerTransform;
+    [SerializeField] private Transform _playerTransform, _targetBottom, _targetMidle, _targetTop;
+
+    [SerializeField] private float _rageMax, _rage, _coefRage, _coefTimeLessRage, _timeRage, _timeRageMax, _valueRageAddAttack, _valueRageAddLessLife;
 
     [SerializeField] private GameObject _canvasDie;
 
@@ -18,16 +20,35 @@ public class PlayerEntity : Entity
         base.InitializeEntity();
         _playerData.LifeCoef = base.CoefLife;
         _hUDLifePlayer.SetLife(base.CoefLife);
+        _hUDLifePlayer.SetRage(_coefRage);
     }
 
     private void Start()
     {
-        _hUDLifePlayer = GameObject.Find("HUDLifePlayer").GetComponent<HUDLifePlayer>();
+        if (_hUDLifePlayer == null)
+        {
+            _hUDLifePlayer = GameObject.Find("HUDLifePlayer").GetComponent<HUDLifePlayer>();
+        }
         if (base.InitializeOnStart)
         {
             InitializeEntity();
         }
         _playerEventStory.Init();
+    }
+
+    private void Update()
+    {
+        if (_timeRage > 0)
+        {
+            _timeRage -= Time.deltaTime;
+        }
+        else
+        {
+            if (_rage > 0 && _rage < _rageMax)
+            {
+                LessRageTime();
+            }
+        }
     }
 
     //private void OnGUI()
@@ -62,12 +83,53 @@ public class PlayerEntity : Entity
         _hUDLifePlayer.SetLife(base.CoefLife);
         _bruteAnimatorController.SetHurt(true);
 
+        AddRage(_valueRageAddLessLife);
+
         if (base.Life <= 0)
         {
             _bruteAnimatorController.SetDeath(true);
             _canvasDie.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
         }
+    }
+
+    public void AddRage(float value)
+    {
+        if(_timeRage != _timeRageMax)
+        {
+            _timeRage = _timeRageMax;
+        }
+
+        if (_rage + value >= _rageMax)
+        {
+            _rage = _rageMax;
+        }
+        else
+        {
+            _rage += value;
+        }
+        _coefRage = _rage / _rageMax;
+        _hUDLifePlayer.SetRage(_coefRage);
+    }
+    public void LessRage(float value)
+    {
+        if (_rage - value < 0)
+        {
+            _rage = 0;
+        }
+        else
+        {
+            _rage -= value;
+        }
+        _coefRage = _rage / _rageMax;
+        _hUDLifePlayer.SetRage(_coefRage);
+    }
+
+    public void LessRageTime()
+    {
+        _rage -= Time.deltaTime * _coefTimeLessRage;
+        _coefRage = _rage / _rageMax;
+        _hUDLifePlayer.SetRage(_coefRage);
     }
 
     public void ClickOnRetry()
@@ -108,5 +170,20 @@ public class PlayerEntity : Entity
         UpgradeLife(50);
     }
 
+    public void LifeToLifeMax()
+    {
+        base.Life = base.LifeMax;
+        base.CoefLife = base.Life / base.LifeMax;
+        _playerData.LifeCoef = base.CoefLife;
+        _hUDLifePlayer.SetLife(base.CoefLife);
+    }
+
     private GUIStyle _style;
+
+    public float RageMax { get => _rageMax; set => _rageMax = value; }
+    public float Rage { get => _rage; set => _rage = value; }
+    public float ValueRageAddAttack { get => _valueRageAddAttack; set => _valueRageAddAttack = value; }
+    public Transform TargetBottom { get => _targetBottom; set => _targetBottom = value; }
+    public Transform TargetMidle { get => _targetMidle; set => _targetMidle = value; }
+    public Transform TargetTop { get => _targetTop; set => _targetTop = value; }
 }

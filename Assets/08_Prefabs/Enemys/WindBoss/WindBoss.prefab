@@ -115,6 +115,7 @@ MonoBehaviour:
   _damage: 0
   _speedWalk: 0
   _speedRun: 0
+  _playerEventStory: {fileID: 11400000, guid: 5fbdca7d45ecc07498629fce48994009, type: 2}
   _playerData: {fileID: 11400000, guid: 1b27801392868f5449fb8f3660c2844c, type: 2}
   _windBossAgentController: {fileID: 8244009195231949174}
   _windBossAnimatorMono: {fileID: 2940426450496296638}
@@ -189,8 +190,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6747498832133417799}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 20, y: 2.25, z: -20}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2824756210695217242}
@@ -267,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _windBossEntity: {fileID: 1802465887}
   _windBossAnimatorMono: {fileID: 2940426450496296638}
+  _canDamageCac: 0
 --- !u!1 &8059239265995029718
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,8 +293,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8059239265995029718}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 20, y: 2.25, z: -20}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2824756210695217242}
@@ -319,9 +321,9 @@ MonoBehaviour:
   _firepointLeft: {fileID: 8535136779596698697}
   _firePointRight: {fileID: 7118024738303648001}
   _vfxs:
-  - {fileID: 5113635536081894870, guid: 5831cc6b172f8924c8e44de0633a0f79, type: 3}
-  - {fileID: 5113635536081894870, guid: 5831cc6b172f8924c8e44de0633a0f79, type: 3}
-  - {fileID: 1121413237490451052, guid: e4290a5e14ccab640be97a7a496a4096, type: 3}
+  - {fileID: 2741819491717984905, guid: 7957656622510394bab4c4d850f3d5f0, type: 3}
+  - {fileID: 6584828845784359471, guid: 6b6525434c0bc6c42a1baaa7f9c72115, type: 3}
+  - {fileID: 7079645398582265855, guid: 5b55db53a32cd5b4888fceff3c094f39, type: 3}
 --- !u!135 &2985510743688871408
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -349,6 +351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _windBossEntity: {fileID: 1802465887}
   _windBossAnimatorMono: {fileID: 2940426450496296638}
+  _canDamageCac: 0
 --- !u!136 &6989892073374479679
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -387,8 +390,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8995646196934039144}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 20, y: 2.25, z: -20}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2824756210695217242}
@@ -488,6 +491,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 70d18994adc24be4bb8f99d09ab7a1ab,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: 70d18994adc24be4bb8f99d09ab7a1ab, type: 3}

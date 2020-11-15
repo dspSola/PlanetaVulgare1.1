@@ -54,6 +54,7 @@ public class GetInputBrute : MonoBehaviour
         _attack02Input = GetButtonInput("Attack02");
         _triggerLeft = Input.GetAxis("Attack02");
         _triggerRight = Input.GetAxis("Attack01");
+        _attackSpecialInput = GetButtonInput("AttackSpecial");
         _protectionInput = GetButtonInput("Protection");
         _dodgeInput = GetButtonInput("Dodge");
 
@@ -120,6 +121,11 @@ public class GetInputBrute : MonoBehaviour
     {
         get => _attack02Input;
     }
+
+    public ButtonInput AttackSpecialInput
+    {
+        get => _attackSpecialInput;
+    }
     public ButtonInput ProtectionInput
     {
         get => _protectionInput;
@@ -146,6 +152,7 @@ public class GetInputBrute : MonoBehaviour
     // Attack
     [SerializeField] private ButtonInput _attack01Input;
     [SerializeField] private ButtonInput _attack02Input;
+    [SerializeField] private ButtonInput _attackSpecialInput;
     [SerializeField] private ButtonInput _protectionInput;
     [SerializeField] private ButtonInput _dodgeInput;
 

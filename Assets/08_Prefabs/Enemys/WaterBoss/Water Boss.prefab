@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 185414840748213958}
   m_Layer: 9
   m_Name: Water Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,6 +191,7 @@ MonoBehaviour:
   _damage: 0
   _speedWalk: 0
   _speedRun: 0
+  _playerEventStory: {fileID: 11400000, guid: 5fbdca7d45ecc07498629fce48994009, type: 2}
   _playerData: {fileID: 11400000, guid: 1b27801392868f5449fb8f3660c2844c, type: 2}
   _waterBossAgentController: {fileID: 7729039073853654725}
   _waterBossAnimatorMono: {fileID: 185414840748213958}
@@ -408,6 +409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waterBossEntity: {fileID: 185414840748213957}
   _touchWeaponBeforePlayer: 0
+  _canDamageCac: 0
 --- !u!1 &8866241628524474388
 GameObject:
   m_ObjectHideFlags: 0
