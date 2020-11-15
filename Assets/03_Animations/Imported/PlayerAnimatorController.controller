@@ -36,7 +36,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -423,7 +424,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 1
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -487,7 +489,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -551,7 +554,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -1465,7 +1469,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 1
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -1491,7 +1496,7 @@ AnimatorStateTransition:
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2810791013436198685}
   m_Solo: 0
-  m_Mute: 0
+  m_Mute: 1
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.25
@@ -1538,7 +1543,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -1763,6 +1769,7 @@ AnimatorState:
   - {fileID: 5495554620755388411}
   - {fileID: 5158536570694462312}
   - {fileID: -628495400082952277}
+  - {fileID: 7258914134180297725}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -1814,7 +1821,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -1890,7 +1898,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -1932,11 +1941,12 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 1
+  _playSondEnter: 1
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
-  _timeSoundMax: 1
+  _timeSoundMax: 0.5
   _damageModifie: 0
 --- !u!114 &-3856377222367700380
 MonoBehaviour:
@@ -1974,7 +1984,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -2490,11 +2501,12 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 1
   _modifieDegat: 1
-  _playSond: 1
+  _playSondEnter: 1
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 2
-  _timeSoundMax: 0.7
+  _timeSoundMax: 0.5
   _damageModifie: 0
 --- !u!1102 &-2484503432256636663
 AnimatorState:
@@ -2565,6 +2577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0658e9c09f4f8af48806e0747307172b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerSpellController: {fileID: 0}
   _cptSpell: 0
 --- !u!114 &-2214649044101822157
 MonoBehaviour:
@@ -2602,7 +2615,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -2913,7 +2927,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -3138,7 +3153,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -3195,7 +3211,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 1
-  _playSond: 1
+  _playSondEnter: 0
+  _playSondUpdate: 1
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 1
@@ -3323,193 +3340,193 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: InputLateral
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Speed
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: VelocityY
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsIdle
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsSneaking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsJogging
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsRunning
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsJumping
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsFalling
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsGrounded
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: PressJump
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Aim
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Step
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: ChangeWeapon
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsArmed
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsAttackingAxe
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsAttackingAxeValue
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsAttackingKick
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsProtected
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsDodged
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Slice
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: CanChangeWeapon
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: JumpAnim
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: XYAnim
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: CanSkipAnimation
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsHurt
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: CptCombo
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Death
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: ModifieDegat
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: AttackSpecial
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: CanLunchSpell
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -3648,7 +3665,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 1
+  _playSondEnter: 1
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 1
@@ -4306,8 +4324,9 @@ MonoBehaviour:
   _dodgeToAttack01: 0
   _canDodgeToAttack01: 0
   _endCombo: 0
-  _modifieDegat: 0
-  _playSond: 1
+  _modifieDegat: 1
+  _playSondEnter: 1
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 2
@@ -4363,7 +4382,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -4613,7 +4633,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -4747,7 +4768,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -4935,7 +4957,7 @@ AnimatorStateTransition:
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 519978283405211129}
   m_Solo: 0
-  m_Mute: 0
+  m_Mute: 1
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.25000024
@@ -5108,7 +5130,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 1
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -5315,8 +5338,8 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.24999988
-  m_TransitionOffset: 0
-  m_ExitTime: 0
+  m_TransitionOffset: 0.25238895
+  m_ExitTime: 2.2574675e-10
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -5383,7 +5406,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 1
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -5509,7 +5533,7 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.24999988
-  m_TransitionOffset: 0
+  m_TransitionOffset: 0.2455741
   m_ExitTime: 0
   m_HasExitTime: 0
   m_HasFixedDuration: 1
@@ -5615,7 +5639,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -5735,7 +5760,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 1
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -6017,7 +6043,7 @@ AnimatorStateTransition:
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4143736182483655551}
   m_Solo: 0
-  m_Mute: 0
+  m_Mute: 1
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.24999964
@@ -6122,7 +6148,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
@@ -6157,12 +6184,40 @@ AnimatorStateTransition:
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -9102670365144428219}
   m_Solo: 0
-  m_Mute: 0
+  m_Mute: 1
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.25000012
   m_TransitionOffset: 0
   m_ExitTime: 0
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &7258914134180297725
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 6
+    m_ConditionEvent: CptCombo
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsAttackingAxe
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -2726606726428871373}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0.25125527
+  m_ExitTime: 0.7593585
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -6299,7 +6354,7 @@ AnimatorStateTransition:
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2726606726428871373}
   m_Solo: 0
-  m_Mute: 0
+  m_Mute: 1
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.24999988
@@ -6430,7 +6485,8 @@ MonoBehaviour:
   _canDodgeToAttack01: 0
   _endCombo: 0
   _modifieDegat: 0
-  _playSond: 0
+  _playSondEnter: 0
+  _playSondUpdate: 0
   _addModfieDamage: 0
   _lessModifieDamage: 0
   _intSond: 0
