@@ -21,6 +21,7 @@ public class FireBossEntity : BossEntity
         {
             pe.LifeToLifeMax();
             _fireBossAnimator.SetDeath();
+            PlayerEventStoryThis.WinBossFire();
             Destroy(gameObject, 3);
         }
     }

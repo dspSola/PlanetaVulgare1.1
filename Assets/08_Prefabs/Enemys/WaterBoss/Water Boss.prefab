@@ -191,6 +191,7 @@ MonoBehaviour:
   _damage: 0
   _speedWalk: 0
   _speedRun: 0
+  _playerEventStory: {fileID: 11400000, guid: 5fbdca7d45ecc07498629fce48994009, type: 2}
   _playerData: {fileID: 11400000, guid: 1b27801392868f5449fb8f3660c2844c, type: 2}
   _waterBossAgentController: {fileID: 7729039073853654725}
   _waterBossAnimatorMono: {fileID: 185414840748213958}

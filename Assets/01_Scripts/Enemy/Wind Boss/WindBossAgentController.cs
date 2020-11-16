@@ -76,6 +76,7 @@ public class WindBossAgentController : MonoBehaviour
                     {
                         int random = Random.Range(1, 4);
                         _windBossAnimatorMono.SetSpell(true, random);
+                        //_windBossAnimatorMono.SetSpell(true, 3);
                         _randomTimeSpell = 0;
                     }
                 }

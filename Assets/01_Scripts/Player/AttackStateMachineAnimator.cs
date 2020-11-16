@@ -21,7 +21,7 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
 
     [SerializeField] private bool _dodgeToAttack01, _canDodgeToAttack01;
 
-    [SerializeField] private bool _endCombo, _modifieDegat, _playSond, _addModfieDamage, _lessModifieDamage;
+    [SerializeField] private bool _endCombo, _modifieDegat, _playSondEnter, _playSondUpdate, _addModfieDamage, _lessModifieDamage;
     [SerializeField] private int _intSond;
     [SerializeField] private float _timeSoundMax, _damageModifie;
 
@@ -98,6 +98,11 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
             {
                 _damageModifie = 0;
             }
+        }
+
+        if (_playSondEnter)
+        {
+            _weaponColliderManager.PlaySon(_intSond, _timeSoundMax);
         }
     }
 
@@ -184,7 +189,7 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
             }
         }
 
-        if (_playSond)
+        if (_playSondUpdate)
         {
             if (animator.GetFloat("Slice") > 0)
             {
