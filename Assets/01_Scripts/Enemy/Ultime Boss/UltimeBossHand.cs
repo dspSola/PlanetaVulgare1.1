@@ -9,6 +9,7 @@ public class UltimeBossHand : MonoBehaviour
     [SerializeField] private bool _canDamageCac, _touchPlayer;
 
     public bool CanDamageCac { get => _canDamageCac; set => _canDamageCac = value; }
+    public bool TouchPlayer { get => _touchPlayer; set => _touchPlayer = value; }
 
     private void Start()
     {

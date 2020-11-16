@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Fire
   - Effect
+  - Racine
   layers:
   - Default
   - TransparentFX

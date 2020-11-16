@@ -160,6 +160,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb6b1472ce536444ad3449e3c795ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ultimeBossAnimatorMono: {fileID: 791430839}
+  _ultimeBossAgentController: {fileID: 7831171693306545498}
+  _ultimeBossTransformMesh: {fileID: 4376725724491105276}
+  _posMidleSpell: {fileID: 8445558146492601266}
+  _timeSpellRate: 0
+  _timeSpellRateMax: 2
+  _rangeMaxForSPell: 2
+  _canSpell: 0
+  _isInSpell: 0
+  _firepointLeft: {fileID: 4429602282437680203}
+  _firePointRight: {fileID: 5144411020156632136}
+  _vfxs:
+  - {fileID: 4174204604069919490, guid: b5a211ecb2599dc45a9fff361d511f6e, type: 3}
+  - {fileID: 4746245319069758037, guid: 846507e595f06a149890908c61738c42, type: 3}
 --- !u!135 &6657487003127732621
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -580,9 +594,27 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4267153667496748055}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4429602282437680203 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 454549550692251740, guid: 9b673bd1f36d87545ae5f8a7a45817d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 4267153667496748055}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3513714404564275775 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 861525654193845800, guid: 9b673bd1f36d87545ae5f8a7a45817d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 4267153667496748055}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5144411020156632136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8958617573753903199, guid: 9b673bd1f36d87545ae5f8a7a45817d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 4267153667496748055}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8445558146492601266 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5621442062734800805, guid: 9b673bd1f36d87545ae5f8a7a45817d2,
     type: 3}
   m_PrefabInstance: {fileID: 4267153667496748055}
   m_PrefabAsset: {fileID: 0}

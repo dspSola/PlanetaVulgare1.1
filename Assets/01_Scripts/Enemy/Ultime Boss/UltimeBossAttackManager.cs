@@ -65,6 +65,7 @@ public class UltimeBossAttackManager : MonoBehaviour
         foreach (UltimeBossHand ultimeBossHand in _ultimeBossHands)
         {
             ultimeBossHand.SetActiveCollider(false);
+            ultimeBossHand.TouchPlayer = false;
         }
     }
 

@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileWindBall : MonoBehaviour
+public class MeteoriteMono : MonoBehaviour
 {
     public float _speed;
     public int _damage;
-    public GameObject _muzzlePrefab, _hitPrefab, _secondProjectile;
+    public GameObject _muzzlePrefab, _hitPrefab;
 
-    public float _timeToSeparate, _timeToSeparateMax;
+    public float _timeToLunch, _timeToLunchMax;
 
     private void Start()
     {
+        _timeToLunch = 0;
+        _timeToLunchMax = Random.Range(0.1f, 0.5f);
+        _speed = Random.Range(15f, 25f);
+
         if (_muzzlePrefab != null)
         {
             var muzzleVFX = Instantiate(_muzzlePrefab, transform.position, transform.rotation);
@@ -28,36 +32,25 @@ public class ProjectileWindBall : MonoBehaviour
                 Destroy(muzzleVFX, psChild.main.duration);
             }
         }
-
-        _timeToSeparateMax = Random.Range(0.1f, 0.3f);
+        Destroy(gameObject, 10);
     }
 
     private void Update()
     {
-        if (_speed != 0)
+        if (_timeToLunch < _timeToLunchMax)
         {
-            transform.position += transform.forward * (_speed * Time.deltaTime);
+            _timeToLunch += Time.deltaTime;
         }
         else
         {
-            Debug.Log("No Speed");
-        }
-
-        if(_timeToSeparate < _timeToSeparateMax)
-        {
-            _timeToSeparate += Time.deltaTime;
-        }
-        else
-        {
-            Vector3 currentEulerAngles = transform.rotation.eulerAngles + new Vector3(0, 15, 0);
-            Quaternion quaternion = new Quaternion();
-            quaternion.eulerAngles = currentEulerAngles;
-            GameObject secondProjectile01 = Instantiate(_secondProjectile, transform.position, quaternion);
-            currentEulerAngles = transform.rotation.eulerAngles + new Vector3(0, -15, 0);
-            quaternion = new Quaternion();
-            quaternion.eulerAngles = currentEulerAngles;
-            GameObject secondProjectile02 = Instantiate(_secondProjectile, transform.position, quaternion);
-            Destroy(gameObject);
+            if (_speed != 0)
+            {
+                transform.position += transform.forward * (_speed * Time.deltaTime);
+            }
+            else
+            {
+                Debug.Log("No Speed");
+            }
         }
     }
 

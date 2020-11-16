@@ -30,52 +30,58 @@ public class WeaponColliderManager : MonoBehaviour
     {
         if (_stateMachineAttack.CanSlice)
         {
-            if (other.gameObject.layer == 9 && other.gameObject.tag == "Enemy")
+            if (other.gameObject.layer == 9)
             {
-                // Boss
-                if (other.gameObject.GetComponentInChildren<BossEntity>() != null)
+                // Si Enemy
+                if (other.gameObject.tag == "Enemy")
                 {
-                    if (other.gameObject.GetComponentInChildren<BossEntity>().IfLifeNot0())
+                    // Boss
+                    if (other.gameObject.GetComponentInChildren<BossEntity>() != null)
                     {
-                        other.gameObject.GetComponentInChildren<BossEntity>().LessLife(_playerEntity.Damage, _playerEntity);
-                        // Add Rage
-                        _playerEntity.AddRage(_playerEntity.ValueRageAddAttack);
+                        if (other.gameObject.GetComponentInChildren<BossEntity>().IfLifeNot0())
+                        {
+                            other.gameObject.GetComponentInChildren<BossEntity>().LessLife(_playerEntity.Damage, _playerEntity);
+                            EndAttack();
+                        }
                     }
-                }
-                // Simple Enemy
-                else if (other.gameObject.GetComponentInChildren<EnemyEntity>() != null)
-                {                 
-                    if (other.gameObject.GetComponentInChildren<EnemyEntity>().IfLifeNot0())
+                    // Simple Enemy
+                    else if (other.gameObject.GetComponentInChildren<EnemyEntity>() != null)
                     {
-                        other.gameObject.GetComponentInChildren<EnemyEntity>().LessLife(_playerEntity.Damage);
-                        // Add Rage
-                        _playerEntity.AddRage(_playerEntity.ValueRageAddAttack);
+                        if (other.gameObject.GetComponentInChildren<EnemyEntity>().IfLifeNot0())
+                        {
+                            other.gameObject.GetComponentInChildren<EnemyEntity>().LessLife(_playerEntity.Damage);
+                            EndAttack();
+                        }
                     }
-                }
-                // Boss
-                if (other.gameObject.GetComponentInParent<BossEntity>() != null)
-                {
-                    if (other.gameObject.GetComponentInParent<BossEntity>().IfLifeNot0())
+                    // Boss
+                    if (other.gameObject.GetComponentInParent<BossEntity>() != null)
                     {
-                        other.gameObject.GetComponentInParent<BossEntity>().LessLife(_playerEntity.Damage, _playerEntity);
-                        // Add Rage
-                        _playerEntity.AddRage(_playerEntity.ValueRageAddAttack);
+                        if (other.gameObject.GetComponentInParent<BossEntity>().IfLifeNot0())
+                        {
+                            other.gameObject.GetComponentInParent<BossEntity>().LessLife(_playerEntity.Damage, _playerEntity);
+                            EndAttack();
+                        }
                     }
-                }
-                // Simple Enemy
-                else if (other.gameObject.GetComponentInParent<EnemyEntity>() != null)
-                {
-                    if (other.gameObject.GetComponentInParent<EnemyEntity>().IfLifeNot0())
+                    // Simple Enemy
+                    else if (other.gameObject.GetComponentInParent<EnemyEntity>() != null)
                     {
-                        other.gameObject.GetComponentInParent<EnemyEntity>().LessLife(_playerEntity.Damage);
-                        // Add Rage
-                        _playerEntity.AddRage(_playerEntity.ValueRageAddAttack);
+                        if (other.gameObject.GetComponentInParent<EnemyEntity>().IfLifeNot0())
+                        {
+                            other.gameObject.GetComponentInParent<EnemyEntity>().LessLife(_playerEntity.Damage);
+                            EndAttack();
+                        }
                     }
                 }
 
-                // Son Impact Sur Enemy
-                int random = Random.Range(0, 3);
-                _audioSource.PlayOneShot(_audioClipsImpact[random]);
+                // Si Racine
+                if(other.gameObject.tag == "Racine")
+                {
+                    if(!other.gameObject.GetComponentInParent<RacineBehaviour>().PlayerTouchThisRacine)
+                    {
+                        other.gameObject.GetComponentInParent<RacineBehaviour>().Die();
+                        EndAttack();
+                    }
+                }
             }
 
             if(other.gameObject.layer == 31)
@@ -88,6 +94,15 @@ public class WeaponColliderManager : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         
+    }
+
+    public void EndAttack()
+    {
+        // Add Rage
+        _playerEntity.AddRage(_playerEntity.ValueRageAddAttack);
+        // Son Impact Sur Enemy
+        int random = Random.Range(0, 3);
+        _audioSource.PlayOneShot(_audioClipsImpact[random]);
     }
 
     public void PlaySon(int i, float timeSoundMax)
