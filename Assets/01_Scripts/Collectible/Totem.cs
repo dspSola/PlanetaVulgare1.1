@@ -6,7 +6,7 @@ public class Totem : MonoBehaviour
 {
     [SerializeField] private string _totemName;
     [SerializeField] private Sprite _spriteTotem;
-    [SerializeField] GameObject _boss;
+    [SerializeField] private GameObject _boss;
 
     private void OnTriggerStay(Collider other)
     {
