@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WindBossBlenderControl : StateMachineBehaviour
+public class WaterBossBlenderControl : StateMachineBehaviour
 {
-    [SerializeField] private WindBossAgentController _windBossAgentController;
-    [SerializeField] private WindBossAnimatorMono _windBossAnimatorMono;
-    [SerializeField] private WindBossSpellManager _windBossSpellManager;
-    [SerializeField] private WindBossHand _windBossHand;
+    [SerializeField] private WaterBossAgentController _waterBossAgentController;
+    [SerializeField] private WaterBossAnimatorMono _waterBossAnimatorMono;
+    [SerializeField] private WaterBossSpellManager _waterBossSpellManager;
+    [SerializeField] private TridantCollider _tridantCollider;
     [SerializeField] private bool _makePauseDestinationAttack, _makePoseRotationAttack, _canMakeRotationPauseAttack, _isAttack, _isSpell, _spellOnPlayer;
     [SerializeField] private string _spellHand;
     [SerializeField] private int _indexSpell, _cptNbSpell, _cptNbSpellSpawn;
@@ -18,30 +18,30 @@ public class WindBossBlenderControl : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Set Script
-        if (_windBossAgentController == null)
+        if (_waterBossAgentController == null)
         {
-            _windBossAgentController = animator.GetComponentInChildren<WindBossAgentController>();
+            _waterBossAgentController = animator.GetComponentInChildren<WaterBossAgentController>();
         }
-        if (_windBossAnimatorMono == null)
+        if (_waterBossAnimatorMono == null)
         {
-            _windBossAnimatorMono = animator.GetComponentInChildren<WindBossAnimatorMono>();
+            _waterBossAnimatorMono = animator.GetComponentInChildren<WaterBossAnimatorMono>();
         }
-        if(_windBossHand == null)
+        if(_tridantCollider == null)
         {
-            _windBossHand = animator.GetComponentInChildren<WindBossHand>();
+            _tridantCollider = animator.GetComponentInChildren<TridantCollider>();
         }
         // Set Modification 
-        if (_windBossSpellManager == null)
+        if (_waterBossSpellManager == null)
         {
-            _windBossSpellManager = animator.GetComponentInChildren<WindBossSpellManager>();
+            _waterBossSpellManager = animator.GetComponentInChildren<WaterBossSpellManager>();
         }
         if (_makePauseDestinationAttack)
         {
-            _windBossAgentController.MakePauseAttack = true;
+            _waterBossAgentController.MakePauseAttack = true;
         }
         if (_makePoseRotationAttack)
         {
-            _windBossAgentController.MakeRotationPauseAttack = true;
+            _waterBossAgentController.MakeRotationPauseAttack = true;
         }
         if (_isSpell)
         {
@@ -51,41 +51,42 @@ public class WindBossBlenderControl : StateMachineBehaviour
             }
             if (_spellOnPlayer)
             {
-                _posPlayerForSpell = _windBossAgentController.PlayerTransform.position;
+                _posPlayerForSpell = _waterBossAgentController.PlayerTransform.position;
             }
         }
         if (_canMakeRotationPauseAttack)
         {
-            _windBossAgentController.CanMakeRotationPauseAttack = true;
+            _waterBossAgentController.CanMakeRotationPauseAttack = true;
         }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (_isAttack)
+        if(_isAttack)
         {
-            if (animator.GetFloat("CanDamageCac") > 0)
+            if(animator.GetFloat("Slice") > 0)
             {
-                _windBossHand.CanDamageCac = true;
+                _tridantCollider.CanDamageCac = true;
             }
             else
             {
-                _windBossHand.CanDamageCac = false;
+                _tridantCollider.CanDamageCac = false;
             }
         }
 
-        if (_isSpell)
+        if(_isSpell)
         {
-            if (animator.GetFloat("CanLunchSpell") > 0 && _cptNbSpellSpawn < _cptNbSpell)
+            if(animator.GetFloat("CanLunchSpell") > 0 && _cptNbSpellSpawn < _cptNbSpell)
             {
                 if (_spellOnPlayer)
                 {
-                    _windBossSpellManager.SpawnSpell(_indexSpell, _posPlayerForSpell);
+                    //_posPlayerForSpell = _waterBossAgentController.PlayerTransform.position;
+                    _waterBossSpellManager.SpawnSpell(_indexSpell, _posPlayerForSpell);
                 }
                 else
                 {
-                    _windBossSpellManager.SpawnSpell(_indexSpell, _spellHand);
+                    _waterBossSpellManager.SpawnSpell(_indexSpell, _spellHand);
                 }
                 _cptNbSpellSpawn++;
             }
@@ -97,25 +98,31 @@ public class WindBossBlenderControl : StateMachineBehaviour
     {
         if (_makePauseDestinationAttack)
         {
-            _windBossAgentController.MakePauseAttack = false;
+            _waterBossAgentController.MakePauseAttack = false;
         }
         if (_makePoseRotationAttack)
         {
-            _windBossAgentController.MakeRotationPauseAttack = false;
+            _waterBossAgentController.MakeRotationPauseAttack = false;
         }
         if (_isAttack)
         {
-            _windBossAnimatorMono.SetAttack(false, 0);
+            _waterBossAnimatorMono.SetAttack(false, 0);
         }
         if (_isSpell)
         {
-            _windBossSpellManager.SetSpell(false, 0);
+            _waterBossSpellManager.SetSpell(false, 0);
         }
-        if (_canMakeRotationPauseAttack)
+        if(_canMakeRotationPauseAttack)
         {
-            _windBossAgentController.CanMakeRotationPauseAttack = false;
+            _waterBossAgentController.CanMakeRotationPauseAttack = false;
         }
     }
+
+    // OnStateMove is called right after Animator.OnAnimatorMove()
+    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    // Implement code that processes and affects root motion
+    //}
 
     // OnStateIK is called right after Animator.OnAnimatorIK()
     //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
