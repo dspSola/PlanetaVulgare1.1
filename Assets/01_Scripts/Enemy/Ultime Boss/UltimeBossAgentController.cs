@@ -3,23 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EarthBossAgentController : MonoBehaviour
+public class UltimeBossAgentController : MonoBehaviour
 {
-    [SerializeField] private EarthBossEntity _windBossEntity;
-    [SerializeField] private EarthBossAnimatorMono _earthBossAnimatorMono;
-    [SerializeField] private EarthBossAttackManager _earthBossAttackManager;
-    [SerializeField] private EarthBossSpellManager _earthBossSpellManager;
+    [SerializeField] private UltimeBossEntity _ultimeBossEntity;
+    [SerializeField] private UltimeBossAnimatorMono _ultimeBossAnimatorMono;
+    [SerializeField] private UltimeBossAttackManager _ultimeBossAttackManager;
+    [SerializeField] private UltimeBossSpellManager _ultimeBossSpellManager;
     [SerializeField] private NavMeshAgent _navMeshAgent;
-    [SerializeField] private Transform _windBossTransform, _windBossTransformMesh, _playerTransform;
+    [SerializeField] private Transform _ultimeBossTransform, _playerTransform;
 
     [SerializeField] private float _speedCurrent, _speedMaxCurrent, _coefAcceleration, _coefDecceleration, _distancePlayer;
-
-    [SerializeField] private bool _makePauseDistance, _makePauseDestinationAttack, _makeRotationPauseAttack, _canMakeRotationPauseAttack, _isInPath, _path, _hasPath, _isStopped, _isDeath, _isInHearth;
-    [SerializeField] private float _timeToFly, _timeToFlyMax, _highMax, _speedCoefHighUpDown, _randomTimeSpell, _randomTimeSpellMax;
+    [SerializeField] private bool _makePauseDistance, _makePauseDestinationAttack, _makeRotationPauseAttack, _canMakeRotationPauseAttack, _canAttack, _isInPath, _isStopped, _path, _hasPath, _isDeath;
 
     public void Initialize(Transform playerTr)
     {
-        _speedMaxCurrent = _windBossEntity.SpeedWalk;
+        _speedMaxCurrent = _ultimeBossEntity.SpeedWalk;
         _navMeshAgent.speed = 0;
         _playerTransform = playerTr;
     }
@@ -31,9 +29,9 @@ public class EarthBossAgentController : MonoBehaviour
             if (_playerTransform != null)
             {
                 _distancePlayer = Vector3.Distance(_playerTransform.position, _navMeshAgent.transform.position);
-                if (_distancePlayer > _earthBossAttackManager.MaxDistanceToAttackGround)
+                if (_distancePlayer > _ultimeBossAttackManager.MaxDistanceToAttackGround)
                 {
-                    _earthBossAttackManager.CanAttack = false;
+                    _ultimeBossAttackManager.CanAttack = false;
                     _makePauseDistance = false;
                     if (_playerTransform.position != _navMeshAgent.destination)
                     {
@@ -49,7 +47,7 @@ public class EarthBossAgentController : MonoBehaviour
                     {
                         Rotate();
                     }
-                    _earthBossAttackManager.CanAttack = true;
+                    _ultimeBossAttackManager.CanAttack = true;
                 }
 
                 if (_navMeshAgent.hasPath)
@@ -94,12 +92,12 @@ public class EarthBossAgentController : MonoBehaviour
 
     private void Rotate()
     {
-        Vector3 relativePos = _playerTransform.position - _windBossTransform.position;
+        Vector3 relativePos = _playerTransform.position - _ultimeBossTransform.position;
         // Annule la rotation y;
         relativePos.y = 0;
         // the second argument, upwards, defaults to Vector3.up
         Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        _windBossTransform.rotation = rotation;
+        _ultimeBossTransform.rotation = rotation;
     }
 
     public void Walk()
@@ -120,9 +118,18 @@ public class EarthBossAgentController : MonoBehaviour
 
     public void StopWalk()
     {
-        _speedCurrent = 0;
-        _navMeshAgent.speed = _speedCurrent;
-        _navMeshAgent.velocity = Vector3.zero;
+        if (_speedCurrent > 0)
+        {
+            _speedCurrent -= Time.deltaTime * _coefDecceleration;
+        }
+        else
+        {
+            _speedCurrent = 0;
+        }
+        if (_navMeshAgent.speed != _speedCurrent)
+        {
+            _navMeshAgent.speed = _speedCurrent;
+        }
     }
 
     public void SetPlayerTransform(Transform value)
@@ -133,7 +140,7 @@ public class EarthBossAgentController : MonoBehaviour
     public bool MakePauseAttack { get => _makePauseDestinationAttack; set => _makePauseDestinationAttack = value; }
     public bool MakeRotationPauseAttack { get => _makeRotationPauseAttack; set => _makeRotationPauseAttack = value; }
     public float DistancePlayer { get => _distancePlayer; set => _distancePlayer = value; }
-    public Transform WaterBossTransform { get => _windBossTransform; set => _windBossTransform = value; }
+    public Transform WaterBossTransform { get => _ultimeBossTransform; set => _ultimeBossTransform = value; }
     public Transform PlayerTransform { get => _playerTransform; set => _playerTransform = value; }
     public bool CanMakeRotationPauseAttack { get => _canMakeRotationPauseAttack; set => _canMakeRotationPauseAttack = value; }
     public bool IsDeath { get => _isDeath; set => _isDeath = value; }
