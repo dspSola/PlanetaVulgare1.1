@@ -13,6 +13,7 @@ public class LoadScenes : MonoBehaviour
             SceneManager.LoadScene("UiScene", LoadSceneMode.Additive);
             SceneManager.LoadScene("DemsPortal", LoadSceneMode.Additive);
             SceneManager.LoadScene("MenuPause", LoadSceneMode.Additive);
+            SceneManager.LoadScene("CutScene 1", LoadSceneMode.Additive);
 
     }
 }
