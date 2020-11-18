@@ -1,18 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AudioPreBossDetect : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        _audioSource = GetComponent<AudioSource>();
+        _boxCollider = GetComponent<BoxCollider>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.CompareTag("Player"))
+        {
+            Debug.Log("player entre dans la zone preBoss");
+        }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            Debug.Log("player sort dans la zone preBoss");
+        }
+    }
+
+    private AudioSource _audioSource;
+    private BoxCollider _boxCollider;
 }
