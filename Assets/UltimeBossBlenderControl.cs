@@ -96,6 +96,14 @@ public class UltimeBossBlenderControl : StateMachineBehaviour
                 {
                     _bossSpellManager.EartSpell();
                 }
+                if(_windSpell)
+                {
+                    _bossSpellManager.WindSpell();
+                }
+                if(_waterSpell)
+                {
+                    _bossSpellManager.WaterSpell();
+                }
                 _cptNbSpellSpawn++;
             }
 

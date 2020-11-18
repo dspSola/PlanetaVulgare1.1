@@ -36,7 +36,8 @@ public class UltimeBossSpellManager : MonoBehaviour
             {
                 if (_canSpell)
                 {
-                    _ultimeBossAnimatorMono.SetSpell(true, Random.Range(1,3));
+                    _ultimeBossAnimatorMono.SetSpell(true, Random.Range(1,5));
+                    //_ultimeBossAnimatorMono.SetSpell(true, 4);
                 }
                 _timeSpellRateMax = Random.Range(_timeSpellRateMax - (_timeSpellRateMax / 2), _timeSpellRateMax + (_timeSpellRateMax / 2));
                 _timeSpellRate = 0;
@@ -50,7 +51,7 @@ public class UltimeBossSpellManager : MonoBehaviour
 
     public void FireSpell()
     {
-        int cptMeteorite = Random.Range(3, 5);
+        int cptMeteorite = Random.Range(3, 7);
         for (int i = 0; i <= cptMeteorite; i++)
         {
             Vector3 newPos = transform.position + new Vector3(Random.Range(-5f, 5f), Random.Range(4f, 10f), Random.Range(-5f, 5f));
@@ -82,6 +83,35 @@ public class UltimeBossSpellManager : MonoBehaviour
             float randomSizeScale = Random.Range(0.75f, 2.5f);
             cloneRacine.transform.localScale = new Vector3(randomSizeScale, randomSizeScale, randomSizeScale);
         }
+    }
+
+    public void WindSpell()
+    {
+        int cptTornade = Random.Range(1, 3);
+        for (int i = 0; i <= cptTornade; i++)
+        {
+            Vector3 newPos = transform.position + new Vector3(Random.Range(-2f, 2f), 0, Random.Range(-2f, 2f));
+
+            GameObject cloneTornade = Instantiate(_vfxs[2], newPos, _vfxs[2].transform.rotation, _parentForSpell);
+            cloneTornade.GetComponent<UltimeTornade>().InitTornade(transform);
+
+            float randomSizeScale = Random.Range(100, 150);
+            cloneTornade.transform.localScale = new Vector3(randomSizeScale, randomSizeScale, randomSizeScale);
+        }
+    }
+
+    public void WaterSpell()
+    {
+        Vector3 newPos = _ultimeBossAgentController.PlayerTransform.position - (_ultimeBossAgentController.PlayerTransform.forward * 10);
+
+        Vector3 relativePos = _ultimeBossAgentController.PlayerTransform.position - newPos;
+        // the second argument, upwards, defaults to Vector3.up
+        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+
+        GameObject cloneTsunami = Instantiate(_vfxs[3], newPos, rotation, _parentForSpell);
+
+        float randomSizeScale = Random.Range(0.75f, 1.5f);
+        cloneTsunami.transform.localScale = new Vector3(randomSizeScale, randomSizeScale, randomSizeScale);
     }
 
     public void SpawnSpell(int indexVFX, string value)

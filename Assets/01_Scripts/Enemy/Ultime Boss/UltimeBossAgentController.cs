@@ -10,10 +10,13 @@ public class UltimeBossAgentController : MonoBehaviour
     [SerializeField] private UltimeBossAttackManager _ultimeBossAttackManager;
     [SerializeField] private UltimeBossSpellManager _ultimeBossSpellManager;
     [SerializeField] private NavMeshAgent _navMeshAgent;
-    [SerializeField] private Transform _ultimeBossTransform, _playerTransform;
+    [SerializeField] private Transform _ultimeBossTransformParent, _ultimeBossTransform, _playerTransform;
 
-    [SerializeField] private float _speedCurrent, _speedMaxCurrent, _coefAcceleration, _coefDecceleration, _distancePlayer;
+    [SerializeField] private float _speedCurrent, _speedMaxCurrent, _coefAcceleration, _coefDecceleration, _distancePlayer, _distanceToRunMax;
     [SerializeField] private bool _makePauseDistance, _makePauseDestinationAttack, _makeRotationPauseAttack, _canMakeRotationPauseAttack, _canAttack, _isInPath, _isStopped, _path, _hasPath, _isDeath;
+
+    public float _timeToTp, _timeToTpMax;
+    public GameObject _fvxTpMuzzle;
 
     public void Initialize(Transform playerTr)
     {
@@ -29,6 +32,16 @@ public class UltimeBossAgentController : MonoBehaviour
             if (_playerTransform != null)
             {
                 _distancePlayer = Vector3.Distance(_playerTransform.position, _navMeshAgent.transform.position);
+
+                if(_distancePlayer > _distanceToRunMax)
+                {
+                    _speedMaxCurrent = _ultimeBossEntity.SpeedRun;
+                }
+                else
+                {
+                    _speedMaxCurrent = _ultimeBossEntity.SpeedWalk;
+                }
+
                 if (_distancePlayer > _ultimeBossAttackManager.MaxDistanceToAttackGround)
                 {
                     _ultimeBossAttackManager.CanAttack = false;
@@ -48,6 +61,25 @@ public class UltimeBossAgentController : MonoBehaviour
                         Rotate();
                     }
                     _ultimeBossAttackManager.CanAttack = true;
+                }
+
+                if(_distancePlayer < 1.5f)
+                {
+                    if (_timeToTp < _timeToTpMax)
+                    {
+                        _timeToTp += Time.deltaTime;
+                    }
+                    else
+                    {
+                        int randomChanceToTp = Random.Range(0, 100);
+
+                        if(randomChanceToTp < 90 - (50 * _ultimeBossEntity.CoefLife))
+                        {
+                            TpBossAroundRandomPlayer();
+                        }
+                        _timeToTp = 0;
+                        _timeToTpMax = Random.Range(2f, 4f);
+                    }
                 }
 
                 if (_navMeshAgent.hasPath)
@@ -130,6 +162,27 @@ public class UltimeBossAgentController : MonoBehaviour
         {
             _navMeshAgent.speed = _speedCurrent;
         }
+    }
+
+    public void TpBossAroundRandomPlayer()
+    {
+        if (_fvxTpMuzzle != null)
+        {
+            var muzzleVFX = Instantiate(_fvxTpMuzzle, transform.position, transform.rotation);
+            //muzzleVFX.transform.forward = gameObject.transform.forward;
+
+            var psMuzzle = muzzleVFX.GetComponent<ParticleSystem>();
+            if (psMuzzle != null)
+            {
+                Destroy(muzzleVFX, psMuzzle.main.duration);
+            }
+            else
+            {
+                var psChild = muzzleVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+                Destroy(muzzleVFX, psChild.main.duration);
+            }
+        }
+        _ultimeBossTransformParent.transform.position = _playerTransform.position + new Vector3(Random.Range(-7.5f, 7.5f), 0, Random.Range(-7.5f, 7.5f));
     }
 
     public void SetPlayerTransform(Transform value)

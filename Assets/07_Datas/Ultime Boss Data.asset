@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: Ultime Boss
   _lifeMax: 500
   _damage: 20
-  _speedWalk: 1
-  _speedRun: 2
+  _speedWalk: 3
+  _speedRun: 6

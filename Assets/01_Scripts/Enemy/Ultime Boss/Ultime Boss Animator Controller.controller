@@ -225,10 +225,10 @@ AnimatorStateMachine:
     m_Position: {x: 590, y: -290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6512918893892702474}
-    m_Position: {x: 490, y: -370, z: 0}
+    m_Position: {x: 330, y: -430, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7638618152755041593}
-    m_Position: {x: 320, y: -440, z: 0}
+    m_Position: {x: 490, y: -370, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -5302400125304655857}
@@ -355,7 +355,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: CptSpell
-    m_EventTreshold: 4
+    m_EventTreshold: 3
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7638618152755041593}
   m_Solo: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
   _spellOnPlayer: 0
   _spellHand: 
   _cptNbSpellSpawn: 0
-  _cptNbSpellMax: 0
+  _cptNbSpellMax: 1
   _indexCollider: 
 --- !u!1101 &-3773305325425267288
 AnimatorStateTransition:
@@ -483,7 +483,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: CptSpell
-    m_EventTreshold: 3
+    m_EventTreshold: 4
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6512918893892702474}
   m_Solo: 0
@@ -702,7 +702,7 @@ MonoBehaviour:
   _spellOnPlayer: 0
   _spellHand: 
   _cptNbSpellSpawn: 0
-  _cptNbSpellMax: 0
+  _cptNbSpellMax: 1
   _indexCollider: 
 --- !u!1102 &5376318284767958646
 AnimatorState:

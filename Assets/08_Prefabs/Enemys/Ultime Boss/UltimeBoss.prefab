@@ -100,6 +100,7 @@ MonoBehaviour:
   _ultimeBossAttackManager: {fileID: 4017760818574042096}
   _ultimeBossSpellManager: {fileID: 7850314603599505435}
   _navMeshAgent: {fileID: 4267153667088891094}
+  _ultimeBossTransformParent: {fileID: 4267153667088891097}
   _ultimeBossTransform: {fileID: 4376725724491105276}
   _playerTransform: {fileID: 0}
   _speedCurrent: 0
@@ -107,6 +108,7 @@ MonoBehaviour:
   _coefAcceleration: 0
   _coefDecceleration: 0
   _distancePlayer: 0
+  _distanceToRunMax: 5
   _makePauseDistance: 0
   _makePauseDestinationAttack: 0
   _makeRotationPauseAttack: 0
@@ -117,6 +119,10 @@ MonoBehaviour:
   _path: 0
   _hasPath: 0
   _isDeath: 0
+  _timeToTp: 0
+  _timeToTpMax: 3
+  _fvxTpMuzzle: {fileID: 7870738382115578889, guid: 5c55c0dda81f95145aa01aec9c375b0c,
+    type: 3}
 --- !u!1 &1448416315
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,8 +170,9 @@ MonoBehaviour:
   _ultimeBossAgentController: {fileID: 7831171693306545498}
   _ultimeBossTransformMesh: {fileID: 4376725724491105276}
   _posMidleSpell: {fileID: 8445558146492601266}
+  _parentForSpell: {fileID: 0}
   _timeSpellRate: 0
-  _timeSpellRateMax: 2
+  _timeSpellRateMax: 5
   _rangeMaxForSPell: 2
   _canSpell: 0
   _isInSpell: 0
@@ -174,6 +181,8 @@ MonoBehaviour:
   _vfxs:
   - {fileID: 4174204604069919490, guid: b5a211ecb2599dc45a9fff361d511f6e, type: 3}
   - {fileID: 4746245319069758037, guid: 846507e595f06a149890908c61738c42, type: 3}
+  - {fileID: 8173974010902150186, guid: 595c3da06e73b2746a358e3665116cda, type: 3}
+  - {fileID: 1374744968852265288, guid: 43ec30ae878208f468e002249f086488, type: 3}
 --- !u!135 &6657487003127732621
 SphereCollider:
   m_ObjectHideFlags: 0

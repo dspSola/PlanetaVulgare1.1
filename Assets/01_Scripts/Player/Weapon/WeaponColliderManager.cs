@@ -53,24 +53,6 @@ public class WeaponColliderManager : MonoBehaviour
                             EndAttack();
                         }
                     }
-                    // Boss
-                    if (other.gameObject.GetComponentInParent<BossEntity>() != null)
-                    {
-                        if (other.gameObject.GetComponentInParent<BossEntity>().IfLifeNot0())
-                        {
-                            other.gameObject.GetComponentInParent<BossEntity>().LessLife(_playerEntity.Damage, _playerEntity);
-                            EndAttack();
-                        }
-                    }
-                    // Simple Enemy
-                    else if (other.gameObject.GetComponentInParent<EnemyEntity>() != null)
-                    {
-                        if (other.gameObject.GetComponentInParent<EnemyEntity>().IfLifeNot0())
-                        {
-                            other.gameObject.GetComponentInParent<EnemyEntity>().LessLife(_playerEntity.Damage);
-                            EndAttack();
-                        }
-                    }
                 }
 
                 // Si Racine
