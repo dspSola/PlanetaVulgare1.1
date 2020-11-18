@@ -444,6 +444,26 @@ PrefabInstance:
       propertyPath: _intColor.a
       value: 0.5882353
       objectReference: {fileID: 0}
+    - target: {fileID: 6083394259032931518, guid: e2c7cbe272a8f4f4cb823aa382ce54e6,
+        type: 3}
+      propertyPath: _imageTotemsEarth
+      value: 
+      objectReference: {fileID: 1635934619}
+    - target: {fileID: 6083394259032931518, guid: e2c7cbe272a8f4f4cb823aa382ce54e6,
+        type: 3}
+      propertyPath: _imageTotemsFire
+      value: 
+      objectReference: {fileID: 1980045813}
+    - target: {fileID: 6083394259032931518, guid: e2c7cbe272a8f4f4cb823aa382ce54e6,
+        type: 3}
+      propertyPath: _imageTotemsWater
+      value: 
+      objectReference: {fileID: 174970864}
+    - target: {fileID: 6083394259032931518, guid: e2c7cbe272a8f4f4cb823aa382ce54e6,
+        type: 3}
+      propertyPath: _imageTotemsWind
+      value: 
+      objectReference: {fileID: 1305455223}
     - target: {fileID: 6658119077526626512, guid: e2c7cbe272a8f4f4cb823aa382ce54e6,
         type: 3}
       propertyPath: m_Color.r
