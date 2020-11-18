@@ -9,7 +9,7 @@ public class PlayerEntity : Entity
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private PlayerEventStory _playerEventStory;
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
-    [SerializeField] private Transform _playerTransform;
+    [SerializeField] private Transform _playerTransform, _targetBottom, _targetMidle, _targetTop;
 
     [SerializeField] private float _rageMax, _rage, _coefRage, _coefTimeLessRage, _timeRage, _timeRageMax, _valueRageAddAttack, _valueRageAddLessLife;
 
@@ -44,7 +44,7 @@ public class PlayerEntity : Entity
         }
         else
         {
-            if (_rage > 0)
+            if (_rage > 0 && _rage < _rageMax)
             {
                 LessRageTime();
             }
@@ -100,7 +100,7 @@ public class PlayerEntity : Entity
             _timeRage = _timeRageMax;
         }
 
-        if (_rage + value > _rageMax)
+        if (_rage + value >= _rageMax)
         {
             _rage = _rageMax;
         }
@@ -147,25 +147,29 @@ public class PlayerEntity : Entity
 
     public void AddTotemFire(Totem totem)
     {
-        _hUDLifePlayer.AddTotem(totem.SpriteTotem);
+        //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
+        _hUDLifePlayer.SetColor(totem.FillColor);
         _playerEventStory.AddTotemFire();
         UpgradeLife(50);
     }
     public void AddTotemWind(Totem totem)
     {
-        _hUDLifePlayer.AddTotem(totem.SpriteTotem);
+        //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
+        _hUDLifePlayer.SetColor(totem.FillColor);
         _playerEventStory.AddTotemWind();
         UpgradeLife(50);
     }
     public void AddTotemWater(Totem totem)
     {
-        _hUDLifePlayer.AddTotem(totem.SpriteTotem);
+        //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
+        _hUDLifePlayer.SetColor(totem.FillColor);
         _playerEventStory.AddTotemWater();
         UpgradeLife(50);
     }
     public void AddTotemEarth(Totem totem)
     {
-        _hUDLifePlayer.AddTotem(totem.SpriteTotem);
+        //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
+        _hUDLifePlayer.SetColor(totem.FillColor);
         _playerEventStory.AddTotemEarth();
         UpgradeLife(50);
     }
@@ -183,4 +187,7 @@ public class PlayerEntity : Entity
     public float RageMax { get => _rageMax; set => _rageMax = value; }
     public float Rage { get => _rage; set => _rage = value; }
     public float ValueRageAddAttack { get => _valueRageAddAttack; set => _valueRageAddAttack = value; }
+    public Transform TargetBottom { get => _targetBottom; set => _targetBottom = value; }
+    public Transform TargetMidle { get => _targetMidle; set => _targetMidle = value; }
+    public Transform TargetTop { get => _targetTop; set => _targetTop = value; }
 }

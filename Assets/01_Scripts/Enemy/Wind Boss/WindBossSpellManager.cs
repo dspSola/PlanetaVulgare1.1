@@ -20,29 +20,6 @@ public class WindBossSpellManager : MonoBehaviour
         effectToSpawn = _vfxs[0];
     }
 
-    private void Update()
-    {
-        //if (!_isInSpell)
-        //{
-        //    if (_timeSpellRate >= _timeSpellRateMax)
-        //    {
-        //        int randomChanceSpell = Random.Range(0, 100);
-        //        //Debug.Log(random);
-        //        if (randomChanceSpell < 75)
-        //        {
-        //            int randomIndexSpell = Random.Range(1, 4);
-        //            //SetSpell(true, randomIndexSpell);
-        //            SetSpell(true, randomIndexSpell);
-        //        }
-        //        _timeSpellRate = 0;
-        //    }
-        //    else
-        //    {
-        //        _timeSpellRate += Time.deltaTime;
-        //    }
-        //}
-    }
-
     public void SpawnSpell(int indexVFX, string value)
     {
 
@@ -95,22 +72,6 @@ public class WindBossSpellManager : MonoBehaviour
             // the second argument, upwards, defaults to Vector3.up
             Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
             vfx = Instantiate(_vfxs[indexVFX], _firePointRight.transform.position, rotation);
-        }
-        else
-        {
-            Debug.Log("No Fire Poinr");
-        }
-    }
-
-    private void SpawnOnPlayer(int indexVFX)
-    {
-        GameObject vfx;
-        if (_firepointLeft != null)
-        {
-            Vector3 relativePos = _windBossAgentController.PlayerTransform.position - _windBossTransformMesh.position;
-            // the second argument, upwards, defaults to Vector3.up
-            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-            vfx = Instantiate(_vfxs[indexVFX], _windBossAgentController.PlayerTransform.position, rotation);
         }
         else
         {

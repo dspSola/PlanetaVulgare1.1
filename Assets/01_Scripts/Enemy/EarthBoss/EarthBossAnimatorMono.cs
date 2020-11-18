@@ -21,17 +21,26 @@ public class EarthBossAnimatorMono : MonoBehaviour
     {
         _animator.SetBool("Fly", value);
     }
-    public void SetAttack(bool valueBool, int valueInt)
+    public void SetAttack(bool boolValue, int valueInt)
     {
-        if (!_animator.GetBool("Attack") && valueBool)
+        _animator.SetBool("Attack", boolValue);
+        _animator.SetInteger("CptAttack", valueInt);
+    }
+    public void SetAttack(int valueInt)
+    {
+        if (!_animator.GetBool("Attack"))
         {
-            _animator.SetBool("Attack", valueBool);
+            _animator.SetBool("Attack", true);
             _animator.SetInteger("CptAttack", valueInt);
         }
-        else
+    }
+    public void SetAttack()
+    {
+        if (!_animator.GetBool("Attack"))
         {
-            _animator.SetBool("Attack", valueBool);
-            _animator.SetInteger("CptAttack", valueInt);
+            _animator.SetBool("Attack", true);
+            int random = Random.Range(1, 3);
+            _animator.SetInteger("CptAttack", random);
         }
     }
 

@@ -22,6 +22,7 @@ public class WindBossEntity : BossEntity
         {
             pe.LifeToLifeMax();
             _windBossAnimatorMono.SetDeath();
+            PlayerEventStoryThis.WinBossWind();
             Destroy(gameObject, 3);
         }
     }

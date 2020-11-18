@@ -145,7 +145,7 @@ MonoBehaviour:
   _isAttack: 0
   _isSpell: 1
   _spellOnPlayer: 0
-  _spellHand: Two
+  _spellHand: Right
   _indexSpell: 0
   _cptNbSpell: 1
   _cptNbSpellSpawn: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   _isAttack: 0
   _isSpell: 1
   _spellOnPlayer: 0
-  _spellHand: 
+  _spellHand: Left
   _indexSpell: 1
   _cptNbSpell: 1
   _cptNbSpellSpawn: 0
@@ -270,7 +270,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 6c8500c9cac113c4db7bd6af5c5c758f,
+  m_Motion: {fileID: -203655887218126122, guid: 975dc03eadea8114c928e762db2a0758,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -338,7 +338,7 @@ AnimatorStateTransition:
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 260556650849617582}
   m_Solo: 0
-  m_Mute: 0
+  m_Mute: 1
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.25
@@ -349,33 +349,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1102 &-626612518305729779
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Spell Area 02
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: f88cadd5d315cb14391c37c6ced7b98b,
-    type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!206 &-389216592786338489
 BlendTree:
   m_ObjectHideFlags: 3
@@ -626,6 +599,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 0
+--- !u!114 &1693726581564115647
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8deafac55c710fa4890afd852218ecc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _windBossAgentController: {fileID: 0}
+  _windBossAnimatorMono: {fileID: 0}
+  _windBossSpellManager: {fileID: 0}
+  _windBossHand: {fileID: 0}
+  _makePauseDestinationAttack: 1
+  _makePoseRotationAttack: 0
+  _canMakeRotationPauseAttack: 1
+  _isAttack: 0
+  _isSpell: 1
+  _spellOnPlayer: 0
+  _spellHand: Left
+  _indexSpell: 1
+  _cptNbSpell: 1
+  _cptNbSpellSpawn: 0
 --- !u!1102 &2775991067093929248
 AnimatorState:
   serializedVersion: 5
@@ -641,6 +640,7 @@ AnimatorState:
   - {fileID: 5510077735338897591}
   - {fileID: -712498336517607903}
   - {fileID: -6390087910319204997}
+  - {fileID: 8294669700581665120}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -667,8 +667,10 @@ AnimatorState:
   m_Name: Spell Atack 03
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_Transitions:
+  - {fileID: 7256969700642954224}
+  m_StateMachineBehaviours:
+  - {fileID: 1693726581564115647}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -722,7 +724,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 3598905105255414631}
-    m_Position: {x: 460, y: 560, z: 0}
+    m_Position: {x: -30, y: -490, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 67369915610838137}
     m_Position: {x: 150, y: -380, z: 0}
@@ -738,9 +740,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 3624498958914231835}
     m_Position: {x: -361.89282, y: 7.4747314, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -626612518305729779}
-    m_Position: {x: 410, y: 740, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -273798024664859505}
     m_Position: {x: 170, y: 760, z: 0}
@@ -786,7 +785,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 1c3987fa09151aa44b4cd45bb3426c91,
+  m_Motion: {fileID: -203655887218126122, guid: 93bcbef00f845354683b818312e78b52,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -847,6 +846,28 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &7256969700642954224
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 2775991067093929248}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.94186044
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!114 &7374070140665007262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -869,7 +890,7 @@ MonoBehaviour:
   _isAttack: 0
   _isSpell: 1
   _spellOnPlayer: 0
-  _spellHand: 
+  _spellHand: Right
   _indexSpell: 2
   _cptNbSpell: 1
   _cptNbSpellSpawn: 0
@@ -899,6 +920,31 @@ MonoBehaviour:
   _indexSpell: 0
   _cptNbSpell: 0
   _cptNbSpellSpawn: 0
+--- !u!1101 &8294669700581665120
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 6
+    m_ConditionEvent: CptSpell
+    m_EventTreshold: 2
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 3598905105255414631}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.63414633
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &8315921156505176765
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
