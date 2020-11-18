@@ -130,10 +130,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 730894612}
-  - component: {fileID: 730894613}
   - component: {fileID: 730894614}
+  - component: {fileID: 730894615}
   m_Layer: 0
-  m_Name: SoundBoxPreBoss
+  m_Name: SoundBoxPostBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,19 +153,6 @@ Transform:
   m_Father: {fileID: 1922120786}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &730894613
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730894611}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &730894614
 AudioSource:
   m_ObjectHideFlags: 0
@@ -262,6 +249,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &730894615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730894611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a9039fedf12df40962f47f886f4018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &910892366
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 910892367}
   - component: {fileID: 910892368}
+  - component: {fileID: 910892369}
   m_Layer: 0
   m_Name: EndBoss
   m_TagString: Untagged
@@ -389,6 +389,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &910892369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910892366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55e53b98e57b2f4f9d7ecbf8ad00843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1055107978
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,6 +412,7 @@ GameObject:
   - component: {fileID: 1055107979}
   - component: {fileID: 1055107980}
   - component: {fileID: 1055107981}
+  - component: {fileID: 1055107982}
   m_Layer: 0
   m_Name: SoundBoxMontain
   m_TagString: Untagged
@@ -530,6 +543,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1055107982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055107978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b6f2693e03b7142a16b86f95d08a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1155565065
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1155565066}
   - component: {fileID: 1155565067}
+  - component: {fileID: 1155565068}
   m_Layer: 0
   m_Name: CachtingTotem
   m_TagString: Untagged
@@ -657,6 +683,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1155565068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155565065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8be0d349b7f1c74494960d2705b53d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1731617618
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,6 +706,7 @@ GameObject:
   - component: {fileID: 1731617619}
   - component: {fileID: 1731617620}
   - component: {fileID: 1731617621}
+  - component: {fileID: 1731617622}
   m_Layer: 0
   m_Name: SoundBoxPlain
   m_TagString: Untagged
@@ -798,6 +837,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1731617622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731617618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 523d9a8c8f3f8904fa66822abc16b10d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1922120785
 GameObject:
   m_ObjectHideFlags: 0
