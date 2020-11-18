@@ -186,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _totemName: Fire
   _spriteTotem: {fileID: 21300000, guid: 8a755ec37347a604b98945b44875e8f2, type: 3}
+  _fillColor: {r: 1, g: 0.29803923, b: 0.007843138, a: 1}
   _boss: {fileID: 0}
 --- !u!64 &3782880322961467280
 MeshCollider:

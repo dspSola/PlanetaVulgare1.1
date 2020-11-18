@@ -6,6 +6,7 @@ public class Totem : MonoBehaviour
 {
     [SerializeField] private string _totemName;
     [SerializeField] private Sprite _spriteTotem;
+    [SerializeField] private Color _fillColor;
     [SerializeField] private GameObject _boss;
 
     private void OnTriggerStay(Collider other)
@@ -40,4 +41,5 @@ public class Totem : MonoBehaviour
 
     public string TotemName { get => _totemName; set => _totemName = value; }
     public Sprite SpriteTotem { get => _spriteTotem; set => _spriteTotem = value; }
+    public Color FillColor { get => _fillColor; set => _fillColor = value; }
 }
