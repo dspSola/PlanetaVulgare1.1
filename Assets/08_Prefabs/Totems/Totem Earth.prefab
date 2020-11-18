@@ -185,8 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _totemName: Earth
-  _spriteTotem: {fileID: -3745883004384097684, guid: 515482567f427bd45a8408e2f2a03935,
-    type: 3}
+  _spriteTotem: {fileID: 21300000, guid: 64452b91bb92a0142b5796d401cf54f1, type: 3}
   _boss: {fileID: 1864542977713956268, guid: 45f1dd4f741a5fa4a95ba609d1d7aebc, type: 3}
 --- !u!64 &1006649676711382966
 MeshCollider:

@@ -323,8 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _totemName: Water
-  _spriteTotem: {fileID: 2099400315816055210, guid: 515482567f427bd45a8408e2f2a03935,
-    type: 3}
+  _spriteTotem: {fileID: 21300000, guid: e6b5d13012d93564ab35b722d5f03bd4, type: 3}
   _boss: {fileID: 0}
 --- !u!1001 &7987372114501398424
 PrefabInstance:
