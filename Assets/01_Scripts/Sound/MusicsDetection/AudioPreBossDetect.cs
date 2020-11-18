@@ -10,7 +10,7 @@ public class AudioPreBossDetect : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("player entre dans la zone preBoss");
         }
@@ -18,7 +18,7 @@ public class AudioPreBossDetect : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("player sort dans la zone preBoss");
         }
