@@ -21,7 +21,7 @@ public class HUDLifePlayer : MonoBehaviour
 
 
     [SerializeField] private int _nbTotem;
-    [SerializeField] private Color _intColor;
+    [SerializeField] private Color _initColor;
 
     public int NbTotem { get => _nbTotem; set => _nbTotem = value; }
 
@@ -35,7 +35,7 @@ public class HUDLifePlayer : MonoBehaviour
         for (int i = 0; i < _imageTotems.Count; i++)
         {
             //_imageTotems[i].transform.parent.gameObject.SetActive(false);
-            _imageTotems[i].color = _intColor;
+            _imageTotems[i].color = _initColor;
         }
     }
 
@@ -78,9 +78,10 @@ public class HUDLifePlayer : MonoBehaviour
     //    _nbTotem++;
     //}
 
-    public void SetIconColor(Color color)
+    public void SetIconColor(Color color, int index)
     {
-        _imageTotems[_nbTotem].color = color;
+        _imageTotems[index].color = color;
+
         //_imageTotemsEarth.color = color;
         //_imageTotemsFire.color = color;
         //_imageTotemsWater.color = color;

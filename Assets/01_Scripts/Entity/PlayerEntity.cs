@@ -148,32 +148,28 @@ public class PlayerEntity : Entity
     public void AddTotemEarth(Totem totem)
     {
         //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
-        _hUDLifePlayer.SetIconColor(totem.FillColor);
-        _hUDLifePlayer.NbTotem = 0;
+        _hUDLifePlayer.SetIconColor(totem.FillColor, 0);
         _playerEventStory.AddTotemEarth();
         UpgradeLife(50);
     }
     public void AddTotemFire(Totem totem)
     {
         //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
-        _hUDLifePlayer.SetIconColor(totem.FillColor);
-        _hUDLifePlayer.NbTotem = 1;
+        _hUDLifePlayer.SetIconColor(totem.FillColor, 1);
         _playerEventStory.AddTotemFire();
         UpgradeLife(50);
     }
     public void AddTotemWater(Totem totem)
     {
         //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
-        _hUDLifePlayer.SetIconColor(totem.FillColor);
-        _hUDLifePlayer.NbTotem = 2;
+        _hUDLifePlayer.SetIconColor(totem.FillColor, 2);
         _playerEventStory.AddTotemWater();
         UpgradeLife(50);
     }
     public void AddTotemWind(Totem totem)
     {
         //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
-        _hUDLifePlayer.SetIconColor(totem.FillColor);
-        _hUDLifePlayer.NbTotem = 3;
+        _hUDLifePlayer.SetIconColor(totem.FillColor, 3);
         _playerEventStory.AddTotemWind();
         UpgradeLife(50);
     }

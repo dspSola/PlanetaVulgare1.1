@@ -408,12 +408,12 @@ PrefabInstance:
         type: 3}
       propertyPath: _imageTotems.Array.data[0]
       value: 
-      objectReference: {fileID: 1980045813}
+      objectReference: {fileID: 1635934619}
     - target: {fileID: 6083394259032931518, guid: e2c7cbe272a8f4f4cb823aa382ce54e6,
         type: 3}
       propertyPath: _imageTotems.Array.data[1]
       value: 
-      objectReference: {fileID: 1635934619}
+      objectReference: {fileID: 1980045813}
     - target: {fileID: 6083394259032931518, guid: e2c7cbe272a8f4f4cb823aa382ce54e6,
         type: 3}
       propertyPath: _imageTotems.Array.data[2]
@@ -464,6 +464,26 @@ PrefabInstance:
       propertyPath: _imageTotemsWind
       value: 
       objectReference: {fileID: 1305455223}
+    - target: {fileID: 6083394259032931518, guid: e2c7cbe272a8f4f4cb823aa382ce54e6,
+        type: 3}
+      propertyPath: _initColor.r
+      value: 0.5176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083394259032931518, guid: e2c7cbe272a8f4f4cb823aa382ce54e6,
+        type: 3}
+      propertyPath: _initColor.g
+      value: 0.5176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083394259032931518, guid: e2c7cbe272a8f4f4cb823aa382ce54e6,
+        type: 3}
+      propertyPath: _initColor.b
+      value: 0.5176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083394259032931518, guid: e2c7cbe272a8f4f4cb823aa382ce54e6,
+        type: 3}
+      propertyPath: _initColor.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6658119077526626512, guid: e2c7cbe272a8f4f4cb823aa382ce54e6,
         type: 3}
       propertyPath: m_Color.r
