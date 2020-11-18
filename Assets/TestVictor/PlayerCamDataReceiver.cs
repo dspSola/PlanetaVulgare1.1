@@ -6,7 +6,7 @@ public class PlayerCamDataReceiver : MonoBehaviour
 {
     [SerializeField] GameObjectData _playerCamData;
 
-    private void Awake()
+    private void Start()
     {
         _playerCamData._value = this.gameObject;
     }

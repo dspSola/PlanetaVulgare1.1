@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParticleBurstDataHolder : MonoBehaviour
 {
     [SerializeField] GameObjectData _gameObjectData;
-    private void Awake()
+    private void Start()
     {
         _gameObjectData._value = gameObject;
     }
