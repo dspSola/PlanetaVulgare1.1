@@ -10,7 +10,7 @@ public class AudioMontainDetect : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(other.gameObject.layer == 8)
         {
             Debug.Log("player entre dans la zone montagne");
         }
