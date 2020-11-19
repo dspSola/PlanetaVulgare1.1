@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 694443768}
   - component: {fileID: 694443767}
+  - component: {fileID: 694443769}
   m_Layer: 28
   m_Name: SunLight
   m_TagString: Untagged
@@ -213,6 +214,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 54.104004, y: 544.796, z: 180.66699}
+--- !u!114 &694443769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694443766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01d29d88278f45458d99e6b5199e920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 37.31
+  useScattering: 0
+  overrideScattering: 1
+  overridingScattering: 0.5
+  scatteringBias: 0
+  useColorTemperatureTint: 0
+  overrideColor: 0
+  overridingColor: {r: 1, g: 1, b: 1, a: 1}
+  useShadow: 1
+  useCookie: 1
+  cookieMapRenderTexture: {fileID: 0}
+  enableOutOfPhaseColor: 0
+  outOfPhaseColorStrength: 0.1
+  outOfPhaseColor: {r: 0.0000010132779, g: 0.999999, b: 0.999999, a: 1}
+  customDistanceFalloffThreshold: 0.5
+  customDistanceFalloffPower: 2
+  customCookieDistanceFalloffStartThreshold: 0.1
+  customCookieDistanceFalloffEndThreshold: 0.25
+  customCookieDistanceFalloffPower: 2
+  customAngularFalloffThreshold: 0.8
+  customAngularFalloffPower: 2
 --- !u!1 &827361923
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +534,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6728413623333258378, guid: ff7f0a1d63a3eb24d81b50fbc5d444ba,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6728413623333258383, guid: ff7f0a1d63a3eb24d81b50fbc5d444ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6728413623805191921, guid: ff7f0a1d63a3eb24d81b50fbc5d444ba,
         type: 3}
       propertyPath: m_Name
