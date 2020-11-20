@@ -6,11 +6,13 @@ public class AudioMontainDetect : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
         _boxCollider = GetComponent<BoxCollider>();
+        Debug.Log("c'est l'éclate");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 8)
+        Debug.Log("Hou!!!");
+        if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("player entre dans la zone montagne");
         }
