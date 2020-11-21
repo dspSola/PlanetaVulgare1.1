@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Fire
   - Effect
+  - Audio
   layers:
   - Default
   - TransparentFX

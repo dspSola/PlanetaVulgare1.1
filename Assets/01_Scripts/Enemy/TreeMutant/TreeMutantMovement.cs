@@ -12,36 +12,37 @@ public class TreeMutantMovement : MonoBehaviour
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _isStopping = true;
+    }
+
+    private void Start()
+    {
+        //_isStopping = false;
     }
 
     private void Update()
     {
         Vector3 point;
 
-        if (RandomPoint(transform.position, _range, out point))
+        if (/*!_isStopping &&*/ _navMeshAgent.remainingDistance < 0.2f)
         {
-            Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-            if(_isStopping)
+            if (RandomPoint(transform.position, _range, out point))
             {
-                if(NextPosition(transform.position, point))
+                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+                if (NextPosition(transform.position, point))
                 {
                     if (_navMeshAgent != null)
                     {
                         _navMeshAgent.destination = point;
                         _speedAgent = 2f;
                         _navMeshAgent.speed = _speedAgent;
-                        _isStopping = false;
                     }
                 }
             }
-            else
-            {
-                StartCoroutine(DelayStop());
-            }
-
-            Debug.Log($"mon point est : {point} et l'agent est-il à l'arret {_isStopping}");
         }
+        //else
+        //{
+        //    StartCoroutine(DelayStop());
+        //}
     }
 
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
@@ -56,7 +57,7 @@ public class TreeMutantMovement : MonoBehaviour
             //si il y a une position random sur un navAera
             if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
             {
-                // la postion égale le résultat
+                // le résultat égale la postion
                 result = hit.position;
                 return true;
             }
@@ -71,12 +72,12 @@ public class TreeMutantMovement : MonoBehaviour
         // si la position courante n'est pas égale à la prochaine position
          if(currentPos != nextPos)
         {
-            //_isStopping = false;
+            //_isStopping = true;
             return true;
         }
          else
         {
-            //_isStopping = true;
+            //_isStopping = false;
             return false;
         }
     }
@@ -90,12 +91,12 @@ public class TreeMutantMovement : MonoBehaviour
 
         yield return new WaitForSeconds(_delay);
 
-        _isStopping = true;
+        //_isStopping = false;
     }
 
     private NavMeshAgent _navMeshAgent;
-    private bool _isStopping;
     private float _speedAgent;
+    public bool _isStopping;
 
     public float SpeedAgent { get => _speedAgent; set => _speedAgent = value; }
 }
