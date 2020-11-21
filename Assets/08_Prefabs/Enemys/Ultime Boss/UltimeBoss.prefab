@@ -208,8 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f048d7049e97b004faf3de617cacefe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _earthBossEntity: {fileID: 0}
-  _earthBossAnimatorMono: {fileID: 0}
+  _bossEntity: {fileID: 791430840}
   _canDamageCac: 0
   _touchPlayer: 0
 --- !u!1 &4267153667088891098
@@ -418,8 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f048d7049e97b004faf3de617cacefe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _earthBossEntity: {fileID: 0}
-  _earthBossAnimatorMono: {fileID: 0}
+  _bossEntity: {fileID: 791430840}
   _canDamageCac: 0
   _touchPlayer: 0
 --- !u!135 &7463709120243653795
@@ -447,8 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f048d7049e97b004faf3de617cacefe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _earthBossEntity: {fileID: 0}
-  _earthBossAnimatorMono: {fileID: 0}
+  _bossEntity: {fileID: 791430840}
   _canDamageCac: 0
   _touchPlayer: 0
 --- !u!135 &8904262248469294346
@@ -476,8 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f048d7049e97b004faf3de617cacefe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _earthBossEntity: {fileID: 0}
-  _earthBossAnimatorMono: {fileID: 0}
+  _bossEntity: {fileID: 791430840}
   _canDamageCac: 0
   _touchPlayer: 0
 --- !u!1001 &4267153667496748055

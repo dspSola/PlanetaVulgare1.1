@@ -201,9 +201,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 20
   _damage: 20
-  _muzzlePrefab: {fileID: 4795422849241375136, guid: ca6366c88cd053147a0503dc418cc204,
+  _muzzlePrefab: {fileID: 7245508681239696156, guid: 668834280d1041b4ab24a78cfb02735a,
     type: 3}
-  _hitPrefab: {fileID: 3561212618479951205, guid: 5f7639a6e23d8f14b871faf61a01a070,
+  _hitPrefab: {fileID: 1513055157299351214, guid: ee45be80427a00e4aa89e2fbec87a415,
     type: 3}
 --- !u!54 &6645408796216026739
 Rigidbody:

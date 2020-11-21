@@ -14,6 +14,8 @@ public class PlayerEntity : Entity
     [SerializeField] private float _rageMax, _rage, _coefRage, _coefTimeLessRage, _timeRage, _timeRageMax, _valueRageAddAttack, _valueRageAddLessLife;
 
     [SerializeField] private GameObject _canvasDie;
+    [SerializeField] private AudioSource _sfxAudioSource;
+    [SerializeField] private List<AudioClip> _sfxAudioClips;
 
     public override void InitializeEntity()
     {
@@ -176,6 +178,16 @@ public class PlayerEntity : Entity
         base.CoefLife = base.Life / base.LifeMax;
         _playerData.LifeCoef = base.CoefLife;
         _hUDLifePlayer.SetLife(base.CoefLife);
+    }
+
+    public void PlayOnShootSfxSound(AudioClip audioClip)
+    {
+        _sfxAudioSource.PlayOneShot(audioClip);
+    }
+
+    public void PlayBiteApple()
+    {
+        _sfxAudioSource.PlayOneShot(_sfxAudioClips[0]);
     }
 
     private GUIStyle _style;

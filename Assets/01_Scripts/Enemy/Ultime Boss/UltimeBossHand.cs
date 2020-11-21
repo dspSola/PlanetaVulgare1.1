@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class UltimeBossHand : MonoBehaviour
 {
-    [SerializeField] private EarthBossEntity _earthBossEntity;
-    [SerializeField] private EarthBossAnimatorMono _earthBossAnimatorMono;
+    [SerializeField] private UltimeBossEntity _bossEntity;
     [SerializeField] private bool _canDamageCac, _touchPlayer;
 
     public bool CanDamageCac { get => _canDamageCac; set => _canDamageCac = value; }
@@ -28,7 +27,7 @@ public class UltimeBossHand : MonoBehaviour
                 if (other.GetComponentInChildren<StateMachineAttack>().CurrentState != PlayerAttackState.PROTECTION)
                 {
                     Debug.Log("Ici Player Collider : " + other.name + "!= PlayerAttackState.PROTECTION");
-                    other.GetComponentInChildren<PlayerEntity>().LessLife(_earthBossEntity.Damage);
+                    other.GetComponentInChildren<PlayerEntity>().LessLife(_bossEntity.Damage);
                     _touchPlayer = true;
                 }
             }

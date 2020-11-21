@@ -12,6 +12,7 @@ TagManager:
   - Fire
   - Effect
   - Racine
+  - Fruit
   layers:
   - Default
   - TransparentFX
