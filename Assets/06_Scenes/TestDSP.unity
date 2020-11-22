@@ -521,7 +521,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897090334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -741.7, y: 77.5, z: 469}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 491408609}
@@ -725,11 +725,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MushAndWaitP (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8388710681290859006, guid: 712c694f39fa8164c83454851387150c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8388710681290859007, guid: 712c694f39fa8164c83454851387150c,
         type: 3}
@@ -1004,7 +999,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1408
+  m_Name: pb_Mesh-86814
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2113,7 +2108,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1808
+  m_Name: pb_Mesh-87222
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4833,11 +4828,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MushAndWaitP
-      objectReference: {fileID: 0}
-    - target: {fileID: 8388710681290859006, guid: 712c694f39fa8164c83454851387150c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8388710681290859007, guid: 712c694f39fa8164c83454851387150c,
         type: 3}

@@ -26,7 +26,7 @@ class Slicer
         }
 
         //Create left and right slice of hollow object
-        SlicesMetadata slicesMeta = new SlicesMetadata(plane, mesh, sliceable.IsSolid, sliceable.ReverseWireTriangles, sliceable.ShareVertices, sliceable.SmoothVertices);
+        SlicesMetadata slicesMeta = new SlicesMetadata(plane, mesh, sliceable.IsSolid, sliceable.ReverseWireTriangles, sliceable.ShareVertices, sliceable.SmoothVertices, sliceable.DestroyGo);
 
         GameObject positiveObject = CreateMeshGameObject(objectToCut);
         positiveObject.name = string.Format("{0}_positive", objectToCut.name);
@@ -109,4 +109,3 @@ class Slicer
         rb.useGravity = useGravity;
     }
 }
-

@@ -39,6 +39,7 @@ class SlicesMetadata
     private bool _isSolid;
     private bool _useSharedVertices = false;
     private bool _smoothVertices = false;
+    private bool _destroyGo;
     private bool _createReverseTriangleWindings = false;
 
     public bool IsSolid
@@ -82,7 +83,7 @@ class SlicesMetadata
         }
     }
 
-    public SlicesMetadata(Plane plane, Mesh mesh, bool isSolid, bool createReverseTriangleWindings, bool shareVertices, bool smoothVertices)
+    public SlicesMetadata(Plane plane, Mesh mesh, bool isSolid, bool createReverseTriangleWindings, bool shareVertices, bool smoothVertices, bool destroyGo)
     {
         _positiveSideTriangles = new List<int>();
         _positiveSideVertices = new List<Vector3>();
@@ -99,6 +100,7 @@ class SlicesMetadata
         _createReverseTriangleWindings = createReverseTriangleWindings;
         _useSharedVertices = shareVertices;
         _smoothVertices = smoothVertices;
+        _destroyGo = destroyGo;
 
         ComputeNewMeshes();
     }

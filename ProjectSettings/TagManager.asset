@@ -11,7 +11,8 @@ TagManager:
   - Enemy
   - Fire
   - Effect
-  - Audio
+  - Racine
+  - Fruit
   layers:
   - Default
   - TransparentFX
