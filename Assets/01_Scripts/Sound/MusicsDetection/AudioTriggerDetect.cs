@@ -26,18 +26,18 @@ public class AudioTriggerDetect : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log("Hou!!!");
-        if(other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("PlayerColl"))
         {
-            Debug.Log("player entre dans une zone");
+            //Debug.Log("player entre dans une zone");
             _isRisingUp = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("PlayerColl"))
         {
-            Debug.Log("player sort d'une zone");
+            //Debug.Log("player sort d'une zone");
             _isRisingDown = true;
         }
     }

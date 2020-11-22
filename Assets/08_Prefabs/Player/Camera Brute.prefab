@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2635822801914135461}
   - component: {fileID: 2635822801914135466}
   - component: {fileID: 2635822801914135464}
+  - component: {fileID: 720557526}
+  - component: {fileID: 720557527}
   m_Layer: 0
   m_Name: Camera Player
   m_TagString: Untagged
@@ -26,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2635822801914135460}
-  m_LocalRotation: {x: 0.07894154, y: -0.16473678, z: 0.013228336, w: 0.9830845}
-  m_LocalPosition: {x: -740.72205, y: 80, z: 466.16388}
+  m_LocalRotation: {x: 0.048264313, y: -0.79519624, z: 0.06385469, w: 0.60104585}
+  m_LocalPosition: {x: 44.88617, y: 3.25, z: 29.818481}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2635822802573051234}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 147.22, z: 0}
 --- !u!20 &2635822801914135461
 Camera:
   m_ObjectHideFlags: 0
@@ -101,6 +103,7 @@ MonoBehaviour:
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
   m_UpdateMethod: 1
+  m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
@@ -117,6 +120,81 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &720557526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2635822801914135460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 2635822801914135467}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 134217728
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 1
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 1
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
+--- !u!114 &720557527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2635822801914135460}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdcd06815c47d30489f70df42db56a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frustumSettings:
+    baseSettings: {fileID: 0}
+    qualitySettings: {fileID: 0}
 --- !u!1 &2635822801938562173
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +219,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2635822801938562173}
-  m_LocalRotation: {x: 0.06871602, y: -0.511181, z: 0.04104801, w: 0.8557378}
+  m_LocalRotation: {x: 0.03860829, y: -0.8731708, z: 0.07011609, w: 0.48079735}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -216,8 +294,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2635822802429268748}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 56.441544, y: 8.549999, z: 57.627945}
+  m_LocalRotation: {x: 0, y: 0.14340623, z: 0, w: 0.98966396}
+  m_LocalPosition: {x: 44.88617, y: 3.25, z: 29.818481}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2635822803442313085}
@@ -225,7 +303,7 @@ Transform:
   - {fileID: 2635822802594685435}
   m_Father: {fileID: 2635822802573051234}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 16.49, z: 0}
 --- !u!114 &2635822802429268754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +341,7 @@ MonoBehaviour:
   m_LegacyBlendHint: 0
   m_YAxis:
     Value: 0.5
+    m_SpeedMode: 0
     m_MaxSpeed: 2
     m_AccelTime: 0.2
     m_DecelTime: 0.1
@@ -286,6 +365,7 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
     Value: 0
+    m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
@@ -413,7 +493,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2635822802594685434}
-  m_LocalRotation: {x: -0.03865991, y: 0.5123062, z: -0.023093902, w: -0.85762143}
+  m_LocalRotation: {x: 0.02172125, y: -0.87509274, z: 0.03944772, w: 0.48185572}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -542,10 +622,11 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
     Value: 0
+    m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: Mouse X
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -180
@@ -612,7 +693,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2635822803442313084}
-  m_LocalRotation: {x: -0.2922525, y: 0.4821961, z: -0.17457898, w: -0.807216}
+  m_LocalRotation: {x: 0.16420309, y: -0.82365996, z: 0.29820752, w: 0.45353502}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -741,10 +822,11 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
     Value: 0
+    m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: Mouse X
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -180
@@ -866,10 +948,11 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
     Value: 0
+    m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: Mouse X
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -180
@@ -925,6 +1008,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -6728360899677153597, guid: a293241b126f32b4aaaee1299c1de552,
         type: 2}
+    - target: {fileID: 1335109600394178732, guid: 675eafb6738962e48bd9e5a238575160,
+        type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6797394258797912376, guid: 675eafb6738962e48bd9e5a238575160,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -983,7 +1071,12 @@ PrefabInstance:
     - target: {fileID: 7233059433258742525, guid: 675eafb6738962e48bd9e5a238575160,
         type: 3}
       propertyPath: m_Name
-      value: Music (1)
+      value: Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233059433258742525, guid: 675eafb6738962e48bd9e5a238575160,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 675eafb6738962e48bd9e5a238575160, type: 3}
