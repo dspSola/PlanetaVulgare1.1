@@ -6,7 +6,7 @@ public class PlayerGameObjectDataHolder : MonoBehaviour
 {
     [SerializeField] GameObjectData _playerMoveScriptData;
 
-    private void Start()
+    private void Awake()
     {
         _playerMoveScriptData._value = gameObject;
     }

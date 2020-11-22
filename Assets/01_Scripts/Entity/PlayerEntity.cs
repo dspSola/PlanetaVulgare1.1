@@ -147,28 +147,32 @@ public class PlayerEntity : Entity
         SceneManager.LoadScene("Main");
     }
 
-    public void AddTotemFire(Totem totem)
+    public void AddTotemEarth(Totem totem)
     {
-        _hUDLifePlayer.AddTotem(totem.SpriteTotem);
-        _playerEventStory.AddTotemFire();
+        //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
+        _hUDLifePlayer.SetIconColor(totem.FillColor, 0);
+        _playerEventStory.AddTotemEarth();
         UpgradeLife(50);
     }
-    public void AddTotemWind(Totem totem)
+    public void AddTotemFire(Totem totem)
     {
-        _hUDLifePlayer.AddTotem(totem.SpriteTotem);
-        _playerEventStory.AddTotemWind();
+        //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
+        _hUDLifePlayer.SetIconColor(totem.FillColor, 1);
+        _playerEventStory.AddTotemFire();
         UpgradeLife(50);
     }
     public void AddTotemWater(Totem totem)
     {
-        _hUDLifePlayer.AddTotem(totem.SpriteTotem);
+        //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
+        _hUDLifePlayer.SetIconColor(totem.FillColor, 2);
         _playerEventStory.AddTotemWater();
         UpgradeLife(50);
     }
-    public void AddTotemEarth(Totem totem)
+    public void AddTotemWind(Totem totem)
     {
-        _hUDLifePlayer.AddTotem(totem.SpriteTotem);
-        _playerEventStory.AddTotemEarth();
+        //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
+        _hUDLifePlayer.SetIconColor(totem.FillColor, 3);
+        _playerEventStory.AddTotemWind();
         UpgradeLife(50);
     }
 
