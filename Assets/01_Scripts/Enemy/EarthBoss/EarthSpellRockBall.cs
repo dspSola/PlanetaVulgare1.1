@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -104,11 +103,6 @@ public class EarthSpellRockBall : MonoBehaviour
         _playerTarget = playerTr;
     }
 }
-=======
-<<<<<<< HEAD
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class EarthSpellRockBall : MonoBehaviour
 {
