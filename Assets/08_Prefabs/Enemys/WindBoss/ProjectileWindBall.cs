@@ -29,7 +29,7 @@ public class ProjectileWindBall : MonoBehaviour
             }
         }
 
-        _timeToSeparateMax = Random.Range(0.25f, 0.5f);
+        _timeToSeparateMax = Random.Range(0.1f, 0.3f);
     }
 
     private void Update()

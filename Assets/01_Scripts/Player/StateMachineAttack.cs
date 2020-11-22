@@ -28,6 +28,9 @@ public class StateMachineAttack : MonoBehaviour
     [SerializeField] private int _cptCombo;
     [SerializeField] private float _timeCombo, _timeComboMax;
 
+
+    [SerializeField] private TrailRenderer _trail;
+
     public PlayerAttackState CurrentState
     {
         get
@@ -46,6 +49,7 @@ public class StateMachineAttack : MonoBehaviour
     private void Start()
     {
         TransitionToState(_currentState, PlayerAttackState.IDLE);
+        _trail.enabled = false;
     }
 
     private void Update()
@@ -283,10 +287,12 @@ public class StateMachineAttack : MonoBehaviour
     private void DoATTACK01Enter()
     {
         _bruteAnimatorController.SetAttack01(true);
+        _trail.enabled = true;
     }
     private void DoATTACK01Exit()
     {
         _bruteAnimatorController.SetAttack01(false);
+        _trail.enabled = false;
     }
     private void DoATTACK01Update()
     {
@@ -301,10 +307,12 @@ public class StateMachineAttack : MonoBehaviour
     private void DoATTACK02Enter()
     {
         _bruteAnimatorController.SetAttack02(true);
+        _trail.enabled = true;
     }
     private void DoATTACK02Exit()
     {
         _bruteAnimatorController.SetAttack02(false);
+        _trail.enabled = false;
     }
     private void DoATTACK02Update()
     {
