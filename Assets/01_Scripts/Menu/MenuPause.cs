@@ -8,6 +8,13 @@ public class MenuPause : MonoBehaviour
     public static bool m_gameIsPaused = false;
     public GameObject m_pauseMenuUI;
 
+    [SerializeField] private PlayerEntity _playerEntity;
+
+    private void Awake()
+    {
+        _playerEntity = GameObject.Find("Brute Player").GetComponentInChildren<PlayerEntity>();
+    }
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -48,5 +55,11 @@ public class MenuPause : MonoBehaviour
     public void Quit_Game()
     {
         Application.Quit();
+    }
+
+    public void DebugPlayer()
+    {
+        _playerEntity.DebugPlayer();
+        Resume();
     }
 }

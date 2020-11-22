@@ -12,10 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9966911cf5c9f1441b0d0da859e010a9, type: 3}
   m_Name: Player Event Story
   m_EditorClassIdentifier: 
-  _fightBossFire: 0
-  _fightBossWind: 0
-  _fightBossWater: 0
-  _fightBossEarth: 0
   _bossFire: 0
   _bossWind: 0
   _bossWater: 0

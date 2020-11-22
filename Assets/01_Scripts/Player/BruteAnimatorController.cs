@@ -120,4 +120,11 @@ public class BruteAnimatorController : MonoBehaviour
     {
         _animator.SetBool("IsHurt", value);
     }
+
+    public void DebugAnimator()
+    {
+        SetRunning(false);
+        SetJumping(false);
+        SetSneacking(false);
+    }
 }

@@ -12,10 +12,10 @@ public class PlayerEventStory : ScriptableObject
 
     public void Init()
     {
-        _totemEarth = true;
-        _totemFire = true;
-        _totemWater = true;
-        _totemWind = true;
+        _totemEarth = false;
+        _totemFire = false;
+        _totemWater = false;
+        _totemWind = false;
         _bossFire = false;
         _bossWind = false;
         _bossWater = false;
