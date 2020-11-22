@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _totemName: Wind
-  _spriteTotem: {fileID: 118718309338711238, guid: 515482567f427bd45a8408e2f2a03935,
-    type: 3}
+  _spriteTotem: {fileID: 21300000, guid: fd032c88370f1814882ec7c7825a62b6, type: 3}
+  _fillColor: {r: 0.5372549, g: 0.54509807, b: 0.69803923, a: 1}
   _boss: {fileID: 0}
 --- !u!1 &6187345853148959561
 GameObject:
