@@ -12,16 +12,30 @@ public class HUDLifePlayer : MonoBehaviour
     [SerializeField] private Color _middleColor;
     [SerializeField] private Color _badColor;
 
+    [Header("Totems")]
     [SerializeField] private List<Image> _imageTotems;
+    //[SerializeField] private Image _imageTotemsEarth;
+    //[SerializeField] private Image _imageTotemsFire;
+    //[SerializeField] private Image _imageTotemsWater;
+    //[SerializeField] private Image _imageTotemsWind;
+
+
     [SerializeField] private int _nbTotem;
-    [SerializeField] private Color _intColor;
+    [SerializeField] private Color _initColor;
+
+    public int NbTotem { get => _nbTotem; set => _nbTotem = value; }
 
     private void Start()
     {
-        for(int i = 0; i < _imageTotems.Count; i++)
+        //_imageTotemsEarth.color = _intColor;
+        //_imageTotemsFire.color = _intColor;
+        //_imageTotemsWater.color = _intColor;
+        //_imageTotemsWind.color = _intColor;
+
+        for (int i = 0; i < _imageTotems.Count; i++)
         {
             //_imageTotems[i].transform.parent.gameObject.SetActive(false);
-            _imageTotems[i].color = _intColor;
+            _imageTotems[i].color = _initColor;
         }
     }
 
@@ -57,15 +71,20 @@ public class HUDLifePlayer : MonoBehaviour
         }
     }
 
-    public void AddTotem(Sprite totemSprite)
-    {
-        _imageTotems[_nbTotem].transform.parent.gameObject.SetActive(true);
-        _imageTotems[_nbTotem].sprite = totemSprite;
-        _nbTotem++;
-    }
+    //public void AddTotem(Sprite totemSprite)
+    //{
+    //    _imageTotems[_nbTotem].transform.parent.gameObject.SetActive(true);
+    //    _imageTotems[_nbTotem].sprite = totemSprite;
+    //    _nbTotem++;
+    //}
 
-    public void SetColor(Color color)
+    public void SetIconColor(Color color, int index)
     {
-        _imageTotems[_nbTotem].color = color;
+        _imageTotems[index].color = color;
+
+        //_imageTotemsEarth.color = color;
+        //_imageTotemsFire.color = color;
+        //_imageTotemsWater.color = color;
+        //_imageTotemsWind.color = color;
     }
 }

@@ -324,6 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _totemName: Water
   _spriteTotem: {fileID: 21300000, guid: e6b5d13012d93564ab35b722d5f03bd4, type: 3}
+  _fillColor: {r: 0.2784314, g: 0.30980393, b: 0.7058824, a: 1}
   _boss: {fileID: 0}
 --- !u!1001 &7987372114501398424
 PrefabInstance:
