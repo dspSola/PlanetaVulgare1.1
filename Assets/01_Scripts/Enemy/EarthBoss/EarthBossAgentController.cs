@@ -34,7 +34,6 @@ public class EarthBossAgentController : MonoBehaviour
                 if (_distancePlayer > _earthBossAttackManager.MaxDistanceToAttackGround)
                 {
                     _earthBossAttackManager.CanAttack = false;
-                    //_earthBossSpellManager.CanSpell = true;
                     _makePauseDistance = false;
                     if (_playerTransform.position != _navMeshAgent.destination)
                     {
@@ -44,7 +43,6 @@ public class EarthBossAgentController : MonoBehaviour
                 }
                 else
                 {
-                    //_earthBossSpellManager.CanSpell = false;
                     StopWalk();
                     _makePauseDistance = true;
                     if (!_makeRotationPauseAttack)
@@ -92,10 +90,6 @@ public class EarthBossAgentController : MonoBehaviour
                 _distancePlayer = 0;
             }
         }
-    }
-    private void FixedUpdate()
-    {
-
     }
 
     private void Rotate()

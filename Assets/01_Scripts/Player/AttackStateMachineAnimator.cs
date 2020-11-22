@@ -252,6 +252,14 @@ public class AttackStateMachineAnimator : StateMachineBehaviour
         {
             animator.SetBool("IsDodged", false);
         }
+
+        if(_modifieDegat)
+        {
+            if (_playerEntity.Damage != 20)
+            {
+                _playerEntity.Damage = 20;
+            }
+        }
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2312185951320337518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2312185951320337507}
+  - component: {fileID: 2312185951320337516}
+  - component: {fileID: 2312185951320337517}
+  m_Layer: 31
+  m_Name: CutSceneTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2312185951320337507
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2312185951320337518}
+  m_LocalRotation: {x: -0, y: -0.27748847, z: -0, w: 0.960729}
+  m_LocalPosition: {x: 395.46, y: 80.41023, z: 1708.69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -32.221, z: 0}
+--- !u!65 &2312185951320337516
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2312185951320337518}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 23.290405, y: 9.724365, z: 23.344727}
+  m_Center: {x: -0.45181274, y: 0.7674408, z: -5.4107666}
+--- !u!114 &2312185951320337517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2312185951320337518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7576b39214e0bb4db16fb833010323a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cutSceneCam: {fileID: 0}
+  _playerCam: {fileID: 11400000, guid: d36bad9b1eb814d46b667bfcec013aa7, type: 2}
+  _bandesNoires: {fileID: 0}
+  _playerGameObject: {fileID: 11400000, guid: 9e5e104133e446242be6292992039adc, type: 2}
+  _portalGameObject: {fileID: 11400000, guid: a872925077c2d4a41833aac1dc161a82, type: 2}
+  _particleBurst: {fileID: 11400000, guid: 7b84bb4575fdb9347b81a16c9405a1e5, type: 2}
