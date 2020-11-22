@@ -14,12 +14,14 @@ public class HUDLifePlayer : MonoBehaviour
 
     [SerializeField] private List<Image> _imageTotems;
     [SerializeField] private int _nbTotem;
+    [SerializeField] private Color _intColor;
 
     private void Start()
     {
         for(int i = 0; i < _imageTotems.Count; i++)
         {
-            _imageTotems[i].transform.parent.gameObject.SetActive(false);
+            //_imageTotems[i].transform.parent.gameObject.SetActive(false);
+            _imageTotems[i].color = _intColor;
         }
     }
 
@@ -60,5 +62,10 @@ public class HUDLifePlayer : MonoBehaviour
         _imageTotems[_nbTotem].transform.parent.gameObject.SetActive(true);
         _imageTotems[_nbTotem].sprite = totemSprite;
         _nbTotem++;
+    }
+
+    public void SetColor(Color color)
+    {
+        _imageTotems[_nbTotem].color = color;
     }
 }
