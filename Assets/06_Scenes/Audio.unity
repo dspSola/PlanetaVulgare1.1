@@ -128,51 +128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 675481284244457978, guid: b48b1ce36e92a284698af368529199e9,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 675481284244457978, guid: b48b1ce36e92a284698af368529199e9,
-        type: 3}
-      propertyPath: m_TagString
-      value: Audio
-      objectReference: {fileID: 0}
-    - target: {fileID: 2573784735816573306, guid: b48b1ce36e92a284698af368529199e9,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 136.19519
-      objectReference: {fileID: 0}
-    - target: {fileID: 2573784735816573306, guid: b48b1ce36e92a284698af368529199e9,
-        type: 3}
-      propertyPath: m_Center.x
-      value: 15.250793
-      objectReference: {fileID: 0}
-    - target: {fileID: 2573784735816573306, guid: b48b1ce36e92a284698af368529199e9,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 149.41711
-      objectReference: {fileID: 0}
-    - target: {fileID: 2573784735816573306, guid: b48b1ce36e92a284698af368529199e9,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 2.8510742
-      objectReference: {fileID: 0}
-    - target: {fileID: 2573784735816573306, guid: b48b1ce36e92a284698af368529199e9,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 94.663605
-      objectReference: {fileID: 0}
-    - target: {fileID: 2573784735816573306, guid: b48b1ce36e92a284698af368529199e9,
-        type: 3}
-      propertyPath: m_Center.y
-      value: -35.94522
-      objectReference: {fileID: 0}
-    - target: {fileID: 2573784735816573306, guid: b48b1ce36e92a284698af368529199e9,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3697987712757118421, guid: b48b1ce36e92a284698af368529199e9,
         type: 3}
       propertyPath: m_Name
@@ -232,21 +187,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7707468814096214802, guid: b48b1ce36e92a284698af368529199e9,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -748
-      objectReference: {fileID: 0}
-    - target: {fileID: 7707468814096214802, guid: b48b1ce36e92a284698af368529199e9,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 464
-      objectReference: {fileID: 0}
-    - target: {fileID: 7707468814096214802, guid: b48b1ce36e92a284698af368529199e9,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 115
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b48b1ce36e92a284698af368529199e9, type: 3}
