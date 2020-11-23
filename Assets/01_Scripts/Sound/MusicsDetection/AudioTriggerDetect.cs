@@ -6,6 +6,7 @@ public class AudioTriggerDetect : MonoBehaviour
     [Header("scripts")]
     [SerializeField] BoolVariable _isCatchingTotem;
     [SerializeField] BoolVariable _isDeadBossVariable;
+    [SerializeField] BoolVariable _finalBoss;
 
     [Header("Parameter")]
     [SerializeField] float _speed;
@@ -70,6 +71,14 @@ public class AudioTriggerDetect : MonoBehaviour
                     _isStoppingTimer = false;
                 }
                 //StartCoroutine(DoDelayInit());
+            }
+        }
+
+        if(_isTriggerBossFinal)
+        {
+            if (_finalBoss)
+            {
+                DoVolumeUp();
             }
         }
     }

@@ -7,6 +7,7 @@ public class UltimeBossEvent : MonoBehaviour
     [SerializeField] private PlayerEventStory _playerEventStory;
     [SerializeField] private GameObject _boss;
     [SerializeField] private Transform _posDiePlayerSave;
+    [SerializeField] private BoolVariable _finalFight;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,6 +17,7 @@ public class UltimeBossEvent : MonoBehaviour
             {
                 _playerEventStory.PosCheckPointDie = _posDiePlayerSave.position;
                 _boss.SetActive(true);
+                _finalFight.value = true;
             }
         }
     }
