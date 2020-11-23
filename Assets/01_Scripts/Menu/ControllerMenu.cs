@@ -11,6 +11,7 @@ public class ControllerMenu : MonoBehaviour
     [SerializeField] private PlayerEventStory _playerEventStory;
     [SerializeField] private GameObject _buttonContinue, _buttonNew;
     [SerializeField] private EventSystem _eventSystem;
+    [SerializeField] private AudioSource _audioSource;
 
     private void Start()
     {
@@ -18,6 +19,8 @@ public class ControllerMenu : MonoBehaviour
         {
             _buttonContinue.gameObject.SetActive(false);
         }
+
+        DontDestroyOnLoad(_audioSource);
     }
 
     public void ChangeScene(string nameOfScene)
