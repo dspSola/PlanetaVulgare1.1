@@ -6,7 +6,7 @@ public class AudioTriggerDetect : MonoBehaviour
     [Header("scripts")]
     [SerializeField] BoolVariable _isCatchingTotem;
     [SerializeField] BoolVariable _isDeadBossVariable;
-    [SerializeField] BoolVariable _finalBoss;
+    [SerializeField] BoolVariable _finalFight;
 
     [Header("Parameter")]
     [SerializeField] float _speed;
@@ -33,7 +33,7 @@ public class AudioTriggerDetect : MonoBehaviour
                 DoVolumeUp();
             }
 
-            if (_isRisingDown || _isCatchingTotem.value)
+            if (_isRisingDown || _isCatchingTotem.value || _finalFight.value)
             {
                 DoVolumeDown();
             }
@@ -76,8 +76,9 @@ public class AudioTriggerDetect : MonoBehaviour
 
         if(_isTriggerBossFinal)
         {
-            if (_finalBoss)
+            if (_finalFight.value)
             {
+                _isTrigger = true;
                 DoVolumeUp();
             }
         }

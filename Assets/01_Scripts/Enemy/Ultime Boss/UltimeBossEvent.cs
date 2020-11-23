@@ -9,6 +9,11 @@ public class UltimeBossEvent : MonoBehaviour
     [SerializeField] private Transform _posDiePlayerSave;
     [SerializeField] private BoolVariable _finalFight;
 
+    private void Awake()
+    {
+        _finalFight.value = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 8 && other.gameObject.tag == "PlayerColl")
