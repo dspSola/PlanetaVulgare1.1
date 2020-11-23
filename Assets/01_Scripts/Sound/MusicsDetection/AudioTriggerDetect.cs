@@ -143,6 +143,6 @@ public class AudioTriggerDetect : MonoBehaviour
     private BoxCollider _boxCollider;
     private bool _isRisingUp;
     private bool _isRisingDown;
-    public bool _isStoppingTimer;
+    private bool _isStoppingTimer;
     private float _time = 0f;
 }
