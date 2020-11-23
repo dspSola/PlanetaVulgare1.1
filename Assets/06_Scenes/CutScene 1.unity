@@ -241,6 +241,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &810091569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 810091570}
+  m_Layer: 31
+  m_Name: PosRespwan
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &810091570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810091569}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2105529368}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1582445311
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +455,8 @@ MonoBehaviour:
   _playerGameObject: {fileID: 11400000, guid: 9e5e104133e446242be6292992039adc, type: 2}
   _portalGameObject: {fileID: 11400000, guid: a872925077c2d4a41833aac1dc161a82, type: 2}
   _particleBurst: {fileID: 11400000, guid: 7b84bb4575fdb9347b81a16c9405a1e5, type: 2}
+  _playerEventStory: {fileID: 11400000, guid: 5fbdca7d45ecc07498629fce48994009, type: 2}
+  _posSaveForPlayerAfterPortal: {fileID: 810091570}
 --- !u!65 &2105529367
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -448,7 +480,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0.27748847, z: -0, w: 0.960729}
   m_LocalPosition: {x: 395.46, y: 80.41023, z: 1708.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 810091570}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -32.221, z: 0}

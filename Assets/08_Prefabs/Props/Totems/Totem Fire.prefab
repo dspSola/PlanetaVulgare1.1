@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1104599760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1104599761}
+  m_Layer: 31
+  m_Name: PosRespawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1104599761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104599760}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9, y: 0.14, z: 0.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3782880323005176894}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1225986048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1225986049}
+  m_Layer: 10
+  m_Name: PosRespawnBoss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1225986049
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225986048}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 26.5, y: 2.75, z: 26.82}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3782880323005176894}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &492941091166682596
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,7 +89,7 @@ Transform:
   m_Children:
   - {fileID: 1235914547207780782}
   m_Father: {fileID: 3782880323005176894}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3782880321488884375
 GameObject:
@@ -187,6 +247,8 @@ Transform:
   m_Children:
   - {fileID: 3782880322957183458}
   - {fileID: 1641153695629290148}
+  - {fileID: 1104599761}
+  - {fileID: 1225986049}
   - {fileID: 7226560540210734205}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -216,13 +278,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d7dcfdb4ed63c4dbf1f2ae88de7b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerEventStory: {fileID: 0}
+  _playerEventStory: {fileID: 11400000, guid: 5fbdca7d45ecc07498629fce48994009, type: 2}
   _totemName: Fire
   _spriteTotem: {fileID: 21300000, guid: 8a755ec37347a604b98945b44875e8f2, type: 3}
   _fillColor: {r: 1, g: 0.29803923, b: 0.007843138, a: 1}
   _boss: {fileID: 0}
-  _posDiePlayerSave: {fileID: 0}
-  _posRespwanBoss: {fileID: 0}
+  _posDiePlayerSave: {fileID: 1104599761}
+  _posRespwanBoss: {fileID: 1225986049}
   _playerAlreadyPickUpInTheGame: 0
   _isCatchingTotem: {fileID: 11400000, guid: 54c5b9073c2a23b439f34fdb991ffc7e, type: 2}
 --- !u!64 &3782880322961467280

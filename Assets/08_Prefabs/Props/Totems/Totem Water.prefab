@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1730131839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1730131840}
+  m_Layer: 10
+  m_Name: PosRespawnBoss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1730131840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730131839}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -22.75, y: 0, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7987372115867579087}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1960485445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1960485446}
+  m_Layer: 31
+  m_Name: PosRespawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1960485446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960485445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.75, y: 3.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7987372115867579087}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &28849791140513218
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,7 +89,7 @@ Transform:
   m_Children:
   - {fileID: 8252758657761941816}
   m_Father: {fileID: 7987372115867579087}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1055137529210100785
 GameObject:
@@ -5079,6 +5139,8 @@ Transform:
   m_Children:
   - {fileID: 7987372115415456882}
   - {fileID: 7382909768013559155}
+  - {fileID: 1960485446}
+  - {fileID: 1730131840}
   - {fileID: 4637025084562389158}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -5108,13 +5170,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d7dcfdb4ed63c4dbf1f2ae88de7b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerEventStory: {fileID: 0}
+  _playerEventStory: {fileID: 11400000, guid: 5fbdca7d45ecc07498629fce48994009, type: 2}
   _totemName: Water
   _spriteTotem: {fileID: 21300000, guid: e6b5d13012d93564ab35b722d5f03bd4, type: 3}
   _fillColor: {r: 0.2784314, g: 0.30980393, b: 0.7058824, a: 1}
   _boss: {fileID: 0}
-  _posDiePlayerSave: {fileID: 0}
-  _posRespwanBoss: {fileID: 0}
+  _posDiePlayerSave: {fileID: 1960485446}
+  _posRespwanBoss: {fileID: 1730131840}
   _playerAlreadyPickUpInTheGame: 0
   _isCatchingTotem: {fileID: 11400000, guid: 54c5b9073c2a23b439f34fdb991ffc7e, type: 2}
 --- !u!1001 &7987372114501398424

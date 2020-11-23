@@ -428,7 +428,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9128c46fa4d18af4aa9a8b5389176d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerEventStory: {fileID: 11400000, guid: 5fbdca7d45ecc07498629fce48994009, type: 2}
   _particleBurst: {fileID: 1547825395}
+  _bloodSun: {fileID: 827361923}
+  _sunnySun: {fileID: 694443766}
 --- !u!1 &694443766
 GameObject:
   m_ObjectHideFlags: 0

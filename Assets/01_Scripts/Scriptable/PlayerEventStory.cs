@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class PlayerEventStory : ScriptableObject
 {
-    [SerializeField] private bool _gameExist;
+    [SerializeField] private bool _gameExist, _playerPassPortal;
     [SerializeField] private bool _bossFire, _bossWind, _bossWater, _bossEarth, _ultimeBoss;
     [SerializeField] private bool _totemFire, _totemWind, _totemWater, _totemEarth;
     [SerializeField] private int _cptBossWin;
@@ -27,6 +27,8 @@ public class PlayerEventStory : ScriptableObject
 
         _posSave = Vector3.zero;
         _posCheckPointDie = Vector3.zero;
+
+        _playerPassPortal = false;
 
         _playerEntityData.LifeMax = 100;
     }
@@ -122,4 +124,5 @@ public class PlayerEventStory : ScriptableObject
     public int CptBossWin { get => _cptBossWin; set => _cptBossWin = value; }
     public bool GameExist { get => _gameExist; set => _gameExist = value; }
     public Vector3 PosSave { get => _posSave; set => _posSave = value; }
+    public bool PlayerPassPortal { get => _playerPassPortal; set => _playerPassPortal = value; }
 }
