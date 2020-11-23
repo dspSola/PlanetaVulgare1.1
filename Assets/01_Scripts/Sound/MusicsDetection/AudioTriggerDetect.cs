@@ -31,7 +31,7 @@ public class AudioTriggerDetect : MonoBehaviour
                 DoVolumeUp();
             }
 
-            if (_isRisingDown)
+            if (_isRisingDown || _isCatchingTotem.value)
             {
                 DoVolumeDown();
             }
@@ -39,12 +39,15 @@ public class AudioTriggerDetect : MonoBehaviour
 
         if(_isPickingTotem)
         {
+            //Debug.Log("avant condition");
             if(_isCatchingTotem.value)
             {
+                //Debug.Log("dans condition");
                 DoVolumeUp();
             }
             if (_isDeadBossVariable.value)
             {
+                _isCatchingTotem.value = false;
                 DoVolumeDown();
             }
         }
@@ -58,14 +61,16 @@ public class AudioTriggerDetect : MonoBehaviour
             }
             if(_isStoppingTimer)
             {
+                Debug.Log("Hou!!!");
+                _isDeadBossVariable.value = false;
                 DoVolumeDown();
+                _isStoppingTimer = false;
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Hou!!!");
         if(other.gameObject.CompareTag("PlayerColl"))
         {
             //Debug.Log("player entre dans une zone");
@@ -110,15 +115,14 @@ public class AudioTriggerDetect : MonoBehaviour
 
     private bool Timer(bool p_IsStopping)
     {
-        float time = 0f;
-        float timerInterval = 30f;
+        float timerInterval = 10f;
 
-        time += Time.deltaTime;
-        Debug.Log("Timer : " + time);
-        if(time > timerInterval)
+        _time += Time.deltaTime;
+        Debug.Log("Timer : " + _time);
+        if(_time > timerInterval)
         {
             p_IsStopping = true;
-            time = 0;
+            _time = 0;
         }
 
         return p_IsStopping;
@@ -129,4 +133,5 @@ public class AudioTriggerDetect : MonoBehaviour
     private bool _isRisingUp;
     private bool _isRisingDown;
     private bool _isStoppingTimer;
+    private float _time = 0f;
 }

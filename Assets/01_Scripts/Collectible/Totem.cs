@@ -10,6 +10,11 @@ public class Totem : MonoBehaviour
     [SerializeField] private GameObject _boss;
     [SerializeField] private BoolVariable _isCatchingTotem;
 
+    private void Awake()
+    {
+        _isCatchingTotem.value = false;
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == 8 && other.gameObject.tag == "PlayerColl")

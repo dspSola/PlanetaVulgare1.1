@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9225297a7a41454781fe88db24ff21a, type: 3}
   m_Name: IsDeadBoss
   m_EditorClassIdentifier: 
-  value: 0
+  value: 1
