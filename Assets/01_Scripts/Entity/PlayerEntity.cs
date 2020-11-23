@@ -39,7 +39,15 @@ public class PlayerEntity : Entity
         {
             InitializeEntity();
         }
-        _playerEventStory.Init();
+
+        if (_playerEventStory.PosCheckPointDie != Vector3.zero)
+        {
+            _playerTransform.position = _playerEventStory.PosCheckPointDie;
+        }
+        else if (_playerEventStory.PosSave != Vector3.zero)
+        {
+            _playerTransform.position = _playerEventStory.PosSave;
+        }
     }
 
     private void Update()
@@ -195,43 +203,65 @@ public class PlayerEntity : Entity
     public void ClickOnRetry()
     {
         _canvasDie.SetActive(false);
-        _playerTransform.position = _playerEventStory.PosCheckPointDie;        
+
+        _playerTransform.position = _playerEventStory.PosCheckPointDie;
+
         Cursor.lockState = CursorLockMode.Locked;
         base.Life = base.LifeMax;
         base.CoefLife = base.Life / base.LifeMax;
         _playerData.LifeCoef = base.CoefLife;
         _hUDLifePlayer.SetLife(base.CoefLife);
         _bruteAnimatorController.SetDeath(false);
+
+        //GameObject.Find("Totems").GetComponent<ManagerTotemRoeload>().ReloadScene();
+        _playerEventStory.ReloadScene();
+
         SceneManager.LoadScene("Main");
     }
 
-    public void AddTotemEarth(Totem totem)
+    public void AddTotemEarth(Totem totem, Vector3 posCheckDie, bool valueAddLife)
     {
         //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
         _hUDLifePlayer.SetIconColor(totem.FillColor, 0);
         _playerEventStory.AddTotemEarth();
-        UpgradeLife(50);
+        //if (!valueAddLife)
+        //{
+        //    UpgradeLife(50);
+        //}
+        _playerEventStory.PosCheckPointDie = posCheckDie;
     }
-    public void AddTotemFire(Totem totem)
+    public void AddTotemFire(Totem totem, Vector3 posCheckDie, bool valueAddLife)
     {
         //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
         _hUDLifePlayer.SetIconColor(totem.FillColor, 1);
         _playerEventStory.AddTotemFire();
-        UpgradeLife(50);
+        //if (!valueAddLife)
+        //{
+        //    UpgradeLife(50);
+        //}
+        _playerEventStory.PosCheckPointDie = posCheckDie;
     }
-    public void AddTotemWater(Totem totem)
+    public void AddTotemWater(Totem totem, Vector3 posCheckDie, bool valueAddLife)
     {
         //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
         _hUDLifePlayer.SetIconColor(totem.FillColor, 2);
         _playerEventStory.AddTotemWater();
-        UpgradeLife(50);
+        //if (!valueAddLife)
+        //{
+        //    UpgradeLife(50);
+        //}
+        _playerEventStory.PosCheckPointDie = posCheckDie;
     }
-    public void AddTotemWind(Totem totem)
+    public void AddTotemWind(Totem totem, Vector3 posCheckDie, bool valueAddLife)
     {
         //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
         _hUDLifePlayer.SetIconColor(totem.FillColor, 3);
         _playerEventStory.AddTotemWind();
-        UpgradeLife(50);
+        //if (!valueAddLife)
+        //{
+        //    UpgradeLife(50);
+        //}
+        _playerEventStory.PosCheckPointDie = posCheckDie;
     }
 
     public void LifeToLifeMax()
@@ -265,4 +295,5 @@ public class PlayerEntity : Entity
     public Transform TargetBottom { get => _targetBottom; set => _targetBottom = value; }
     public Transform TargetMidle { get => _targetMidle; set => _targetMidle = value; }
     public Transform TargetTop { get => _targetTop; set => _targetTop = value; }
+    public Transform PlayerTransform { get => _playerTransform; set => _playerTransform = value; }
 }
