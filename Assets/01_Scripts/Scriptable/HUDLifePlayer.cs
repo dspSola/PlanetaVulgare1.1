@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HUDLifePlayer : MonoBehaviour
 {
+    [SerializeField] private PlayerEventStory _playerEventStory;
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private Image barLife_Blood, _barRage;
 
@@ -21,7 +22,7 @@ public class HUDLifePlayer : MonoBehaviour
 
 
     [SerializeField] private int _nbTotem;
-    [SerializeField] private Color _initColor;
+    [SerializeField] private Color _initColor, _fireTotemColor, _earthTotemColor, _waterTotemColor, _windTotemColor;
 
     public int NbTotem { get => _nbTotem; set => _nbTotem = value; }
 
@@ -36,6 +37,23 @@ public class HUDLifePlayer : MonoBehaviour
         {
             //_imageTotems[i].transform.parent.gameObject.SetActive(false);
             _imageTotems[i].color = _initColor;
+        }
+
+        if (_playerEventStory.BossEarth && _playerEventStory.TotemEarth)
+        {
+            _imageTotems[0].color = _earthTotemColor;
+        }
+        if (_playerEventStory.BossFire && _playerEventStory.TotemFire)
+        {
+            _imageTotems[1].color = _fireTotemColor;
+        }
+        if (_playerEventStory.BossWater && _playerEventStory.TotemWater)
+        {
+            _imageTotems[2].color = _waterTotemColor;
+        }
+        if (_playerEventStory.BossWind && _playerEventStory.TotemWind)
+        {
+            _imageTotems[3].color = _windTotemColor;
         }
     }
 

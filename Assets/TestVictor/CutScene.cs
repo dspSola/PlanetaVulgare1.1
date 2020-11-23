@@ -13,12 +13,11 @@ public class CutScene : MonoBehaviour
     [SerializeField] private PlayerEventStory _playerEventStory;
     [SerializeField] private Transform _posSaveForPlayerAfterPortal;
 
-    private BoxCollider _cutSceneTrigger;
+    [SerializeField] private List<BoxCollider> _cutSceneTriggers;
     private Animator _portalAnimator;
 
     private void Start()
     {
-        _cutSceneTrigger = GetComponent<BoxCollider>();
         _portalAnimator = _portalGameObject._value.GetComponent<Animator>();
         _portalAnimator.enabled = false;
         _playerCam._value = GameObject.Find("Camera Brute");
@@ -52,18 +51,19 @@ public class CutScene : MonoBehaviour
         {
             if (other.CompareTag("PlayerColl"))
             {
-                _playerEventStory.PosSave = _posSaveForPlayerAfterPortal.position;
-                _playerEventStory.PlayerPassPortal = true;
-
                 Debug.Log("Collision Terminé");
                 _cutSceneCam.gameObject.SetActive(false);
                 _playerCam._value.SetActive(true);
-                _bandesNoires.SetActive(false);
                 _playerGameObject._value.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 _playerGameObject._value.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                gameObject.SetActive(false);
+
+                _playerEventStory.PosSave = _posSaveForPlayerAfterPortal.position;
+                _playerEventStory.PlayerPassPortal = true;
+
+                _bandesNoires.SetActive(false);
                 _particleBurst._value.SetActive(false);
                 _portalGameObject._value.SetActive(false);
+                gameObject.SetActive(false);
             }
         }
     }
@@ -72,6 +72,9 @@ public class CutScene : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
 
-        _cutSceneTrigger.size = new Vector3(0, 0, 0);
+        _cutSceneTriggers[0].size = new Vector3(0, 0, 0);
+        _cutSceneTriggers[1].size = new Vector3(0, 0, 0);
+        _cutSceneTriggers[2].size = new Vector3(0, 0, 0);
+        _cutSceneTriggers[3].size = new Vector3(0, 0, 0);
     }
 }
