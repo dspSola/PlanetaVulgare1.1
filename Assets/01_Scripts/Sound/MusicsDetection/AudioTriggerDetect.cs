@@ -2,7 +2,19 @@
 
 public class AudioTriggerDetect : MonoBehaviour
 {
+    [Header("scripts")]
+    [SerializeField] BoolVariable _isCatchingTotem;
+    [SerializeField] BoolVariable _isDeadBossVariable;
+
+    [Header("Parameter")]
     [SerializeField] float _speed;
+
+    [Header("StateSelect")]
+    [SerializeField] bool _isTrigger;
+    [SerializeField] bool _isTriggerBossFinal;
+    [SerializeField] bool _isPickingTotem;
+    [SerializeField] bool _isDeadBoss;
+
 
     private void Awake()
     {
@@ -12,14 +24,42 @@ public class AudioTriggerDetect : MonoBehaviour
 
     private void Update()
     {
-        if(_isRisingUp)
+        if(_isTrigger)
         {
-            DoVolumeUp();
+            if (_isRisingUp)
+            {
+                DoVolumeUp();
+            }
+
+            if (_isRisingDown)
+            {
+                DoVolumeDown();
+            }
         }
 
-        if(_isRisingDown)
+        if(_isPickingTotem)
         {
-            DoVolumeDown();
+            if(_isCatchingTotem.value)
+            {
+                DoVolumeUp();
+            }
+            if (_isDeadBossVariable.value)
+            {
+                DoVolumeDown();
+            }
+        }
+
+        if(_isDeadBoss)
+        {
+            if (_isDeadBossVariable.value)
+            {
+                DoVolumeUp();
+                Timer(_isStoppingTimer);
+            }
+            if(_isStoppingTimer)
+            {
+                DoVolumeDown();
+            }
         }
     }
 
@@ -68,8 +108,25 @@ public class AudioTriggerDetect : MonoBehaviour
         }
     }
 
+    private bool Timer(bool p_IsStopping)
+    {
+        float time = 0f;
+        float timerInterval = 30f;
+
+        time += Time.deltaTime;
+        Debug.Log("Timer : " + time);
+        if(time > timerInterval)
+        {
+            p_IsStopping = true;
+            time = 0;
+        }
+
+        return p_IsStopping;
+    }
+
     private AudioSource _audioSource;
     private BoxCollider _boxCollider;
     private bool _isRisingUp;
     private bool _isRisingDown;
+    private bool _isStoppingTimer;
 }

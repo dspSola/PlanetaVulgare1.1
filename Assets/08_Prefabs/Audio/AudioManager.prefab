@@ -155,7 +155,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b6f2693e03b7142a16b86f95d08a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isCatchingTotem: {fileID: 11400000, guid: 54c5b9073c2a23b439f34fdb991ffc7e, type: 2}
+  _isDeadBossVariable: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599,
+    type: 2}
   _speed: 0.5
+  _isTrigger: 0
+  _isTriggerBossFinal: 1
+  _isPickingTotem: 0
+  _isDeadBoss: 0
 --- !u!1 &3697987711810914066
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +360,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b6f2693e03b7142a16b86f95d08a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isCatchingTotem: {fileID: 11400000, guid: 54c5b9073c2a23b439f34fdb991ffc7e, type: 2}
+  _isDeadBossVariable: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599,
+    type: 2}
   _speed: 0.5
+  _isTrigger: 1
+  _isTriggerBossFinal: 0
+  _isPickingTotem: 0
+  _isDeadBoss: 0
 --- !u!1 &3697987711887942158
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +523,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b6f2693e03b7142a16b86f95d08a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isCatchingTotem: {fileID: 11400000, guid: 54c5b9073c2a23b439f34fdb991ffc7e, type: 2}
+  _isDeadBossVariable: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599,
+    type: 2}
   _speed: 0.5
+  _isTrigger: 1
+  _isTriggerBossFinal: 0
+  _isPickingTotem: 0
+  _isDeadBoss: 0
 --- !u!1 &3697987712102701207
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,7 +541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3697987712102701200}
   - component: {fileID: 3697987712102701202}
-  - component: {fileID: 3697987712102701203}
+  - component: {fileID: 3859969162363130630}
   m_Layer: 11
   m_Name: SoundBoxPostBoss
   m_TagString: Audio
@@ -639,7 +660,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3697987712102701203
+--- !u!114 &3859969162363130630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -648,9 +669,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3697987712102701207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6a9039fedf12df40962f47f886f4018, type: 3}
+  m_Script: {fileID: 11500000, guid: 96b6f2693e03b7142a16b86f95d08a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isCatchingTotem: {fileID: 11400000, guid: 54c5b9073c2a23b439f34fdb991ffc7e, type: 2}
+  _isDeadBossVariable: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599,
+    type: 2}
+  _speed: 0.5
+  _isTrigger: 0
+  _isTriggerBossFinal: 0
+  _isPickingTotem: 0
+  _isDeadBoss: 1
 --- !u!1 &3697987712525275021
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +690,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3697987712525275022}
   - component: {fileID: 3697987712525275023}
-  - component: {fileID: 3697987712525275016}
+  - component: {fileID: 4704477005057496212}
   m_Layer: 11
   m_Name: CachtingTotem
   m_TagString: Audio
@@ -780,7 +809,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3697987712525275016
+--- !u!114 &4704477005057496212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -789,9 +818,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3697987712525275021}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8be0d349b7f1c74494960d2705b53d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 96b6f2693e03b7142a16b86f95d08a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isCatchingTotem: {fileID: 11400000, guid: 54c5b9073c2a23b439f34fdb991ffc7e, type: 2}
+  _isDeadBossVariable: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599,
+    type: 2}
+  _speed: 0
+  _isTrigger: 0
+  _isTriggerBossFinal: 0
+  _isPickingTotem: 1
+  _isDeadBoss: 0
 --- !u!1 &3697987712757118421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,7 +1059,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3697987713098771158}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1039,4 +1076,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b6f2693e03b7142a16b86f95d08a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isCatchingTotem: {fileID: 11400000, guid: 54c5b9073c2a23b439f34fdb991ffc7e, type: 2}
+  _isDeadBossVariable: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599,
+    type: 2}
   _speed: 0.5
+  _isTrigger: 1
+  _isTriggerBossFinal: 0
+  _isPickingTotem: 0
+  _isDeadBoss: 0

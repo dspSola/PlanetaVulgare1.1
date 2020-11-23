@@ -170,6 +170,7 @@ MonoBehaviour:
   _spriteTotem: {fileID: 21300000, guid: fd032c88370f1814882ec7c7825a62b6, type: 3}
   _fillColor: {r: 0.5372549, g: 0.54509807, b: 0.69803923, a: 1}
   _boss: {fileID: 0}
+  _isCatchingTotem: {fileID: 11400000, guid: 54c5b9073c2a23b439f34fdb991ffc7e, type: 2}
 --- !u!1 &6187345853148959561
 GameObject:
   m_ObjectHideFlags: 0
