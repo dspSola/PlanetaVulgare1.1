@@ -7,6 +7,7 @@ public class WaterBossEntity : BossEntity
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private WaterBossAgentController _waterBossAgentController;
     [SerializeField] private WaterBossAnimatorMono _waterBossAnimatorMono;
+    [SerializeField] private BoolVariable _isDeadBoss;
 
     public override void InitializeEntity()
     {
@@ -25,6 +26,7 @@ public class WaterBossEntity : BossEntity
             _waterBossAnimatorMono.SetDeath();
             PlayerEventStoryThis.WinBossWater();
             Destroy(gameObject, 3);
+            _isDeadBoss.value = true;
         }
     }
 }

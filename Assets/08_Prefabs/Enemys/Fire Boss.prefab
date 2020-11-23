@@ -170,6 +170,7 @@ MonoBehaviour:
   _playerData: {fileID: 11400000, guid: 1b27801392868f5449fb8f3660c2844c, type: 2}
   _fireBossAgentController: {fileID: 7045282581762946191}
   _fireBossAnimator: {fileID: 7045282581762946186}
+  _isDeadBoss: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599, type: 2}
 --- !u!114 &7045282581762946186
 MonoBehaviour:
   m_ObjectHideFlags: 0

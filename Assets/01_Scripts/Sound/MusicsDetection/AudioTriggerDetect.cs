@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class AudioTriggerDetect : MonoBehaviour
 {
@@ -57,14 +58,18 @@ public class AudioTriggerDetect : MonoBehaviour
             if (_isDeadBossVariable.value)
             {
                 DoVolumeUp();
-                Timer(_isStoppingTimer);
+                _isStoppingTimer = Timer(_isStoppingTimer);
             }
             if(_isStoppingTimer)
             {
                 Debug.Log("Hou!!!");
                 _isDeadBossVariable.value = false;
                 DoVolumeDown();
-                _isStoppingTimer = false;
+                if(_audioSource.volume <= 0)
+                {
+                    _isStoppingTimer = false;
+                }
+                //StartCoroutine(DoDelayInit());
             }
         }
     }
@@ -115,7 +120,7 @@ public class AudioTriggerDetect : MonoBehaviour
 
     private bool Timer(bool p_IsStopping)
     {
-        float timerInterval = 10f;
+        float timerInterval = 30f;
 
         _time += Time.deltaTime;
         Debug.Log("Timer : " + _time);
@@ -128,10 +133,16 @@ public class AudioTriggerDetect : MonoBehaviour
         return p_IsStopping;
     }
 
+    //IEnumerator DoDelayInit()
+    //{
+    //    yield return new WaitForSeconds(Time.deltaTime * _speed);
+    //    _isStoppingTimer = false;
+    //}
+
     private AudioSource _audioSource;
     private BoxCollider _boxCollider;
     private bool _isRisingUp;
     private bool _isRisingDown;
-    private bool _isStoppingTimer;
+    public bool _isStoppingTimer;
     private float _time = 0f;
 }

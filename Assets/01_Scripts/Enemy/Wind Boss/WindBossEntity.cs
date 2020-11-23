@@ -7,6 +7,7 @@ public class WindBossEntity : BossEntity
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private WindBossAgentController _windBossAgentController;
     [SerializeField] private WindBossAnimatorMono _windBossAnimatorMono;
+    [SerializeField] private BoolVariable _isDeadBoss;
 
     public override void InitializeEntity()
     {
@@ -24,6 +25,7 @@ public class WindBossEntity : BossEntity
             _windBossAnimatorMono.SetDeath();
             PlayerEventStoryThis.WinBossWind();
             Destroy(gameObject, 3);
+            _isDeadBoss.value = true;
         }
     }
 }
