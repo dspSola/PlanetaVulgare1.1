@@ -5,6 +5,7 @@ public class LoadScenes : MonoBehaviour
 {
     private void Awake()
     {
+        Destroy(GameObject.Find("MusicIntro"));
         SceneManager.LoadScene("Lights", LoadSceneMode.Additive);
         SceneManager.LoadScene("Level01Bis", LoadSceneMode.Additive);
         SceneManager.LoadScene("BabouchePlayer", LoadSceneMode.Additive);

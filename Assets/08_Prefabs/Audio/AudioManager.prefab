@@ -1,5 +1,169 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &675481284244457978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7707468814096214802}
+  - component: {fileID: 4005626008068985721}
+  - component: {fileID: 2573784735816573306}
+  - component: {fileID: 5523463005437700164}
+  m_Layer: 0
+  m_Name: Intro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7707468814096214802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675481284244457978}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3697987712757118422}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &4005626008068985721
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675481284244457978}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -6728360899677153597, guid: a293241b126f32b4aaaee1299c1de552,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: c520eaa6e159ca1499e8ccdf46c88ba7, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!65 &2573784735816573306
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675481284244457978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5523463005437700164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675481284244457978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b6f2693e03b7142a16b86f95d08a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isCatchingTotem: {fileID: 11400000, guid: 54c5b9073c2a23b439f34fdb991ffc7e, type: 2}
+  _isDeadBossVariable: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599,
+    type: 2}
+  _finalFight: {fileID: 11400000, guid: 5866e9ab89b313b42b1416e15c1d605d, type: 2}
+  _speed: 0.2
+  _isTrigger: 1
+  _isTriggerBossFinal: 0
+  _isPickingTotem: 0
+  _isDeadBoss: 0
 --- !u!1 &3697987711747986634
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,7 +191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3697987711747986634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.7, y: 4.37, z: 8.68}
+  m_LocalPosition: {x: 427, y: 82.7, z: 1707}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3697987712757118422}
@@ -194,7 +358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3697987711810914066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 17.49}
+  m_LocalPosition: {x: 421, y: 5, z: 1714}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3697987712757118422}
@@ -308,8 +472,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 78.07413, y: 58.649963, z: 74.76111}
+  m_Center: {x: 115.30199, y: 6.804138, z: 232.19623}
 --- !u!65 &490010702484052077
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -321,8 +485,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 93.12802, y: 73.18004, z: 83.61682}
+  m_Center: {x: -83.38954, y: 9.106147, z: -239.84528}
 --- !u!65 &6894309990226123094
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -334,8 +498,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 79.229095, y: 83.34685, z: 77.7168}
+  m_Center: {x: -133.71745, y: 83.679695, z: 291.96436}
 --- !u!65 &833387555652259792
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -347,8 +511,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 70.934814, y: 107.43132, z: 57.72705}
+  m_Center: {x: 186.38885, y: 28.629997, z: -324.83008}
 --- !u!114 &3697987711810914076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +561,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3697987711887942158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 5, z: 0}
+  m_LocalPosition: {x: 423, y: 5, z: 1700}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3697987712757118422}
@@ -414,8 +578,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 248.45331, y: 99.83269, z: 225.70813}
+  m_Center: {x: 2.9221497, y: 33.25866, z: -6.1034546}
 --- !u!82 &3697987711887942153
 AudioSource:
   m_ObjectHideFlags: 0
@@ -679,7 +843,7 @@ MonoBehaviour:
   _isDeadBossVariable: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599,
     type: 2}
   _finalFight: {fileID: 11400000, guid: 5866e9ab89b313b42b1416e15c1d605d, type: 2}
-  _speed: 0.5
+  _speed: 0.2
   _isTrigger: 0
   _isTriggerBossFinal: 0
   _isPickingTotem: 0
@@ -829,7 +993,7 @@ MonoBehaviour:
   _isDeadBossVariable: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599,
     type: 2}
   _finalFight: {fileID: 11400000, guid: 5866e9ab89b313b42b1416e15c1d605d, type: 2}
-  _speed: 0
+  _speed: 0.2
   _isTrigger: 0
   _isTriggerBossFinal: 0
   _isPickingTotem: 1
@@ -867,6 +1031,7 @@ Transform:
   - {fileID: 3697987712525275022}
   - {fileID: 3697987712102701200}
   - {fileID: 3697987711747986635}
+  - {fileID: 7707468814096214802}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -901,7 +1066,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3697987713098771158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 9.28}
+  m_LocalPosition: {x: 422.6, y: 0, z: 1704.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3697987712757118422}
@@ -1015,8 +1180,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 672.7543, y: 163.35565, z: 88.70386}
+  m_Center: {x: 9.893677, y: -4.497772, z: 116.11401}
 --- !u!65 &5569175758489537584
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1028,8 +1193,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 177.52652, y: 118.04523, z: 186.9768}
+  m_Center: {x: 15.678116, y: 35.096527, z: -189.86682}
 --- !u!65 &430335110159959056
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1041,8 +1206,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 239.3468, y: 130.37677, z: 470.8329}
+  m_Center: {x: -189.76562, y: 27.850006, z: 49.45758}
 --- !u!65 &6373376210183235083
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1054,8 +1219,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 171.27551, y: 190.72504, z: 513.7926}
+  m_Center: {x: 175.03903, y: -19.36618, z: -41.775818}
 --- !u!65 &3178335627096247536
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1067,8 +1232,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 172.42068, y: 155.76761, z: 312.96582}
+  m_Center: {x: 6.601639, y: 26.406326, z: 236.79443}
 --- !u!114 &3697987713098771154
 MonoBehaviour:
   m_ObjectHideFlags: 0

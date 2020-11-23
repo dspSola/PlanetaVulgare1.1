@@ -316,6 +316,7 @@ MonoBehaviour:
   _buttonContinue: {fileID: 627319323}
   _buttonNew: {fileID: 1849232331}
   _eventSystem: {fileID: 1378091115}
+  _audioSource: {fileID: 1587031298}
 --- !u!1 &142687449 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1948107823280979961, guid: 20232bf12373f9f498f6cd2b80eef58f,
@@ -2222,7 +2223,7 @@ GameObject:
   - component: {fileID: 1587031297}
   - component: {fileID: 1587031298}
   m_Layer: 0
-  m_Name: Music
+  m_Name: MusicIntro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
