@@ -678,7 +678,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3717542738040633220}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 14.47343, y: 1, z: 16.223171}
@@ -695,7 +695,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b6f2693e03b7142a16b86f95d08a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isCatchingTotem: {fileID: 11400000, guid: 54c5b9073c2a23b439f34fdb991ffc7e, type: 2}
+  _isDeadBossVariable: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599,
+    type: 2}
   _speed: 0.5
+  _isTrigger: 1
+  _isTriggerBossFinal: 0
+  _isPickingTotem: 0
+  _isDeadBoss: 0
 --- !u!82 &3717542738040633227
 AudioSource:
   m_ObjectHideFlags: 0
@@ -838,7 +845,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b6f2693e03b7142a16b86f95d08a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isCatchingTotem: {fileID: 11400000, guid: 54c5b9073c2a23b439f34fdb991ffc7e, type: 2}
+  _isDeadBossVariable: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599,
+    type: 2}
   _speed: 0.5
+  _isTrigger: 1
+  _isTriggerBossFinal: 0
+  _isPickingTotem: 0
+  _isDeadBoss: 0
 --- !u!65 &3717542738117677726
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1071,7 +1085,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b6f2693e03b7142a16b86f95d08a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isCatchingTotem: {fileID: 11400000, guid: 54c5b9073c2a23b439f34fdb991ffc7e, type: 2}
+  _isDeadBossVariable: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599,
+    type: 2}
   _speed: 0.5
+  _isTrigger: 0
+  _isTriggerBossFinal: 1
+  _isPickingTotem: 0
+  _isDeadBoss: 0
 --- !u!1 &3717542738246165596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,7 +1136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3717542738332575750}
   - component: {fileID: 3717542738332575748}
-  - component: {fileID: 3717542738332575749}
+  - component: {fileID: 3717542738332575746}
   m_Layer: 11
   m_Name: SoundBoxPostBoss
   m_TagString: Audio
@@ -1123,6 +1144,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3717542738332575746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717542738332575745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b6f2693e03b7142a16b86f95d08a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isCatchingTotem: {fileID: 11400000, guid: 54c5b9073c2a23b439f34fdb991ffc7e, type: 2}
+  _isDeadBossVariable: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599,
+    type: 2}
+  _speed: 0.2
+  _isTrigger: 0
+  _isTriggerBossFinal: 0
+  _isPickingTotem: 0
+  _isDeadBoss: 1
 --- !u!82 &3717542738332575748
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1220,18 +1261,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3717542738332575749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3717542738332575745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6a9039fedf12df40962f47f886f4018, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &3717542738332575750
 Transform:
   m_ObjectHideFlags: 0
@@ -1327,7 +1356,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b6f2693e03b7142a16b86f95d08a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isCatchingTotem: {fileID: 11400000, guid: 54c5b9073c2a23b439f34fdb991ffc7e, type: 2}
+  _isDeadBossVariable: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599,
+    type: 2}
   _speed: 0.5
+  _isTrigger: 1
+  _isTriggerBossFinal: 0
+  _isPickingTotem: 0
+  _isDeadBoss: 0
 --- !u!65 &3717542739597040198
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1559,7 +1595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3717542740097335064}
   - component: {fileID: 3717542740097335065}
-  - component: {fileID: 3717542740097335070}
+  - component: {fileID: 3717542740097335068}
   m_Layer: 11
   m_Name: CachtingTotem
   m_TagString: Audio
@@ -1567,7 +1603,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3717542740097335070
+--- !u!114 &3717542740097335068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1576,6 +1612,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3717542740097335067}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8be0d349b7f1c74494960d2705b53d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 96b6f2693e03b7142a16b86f95d08a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isCatchingTotem: {fileID: 11400000, guid: 54c5b9073c2a23b439f34fdb991ffc7e, type: 2}
+  _isDeadBossVariable: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599,
+    type: 2}
+  _speed: 0.2
+  _isTrigger: 0
+  _isTriggerBossFinal: 0
+  _isPickingTotem: 1
+  _isDeadBoss: 0

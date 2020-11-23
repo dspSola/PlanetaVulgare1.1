@@ -7,6 +7,7 @@ public class EarthBossEntity : BossEntity
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private EarthBossAgentController _earthBossAgentController;
     [SerializeField] private EarthBossAnimatorMono _earthBossAnimatorMono;
+    [SerializeField] private BoolVariable _isDeadBoss;
 
     public override void InitializeEntity()
     {
@@ -24,6 +25,7 @@ public class EarthBossEntity : BossEntity
             _earthBossAnimatorMono.SetDeath();
             PlayerEventStoryThis.WinBossEarth();
             Destroy(gameObject, 3);
+            _isDeadBoss.value = true;
         }
     }
 }

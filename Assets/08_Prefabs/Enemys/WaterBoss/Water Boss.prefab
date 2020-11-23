@@ -195,6 +195,7 @@ MonoBehaviour:
   _playerData: {fileID: 11400000, guid: 1b27801392868f5449fb8f3660c2844c, type: 2}
   _waterBossAgentController: {fileID: 7729039073853654725}
   _waterBossAnimatorMono: {fileID: 185414840748213958}
+  _isDeadBoss: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599, type: 2}
 --- !u!136 &185414840748213956
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -243,6 +243,7 @@ MonoBehaviour:
   _playerData: {fileID: 11400000, guid: 1b27801392868f5449fb8f3660c2844c, type: 2}
   _earthBossAgentController: {fileID: 1864542979070780905}
   _earthBossAnimatorMono: {fileID: 3544760151961940746}
+  _isDeadBoss: {fileID: 11400000, guid: 1babcb39368a8dc40aaa4203f03d5599, type: 2}
 --- !u!114 &3544760151961940746
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -231,7 +231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &517175194
 Transform:
   m_ObjectHideFlags: 0
@@ -521,8 +521,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897090334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -741.7, y: 77.5, z: 469}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children:
   - {fileID: 491408609}
   - {fileID: 2106697351}
@@ -1204,11 +1204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3c3b4ef18acdb4ea73ce471ccde7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 10
-  _nbPoint: 30
-  _stopDistance: 9
-  _delay: 2
-  _isStopping: 0
 --- !u!114 &1387984164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1265,8 +1260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c72fa7a3c5f3864f8cbb84a0ef553ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 5866666020341561610}
-  _treeMutantMovement: {fileID: 1387984163}
 --- !u!4 &1554096775 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8388710681298073581, guid: 712c694f39fa8164c83454851387150c,
@@ -4535,7 +4528,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7741501013424128203}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -24.41, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7741501013259492201}

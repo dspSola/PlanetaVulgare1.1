@@ -7,6 +7,8 @@ public class FireBossEntity : BossEntity
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private FireBossAgentController _fireBossAgentController;
     [SerializeField] private FireBossAnimator _fireBossAnimator;
+    [SerializeField] private BoolVariable _isDeadBoss;
+
     public override void InitializeEntity()
     {
         base.InitializeEntity();
@@ -23,6 +25,7 @@ public class FireBossEntity : BossEntity
             _fireBossAnimator.SetDeath();
             PlayerEventStoryThis.WinBossFire();
             Destroy(gameObject, 3);
+            _isDeadBoss.value = true;
         }
     }
 }

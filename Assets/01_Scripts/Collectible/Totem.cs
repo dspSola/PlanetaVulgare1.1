@@ -8,6 +8,12 @@ public class Totem : MonoBehaviour
     [SerializeField] private Sprite _spriteTotem;
     [SerializeField] private Color _fillColor;
     [SerializeField] private GameObject _boss;
+    [SerializeField] private BoolVariable _isCatchingTotem;
+
+    private void Awake()
+    {
+        _isCatchingTotem.value = false;
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -33,7 +39,7 @@ public class Totem : MonoBehaviour
                 }
 
                 _boss.SetActive(true);
-
+                _isCatchingTotem.value = true;
                 Destroy(gameObject);
             }
         }
