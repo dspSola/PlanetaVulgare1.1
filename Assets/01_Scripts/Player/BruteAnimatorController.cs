@@ -126,5 +126,8 @@ public class BruteAnimatorController : MonoBehaviour
         SetRunning(false);
         SetJumping(false);
         SetSneacking(false);
+        SetWalking(false);
+        SetHurt(false);
+        SetIdle(true);
     }
 }

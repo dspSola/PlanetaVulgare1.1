@@ -52,7 +52,7 @@ public class BushFruit : MonoBehaviour
 
     public void InitFruits()
     {
-        _timeToInitFruitMax = Random.Range(60, 180);
+        _timeToInitFruitMax = Random.Range(30, 90);
         _fruits = new List<GameObject>();
         int random = Random.Range(2, 5);
         for (int i = 0; i <= random; i++)
