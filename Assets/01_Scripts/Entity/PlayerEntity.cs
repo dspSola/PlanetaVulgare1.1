@@ -9,13 +9,17 @@ public class PlayerEntity : Entity
     [SerializeField] private PlayerData _playerData;
     [SerializeField] private PlayerEventStory _playerEventStory;
     [SerializeField] private BruteAnimatorController _bruteAnimatorController;
-    [SerializeField] private Transform _playerTransform, _targetBottom, _targetMidle, _targetTop;
+    [SerializeField] private Transform _playerTransform, _targetBottom, _targetMidle, _targetTop, _debugTop, _debugDown;
 
     [SerializeField] private float _rageMax, _rage, _coefRage, _coefTimeLessRage, _timeRage, _timeRageMax, _valueRageAddAttack, _valueRageAddLessLife;
 
     [SerializeField] private GameObject _canvasDie;
     [SerializeField] private AudioSource _sfxAudioSource;
     [SerializeField] private List<AudioClip> _sfxAudioClips;
+
+    [SerializeField] private bool _ifPlayerIsDebuged;
+    [SerializeField] private LayerMask _layerMaskDebug;
+    [SerializeField] private StateMachineVertical _stateMachineVertical;
 
     public override void InitializeEntity()
     {
@@ -35,7 +39,15 @@ public class PlayerEntity : Entity
         {
             InitializeEntity();
         }
-        _playerEventStory.Init();
+
+        if (_playerEventStory.PosCheckPointDie != Vector3.zero)
+        {
+            _playerTransform.position = _playerEventStory.PosCheckPointDie;
+        }
+        else if (_playerEventStory.PosSave != Vector3.zero)
+        {
+            _playerTransform.position = _playerEventStory.PosSave;
+        }
     }
 
     private void Update()
@@ -49,6 +61,60 @@ public class PlayerEntity : Entity
             if (_rage > 0 && _rage < _rageMax)
             {
                 LessRageTime();
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (_ifPlayerIsDebuged)
+        {
+            if (_stateMachineVertical.CurrentState != PlayerVerticalState.GROUNDED)
+            {
+                bool touchUp = false;
+                bool touchDown = false;
+                Vector3 vectorHit = Vector3.zero;
+
+                RaycastHit hit;
+                // Does the ray intersect any objects excluding the player layer
+                if (Physics.Raycast(_debugDown.position, _debugDown.TransformDirection(Vector3.up), out hit, Mathf.Infinity, _layerMaskDebug))
+                {
+                    Debug.DrawRay(_debugDown.position, _debugDown.TransformDirection(Vector3.up) * hit.distance, Color.yellow);
+                    Debug.Log("Did Hit");
+                    touchUp = true;
+                    vectorHit = hit.point;
+                }
+                else
+                {
+                    Debug.DrawRay(_debugDown.position, _debugDown.TransformDirection(Vector3.up) * 1000, Color.white);
+                    Debug.Log("Did not Hit");
+                }
+
+                // Does the ray intersect any objects excluding the player layer
+                if (Physics.Raycast(_debugTop.position, _debugTop.TransformDirection(Vector3.down), out hit, Mathf.Infinity, _layerMaskDebug))
+                {
+                    Debug.DrawRay(_debugTop.position, _debugTop.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
+                    Debug.Log("Did Hit");
+                    touchDown = true;
+                    vectorHit = hit.point;
+                }
+                else
+                {
+                    Debug.DrawRay(_debugTop.position, _debugTop.TransformDirection(Vector3.down) * 1000, Color.white);
+                    Debug.Log("Did not Hit");
+                }
+
+                if (touchUp || touchDown)
+                {
+                    _playerTransform.position = vectorHit + new Vector3(0, 1, 0);
+                    _bruteAnimatorController.DebugAnimator();
+                    _ifPlayerIsDebuged = false;
+                }
+            }
+            else
+            {
+                _bruteAnimatorController.DebugAnimator();
+                _ifPlayerIsDebuged = false;
             }
         }
     }
@@ -137,43 +203,65 @@ public class PlayerEntity : Entity
     public void ClickOnRetry()
     {
         _canvasDie.SetActive(false);
-        _playerTransform.position = _playerEventStory.PosCheckPointDie;        
+
+        _playerTransform.position = _playerEventStory.PosCheckPointDie;
+
         Cursor.lockState = CursorLockMode.Locked;
         base.Life = base.LifeMax;
         base.CoefLife = base.Life / base.LifeMax;
         _playerData.LifeCoef = base.CoefLife;
         _hUDLifePlayer.SetLife(base.CoefLife);
         _bruteAnimatorController.SetDeath(false);
+
+        //GameObject.Find("Totems").GetComponent<ManagerTotemRoeload>().ReloadScene();
+        _playerEventStory.ReloadScene();
+
         SceneManager.LoadScene("Main");
     }
 
-    public void AddTotemEarth(Totem totem)
+    public void AddTotemEarth(Totem totem, Vector3 posCheckDie, bool valueAddLife)
     {
         //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
         _hUDLifePlayer.SetIconColor(totem.FillColor, 0);
         _playerEventStory.AddTotemEarth();
-        UpgradeLife(50);
+        //if (!valueAddLife)
+        //{
+        //    UpgradeLife(50);
+        //}
+        _playerEventStory.PosCheckPointDie = posCheckDie;
     }
-    public void AddTotemFire(Totem totem)
+    public void AddTotemFire(Totem totem, Vector3 posCheckDie, bool valueAddLife)
     {
         //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
         _hUDLifePlayer.SetIconColor(totem.FillColor, 1);
         _playerEventStory.AddTotemFire();
-        UpgradeLife(50);
+        //if (!valueAddLife)
+        //{
+        //    UpgradeLife(50);
+        //}
+        _playerEventStory.PosCheckPointDie = posCheckDie;
     }
-    public void AddTotemWater(Totem totem)
+    public void AddTotemWater(Totem totem, Vector3 posCheckDie, bool valueAddLife)
     {
         //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
         _hUDLifePlayer.SetIconColor(totem.FillColor, 2);
         _playerEventStory.AddTotemWater();
-        UpgradeLife(50);
+        //if (!valueAddLife)
+        //{
+        //    UpgradeLife(50);
+        //}
+        _playerEventStory.PosCheckPointDie = posCheckDie;
     }
-    public void AddTotemWind(Totem totem)
+    public void AddTotemWind(Totem totem, Vector3 posCheckDie, bool valueAddLife)
     {
         //_hUDLifePlayer.AddTotem(totem.SpriteTotem);
         _hUDLifePlayer.SetIconColor(totem.FillColor, 3);
         _playerEventStory.AddTotemWind();
-        UpgradeLife(50);
+        //if (!valueAddLife)
+        //{
+        //    UpgradeLife(50);
+        //}
+        _playerEventStory.PosCheckPointDie = posCheckDie;
     }
 
     public void LifeToLifeMax()
@@ -194,6 +282,11 @@ public class PlayerEntity : Entity
         _sfxAudioSource.PlayOneShot(_sfxAudioClips[0]);
     }
 
+    public void DebugPlayer()
+    {
+        _ifPlayerIsDebuged = true;
+    }
+
     private GUIStyle _style;
 
     public float RageMax { get => _rageMax; set => _rageMax = value; }
@@ -202,4 +295,5 @@ public class PlayerEntity : Entity
     public Transform TargetBottom { get => _targetBottom; set => _targetBottom = value; }
     public Transform TargetMidle { get => _targetMidle; set => _targetMidle = value; }
     public Transform TargetTop { get => _targetTop; set => _targetTop = value; }
+    public Transform PlayerTransform { get => _playerTransform; set => _playerTransform = value; }
 }

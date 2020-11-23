@@ -88,10 +88,6 @@ public class WaterBossAgentController : MonoBehaviour
             }
         }
     }
-    private void FixedUpdate()
-    {
-       
-    }
 
     private void Rotate()
     {

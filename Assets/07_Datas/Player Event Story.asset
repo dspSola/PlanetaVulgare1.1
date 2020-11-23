@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9966911cf5c9f1441b0d0da859e010a9, type: 3}
   m_Name: Player Event Story
   m_EditorClassIdentifier: 
-  _fightBossFire: 0
-  _fightBossWind: 0
-  _fightBossWater: 0
-  _fightBossEarth: 0
+  _gameExist: 0
   _bossFire: 0
   _bossWind: 0
   _bossWater: 0
   _bossEarth: 0
+  _ultimeBoss: 0
   _totemFire: 0
   _totemWind: 0
   _totemWater: 0
   _totemEarth: 0
   _cptBossWin: 0
-  _posCheckPointDie: {x: -14, y: 0.5, z: -17}
+  _posSave: {x: 0, y: 0, z: 0}
+  _posCheckPointDie: {x: 0, y: 0, z: 0}
+  _playerEntityData: {fileID: 11400000, guid: 4cecbe889aa6d384b97a104a7f90dca7, type: 2}

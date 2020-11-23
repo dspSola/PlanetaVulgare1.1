@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Fire Boss
   _lifeMax: 350
-  _damage: 10
+  _damage: 15
   _speedWalk: 3
   _speedRun: 5
-  _currentLife: 0

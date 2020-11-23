@@ -86,6 +86,7 @@ public class Entity : MonoBehaviour
     {
         _life += value;
         _lifeMax += value;
+        _entityData.LifeMax = _lifeMax;
     }
 
     public string Name { get => _name; set => _name = value; }

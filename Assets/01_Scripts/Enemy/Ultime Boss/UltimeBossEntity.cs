@@ -23,7 +23,7 @@ public class UltimeBossEntity : BossEntity
         {
             pe.LifeToLifeMax();
             _ultimeBossAnimatorMono.SetDeath();
-            PlayerEventStoryThis.WinBossWater();
+            PlayerEventStoryThis.WinBossUltime();
             Destroy(gameObject, 3);
         }
     }

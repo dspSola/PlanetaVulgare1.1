@@ -8,9 +8,13 @@ public class MenuPause : MonoBehaviour
     public static bool m_gameIsPaused = false;
     public GameObject m_pauseMenuUI;
 
+    [SerializeField] private PlayerEventStory _playerEventStory;
+    [SerializeField] private PlayerEntity _playerEntity;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        _playerEntity = GameObject.Find("Brute Player").GetComponentInChildren<PlayerEntity>();
     }
 
     // Update is called once per frame
@@ -45,8 +49,25 @@ public class MenuPause : MonoBehaviour
         m_gameIsPaused = true;
     }
 
+    public void ClickOnSave()
+    {
+        _playerEventStory.PosSave = _playerEntity.PlayerTransform.position;
+        Quit_Game();
+    }
+
+    public void ClickOnDontSave()
+    {
+        Quit_Game();
+    }
+
     public void Quit_Game()
     {
         Application.Quit();
+    }
+
+    public void DebugPlayer()
+    {
+        _playerEntity.DebugPlayer();
+        Resume();
     }
 }
