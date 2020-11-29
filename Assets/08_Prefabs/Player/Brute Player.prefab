@@ -250,6 +250,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483648
   _stateMachineVertical: {fileID: 341602960945845377}
+  _stateMachineHorizontal: {fileID: 341602960945845376}
+  _stateMachineAttack: {fileID: 6306397674651601930}
 --- !u!1 &157891773108668236
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +646,7 @@ MonoBehaviour:
   _colliderSneak: {fileID: 125777574}
   _sneackFloorCheck: {fileID: 967843704}
   _isSneaking: 0
+  _afficheDebug: 0
 --- !u!114 &341602960945845377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,6 +666,7 @@ MonoBehaviour:
   _groundCheck: {fileID: 341602960823763335}
   _timeToJump: 0
   _timeToJumpMax: 0.75
+  _afficheDebug: 0
 --- !u!114 &341602960945845379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1100,6 +1104,7 @@ MonoBehaviour:
   _playerEntity: {fileID: 4866532724348861173}
   _playerMove: {fileID: 341602960945845379}
   _bruteAnimatorController: {fileID: 341602959798940000}
+  _stateMachineHorizontal: {fileID: 341602960945845376}
   _weaponColliderManager: {fileID: 1161021094}
   _colliderIdle: {fileID: 341602960720592901}
   _colliderDodge: {fileID: 125777575}
@@ -1116,6 +1121,7 @@ MonoBehaviour:
   _timeCombo: 0
   _timeComboMax: 0.5
   _trail: {fileID: 2863240315541537564}
+  _afficheDebug: 0
 --- !u!114 &6803456909925507781
 MonoBehaviour:
   m_ObjectHideFlags: 0

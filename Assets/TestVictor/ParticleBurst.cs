@@ -15,6 +15,7 @@ public class ParticleBurst : MonoBehaviour
         {
             _sunnySun.SetActive(true);
             _bloodSun.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 

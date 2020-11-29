@@ -10,6 +10,7 @@ public class AudioTriggerDetect : MonoBehaviour
 
     [Header("Parameter")]
     [SerializeField] float _speed;
+    [SerializeField] float _volumeMax;
 
     [Header("StateSelect")]
     [SerializeField] bool _isTrigger;
@@ -17,11 +18,26 @@ public class AudioTriggerDetect : MonoBehaviour
     [SerializeField] bool _isPickingTotem;
     [SerializeField] bool _isDeadBoss;
 
+    [SerializeField] bool _playerInTrigger;
+
 
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
         _boxCollider = GetComponent<BoxCollider>();
+    }
+
+    private void Start()
+    {
+        if (_volumeMax == 0)
+        {
+            _volumeMax = 1;
+        }
+
+        if (!_playerInTrigger)
+        {
+            _audioSource.volume = 0;
+        }
     }
 
     private void Update()
@@ -90,6 +106,7 @@ public class AudioTriggerDetect : MonoBehaviour
         {
             //Debug.Log("player entre dans une zone");
             _isRisingUp = true;
+            _playerInTrigger = true;
         }
     }
 
@@ -99,18 +116,19 @@ public class AudioTriggerDetect : MonoBehaviour
         {
             //Debug.Log("player sort d'une zone");
             _isRisingDown = true;
+            _playerInTrigger = false;
         }
     }
 
     private void DoVolumeUp()
     {
-        if(_audioSource.volume < 1)
+        if(_audioSource.volume < _volumeMax)
         {
             _audioSource.volume += Time.deltaTime * _speed;
         }
         else 
         {
-            _audioSource.volume = 1;
+            _audioSource.volume = _volumeMax;
             _isRisingUp = false;
         }
     }

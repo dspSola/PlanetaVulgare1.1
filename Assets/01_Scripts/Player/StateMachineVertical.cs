@@ -18,6 +18,7 @@ public class StateMachineVertical : MonoBehaviour
     [SerializeField] private CollisionOverlapBoxTester _groundCheck;
 
     [SerializeField] private float _timeToJump, _timeToJumpMax;
+    [SerializeField] private bool _afficheDebug;
 
     #region Public properties
 
@@ -221,23 +222,26 @@ public class StateMachineVertical : MonoBehaviour
 
     #region Debug
 
-    //private void OnGUI()
-    //{
-    //    if (_style == null)
-    //    {
-    //        _style = new GUIStyle("button");
-    //        _style.fontSize = 24;
-    //        _style.alignment = TextAnchor.MiddleLeft;
-    //        _style.padding = new RectOffset(15, 15, 0, 0);
-    //    }
-    //    using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.2f, Screen.width * 0.2f, Screen.height * 0.1f)))
-    //    {
-    //        using (new GUILayout.VerticalScope())
-    //        {
-    //            GUILayout.Button($"VState: {_currentState}", _style, GUILayout.ExpandHeight(true));
-    //        }
-    //    }
-    //}
+    private void OnGUI()
+    {
+        if (_afficheDebug)
+        {
+            if (_style == null)
+            {
+                _style = new GUIStyle("button");
+                _style.fontSize = 24;
+                _style.alignment = TextAnchor.MiddleLeft;
+                _style.padding = new RectOffset(15, 15, 0, 0);
+            }
+            using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.2f, Screen.width * 0.2f, Screen.height * 0.1f)))
+            {
+                using (new GUILayout.VerticalScope())
+                {
+                    GUILayout.Button($"VState: {_currentState}", _style, GUILayout.ExpandHeight(true));
+                }
+            }
+        }
+    }
 
     public void SetTransitionToJumping()
     {

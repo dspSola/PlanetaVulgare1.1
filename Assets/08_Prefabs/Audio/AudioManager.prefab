@@ -46,9 +46,9 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c520eaa6e159ca1499e8ccdf46c88ba7, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -160,10 +160,12 @@ MonoBehaviour:
     type: 2}
   _finalFight: {fileID: 11400000, guid: 5866e9ab89b313b42b1416e15c1d605d, type: 2}
   _speed: 0.2
+  _volumeMax: 0.25
   _isTrigger: 1
   _isTriggerBossFinal: 0
   _isPickingTotem: 0
   _isDeadBoss: 0
+  _playerInTrigger: 0
 --- !u!1 &3697987711747986634
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,10 +326,12 @@ MonoBehaviour:
     type: 2}
   _finalFight: {fileID: 11400000, guid: 5866e9ab89b313b42b1416e15c1d605d, type: 2}
   _speed: 0.5
+  _volumeMax: 0
   _isTrigger: 0
   _isTriggerBossFinal: 1
   _isPickingTotem: 0
   _isDeadBoss: 0
+  _playerInTrigger: 0
 --- !u!1 &3697987711810914066
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,10 +534,12 @@ MonoBehaviour:
     type: 2}
   _finalFight: {fileID: 11400000, guid: 5866e9ab89b313b42b1416e15c1d605d, type: 2}
   _speed: 0.5
+  _volumeMax: 0
   _isTrigger: 1
   _isTriggerBossFinal: 0
   _isPickingTotem: 0
   _isDeadBoss: 0
+  _playerInTrigger: 0
 --- !u!1 &3697987711887942158
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,10 +700,12 @@ MonoBehaviour:
     type: 2}
   _finalFight: {fileID: 11400000, guid: 5866e9ab89b313b42b1416e15c1d605d, type: 2}
   _speed: 0.5
+  _volumeMax: 0
   _isTrigger: 1
   _isTriggerBossFinal: 0
   _isPickingTotem: 0
   _isDeadBoss: 0
+  _playerInTrigger: 0
 --- !u!1 &3697987712102701207
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,10 +852,12 @@ MonoBehaviour:
     type: 2}
   _finalFight: {fileID: 11400000, guid: 5866e9ab89b313b42b1416e15c1d605d, type: 2}
   _speed: 0.2
+  _volumeMax: 0
   _isTrigger: 0
   _isTriggerBossFinal: 0
   _isPickingTotem: 0
   _isDeadBoss: 1
+  _playerInTrigger: 0
 --- !u!1 &3697987712525275021
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,10 +1004,12 @@ MonoBehaviour:
     type: 2}
   _finalFight: {fileID: 11400000, guid: 5866e9ab89b313b42b1416e15c1d605d, type: 2}
   _speed: 0.2
+  _volumeMax: 0
   _isTrigger: 0
   _isTriggerBossFinal: 0
   _isPickingTotem: 1
   _isDeadBoss: 0
+  _playerInTrigger: 0
 --- !u!1 &3697987712757118421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1237,7 +1249,9 @@ MonoBehaviour:
     type: 2}
   _finalFight: {fileID: 11400000, guid: 5866e9ab89b313b42b1416e15c1d605d, type: 2}
   _speed: 0.5
+  _volumeMax: 0
   _isTrigger: 1
   _isTriggerBossFinal: 0
   _isPickingTotem: 0
   _isDeadBoss: 0
+  _playerInTrigger: 0

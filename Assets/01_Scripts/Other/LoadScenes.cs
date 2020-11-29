@@ -3,8 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class LoadScenes : MonoBehaviour
 {
+    [SerializeField] private PlayerEventStory _playerEventStory;
+
     private void Awake()
     {
+        _playerEventStory.TakeSaveData();
         Destroy(GameObject.Find("MusicIntro"));
         SceneManager.LoadScene("Lights", LoadSceneMode.Additive);
         SceneManager.LoadScene("Level01Bis", LoadSceneMode.Additive);

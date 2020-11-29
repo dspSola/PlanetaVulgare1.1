@@ -1,20 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class MenuPause : MonoBehaviour
 {
+    [SerializeField] private PlayerEventStory _playerEventStory;
+    [SerializeField] private PlayerEntity _playerEntity;
+    [SerializeField] private string _nameSceneMenu;
+
     public static bool m_gameIsPaused = false;
     public GameObject m_pauseMenuUI;
 
-    [SerializeField] private PlayerEventStory _playerEventStory;
-    [SerializeField] private PlayerEntity _playerEntity;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         _playerEntity = GameObject.Find("Brute Player").GetComponentInChildren<PlayerEntity>();
+        Resume();
     }
 
     // Update is called once per frame
@@ -41,7 +45,7 @@ public class MenuPause : MonoBehaviour
         m_gameIsPaused = false;
     }
 
-    void Pause()
+    public void Pause()
     {
         Cursor.lockState = CursorLockMode.None;
         m_pauseMenuUI.SetActive(true);
@@ -52,20 +56,30 @@ public class MenuPause : MonoBehaviour
     public void ClickOnSave()
     {
         _playerEventStory.PosSave = _playerEntity.PlayerTransform.position;
-        Quit_Game();
+        _playerEventStory.SaveAllIntoTheText();
     }
 
-    public void ClickOnDontSave()
+    public void ClickOnMenu()
+    {
+        SceneManager.LoadScene(_nameSceneMenu);
+    }
+
+    public void ClickOnQuit()
     {
         Quit_Game();
     }
 
-    public void Quit_Game()
+    public void ClickOnDebugPlayer()
+    {
+        DebugPlayer();
+    }
+
+    private void Quit_Game()
     {
         Application.Quit();
     }
 
-    public void DebugPlayer()
+    private void DebugPlayer()
     {
         _playerEntity.DebugPlayer();
         Resume();

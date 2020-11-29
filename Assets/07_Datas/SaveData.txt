@@ -1,0 +1,14 @@
+_gameExist=False
+_playerPassPortal=False
+_totemEarth=False
+_totemFire=False
+_totemWater=False
+_totemWind=False
+_bossFire=False
+_bossWind=False
+_bossWater=False
+_bossEarth=False
+_ultimeBoss=False
+_cptBossWin=0
+_posSave=(0.0, 0.0, 0.0)
+_posCheckPointDie=(0.0, 0.0, 0.0)

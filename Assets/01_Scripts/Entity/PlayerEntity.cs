@@ -20,6 +20,8 @@ public class PlayerEntity : Entity
     [SerializeField] private bool _ifPlayerIsDebuged;
     [SerializeField] private LayerMask _layerMaskDebug;
     [SerializeField] private StateMachineVertical _stateMachineVertical;
+    [SerializeField] private StateMachineHorizontal _stateMachineHorizontal;
+    [SerializeField] private StateMachineAttack _stateMachineAttack;
 
     public override void InitializeEntity()
     {
@@ -28,6 +30,11 @@ public class PlayerEntity : Entity
         _hUDLifePlayer.SetLife(base.CoefLife);
         _hUDLifePlayer.SetRage(_coefRage);
     }
+
+    //private void Awake()
+    //{
+    //    _playerEventStory.TakeSaveData();
+    //}
 
     private void Start()
     {
@@ -107,13 +114,13 @@ public class PlayerEntity : Entity
                 if (touchUp || touchDown)
                 {
                     _playerTransform.position = vectorHit + new Vector3(0, 1, 0);
-                    _bruteAnimatorController.DebugAnimator();
                     _ifPlayerIsDebuged = false;
                 }
             }
             else
             {
                 _bruteAnimatorController.DebugAnimator();
+                _stateMachineAttack.DebugPlayer();
                 _ifPlayerIsDebuged = false;
             }
         }

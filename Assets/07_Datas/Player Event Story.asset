@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9966911cf5c9f1441b0d0da859e010a9, type: 3}
   m_Name: Player Event Story
   m_EditorClassIdentifier: 
-  _gameExist: 1
+  _gameExist: 0
   _playerPassPortal: 0
   _bossFire: 0
   _bossWind: 0

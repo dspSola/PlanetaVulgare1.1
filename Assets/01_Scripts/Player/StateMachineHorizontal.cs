@@ -20,7 +20,7 @@ public class StateMachineHorizontal : MonoBehaviour
     [SerializeField] private CollisionOverlapBoxTester _sneackFloorCheck;
 
     [SerializeField] private bool _isSneaking;
-
+    [SerializeField] private bool _afficheDebug;
     public PlayerHorizontalState CurrentState
     {
         get
@@ -335,23 +335,31 @@ public class StateMachineHorizontal : MonoBehaviour
 
     #region Debug
 
-    //private void OnGUI()
-    //{
-    //    if (_style == null)
-    //    {
-    //        _style = new GUIStyle("button");
-    //        _style.fontSize = 24;
-    //        _style.alignment = TextAnchor.MiddleLeft;
-    //        _style.padding = new RectOffset(15, 15, 0, 0);
-    //    }
-    //    using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.1f, Screen.width * 0.2f, Screen.height * 0.1f)))
-    //    {
-    //        using (new GUILayout.VerticalScope())
-    //        {
-    //            GUILayout.Button($"HState: {_currentState}", _style, GUILayout.ExpandHeight(true));
-    //        }
-    //    }
-    //}
+    private void OnGUI()
+    {
+        if (_afficheDebug)
+        {
+            if (_style == null)
+            {
+                _style = new GUIStyle("button");
+                _style.fontSize = 24;
+                _style.alignment = TextAnchor.MiddleLeft;
+                _style.padding = new RectOffset(15, 15, 0, 0);
+            }
+            using (new GUILayout.AreaScope(new Rect(Screen.width - Screen.width * 0.2f, Screen.height - Screen.height * 0.1f, Screen.width * 0.2f, Screen.height * 0.1f)))
+            {
+                using (new GUILayout.VerticalScope())
+                {
+                    GUILayout.Button($"HState: {_currentState}", _style, GUILayout.ExpandHeight(true));
+                }
+            }
+        }
+    }
+
+    public void SetTransitionToIdle()
+    {
+        TransitionToState(PlayerHorizontalState.IDLE);
+    }
 
     private GUIStyle _style;
 

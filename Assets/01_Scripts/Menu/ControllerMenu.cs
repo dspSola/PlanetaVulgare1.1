@@ -13,9 +13,18 @@ public class ControllerMenu : MonoBehaviour
     [SerializeField] private EventSystem _eventSystem;
     [SerializeField] private AudioSource _audioSource;
 
+    private void Awake()
+    {
+        // Charge la sauvegarde
+        _playerEventStory.TakeSaveData();
+    }
+
     private void Start()
     {
-        if(!_playerEventStory.GameExist)
+        // Charge la sauvegarde
+        _playerEventStory.TakeSaveData();
+
+        if (!_playerEventStory.GameExist)
         {
             _buttonContinue.gameObject.SetActive(false);
         }
